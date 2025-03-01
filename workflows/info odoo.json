@@ -1,0 +1,462 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo4": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-29T00:58:27.401Z",
+  "id": "yB8r9pTWxFlYc8zz",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "info odoo",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c8321895-2064-42b6-bac0-8dd92155e05a",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        420,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9724f99-341a-41f0-bcce-77e141b3f3f2",
+              "name": "=response",
+              "value": "=Tu formación vence: *{{ $json.due_date }}*|Continua al siguiente paso, siguiendo con la conversación natural y las instrucciones que tienes. ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        820,
+        680
+      ],
+      "id": "336e75e1-c007-488b-9958-6e24d4c3d305",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "584be2be-5916-4e9f-88e6-8f5f4bd05164",
+              "name": "response",
+              "value": "=Debes un total de: {{ $json.amount_residual }} {{ $json.currency_id[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1320,
+        320
+      ],
+      "id": "ec9ab79c-dd02-4020-b407-a4cd87c3eda3",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.student",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.query.nombre }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        680,
+        420
+      ],
+      "id": "b5c0331d-598d-43b5-be21-1a6744b68e28",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "due_date",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "email",
+              "value": "={{ $json.query.correo }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        600,
+        680
+      ],
+      "id": "74be345a-326a-4b65-8a07-7246ded10308",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "email",
+              "value": "psicomarcelamar@gmail.com"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        700,
+        180
+      ],
+      "id": "7675952b-831d-405a-9f57-8b892c2901ba",
+      "name": "Odoo2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "sale.order",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "state",
+              "value": "sale"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -80
+      ],
+      "id": "dc08aba9-1382-4976-b09d-1111eb2cede5",
+      "name": "Odoo3",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "order_subscription_id",
+            "date"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "sequence_prefix",
+              "value": "INV/"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        900,
+        180
+      ],
+      "id": "d05d1e36-79cf-4bd6-bc6f-8d63a7c52dc7",
+      "name": "Odoo4",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fac5652f-7640-42f7-bb31-ff313cbd9499",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        180
+      ],
+      "id": "8d73e7cf-d4c6-4ce7-b224-5ea6e341d12b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "amount_residual"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "sequence_prefix",
+              "value": "INV/"
+            },
+            {
+              "fieldName": "state",
+              "value": "posted"
+            },
+            {
+              "fieldName": "payment_state",
+              "value": "partial"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        80
+      ],
+      "id": "51e7f763-6e39-4aca-a75b-81dedca29a3c",
+      "name": "Odoo5",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "order_subscription_id",
+            "date"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        920,
+        -120
+      ],
+      "id": "35ff5f1f-75b9-4390-8cf6-6ffc68f4119d",
+      "name": "Odoo6",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-26T20:28:21.000Z",
+  "versionId": "3d9074a1-105a-451e-aa4c-27d2d139a684"
+}
