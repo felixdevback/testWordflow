@@ -1,0 +1,345 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "get data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "get data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mautic": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get data": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-18T23:33:03.947Z",
+  "id": "16",
+  "meta": null,
+  "name": "crm_to_mauticupdate",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0cd1a609-aa6f-4fbc-9f44-9676deb04cd2",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $json[\"email\"] }}",
+        "firstName": "={{ $json.name }}",
+        "company": "={{ $json[\"campaign_id\"] }}",
+        "additionalFields": {
+          "customFieldsUi": {
+            "customFieldValues": [
+              {
+                "fieldId": "etapa",
+                "fieldValue": "={{ $json[\"etapas\"] }}"
+              },
+              {
+                "fieldId": "country",
+                "fieldValue": "={{ $json[\"country\"] }}"
+              },
+              {
+                "fieldId": "equipo_de_ventas",
+                "fieldValue": "={{ $json[\"team_sale\"] }}"
+              },
+              {
+                "fieldId": "curso__formacion_de_inter",
+                "fieldValue": "={{ $json.programa_academico }}"
+              },
+              {
+                "fieldId": "ciudad",
+                "fieldValue": "={{ $json[\"city\"] }}"
+              },
+              {
+                "fieldId": "source",
+                "fieldValue": "={{ $json.sources }}"
+              }
+            ]
+          },
+          "phone": "={{ $json.phone }}",
+          "stage": "={{ $json[\"stage\"] }}",
+          "tags": [
+            "Prospecto"
+          ]
+        },
+        "options": {}
+      },
+      "id": "fb1dec6f-99e9-4fc5-a538-31978aed81ee",
+      "name": "Mautic",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        300
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "mauticApi": {
+          "id": "27",
+          "name": "Mautic.universidadisep.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfunction validarEmail(email) {\n  const regex = /^\\w+([.-_+]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,10})+$/;\n  return regex.test(email);\n}\n\nvar data=[]\nvar etapas=\"\"\nfor (const item of $input.all()) {  \n  //traducion una etapas que estan en ingles\n  //que en mauti estan es español\n  const email=item.json.email_from\n  \n  var stage_id=0\n  var stapas=''\n  var stage=item.json.stage_id[0] \n  //console.log(\"Estado\",stage)\n  switch(stage){\n    case 1:\n      stage_id=11\n      etapas=\"Análisis\";\n      break;\n    case 2:\n      stage_id=17;  \n      etapas=\"Calificado\";\n      break; \n    case 3:\n      stage_id=13;  \n      etapas=\"Propuesta\";\n      break;\n    case 4:\n      stage_id=14;     \n      etapas=\"Ganado\";\n      break;\n    case 5:\n      stage_id=15;   \n      etapas=\"Negociación\";\n      break;\n    case 6:\n      stage_id=16;\n      etapas=\"Cambio de Ciclo\";\n      break;\n    case 7:      \n      stage_id=12;\n      etapas=\"Sin Contacto\";\n      break;\n    case 8:\n      stage_id=19;\n      etapas=\"Análisis\";\n      break;    \n    case 9:\n      stage_id=19;\n      etapas=\"Propuesta\";\n      break;  \n    case 10:\n      stage_id=18; \n      etapas=\"Perdido\";\n      break;\n      \n  }\n \n  \n  \n  //valores para el diccionario\n  values={\n    'name':item.json.name,\n    'phone':item.json.phone,   \n    'stage':stage_id,    'programa_academico':item.json.x_studio_programa_academico[1],\n      'zip':item.json.zip,\n      'team_sale':item.json.team_id[1],\n      'campaign_id':item.json.campaign_id[1],\n      'id_odoo':item.json.id,\n      'etapas':etapas,\n      'city':item.json.city,\n      'country_id':item.json.country_id[0],\n      'country':item.json.country_id[1],\n      'company_id':item.json.company_id[1],\n       'sources':'odoo16',\n   }\n  if(validarEmail(email)){\n    values.email=email\n  }\n  data.push(values)\n \n}\n\nreturn data\nreturn $input.all();"
+      },
+      "id": "0b8734f1-2766-40b4-a7ef-338abc78cb64",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        960,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 21
+            }
+          ]
+        }
+      },
+      "id": "6b8aca26-eb19-4722-b545-a66bfe30e308",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        480
+      ],
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "d34e5c4b-0ca5-4133-a73d-4940ea15f816",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        300
+      ],
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "mobile",
+            "name",
+            "phone",
+            "stage_id",
+            "state_id",
+            "team_id",
+            "type",
+            "won_status",
+            "x_studio_copy_to_mauti",
+            "zip",
+            "email_from",
+            "campaign_id",
+            "x_studio_programa_academico",
+            "country_id",
+            "company_id",
+            "mautic_export",
+            "mautic_update",
+            "__last_update"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "type",
+              "value": "opportunity"
+            }
+          ]
+        }
+      },
+      "id": "31ac8781-98fc-40e9-b3f2-9e67095eaa7f",
+      "name": "get data",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        380,
+        300
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{ $json.__last_update }}",
+              "value2": "2024-01-16T14:00:00.000Z"
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{ $json[\"email_from\"] }}",
+              "operation": "regex",
+              "value2": "/^\\w+([.-_+]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,10})+$/"
+            }
+          ]
+        }
+      },
+      "id": "cf8c5d12-188c-479a-a574-e41eb4cda5a2",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        200,
+        40
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.newdate = new Date().toJSON().slice(0, 10)+\" 08:00:00\";\n}\n\nreturn $input.all();"
+      },
+      "id": "ea778e09-1ccd-4731-a732-6bccdc3fce5c",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        580,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{ $json.__last_update }}",
+              "value2": "={{ $json[\"newdate\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "791a1af1-82f2-4f9f-a4e5-ff71ee626c46",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        780,
+        340
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-20T23:19:21.000Z",
+  "versionId": "463ff224-2500-424d-b6d4-5462c2f97be7"
+}
