@@ -1,0 +1,1275 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "actualizar_stage--user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-23T23:40:36.975Z",
+  "id": "NmbL88Q7M3KSayGH",
+  "meta": null,
+  "name": "pasar manual_a_segunda_llamada",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        -200
+      ],
+      "id": "a7d28ab3-76e0-451f-b0b8-67e02ec7ef9e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1OjsKwXP3lCfuOVGEyASlHTRC3MR4JM7o9KvDX_BQPr4",
+          "mode": "list",
+          "cachedResultName": "leads_ia_llamada_respuesta_Si",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1OjsKwXP3lCfuOVGEyASlHTRC3MR4JM7o9KvDX_BQPr4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1OjsKwXP3lCfuOVGEyASlHTRC3MR4JM7o9KvDX_BQPr4/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "desea_inscribirse?",
+              "lookupValue": "TRUE"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -420,
+        -200
+      ],
+      "id": "eee2aba9-c7c1-4148-984d-e914bc4dd03c",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "HgvlnUGKHpTy6vgj",
+          "name": "Google Sheets account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.Id_Odoo }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -200
+      ],
+      "id": "e38f1cf3-4240-44b3-a7b1-e3e27ce92fb9",
+      "name": "Odoo",
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4179efb0-1be3-4188-90c3-e803d1747c26",
+              "leftValue": "={{ $json.user_id[1] }}",
+              "rightValue": "Administrator",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        40,
+        -200
+      ],
+      "id": "d6fef933-3033-48c0-a27d-bf07a31804e8",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "=crm.lead",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "stage_id",
+              "fieldValue": "={{(2)}}"
+            },
+            {
+              "fieldName": "user_id",
+              "fieldValue": "={{(5064)}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -200
+      ],
+      "id": "88cd41f8-613f-4e97-bf94-b61e122c3da4",
+      "name": "actualizar_stage--user",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Odoo": [
+      {
+        "json": {
+          "id": 827533,
+          "has_call_in_queue": false,
+          "campaign_id": false,
+          "source_id": false,
+          "medium_id": false,
+          "activity_ids": [],
+          "activity_state": false,
+          "activity_user_id": false,
+          "activity_type_id": false,
+          "activity_type_icon": false,
+          "activity_date_deadline": false,
+          "my_activity_date_deadline": false,
+          "activity_summary": false,
+          "activity_exception_decoration": false,
+          "activity_exception_icon": false,
+          "activity_calendar_event_id": false,
+          "message_is_follower": true,
+          "message_follower_ids": [
+            1237268
+          ],
+          "message_partner_ids": [
+            3
+          ],
+          "message_ids": [
+            7895499,
+            7891447
+          ],
+          "has_message": true,
+          "message_needaction": false,
+          "message_needaction_counter": 0,
+          "message_has_error": false,
+          "message_has_error_counter": 0,
+          "message_attachment_count": 0,
+          "message_main_attachment_id": false,
+          "website_message_ids": [],
+          "message_has_sms_error": false,
+          "phone_sanitized": "+525524437161",
+          "phone_sanitized_blacklisted": false,
+          "phone_blacklisted": false,
+          "mobile_blacklisted": false,
+          "phone_mobile_search": false,
+          "email_normalized": "armandoledesma117@gmail.com",
+          "is_blacklisted": false,
+          "message_bounce": 0,
+          "email_cc": false,
+          "name": "Maestría en Psicología Forense",
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "user_company_ids": [
+            1
+          ],
+          "team_id": [
+            26,
+            "Website"
+          ],
+          "lead_properties": [
+            {
+              "name": "1d90dc158b3567b3",
+              "type": "char",
+              "string": "Propiedad 1",
+              "value": false
+            },
+            {
+              "name": "56e80fdccd774d37",
+              "type": "char",
+              "string": "Propiedad 2",
+              "value": false
+            }
+          ],
+          "company_id": [
+            1,
+            "ISEP INTERNACIONAL LLC"
+          ],
+          "referred": false,
+          "description": "<p>Teléfono completo: (+52) 5524437161\n\nPaís: Mexico (México)\n\n\n\nutm_medium: \nutm_source: \nutm_campaign: \nutm_content: \nga: \ngclid: \nfbclid: \n\nURL desde la que se envía el formulario: https://universidadisep.com/mx/maestria/maestria-en-psicologia-forense/</p>",
+          "active": true,
+          "type": "opportunity",
+          "priority": "0",
+          "stage_id": [
+            6,
+            "Cambio de Ciclo"
+          ],
+          "kanban_state": "grey",
+          "tag_ids": [],
+          "color": 0,
+          "expected_revenue": 0,
+          "prorated_revenue": 0,
+          "recurring_revenue": 0,
+          "recurring_plan": false,
+          "recurring_revenue_monthly": 0,
+          "recurring_revenue_monthly_prorated": 0,
+          "company_currency": [
+            2,
+            "USD"
+          ],
+          "date_closed": false,
+          "date_action_last": "2025-01-05 00:17:58",
+          "date_open": "2025-01-05 00:17:58",
+          "day_open": 0,
+          "day_close": 0,
+          "date_last_stage_update": "2025-01-06 21:15:42",
+          "date_conversion": false,
+          "date_deadline": false,
+          "partner_id": [
+            1397586,
+            "Armando Ledesma Borja"
+          ],
+          "partner_is_blacklisted": false,
+          "contact_name": "Armando Ledesma Borja",
+          "partner_name": false,
+          "function": false,
+          "title": false,
+          "email_from": "armandoledesma117@gmail.com",
+          "phone": "+52 5524437161",
+          "mobile": "+52 5524437161",
+          "phone_state": "correct",
+          "email_state": "correct",
+          "website": false,
+          "lang_id": [
+            74,
+            "Spanish (MX) / Español (MX)"
+          ],
+          "lang_code": "es_MX",
+          "lang_active_count": 3,
+          "street": false,
+          "street2": false,
+          "zip": false,
+          "city": false,
+          "state_id": false,
+          "country_id": [
+            156,
+            "Mexico"
+          ],
+          "probability": 5.14,
+          "automated_probability": 5.14,
+          "is_automated_probability": true,
+          "lost_reason_id": false,
+          "calendar_event_ids": [],
+          "calendar_event_count": 0,
+          "duplicate_lead_ids": [
+            827533
+          ],
+          "duplicate_lead_count": 0,
+          "partner_email_update": false,
+          "partner_phone_update": false,
+          "is_partner_visible": true,
+          "__last_update": "2025-01-06 21:15:42",
+          "display_name": "Maestría en Psicología Forense",
+          "create_uid": [
+            2,
+            "Administrator"
+          ],
+          "create_date": "2025-01-05 00:17:58",
+          "write_uid": [
+            1,
+            "OdooBot"
+          ],
+          "write_date": "2025-01-06 21:15:42",
+          "won_status": "pending",
+          "days_to_convert": 0,
+          "days_exceeding_closing": 0,
+          "facebook_lead_id": false,
+          "facebook_page_id": false,
+          "facebook_form_id": false,
+          "facebook_adset_id": false,
+          "facebook_ad_id": false,
+          "facebook_campaign_id": false,
+          "facebook_date_create": false,
+          "facebook_is_organic": false,
+          "event_lead_rule_id": false,
+          "event_id": false,
+          "registration_ids": [],
+          "registration_count": 0,
+          "reveal_id": false,
+          "checklist_ids": [],
+          "progress": 0,
+          "mautic_export": false,
+          "mautic_update": true,
+          "summary_ids": [
+            66268,
+            66320,
+            66495,
+            67079
+          ],
+          "typeform_form_id": false,
+          "visitor_ids": [],
+          "visitor_page_count": 0,
+          "visitor_sessions_count": 0,
+          "google_form_id": false,
+          "google_lead_id": false,
+          "sale_amount_total": 0,
+          "quotation_count": 0,
+          "sale_order_count": 0,
+          "order_ids": [],
+          "m_code": 0,
+          "x_studio_programa_de_inters": false,
+          "x_import_descrip": false,
+          "x_studio_id_mautic": false,
+          "x_studio_duracin_de_convenio": false,
+          "x_studio_canal_de_contacto": false,
+          "x_studio_programa_academico": false,
+          "x_studio_copy_to_mauti": false,
+          "x_studio_fecha_de_firma": false
+        }
+      },
+      {
+        "json": {
+          "id": 827867,
+          "has_call_in_queue": false,
+          "campaign_id": false,
+          "source_id": [
+            1,
+            "Meta"
+          ],
+          "medium_id": [
+            15,
+            "1. trafficker"
+          ],
+          "activity_ids": [],
+          "activity_state": false,
+          "activity_user_id": false,
+          "activity_type_id": false,
+          "activity_type_icon": false,
+          "activity_date_deadline": false,
+          "my_activity_date_deadline": false,
+          "activity_summary": false,
+          "activity_exception_decoration": false,
+          "activity_exception_icon": false,
+          "activity_calendar_event_id": false,
+          "message_is_follower": true,
+          "message_follower_ids": [
+            1237957
+          ],
+          "message_partner_ids": [
+            3
+          ],
+          "message_ids": [
+            7894616,
+            7893391
+          ],
+          "has_message": true,
+          "message_needaction": false,
+          "message_needaction_counter": 0,
+          "message_has_error": false,
+          "message_has_error_counter": 0,
+          "message_attachment_count": 0,
+          "message_main_attachment_id": false,
+          "website_message_ids": [],
+          "message_has_sms_error": false,
+          "phone_sanitized": "+525547814033",
+          "phone_sanitized_blacklisted": false,
+          "phone_blacklisted": false,
+          "mobile_blacklisted": false,
+          "phone_mobile_search": false,
+          "email_normalized": "navimo2.nvm@gmail.com",
+          "is_blacklisted": false,
+          "message_bounce": 0,
+          "email_cc": false,
+          "name": "Patologías del Lenguaje y el Habla",
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "user_company_ids": [
+            1
+          ],
+          "team_id": [
+            13,
+            "Vinculación"
+          ],
+          "lead_properties": [],
+          "company_id": [
+            1,
+            "ISEP INTERNACIONAL LLC"
+          ],
+          "referred": false,
+          "description": "<p>Teléfono completo: +525539561221\n\nLead ID: 1465566381066425 \nform ID:729514059353228\nDate Created: 2025-01-06T16:39:34.000Z\nAd ID: 120209917854950006\nPage ID: 104022764963444\nAd Group: 120209917854950006\nIs Organic: false\nAd name :IMG azul | TL |12julio24\nAd set ID:120209916039190006\nAd set Name:Interes +adv | log | mx | julio24\nCampaing ID : 120209916039180006\nCustom Disclaimer responses :\nHome Listing: \nPartner Name : \nPlatform:fb\nRetailer item ID:\nVehicle:\nutm_medium: \nutm_source: \nutm_campaign: \nutm_content: \nga: \ngclid: \nfbclid: \n\nURL desde la que se envía el formulario: </p>",
+          "active": true,
+          "type": "opportunity",
+          "priority": "0",
+          "stage_id": [
+            6,
+            "Cambio de Ciclo"
+          ],
+          "kanban_state": "grey",
+          "tag_ids": [],
+          "color": 0,
+          "expected_revenue": 0,
+          "prorated_revenue": 0,
+          "recurring_revenue": 0,
+          "recurring_plan": false,
+          "recurring_revenue_monthly": 0,
+          "recurring_revenue_monthly_prorated": 0,
+          "company_currency": [
+            2,
+            "USD"
+          ],
+          "date_closed": false,
+          "date_action_last": "2025-01-06 16:39:37",
+          "date_open": "2025-01-06 16:39:37",
+          "day_open": 0,
+          "day_close": 0,
+          "date_last_stage_update": "2025-01-06 19:13:07",
+          "date_conversion": false,
+          "date_deadline": false,
+          "partner_id": [
+            1004636,
+            "Nayeli Villalba"
+          ],
+          "partner_is_blacklisted": false,
+          "contact_name": "yoko",
+          "partner_name": "Nayeli Villalba",
+          "function": false,
+          "title": false,
+          "email_from": "navimo2.nvm@gmail.com",
+          "phone": "525547814033",
+          "mobile": "525547814033",
+          "phone_state": "correct",
+          "email_state": "correct",
+          "website": false,
+          "lang_id": [
+            74,
+            "Spanish (MX) / Español (MX)"
+          ],
+          "lang_code": "es_MX",
+          "lang_active_count": 3,
+          "street": false,
+          "street2": false,
+          "zip": false,
+          "city": false,
+          "state_id": false,
+          "country_id": [
+            156,
+            "Mexico"
+          ],
+          "probability": 96.87,
+          "automated_probability": 96.87,
+          "is_automated_probability": true,
+          "lost_reason_id": false,
+          "calendar_event_ids": [],
+          "calendar_event_count": 0,
+          "duplicate_lead_ids": [
+            827867
+          ],
+          "duplicate_lead_count": 0,
+          "partner_email_update": false,
+          "partner_phone_update": false,
+          "is_partner_visible": true,
+          "__last_update": "2025-01-06 19:13:07",
+          "display_name": "Patologías del Lenguaje y el Habla",
+          "create_uid": [
+            2,
+            "Administrator"
+          ],
+          "create_date": "2025-01-06 16:39:37",
+          "write_uid": [
+            1,
+            "OdooBot"
+          ],
+          "write_date": "2025-01-06 19:13:07",
+          "won_status": "pending",
+          "days_to_convert": 0,
+          "days_exceeding_closing": 0,
+          "facebook_lead_id": false,
+          "facebook_page_id": false,
+          "facebook_form_id": false,
+          "facebook_adset_id": false,
+          "facebook_ad_id": [
+            15,
+            "1. trafficker"
+          ],
+          "facebook_campaign_id": false,
+          "facebook_date_create": false,
+          "facebook_is_organic": false,
+          "event_lead_rule_id": false,
+          "event_id": false,
+          "registration_ids": [],
+          "registration_count": 0,
+          "reveal_id": false,
+          "checklist_ids": [],
+          "progress": 0,
+          "mautic_export": false,
+          "mautic_update": true,
+          "summary_ids": [
+            66487,
+            66562
+          ],
+          "typeform_form_id": false,
+          "visitor_ids": [],
+          "visitor_page_count": 0,
+          "visitor_sessions_count": 0,
+          "google_form_id": false,
+          "google_lead_id": false,
+          "sale_amount_total": 0,
+          "quotation_count": 0,
+          "sale_order_count": 0,
+          "order_ids": [],
+          "m_code": 0,
+          "x_studio_programa_de_inters": false,
+          "x_import_descrip": false,
+          "x_studio_id_mautic": false,
+          "x_studio_duracin_de_convenio": false,
+          "x_studio_canal_de_contacto": false,
+          "x_studio_programa_academico": false,
+          "x_studio_copy_to_mauti": false,
+          "x_studio_fecha_de_firma": false
+        }
+      },
+      {
+        "json": {
+          "id": 828142,
+          "has_call_in_queue": false,
+          "campaign_id": false,
+          "source_id": false,
+          "medium_id": false,
+          "activity_ids": [],
+          "activity_state": false,
+          "activity_user_id": false,
+          "activity_type_id": false,
+          "activity_type_icon": false,
+          "activity_date_deadline": false,
+          "my_activity_date_deadline": false,
+          "activity_summary": false,
+          "activity_exception_decoration": false,
+          "activity_exception_icon": false,
+          "activity_calendar_event_id": false,
+          "message_is_follower": true,
+          "message_follower_ids": [
+            1239980
+          ],
+          "message_partner_ids": [
+            3
+          ],
+          "message_ids": [
+            7899786,
+            7899750
+          ],
+          "has_message": true,
+          "message_needaction": false,
+          "message_needaction_counter": 0,
+          "message_has_error": false,
+          "message_has_error_counter": 0,
+          "message_attachment_count": 0,
+          "message_main_attachment_id": false,
+          "website_message_ids": [],
+          "message_has_sms_error": false,
+          "phone_sanitized": "+527442219649",
+          "phone_sanitized_blacklisted": false,
+          "phone_blacklisted": false,
+          "mobile_blacklisted": false,
+          "phone_mobile_search": false,
+          "email_normalized": "psic_pastrana@hotmail.com",
+          "is_blacklisted": false,
+          "message_bounce": 0,
+          "email_cc": false,
+          "name": "Maestría en Neuropsicología Clínica",
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "user_company_ids": [
+            1
+          ],
+          "team_id": [
+            26,
+            "Website"
+          ],
+          "lead_properties": [
+            {
+              "name": "1d90dc158b3567b3",
+              "type": "char",
+              "string": "Propiedad 1",
+              "value": false
+            },
+            {
+              "name": "56e80fdccd774d37",
+              "type": "char",
+              "string": "Propiedad 2",
+              "value": false
+            }
+          ],
+          "company_id": [
+            1,
+            "ISEP INTERNACIONAL LLC"
+          ],
+          "referred": false,
+          "description": "<p>Teléfono completo: (+52) 7442219649\n\nPaís: Mexico (México)\n\n\n\nutm_medium: \nutm_source: \nutm_campaign: \nutm_content: \nga: \ngclid: \nfbclid: \n\nURL desde la que se envía el formulario: https://universidadisep.com/mx/maestria/maestria-en-neuropsicologia/</p>",
+          "active": true,
+          "type": "opportunity",
+          "priority": "0",
+          "stage_id": [
+            6,
+            "Cambio de Ciclo"
+          ],
+          "kanban_state": "grey",
+          "tag_ids": [],
+          "color": 0,
+          "expected_revenue": 0,
+          "prorated_revenue": 0,
+          "recurring_revenue": 0,
+          "recurring_plan": false,
+          "recurring_revenue_monthly": 0,
+          "recurring_revenue_monthly_prorated": 0,
+          "company_currency": [
+            2,
+            "USD"
+          ],
+          "date_closed": false,
+          "date_action_last": "2025-01-07 18:08:34",
+          "date_open": "2025-01-07 18:08:33",
+          "day_open": 0,
+          "day_close": 0,
+          "date_last_stage_update": "2025-01-07 18:15:15",
+          "date_conversion": false,
+          "date_deadline": false,
+          "partner_id": [
+            60899,
+            "Elvira Escobar Pastrana"
+          ],
+          "partner_is_blacklisted": false,
+          "contact_name": "Elvira Escobar Pastrana",
+          "partner_name": false,
+          "function": false,
+          "title": false,
+          "email_from": "psic_pastrana@hotmail.com",
+          "phone": "+52 7442219649",
+          "mobile": "+527442219649",
+          "phone_state": "correct",
+          "email_state": "correct",
+          "website": false,
+          "lang_id": [
+            74,
+            "Spanish (MX) / Español (MX)"
+          ],
+          "lang_code": "es_MX",
+          "lang_active_count": 3,
+          "street": false,
+          "street2": false,
+          "zip": false,
+          "city": false,
+          "state_id": false,
+          "country_id": [
+            156,
+            "Mexico"
+          ],
+          "probability": 5.15,
+          "automated_probability": 5.15,
+          "is_automated_probability": true,
+          "lost_reason_id": false,
+          "calendar_event_ids": [],
+          "calendar_event_count": 0,
+          "duplicate_lead_ids": [
+            830285,
+            79112,
+            828142
+          ],
+          "duplicate_lead_count": 2,
+          "partner_email_update": false,
+          "partner_phone_update": false,
+          "is_partner_visible": true,
+          "__last_update": "2025-01-07 18:15:15",
+          "display_name": "Maestría en Neuropsicología Clínica",
+          "create_uid": [
+            2,
+            "Administrator"
+          ],
+          "create_date": "2025-01-07 18:08:33",
+          "write_uid": [
+            1,
+            "OdooBot"
+          ],
+          "write_date": "2025-01-07 18:15:15",
+          "won_status": "pending",
+          "days_to_convert": 0,
+          "days_exceeding_closing": 0,
+          "facebook_lead_id": false,
+          "facebook_page_id": false,
+          "facebook_form_id": false,
+          "facebook_adset_id": false,
+          "facebook_ad_id": false,
+          "facebook_campaign_id": false,
+          "facebook_date_create": false,
+          "facebook_is_organic": false,
+          "event_lead_rule_id": false,
+          "event_id": false,
+          "registration_ids": [],
+          "registration_count": 0,
+          "reveal_id": false,
+          "checklist_ids": [],
+          "progress": 0,
+          "mautic_export": false,
+          "mautic_update": true,
+          "summary_ids": [
+            67511,
+            67545,
+            67569
+          ],
+          "typeform_form_id": false,
+          "visitor_ids": [],
+          "visitor_page_count": 0,
+          "visitor_sessions_count": 0,
+          "google_form_id": false,
+          "google_lead_id": false,
+          "sale_amount_total": 0,
+          "quotation_count": 0,
+          "sale_order_count": 0,
+          "order_ids": [],
+          "m_code": 0,
+          "x_studio_programa_de_inters": false,
+          "x_import_descrip": false,
+          "x_studio_id_mautic": false,
+          "x_studio_duracin_de_convenio": false,
+          "x_studio_canal_de_contacto": false,
+          "x_studio_programa_academico": false,
+          "x_studio_copy_to_mauti": false,
+          "x_studio_fecha_de_firma": false
+        }
+      },
+      {
+        "json": {
+          "id": 828373,
+          "has_call_in_queue": false,
+          "campaign_id": false,
+          "source_id": [
+            1,
+            "Meta"
+          ],
+          "medium_id": [
+            15,
+            "1. trafficker"
+          ],
+          "activity_ids": [],
+          "activity_state": false,
+          "activity_user_id": false,
+          "activity_type_id": false,
+          "activity_type_icon": false,
+          "activity_date_deadline": false,
+          "my_activity_date_deadline": false,
+          "activity_summary": false,
+          "activity_exception_decoration": false,
+          "activity_exception_icon": false,
+          "activity_calendar_event_id": false,
+          "message_is_follower": true,
+          "message_follower_ids": [
+            1242280
+          ],
+          "message_partner_ids": [
+            3
+          ],
+          "message_ids": [
+            7907735,
+            7907053
+          ],
+          "has_message": true,
+          "message_needaction": false,
+          "message_needaction_counter": 0,
+          "message_has_error": false,
+          "message_has_error_counter": 0,
+          "message_attachment_count": 0,
+          "message_main_attachment_id": false,
+          "website_message_ids": [],
+          "message_has_sms_error": false,
+          "phone_sanitized": false,
+          "phone_sanitized_blacklisted": false,
+          "phone_blacklisted": false,
+          "mobile_blacklisted": false,
+          "phone_mobile_search": false,
+          "email_normalized": "fannypombodiaz@gmail.com",
+          "is_blacklisted": false,
+          "message_bounce": 0,
+          "email_cc": false,
+          "name": "Patologías del Lenguaje y el Habla",
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "user_company_ids": [
+            1
+          ],
+          "team_id": [
+            26,
+            "Website"
+          ],
+          "lead_properties": [
+            {
+              "name": "1d90dc158b3567b3",
+              "type": "char",
+              "string": "Propiedad 1",
+              "value": false
+            },
+            {
+              "name": "56e80fdccd774d37",
+              "type": "char",
+              "string": "Propiedad 2",
+              "value": false
+            }
+          ],
+          "company_id": [
+            1,
+            "ISEP INTERNACIONAL LLC"
+          ],
+          "referred": false,
+          "description": "<p>Teléfono completo: +17549717029\n\nLead ID: 593539303382636 \nform ID:729514059353228\nDate Created: 2025-01-08T23:18:46.000Z\nAd ID: 120210011651070006\nPage ID: 104022764963444\nAd Group: 120210011651070006\nIs Organic: false\nAd name :IMG | TL |12julio24\nAd set ID:120210011651050006\nAd set Name:Interes +adv | log | usa | 18julio24\nCampaing ID : 120209916039180006\nCustom Disclaimer responses :\nHome Listing: \nPartner Name : \nPlatform:ig\nRetailer item ID:\nVehicle:\nutm_medium: \nutm_source: \nutm_campaign: \nutm_content: \nga: \ngclid: \nfbclid: \n\nURL desde la que se envía el formulario: </p>",
+          "active": true,
+          "type": "opportunity",
+          "priority": "0",
+          "stage_id": [
+            6,
+            "Cambio de Ciclo"
+          ],
+          "kanban_state": "grey",
+          "tag_ids": [],
+          "color": 0,
+          "expected_revenue": 0,
+          "prorated_revenue": 0,
+          "recurring_revenue": 0,
+          "recurring_plan": false,
+          "recurring_revenue_monthly": 0,
+          "recurring_revenue_monthly_prorated": 0,
+          "company_currency": [
+            2,
+            "USD"
+          ],
+          "date_closed": false,
+          "date_action_last": "2025-01-09 00:15:19",
+          "date_open": "2025-01-08 23:18:49",
+          "day_open": 0,
+          "day_close": 0,
+          "date_last_stage_update": "2025-01-09 00:15:15",
+          "date_conversion": false,
+          "date_deadline": false,
+          "partner_id": [
+            520996,
+            "Fanny Marcela Pombo Diaz"
+          ],
+          "partner_is_blacklisted": false,
+          "contact_name": "Marce PomDi",
+          "partner_name": "Fanny Marcela Pombo Diaz",
+          "function": false,
+          "title": false,
+          "email_from": "fannypombodiaz@gmail.com",
+          "phone": "573003733374",
+          "mobile": "573003733374",
+          "phone_state": "incorrect",
+          "email_state": "correct",
+          "website": false,
+          "lang_id": [
+            74,
+            "Spanish (MX) / Español (MX)"
+          ],
+          "lang_code": "es_MX",
+          "lang_active_count": 3,
+          "street": false,
+          "street2": false,
+          "zip": false,
+          "city": false,
+          "state_id": false,
+          "country_id": [
+            156,
+            "Mexico"
+          ],
+          "probability": 16.01,
+          "automated_probability": 16.01,
+          "is_automated_probability": true,
+          "lost_reason_id": false,
+          "calendar_event_ids": [],
+          "calendar_event_count": 0,
+          "duplicate_lead_ids": [
+            828373
+          ],
+          "duplicate_lead_count": 0,
+          "partner_email_update": false,
+          "partner_phone_update": false,
+          "is_partner_visible": true,
+          "__last_update": "2025-01-09 00:15:15",
+          "display_name": "Patologías del Lenguaje y el Habla",
+          "create_uid": [
+            2,
+            "Administrator"
+          ],
+          "create_date": "2025-01-08 23:18:49",
+          "write_uid": [
+            1,
+            "OdooBot"
+          ],
+          "write_date": "2025-01-09 00:15:15",
+          "won_status": "pending",
+          "days_to_convert": 0,
+          "days_exceeding_closing": 0,
+          "facebook_lead_id": false,
+          "facebook_page_id": false,
+          "facebook_form_id": false,
+          "facebook_adset_id": false,
+          "facebook_ad_id": [
+            15,
+            "1. trafficker"
+          ],
+          "facebook_campaign_id": false,
+          "facebook_date_create": false,
+          "facebook_is_organic": false,
+          "event_lead_rule_id": false,
+          "event_id": false,
+          "registration_ids": [],
+          "registration_count": 0,
+          "reveal_id": false,
+          "checklist_ids": [],
+          "progress": 0,
+          "mautic_export": false,
+          "mautic_update": true,
+          "summary_ids": [
+            67916
+          ],
+          "typeform_form_id": false,
+          "visitor_ids": [],
+          "visitor_page_count": 0,
+          "visitor_sessions_count": 0,
+          "google_form_id": false,
+          "google_lead_id": false,
+          "sale_amount_total": 0,
+          "quotation_count": 0,
+          "sale_order_count": 0,
+          "order_ids": [],
+          "m_code": 0,
+          "x_studio_programa_de_inters": false,
+          "x_import_descrip": false,
+          "x_studio_id_mautic": false,
+          "x_studio_duracin_de_convenio": false,
+          "x_studio_canal_de_contacto": false,
+          "x_studio_programa_academico": false,
+          "x_studio_copy_to_mauti": false,
+          "x_studio_fecha_de_firma": false
+        }
+      },
+      {
+        "json": {
+          "id": 828506,
+          "has_call_in_queue": false,
+          "campaign_id": false,
+          "source_id": false,
+          "medium_id": false,
+          "activity_ids": [],
+          "activity_state": false,
+          "activity_user_id": false,
+          "activity_type_id": false,
+          "activity_type_icon": false,
+          "activity_date_deadline": false,
+          "my_activity_date_deadline": false,
+          "activity_summary": false,
+          "activity_exception_decoration": false,
+          "activity_exception_icon": false,
+          "activity_calendar_event_id": false,
+          "message_is_follower": true,
+          "message_follower_ids": [
+            1242776
+          ],
+          "message_partner_ids": [
+            3
+          ],
+          "message_ids": [
+            8002961,
+            7908877,
+            7908867
+          ],
+          "has_message": true,
+          "message_needaction": false,
+          "message_needaction_counter": 0,
+          "message_has_error": false,
+          "message_has_error_counter": 0,
+          "message_attachment_count": 0,
+          "message_main_attachment_id": false,
+          "website_message_ids": [],
+          "message_has_sms_error": false,
+          "phone_sanitized": "+525518415052",
+          "phone_sanitized_blacklisted": false,
+          "phone_blacklisted": false,
+          "mobile_blacklisted": false,
+          "phone_mobile_search": false,
+          "email_normalized": "nubia_q@hotmail.com",
+          "is_blacklisted": false,
+          "message_bounce": 0,
+          "email_cc": false,
+          "name": "Maestría en Psicología Clínica",
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "user_company_ids": [
+            1
+          ],
+          "team_id": [
+            26,
+            "Website"
+          ],
+          "lead_properties": [
+            {
+              "name": "1d90dc158b3567b3",
+              "type": "char",
+              "string": "Propiedad 1",
+              "value": false
+            },
+            {
+              "name": "56e80fdccd774d37",
+              "type": "char",
+              "string": "Propiedad 2",
+              "value": false
+            }
+          ],
+          "company_id": [
+            1,
+            "ISEP INTERNACIONAL LLC"
+          ],
+          "referred": false,
+          "description": "<p>Teléfono completo: (+52) 5518415052\n\nPaís: Mexico (México)\n\n\n\nutm_medium: \nutm_source: \nutm_campaign: \nutm_content: \nga: \ngclid: \nfbclid: \n\nURL desde la que se envía el formulario: https://universidadisep.com/mx/maestria/maestria-en-psicologia-clinica/</p>",
+          "active": true,
+          "type": "opportunity",
+          "priority": "0",
+          "stage_id": [
+            2,
+            "Calificado"
+          ],
+          "kanban_state": "grey",
+          "tag_ids": [],
+          "color": 0,
+          "expected_revenue": 0,
+          "prorated_revenue": 0,
+          "recurring_revenue": 0,
+          "recurring_plan": false,
+          "recurring_revenue_monthly": 0,
+          "recurring_revenue_monthly_prorated": 0,
+          "company_currency": [
+            2,
+            "USD"
+          ],
+          "date_closed": false,
+          "date_action_last": "2025-01-24 01:14:54",
+          "date_open": "2025-01-09 05:08:52",
+          "day_open": 0,
+          "day_close": 0,
+          "date_last_stage_update": "2025-01-24 01:14:52",
+          "date_conversion": false,
+          "date_deadline": false,
+          "partner_id": [
+            1014865,
+            "Nubia Quiroz Ramirez"
+          ],
+          "partner_is_blacklisted": false,
+          "contact_name": "Nubia Quiroz Ramírez ",
+          "partner_name": "Nubia Quiroz Ramirez",
+          "function": false,
+          "title": false,
+          "email_from": "nubia_q@hotmail.com",
+          "phone": "5226134548",
+          "mobile": "+52 5518415052",
+          "phone_state": "incorrect",
+          "email_state": "correct",
+          "website": false,
+          "lang_id": [
+            74,
+            "Spanish (MX) / Español (MX)"
+          ],
+          "lang_code": "es_MX",
+          "lang_active_count": 3,
+          "street": "",
+          "street2": false,
+          "zip": "56500",
+          "city": "Los reyes la paz",
+          "state_id": false,
+          "country_id": false,
+          "probability": 23.55,
+          "automated_probability": 23.55,
+          "is_automated_probability": true,
+          "lost_reason_id": false,
+          "calendar_event_ids": [],
+          "calendar_event_count": 0,
+          "duplicate_lead_ids": [
+            828509,
+            828507,
+            526523,
+            828506
+          ],
+          "duplicate_lead_count": 3,
+          "partner_email_update": false,
+          "partner_phone_update": false,
+          "is_partner_visible": true,
+          "__last_update": "2025-01-24 01:14:52",
+          "display_name": "Maestría en Psicología Clínica",
+          "create_uid": [
+            2,
+            "Administrator"
+          ],
+          "create_date": "2025-01-09 05:08:52",
+          "write_uid": [
+            5064,
+            "Maikel"
+          ],
+          "write_date": "2025-01-24 01:14:52",
+          "won_status": "pending",
+          "days_to_convert": 0,
+          "days_exceeding_closing": 0,
+          "facebook_lead_id": false,
+          "facebook_page_id": false,
+          "facebook_form_id": false,
+          "facebook_adset_id": false,
+          "facebook_ad_id": false,
+          "facebook_campaign_id": false,
+          "facebook_date_create": false,
+          "facebook_is_organic": false,
+          "event_lead_rule_id": false,
+          "event_id": false,
+          "registration_ids": [],
+          "registration_count": 0,
+          "reveal_id": false,
+          "checklist_ids": [],
+          "progress": 0,
+          "mautic_export": false,
+          "mautic_update": true,
+          "summary_ids": [
+            68109
+          ],
+          "typeform_form_id": false,
+          "visitor_ids": [],
+          "visitor_page_count": 0,
+          "visitor_sessions_count": 0,
+          "google_form_id": false,
+          "google_lead_id": false,
+          "sale_amount_total": 0,
+          "quotation_count": 0,
+          "sale_order_count": 0,
+          "order_ids": [],
+          "m_code": 0,
+          "x_studio_programa_de_inters": false,
+          "x_import_descrip": false,
+          "x_studio_id_mautic": false,
+          "x_studio_duracin_de_convenio": false,
+          "x_studio_canal_de_contacto": false,
+          "x_studio_programa_academico": false,
+          "x_studio_copy_to_mauti": false,
+          "x_studio_fecha_de_firma": false
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-23T23:41:08.981Z",
+      "updatedAt": "2025-01-23T23:41:08.981Z",
+      "id": "2VgmmSnEzCyglmLn",
+      "name": "Segunda_llamada"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-12T04:02:39.000Z",
+  "versionId": "c26f5183-5a08-424f-836c-7406872e2c10"
+}
