@@ -1,0 +1,1216 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo4": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo5": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Odoo6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-19T23:46:31.847Z",
+  "id": "ESnbqqGJL0hriWct",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "id odoo_postgres",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9fc97c0f-1f77-4509-8592-1c305c1a2b22",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        -40
+      ],
+      "id": "646b2794-5337-4bd3-a381-3a27256bb9b6",
+      "name": "Webhook",
+      "webhookId": "9fc97c0f-1f77-4509-8592-1c305c1a2b22",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $json.body.phone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        200,
+        0
+      ],
+      "id": "a3caf722-04b5-41e9-9691-7087c5f718c4",
+      "name": "Odoo",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        -100
+      ],
+      "id": "3e42fefe-7c7c-45ff-8861-88224125492c",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aca68970-0d27-4e36-ac88-ca6e2a35cafc",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        380,
+        0
+      ],
+      "id": "ec2f7932-048f-4c83-a1af-e2163fef9d65",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "=+5216674738071"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        580,
+        80
+      ],
+      "id": "6de7b8cb-6680-4989-8c9d-8e63db403dc3",
+      "name": "Odoo1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        -20
+      ],
+      "id": "fa05ed20-eb51-4a20-8660-6c1f42390948",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cb98dee6-f87a-49db-87d7-d52fcf5bdca8",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        80
+      ],
+      "id": "02ddec41-3ca4-4358-a6be-93edf1189c1e",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "opportunityName": "={{ $('Webhook').item.json.body.name }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        940,
+        160
+      ],
+      "id": "6fdbbe26-9218-4e06-990c-1b39f4cd267b",
+      "name": "Odoo2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        160
+      ],
+      "id": "a3731800-73de-4279-a8f8-d5786866f9db",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep_consolidadas",
+          "mode": "list",
+          "cachedResultName": "universidad_isep_consolidadas"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "id_odoo",
+              "condition": "IS NULL"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        380,
+        -500
+      ],
+      "id": "6ac7274c-dbf5-4b75-881c-9776fb7f28e1",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        -480
+      ],
+      "id": "7754ab36-9a2b-4201-9b3e-898ccb918a55",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://www.uchat.com.au/api/subscriber/get-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.session_id }}\"\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        -1080
+      ],
+      "id": "33101969-1990-4297-8737-787d4cb9bce1",
+      "name": "HTTP Request",
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1544b4dc-d368-48ed-b30a-1338ea81d385",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        -440
+      ],
+      "id": "e0bf7d0e-dbad-49e6-8d9a-104381983302",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "40ee7268-92d6-4eca-b17e-1c94d7c7854f",
+              "name": "id_odoo",
+              "value": "={{ $json.data.user_fields[1].value }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1100,
+        -860
+      ],
+      "id": "5f580171-16c5-4fe0-adc3-f525bdecc8fc",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep_consolidadas",
+          "mode": "list",
+          "cachedResultName": "universidad_isep_consolidadas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $('Postgres').item.json.session_id }}",
+            "id_odoo": "={{ $json.id }}"
+          },
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "etiqueta",
+              "displayName": "etiqueta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_odoo",
+              "displayName": "id_odoo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1100,
+        -580
+      ],
+      "id": "cfc1bd8b-fdd7-4f2c-8212-9364e53ae4e6",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $json.phone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -280
+      ],
+      "id": "e6a40d8a-2912-435d-8781-2f6912025492",
+      "name": "Odoo3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pjgrr2xdo7zu9dl",
+        "table": "mw4xknihs3q3lw1",
+        "limit": 10,
+        "options": {
+          "where": "=(user_ns,eq,{{ $json.session_id }})"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        500,
+        -700
+      ],
+      "id": "f7931274-945b-457b-a5fc-fdf1a1953c99",
+      "name": "NocoDB",
+      "alwaysOutputData": false,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $('NocoDB').item.json.phone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        -380
+      ],
+      "id": "538710b3-3077-4efe-9c2c-7c7081768073",
+      "name": "Odoo4",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba36b85f-f487-4bee-9fd9-c3cc52eba54c",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        -380
+      ],
+      "id": "599d9c1f-2a77-4df0-bad9-20ed8f6421c0",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep_consolidadas",
+          "mode": "list",
+          "cachedResultName": "universidad_isep_consolidadas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $('Postgres').item.json.session_id }}",
+            "id_odoo": "={{ $json.id }}"
+          },
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "etiqueta",
+              "displayName": "etiqueta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_odoo",
+              "displayName": "id_odoo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1480,
+        -500
+      ],
+      "id": "6c0efe70-b08f-49f6-bd85-5b0aa68c1381",
+      "name": "Postgres2",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "opportunityName": "={{ $('NocoDB').item.json.name }}",
+        "additionalFields": {
+          "description": "=Última interacción: {{ $('NocoDB').item.json.last_interaction }}",
+          "phone": "={{ $('NocoDB').item.json.phone }}"
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        -300
+      ],
+      "id": "4f57a441-a098-40cf-86e5-d8200dfbdf8c",
+      "name": "Odoo5",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep_consolidadas",
+          "mode": "list",
+          "cachedResultName": "universidad_isep_consolidadas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $('NocoDB').item.json.user_ns }}",
+            "id": 0,
+            "id_odoo": "={{ $json.id }}"
+          },
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "etiqueta",
+              "displayName": "etiqueta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_odoo",
+              "displayName": "id_odoo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1660,
+        -280
+      ],
+      "id": "47500e67-e2c2-45da-a383-0c1a071e294e",
+      "name": "Postgres3",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $json.phone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        920,
+        -780
+      ],
+      "id": "3924299c-366b-43e7-9228-b5b07f7a970d",
+      "name": "Odoo6",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pjgrr2xdo7zu9dl",
+        "table": "mw4xknihs3q3lw1",
+        "options": {
+          "where": "=(user_ns,eq,{{ $json.session_id }})"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        320,
+        -780
+      ],
+      "id": "8253b06f-1cc1-4948-9257-f96be3441d91",
+      "name": "NocoDB1",
+      "alwaysOutputData": false,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        720,
+        -800
+      ],
+      "id": "9031d9f3-8aba-4a57-bcae-093f3983b5b8",
+      "name": "Loop Over Items"
+    }
+  ],
+  "pinData": {
+    "NocoDB1": [
+      {
+        "json": {
+          "user_ns": "f122557u198836915",
+          "user_id": "5215548093491",
+          "name": "🟦🟨MR-Adriana P.",
+          "phone": "+5215548093491",
+          "subscribed": "2025-01-14 17:43:00",
+          "last_interaction": "2025-01-14 23:35:48",
+          "last_agent_action_at": "2025-01-14 23:48:13",
+          "last_message_type": "agent",
+          "last_message_at": "2025-01-14 23:48:13",
+          "Id": 1893,
+          "CreatedAt": "2025-02-20 17:04:15+00:00",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "user_ns": "f122557u197103331",
+          "user_id": "573044738239",
+          "name": "leonardofc529",
+          "phone": "+573044738239",
+          "subscribed": "2025-01-11 22:11:47",
+          "last_interaction": "2025-01-14 20:29:54",
+          "last_agent_action_at": "2025-01-14 20:28:41",
+          "last_message_type": "in",
+          "last_message_at": "2025-01-14 20:29:54",
+          "Id": 1649,
+          "CreatedAt": "2025-02-20 17:04:15+00:00",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "user_ns": "f122557u198707393",
+          "user_id": "5217751564362",
+          "name": "YAG/Maggie Ortiz",
+          "phone": "+5217751564362",
+          "subscribed": "2025-01-14 13:48:51",
+          "last_interaction": "2025-01-15 19:59:44",
+          "last_agent_action_at": "2025-01-15 19:55:11",
+          "last_message_type": "in",
+          "last_message_at": "2025-01-15 19:59:44",
+          "Id": 1869,
+          "CreatedAt": "2025-02-20 17:04:15+00:00",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "user_ns": "f122557u198438919",
+          "user_id": "5213481290134",
+          "name": "Gretel 💕",
+          "phone": "+5213481290134",
+          "subscribed": "2025-01-14 02:52:25",
+          "last_interaction": "2025-01-14 20:56:54",
+          "last_agent_action_at": "2025-01-14 23:09:34",
+          "last_message_type": "agent",
+          "last_message_at": "2025-01-14 23:09:34",
+          "Id": 1848,
+          "CreatedAt": "2025-02-20 17:04:15+00:00",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "user_ns": "f122557u195089879",
+          "user_id": "5219993422628",
+          "name": "👩🏻‍💻🟦🟨MR-Vicky Alonzo",
+          "phone": "+5219993422628",
+          "subscribed": "2025-01-08 20:30:48",
+          "last_interaction": "2025-01-14 20:40:05",
+          "last_agent_action_at": "2025-01-14 20:40:26",
+          "last_message_type": "agent",
+          "last_message_at": "2025-01-14 20:40:26",
+          "Id": 1354,
+          "CreatedAt": "2025-02-20 17:04:13+00:00",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "user_ns": "f122557u197539279",
+          "user_id": "5212226993719",
+          "name": "Cinthia  García",
+          "phone": "+5212226993719",
+          "subscribed": "2025-01-12 17:20:26",
+          "last_interaction": "2025-01-15 16:46:27",
+          "last_agent_action_at": "2025-01-20 16:30:13",
+          "last_message_type": "agent",
+          "last_message_at": "2025-01-20 16:30:13",
+          "Id": 1688,
+          "CreatedAt": "2025-02-20 17:04:15+00:00",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "user_ns": "f122557u191763601",
+          "user_id": "5219181195832",
+          "name": "fadielverdugo",
+          "phone": "+5219181195832",
+          "subscribed": "2025-01-03 00:50:06",
+          "last_interaction": "2025-02-17 01:02:32",
+          "last_agent_action_at": "2025-01-03 21:32:15",
+          "last_message_type": "out",
+          "last_message_at": "2025-02-17 01:03:29",
+          "Id": 600,
+          "CreatedAt": "2025-02-20 17:04:11+00:00",
+          "UpdatedAt": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-20T22:54:47.000Z",
+  "versionId": "4f1a9d01-6142-4983-ba6e-c1e4c2683686"
+}
