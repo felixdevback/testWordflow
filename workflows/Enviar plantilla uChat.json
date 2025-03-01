@@ -1,0 +1,511 @@
+{
+  "active": false,
+  "connections": {
+    "Scrapear linkedin": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    },
+    "enviar plantilla": {
+      "main": [
+        []
+      ]
+    },
+    "Crear contacto uchat": {
+      "main": [
+        [
+          {
+            "node": "enviar plantilla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo4": {
+      "main": [
+        []
+      ]
+    },
+    "Saca info de alumnos": {
+      "main": [
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Crear contacto uchat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo5": {
+      "main": [
+        [
+          {
+            "node": "Crear contacto uchat4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Saca info de alumnos1": {
+      "main": [
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear contacto uchat4": {
+      "main": [
+        [
+          {
+            "node": "enviar plantilla1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-15T19:07:35.041Z",
+  "id": "mYrcUabGJBJfi2UQ",
+  "meta": null,
+  "name": "Enviar plantilla uChat",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/curious_coder~apollo-scraper/run-sync-get-dataset-items?token=apify_api_ow2jIWMuG4MdHM7MXg4Dg4qqBedCel3mJm7z",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"count\": 1000,\n    \"email\": \"marketing@universidadisep.com\",\n    \"getEmails\": true,\n    \"guessedEmails\": true,\n    \"maxDelay\": 60,\n    \"minDelay\": 2,\n    \"password\": \"Uisep_leads1\",\n    \"searchUrl\": \"https://app.apollo.io/#/people?page=1&tour=true&organizationNumEmployeesRanges[]=201%2C500&organizationNumEmployeesRanges[]=501%2C1000&organizationNumEmployeesRanges[]=1001%2C2000&organizationNumEmployeesRanges[]=2001%2C5000&organizationNumEmployeesRanges[]=5001%2C10000&organizationNumEmployeesRanges[]=10001&personTitles[]=rrhh&personTitles[]=rh&personTitles[]=talent%20manager&personTitles[]=human%20resources&personTitles[]=recruiting%20manager&personTitles[]=recruitment%20specialist&personTitles[]=recruiter&personTitles[]=talent%20specialist&personTitles[]=talent%20consultant&contactEmailOpen=&sortAscending=false&sortByField=%5Bnone%5D&personLocations[]=Mexico\",\n    \"startPage\": 1,\n    \"waitForVerification\": false\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -380,
+        680
+      ],
+      "id": "85eed5a9-7885-4bd5-abe7-2b0ebd2464f8",
+      "name": "Scrapear linkedin"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "contactId": "56691",
+        "options": {
+          "fieldsList": [
+            "phone",
+            "name",
+            "email"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        860,
+        360
+      ],
+      "id": "20afc8d6-6642-4e8d-a77f-b71099a3acd5",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"f145111u209131957\",\n  \"sub_flow_ns\": \"f145111s1141299\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        820,
+        640
+      ],
+      "id": "c0d9d036-23f6-4814-bdfd-2c1b92b75a39",
+      "name": "enviar plantilla",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "kP2Ml3x0f3BHAk0F",
+          "name": "inesin_omni"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/create",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.name }}\",\n  \"phone\": \"{{ $json.phone }}\",\n  \"email\": \"{{ $json.email }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        620
+      ],
+      "id": "4c2ce4b8-c577-46e0-b673-356fb42bffc7",
+      "name": "Crear contacto uchat",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "iKru720rDTYWScpq",
+          "name": "Twillio_prod"
+        },
+        "httpHeaderAuth": {
+          "id": "dg8x51hc3Za4mbFc",
+          "name": "uchat orientacion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.student",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {
+          "fieldsList": [
+            "op_admission_ids"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "email",
+              "value": "gissela_conta@hotmail.com"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        720
+      ],
+      "id": "58a29278-2ff0-4ed9-9b18-cef77c913c6d",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {
+          "fieldsList": [
+            "name",
+            "course_id",
+            "phone",
+            "email"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.op_admission_ids[0] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        80,
+        720
+      ],
+      "id": "99382688-4487-4d76-b313-19ffd3e0992b",
+      "name": "Odoo2",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.admission_ids }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -200
+      ],
+      "id": "eb3f7aa7-c6bd-43fa-8e0c-bfafa0ea6844",
+      "name": "Odoo4",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission.register",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "14"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -200
+      ],
+      "id": "7f0c66d6-eef3-4087-b921-b529eea919bc",
+      "name": "Saca info de alumnos",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        360,
+        620
+      ],
+      "id": "370fa656-c3cf-4477-b4c0-a78250f4d9a0",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.data.user_ns }}\",\n  \"sub_flow_ns\": \"f139403s1141299\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        140
+      ],
+      "id": "a8ceef56-e172-4cab-9825-40251e31214c",
+      "name": "enviar plantilla1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "dg8x51hc3Za4mbFc",
+          "name": "uchat orientacion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.admission_ids.slice(121, 158)}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        400,
+        200
+      ],
+      "id": "335ffebd-4276-49dc-aa30-064218bb7b47",
+      "name": "Odoo5",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission.register",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "14"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        200,
+        200
+      ],
+      "id": "2fe241c7-61bc-493b-86ad-bb0e33fd3f6e",
+      "name": "Saca info de alumnos1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/create",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"testimonial - {{ $json.name }}\",\n  \"phone\": \"{{ $json.mobile.startsWith('+52') ? '+52' + '1' + $json.mobile.slice(3) : $json.mobile }}\",\n  \"email\": \"{{ $json.email }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        600,
+        200
+      ],
+      "id": "c4836d9f-b498-4a15-90bd-6ef3b4135d09",
+      "name": "Crear contacto uchat4",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "iKru720rDTYWScpq",
+          "name": "Twillio_prod"
+        },
+        "httpHeaderAuth": {
+          "id": "dg8x51hc3Za4mbFc",
+          "name": "uchat orientacion"
+        }
+      },
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Test workflow’": [
+      {
+        "json": {
+          "name": "Prueba",
+          "phone": "6673178844",
+          "email": "prueba@hotmail.com"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-24T20:48:59.301Z",
+      "updatedAt": "2025-01-24T20:48:59.301Z",
+      "id": "iVUjTpBUg3hf5ABG",
+      "name": "mkt"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-06T00:02:17.000Z",
+  "versionId": "f0b9f696-c99a-46cd-986f-7c54759e8ef6"
+}
