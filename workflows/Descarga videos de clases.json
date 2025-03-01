@@ -1,0 +1,732 @@
+{
+  "active": true,
+  "connections": {
+    "Microsoft OneDrive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft OneDrive1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Microsoft OneDrive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        []
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-20T18:31:03.486Z",
+  "id": "29",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Descarga videos de clases",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        }
+      },
+      "id": "883e2b07-42a1-4cb1-994d-a5135c4b51c6",
+      "name": "Microsoft OneDrive Trigger",
+      "type": "n8n-nodes-base.microsoftOneDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        520
+      ],
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "33",
+          "name": "Clases"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": "={{ $json.id }}",
+        "binaryPropertyName": "=data"
+      },
+      "id": "c2184d51-b30a-431e-af24-25beab2242c9",
+      "name": "Microsoft OneDrive1",
+      "type": "n8n-nodes-base.microsoftOneDrive",
+      "typeVersion": 1,
+      "position": [
+        760,
+        520
+      ],
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "33",
+          "name": "Clases"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3ee75e80-c396-4627-9165-9a8b3c155bfb",
+              "leftValue": "={{ $json.mimeType }}",
+              "rightValue": "video/mp4",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "720cf753-2131-4fe9-bc3c-12f7dc234cc2",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        400,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://video.bunnycdn.com/library/342069/videos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "AccessKey",
+              "value": "a32a4af0-9a8d-4603-9c6412ce7363-c329-4c09"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n     \"title\": \"{{ $json.name }}\"\n}",
+        "options": {}
+      },
+      "id": "fcf3e4e9-67c3-484f-abe4-9a53cd7c7f56",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://video.bunnycdn.com/library/{{ $json.data[1].videoLibraryId }}/videos/{{ $json.data[1].guid }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "AccessKey",
+              "value": "a32a4af0-9a8d-4603-9c6412ce7363-c329-4c09"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "id": "c9b33588-c5c8-47b6-a0cf-d5f090ddcb22",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1420,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {
+          "includeBinaries": true
+        }
+      },
+      "id": "feaa0070-a236-47ef-8f35-4bc634c5d046",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6ca3624a-ee55-445d-9bbc-27478e7c3eff",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1080,
+        540
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "url": "=https://video.bunnycdn.com/library/{{ $json.data[1].videoLibraryId }}/videos/{{ $json.data[1].guid }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "AccessKey",
+              "value": "a32a4af0-9a8d-4603-9c6412ce7363-c329-4c09"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "923ebeed-87e9-4cab-8d50-0020762fa89c",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1420,
+        620
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c4008242-b1d5-4d97-9d95-5257e7185e76",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        580,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "11nVOOTZBlc3G2P_CLWDBHdXuslru0aW4nTFcNhSnmcU",
+          "mode": "list",
+          "cachedResultName": "Test videos clases",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11nVOOTZBlc3G2P_CLWDBHdXuslru0aW4nTFcNhSnmcU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11nVOOTZBlc3G2P_CLWDBHdXuslru0aW4nTFcNhSnmcU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nombre": "={{ $json.title }}",
+            "link bunny": "=https://iframe.mediadelivery.net/play/{{ $json.videoLibraryId }}/{{ $json.guid }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link bunny",
+              "displayName": "link bunny",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cargado en odoo",
+              "displayName": "Cargado en odoo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "32db5cf2-8b21-4135-b46f-12640718b1c5",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2380,
+        2540
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "4UcTF8tUg1bsArv3",
+          "name": "Google Sheets account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.session",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "time_url_recoding",
+              "fieldValue": "={{ $('Edit Fields').item.json.url_bunny }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        860
+      ],
+      "id": "f9f3a01d-9b40-4ecd-bdb2-a3d9d9663526",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "=Clase {{ $json.data[0].formated }} del día {{ $now.format('dd-MM-yyyy') }}"
+            },
+            {
+              "fieldName": "bunny_url",
+              "fieldValue": "={{ $json.data[0].url_bunny }}"
+            },
+            {
+              "fieldName": "channel_type",
+              "fieldValue": "bunny"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.data[1].slide_channel_num }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "bunny"
+            },
+            {
+              "fieldName": "is_published",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        640
+      ],
+      "id": "2bab4ba4-e084-465f-a2d7-2c01aa7e8983",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9af170a2-3057-4601-bd08-7a212cd52449",
+              "name": "url_bunny",
+              "value": "=https://iframe.mediadelivery.net/play/342069/ {{ $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "fea3562c-8907-4e8d-a9d9-0ad2ba8ffbba",
+              "name": "name",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "583754a8-0419-4995-862c-c63c59f886f3",
+              "name": "formated",
+              "value": "={{ $json.title.match(/(?<=- )(.*?)(?=-\\d{8}_\\d{6}-)/)[0]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1620,
+        620
+      ],
+      "id": "bb1d0454-8ba5-4587-9b39-f47253813a01",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Input: Nombre del archivo\nconst fileName = $json.name || \"\"; // Asegúrate de tener el campo correcto\n\n// Expresión regular para extraer el texto deseado\nconst match = fileName.match(/(?<=- )(.*?)(?=-\\d{8}|\\.\\w+$)/);\n\n// Devuelve el resultado\nreturn match ? match[0] : \"\";\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4980,
+        -460
+      ],
+      "id": "020148c8-91fd-4d08-aac6-3a2fafff0d5b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f988ed25-9baa-42d5-a4c9-8f6e09e384fd",
+              "name": "name",
+              "value": "MTPS G2 - Psicología Preventiva y Promoción de la Salud-20241213_151337-Grabación de la reunión.mp4\t",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4680,
+        -460
+      ],
+      "id": "e3819b77-5840-4a4d-bc68-920c3248a3f8",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "56b9415c-c86a-4ec2-bddc-ce83c3243b08",
+              "name": "formateado",
+              "value": "={{ $json.name.match(/(?<=- )(.*?)(?=-\\d{8}|\\.\\w+$)/)?.[0] || \"\" }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5220,
+        -440
+      ],
+      "id": "50a744e5-da62-4ea5-828f-8b955d0ec9ab",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        640
+      ],
+      "id": "2af69736-4098-4d13-a872-a5af548ab9f1",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        640
+      ],
+      "id": "11bda67f-2cf7-44e0-8fdb-1db967ae7593",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.session",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "slide_channel_num",
+            "name",
+            "id",
+            "course_id",
+            "course_name",
+            "start_datetime",
+            "end_datetime"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "subject_name",
+              "value": "={{ $json.formated }}"
+            },
+            {
+              "fieldName": "start_datetime",
+              "operator": "greaterOrEqual",
+              "value": "={{ $now.set({ hour: 22, minute: 0, second: 0 }).format('yyyy-MM-dd HH:mm:ss') }}\n"
+            },
+            {
+              "fieldName": "start_datetime",
+              "operator": "lesserOrEqual",
+              "value": "={{ $now.plus({ days: 1 }).set({ hour: 3, minute: 0, second: 0 }).format('yyyy-MM-dd HH:mm:ss') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        780
+      ],
+      "id": "122ccbe7-dd36-4aa8-9c7d-9d4a713da4be",
+      "name": "Odoo3",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Microsoft OneDrive Trigger": {
+      "LastLink": "https://graph.microsoft.com/v1.0/me/drive/root/delta?token=NDslMjM0OyUyMzE7Mzs3NTEzOWFhYS04ODgzLTQ5ZDEtYWU4My04YzliZDdkM2FiM2Y7NjM4NzYzODA1Mjg4MzcwMDAwOzUxMDE5NTMzMDslMjM7JTIzOyUyMzA7JTIz",
+      "lastTimeChecked": "2025-02-28T23:02:09.370Z"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-02-10T17:30:41.921Z",
+      "updatedAt": "2025-02-10T17:30:41.921Z",
+      "id": "V2R3a42N0savahpJ",
+      "name": "Académico"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:02:08.934Z",
+  "versionId": "2a09b24c-eb5f-41b0-ae88-3d76f8cdabaa"
+}
