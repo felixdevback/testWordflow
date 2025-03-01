@@ -1,0 +1,120 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-31T11:28:56.490Z",
+  "id": "GnKLAfDCuAliVRp3",
+  "meta": null,
+  "name": "Funcion_Agendar_2da_Llamada_al_dia",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "calendar.event",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "opportunity_id",
+              "fieldValue": "={{$json.body.id_odoo}}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "={{$json.body.name}}"
+            },
+            {
+              "fieldName": "start_date",
+              "fieldValue": "={{ (() => {\n  const inputDate = new Date($json.body.date); // Obtener la fecha del JSON\n  const futureDate = new Date(inputDate); // Copiar la fecha original\n  futureDate.setDate(inputDate.getDate()+3); // Sumar 3 días\n  return `${futureDate.getFullYear()}-${String(futureDate.getMonth() + 1).padStart(2, '0')}-${String(futureDate.getDate()).padStart(2, '0')}`; // Formatear a YYYY-MM-DD\n})() }}\n\n\n"
+            },
+            {
+              "fieldName": "description",
+              "fieldValue": "segunda_llamada"
+            },
+            {
+              "fieldName": "allday",
+              "fieldValue": "={{ false }}"
+            },
+            {
+              "fieldName": "duration",
+              "fieldValue": "1"
+            },
+            {
+              "fieldName": "user_id",
+              "fieldValue": "5064"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        -20
+      ],
+      "id": "8bb08fcf-da1e-431b-ae75-75698fbcf526",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "43cb286b-41a7-409f-9405-003d6ea53f26",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        -20
+      ],
+      "id": "fc388fd2-4ede-4b50-8640-2a4bba390533",
+      "name": "Webhook",
+      "webhookId": "43cb286b-41a7-409f-9405-003d6ea53f26"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-23T23:41:08.981Z",
+      "updatedAt": "2025-01-23T23:41:08.981Z",
+      "id": "2VgmmSnEzCyglmLn",
+      "name": "Segunda_llamada"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    },
+    {
+      "createdAt": "2025-01-28T06:36:04.642Z",
+      "updatedAt": "2025-01-28T06:36:04.642Z",
+      "id": "sgrT2GlB8XpfYaca",
+      "name": "functions"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-12T04:14:52.000Z",
+  "versionId": "c543e597-159a-4560-9cd5-699a69f28db9"
+}
