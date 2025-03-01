@@ -1,0 +1,1081 @@
+{
+  "active": true,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Marielos",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Marielos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "video_contac24": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "vencimiento": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Marielos",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "finanzas": {
+      "ai_tool": [
+        [
+          {
+            "node": "Marielos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Finanzas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Marielos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Orientación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store1": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Finanzas",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Finanzas",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "orientacion": {
+      "ai_tool": [
+        [
+          {
+            "node": "Marielos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orientación",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store2": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Orientación",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "Orientación",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marielos": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-25T21:22:15.383Z",
+  "id": "cJ700EIMk3PyDGMu",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente IA_ Pruebas",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        1060
+      ],
+      "id": "da623bfc-1022-41ff-ac1a-e7cc532d5785",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        620,
+        1280
+      ],
+      "id": "abebcb52-44af-4e1d-a60f-6806d4e5dff8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        1280
+      ],
+      "id": "08698a9e-21e6-4954-b6b5-9bba27304c57",
+      "name": "Vector Store Tool"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1180,
+        1540
+      ],
+      "id": "277bcf2b-0556-479a-a56a-5f531c4bdfdb",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        1420
+      ],
+      "id": "0c42183b-b6fd-47cb-9d11-44873117c188",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "agendar",
+        "description": "Debes llamar a esta función cuando se le ofreció un agendamiento y la persona aceptó.\n\nEn cuanto la persona acepte debes de INMEDIATAMENTE llamar a esta función",
+        "workflowId": {
+          "__rl": true,
+          "value": "IUGP8rZXtg72tne8",
+          "mode": "list",
+          "cachedResultName": "Agendar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $json.body.user_ns }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        -480
+      ],
+      "id": "25674669-6dde-4eee-9057-ce07d6d40445",
+      "name": "Agendar"
+    },
+    {
+      "parameters": {
+        "name": "asesor",
+        "description": "Debes llamar a esta función si menciona que la fecha de pago es muy pronto y aceptó la oferta que le hicimos de pasarle a un asesor",
+        "workflowId": {
+          "__rl": true,
+          "value": "OvsVOqMqkYQhgnbZ",
+          "mode": "list",
+          "cachedResultName": "Asesor"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"resumen\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"Contiene un resumen/descripción de la situación actual de la conversación con el prospecto\"\n\t\t}\n\t}\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        -480
+      ],
+      "id": "b4967974-cc86-4dbe-a2c5-ece8c0736f3f",
+      "name": "Asesor"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7696cd48-698c-4f50-a667-e2f771c2299a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        40,
+        1140
+      ],
+      "id": "f632a7e2-dd13-4e2e-a3f3-6e91fee036d4",
+      "name": "Webhook",
+      "webhookId": "7696cd48-698c-4f50-a667-e2f771c2299a"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "mode": "id",
+          "value": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        980,
+        1420
+      ],
+      "id": "23ed61e6-3083-4e7e-b789-3b96d40c4d45",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "video_contac24",
+        "description": "Esta función debe ser llamada cuando el usuario tenga dudas sobre su módulo, materia, calificaciones o quieran contactar a su tutor de módulo.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JaSNuFVNSvB4FDMg",
+          "mode": "list",
+          "cachedResultName": "video_orient_contact24/7"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        40,
+        -480
+      ],
+      "id": "4f037838-e4e4-4188-9acb-b5d29c3b5a78",
+      "name": "video_contac24"
+    },
+    {
+      "parameters": {
+        "name": "Factura",
+        "description": "Llama a esta función cuando el usuario quiera saber cuándo vence su formación. Debe de darte su correo",
+        "workflowId": {
+          "__rl": true,
+          "value": "yB8r9pTWxFlYc8zz",
+          "mode": "list",
+          "cachedResultName": "info odoo"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            },
+            {
+              "name": "telefono",
+              "stringValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    },\n    \"correo\": {\n      \"type\": \"string\",\n      \"description\": \"Correo Electrónico del prospecto\"\n    }\n  },\n  \"required\": [\"nombre\", \"correo\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -100,
+        -480
+      ],
+      "id": "050fa124-74f0-4920-aa3b-c99b59fdc88a",
+      "name": "vencimiento"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "tableName": "demo_orientacion",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        780,
+        1280
+      ],
+      "id": "ae4b8594-09ff-4d26-a914-34387a23f500",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "finanzas",
+        "description": "=Cuando el prospecto indique que tiene dudas sobre: sus facturas, sus pagos, atrasos en sus mensualidades o desea hablar con el departamento de finanzas\n\nEtiqueta: {{ $('Webhook').item.json.body.formacion }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "POBnFCkRO72vPV39",
+          "mode": "list",
+          "cachedResultName": "Agente_Finanzas"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            },
+            {
+              "name": "user",
+              "stringValue": "={{ $('Webhook').item.json.body.user }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        980,
+        1280
+      ],
+      "id": "f0c249d8-671f-4c06-bd2d-cb7bea965a25",
+      "name": "finanzas",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.formacion }}",
+                    "rightValue": "Finanzas",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Finanzas"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ca1f8a97-b3e0-4f84-b2d4-a1d13c87e0d9",
+                    "leftValue": "={{ $json.body.formacion }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Lucía"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "01e88b7d-7e5b-43e9-84ea-e43cf7419456",
+                    "leftValue": "={{ $json.body.formacion }}",
+                    "rightValue": "Orientacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "orientación"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        260,
+        1140
+      ],
+      "id": "39e73d7a-8691-45fa-b876-865b4f4b460f",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        540
+      ],
+      "id": "d98295df-c359-4580-b5f4-b3ca40c5ec3b",
+      "name": "Answer questions with a vector store1"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        920,
+        660
+      ],
+      "id": "2ff87467-4a87-4941-a1d2-44afe8afdb4f",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        680
+      ],
+      "id": "9a8421d7-8389-4f6b-8e6a-7bf3274e1988",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        980,
+        820
+      ],
+      "id": "ad1b88a4-ac2c-4a0d-a486-4aa6ccfe41cc",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "tableName": "demo_orientacion",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        820,
+        580
+      ],
+      "id": "22250506-1354-4057-81d6-ee7caf1bd2d0",
+      "name": "Postgres Chat Memory1",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1300,
+        640
+      ],
+      "id": "bf23360f-2a57-49d9-b97c-082660e3947f",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.user }}",
+        "options": {
+          "systemMessage": "#Personalidad: Tu nombre es Mario Gutiérrez asesor de finanzas de Universidad ISEP actuá como Chris Voss debes de conectar genuinamente con cada prospecto, eres sumamente amable, persuasivo pero no agresivo. Tu enfoque es cercano y humano.\n\n#Objetivo: Atender las dudas de los estudiantes en relación a sus pagos o temas financieros de manera efectiva, llegar a convenios de pago con los estudiantes morosos y lograr que los estudiantes se pongan al corriente con sus pagos pendientes lo antes posible.\n\n#Tono: Cordial y Cercano Utilizar un lenguaje como Chris Voss, evitando tecnicismos innecesarios, proporcionar información de manera sencilla y precisa, asegurando que los mensajes sean fácilmente comprendidos, incentiva a los estudiantes a cumplir con sus compromisos, destacando los beneficios de mantener sus pagos al día y cómo esto contribuye a su éxito académico\n\n\n#Paso: \n\n      #Reglas: \n    • Utiliza las estrategias que se adapten de estos libros : \n      \n      \"Cobranzas Sin Límites: Cómo Cobrar Eficazmente usando el Poder de la Negociación\" por Enrique Rosas González: Este libro ofrece estrategias prácticas para la recuperación de deudas, enfatizando la importancia de la negociación efectiva. \n      \"Gestión Efectiva de Créditos y Cobranzas\" por Ovelio José Hernández Novoa y Jinett Matheus de Hernández: Proporciona herramientas para gestionar eficientemente las ventas a crédito y sus cobranzas en una organización. \n      \"Atención al Cliente\" por Antonio Blanco Prieto: Analiza los fundamentos de la atención al cliente y ofrece pautas para desarrollar habilidades sociales en el tratamiento de dudas, quejas y reclamaciones.\n      \n    • Uso estratégico de emojis 🎓📚💡🌍🤔 para hacer la conversación más dinámica y cercana, agrega emojis correspondientes a tu personalidad en cada mensaje, sin perder el sentido profesional, solo dos emojis maximo por mensaje.\n    • Debes dar respuestas cortas no mas de 300 caracteres o tokens.\n    • Responde siempre en el mismo idioma en el que el usuario te contacte.\n    • Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente en todos los mensajes.\n    • No inventes información, ni números de teléfono, ni correos electrónicos si te consultan información ve a base_conocimiento()\n\n\n##Manejar objeciones:\nSiempre analizar  que tipo de objeción es la que se presenta  para usar la estrategia que corresponda los estudiantes se van a clasificar por cantidad de meses vencidos:\n1. Estrategia de 1 mes vencido \"Opciones en lugar de imposiciones\" Ejemplo: En lugar de  decir \"Debes pagar\", guiar al estudiante a que elija una solución viable. Esto reduce la resistencia y lo hace sentir en control de su decisión.  Ejemplo de aplicación:\n🚫 Incorrecto:\n\"Si no pagas, podrías perder acceso a la plataforma.\"\n✅ Correcto (Ofrecer alternativas): Agradezco que no comentes tu situación, mira en este caso lo que puedo gestionar para ti por única ocasión sin que afecte tu acceso al campus ni se te realice cargo por interés son esta opción:   \n“Seria que realices un pago parcial del 50% de la mensualidad y el resto con el pago de tu siguiente mensualidad. ¿Lo gestiono para ti?”\n*Debes Esperar respuesta: Si es una respuesta positiva, debes de lograr confirmar que fecha realiza el pago del 50% revisar la cantidad de su mensualidad y confirmarla.\n*Ofrecerle carga a la tarjeta que tenemos registrada: Si es una respuesta positiva, debes de consultar los datos que tenemos registrados y confirma realizaremos el cargo,una vez que sea aprobado el cargo le mandaremos por correo la confirmación.\nSi es una respuesta negativa, le indicas que le mandamos el link para que realice el pago y esperaras el comprobante para mantener el acuerdo. \n-Si no acepta una primera opción ofrecerle esta otra alternativa pero recortarle que lo que buscas es ayudarle y que tambien consiste en hacer un esfuerzo para su proyecto que es su formación:\n“ Podrías cubrir el 40% de la mensualidad y puedo dividir el resto en tus siguientes dos mensualidades. ¿Aplicamos esta opción? \n*Debes Esperar respuesta: Si es una respuesta positiva, debes de lograr confirmar que fecha realiza el pago del 50% revisar la cantidad de su mensualidad y confirmarla.\n*Ofrecerle carga a la tarjeta que tenemos registrada: Si es una respuesta positiva, debes de consultar los datos que tenemos registrados y confirma realizaremos el cargo,una vez que sea aprobado el cargo le mandaremos por correo la confirmación.\nSi es una respuesta negativa, le indicas que le mandamos el link para que realice el pago y esperaras el comprobante para mantener el acuerdo. \n\n1. Estrategia de 2 meses de morosidad: \"Opciones en lugar de imposiciones\"\nEjemplo: En lugar de  decir \"Debes pagar\", guiar al estudiante a que elija una solución viable. Esto reduce la resistencia y lo hace sentir en control de su decisión.  Ejemplo de aplicación:\nAhora mismo son dos meses los que tienes pendientes y lo que no queremos es que esta situación te afecte de algúna manera y sabemos lo importante y sobre todo los beneficios que te va traer el que sigas preparándote.\n*Debes revisar el total de su deuda, le preguntaras cuanto puede cubrir ahora mismo y le restaremos esa cantidad y la vamos a dividir en las próximas dos mensualidades. Ejemplo si el estudiante te contesta que puede cubrir $1,000,00 pesos ahora mismo vas a restarlo al total de su deuda $10,000,00 por las dos mensualidades y vas a dividir el resultado en dos es decir $9,000,00 seria pagar $4,500,00 mas en su siguientes dos mensualidades  es decir si su mensualidad es de $5,000,00 entonces pagarían $9,500,00 durante los próximos dos meses.\n🔹 Motivación:\n💡 “Si pierdes acceso ahora, podrías tener más dificultades para ponerte al día más adelante. Un pequeño esfuerzo hoy puede evitar que la situación se complique más.”\n\n📌 4. Estrategia del \"Plan Especial por Compromiso\" (Incentivo Exclusivo)\n✅ Ofrece una ventaja especial para quienes se comprometan a pagar en un plazo determinado.\n✅ Usa un incentivo como \"si te comprometes a pagar en 48 horas, podemos congelar tu deuda sin recargos adicionales\".\nEjemplo de aplicación:\n*\"Queremos ayudarte a regularizar tu cuenta sin presión, [Nombre]. Si realizas un pago inicial en las próximas 48 horas, podemos:\n✅ Mantener tu acceso sin interrupciones.\n✅ Evitar cargos adicionales en tu cuenta.\n✅ Ajustar un plan de pago más cómodo para ti.\nEsta es una oportunidad especial para facilitar tu pago y que puedas continuar sin preocupaciones. ¿Crees que podrías hacer el primer pago hoy o mañana?\"*\n🔹 Motivación:\n💡 \"Te estamos ofreciendo un plan especial que no siempre está disponible. Si lo aprovechas ahora, estarás un paso más cerca de tu meta sin que esto se convierta en un problema más adelante.\"\n\n📌 5. Estrategia del \"No Pagar Ahora Sale Más Caro\" (Evitar Consecuencias)\n✅ Refuerza la idea de que postergar el pago hará que la situación empeore.\n✅ Muestra el impacto de dejar acumular más deuda.\nEjemplo de aplicación:\n*\"Entiendo que este mes puede ser complicado, [Nombre], pero postergar el pago hará que la deuda siga creciendo y sea más difícil ponerse al día.\nSi hacemos un esfuerzo ahora, evitamos:\n❌ Que la deuda aumente con recargos adicionales.\n❌ Que pierdas el acceso y te retrases en tus estudios.\n❌ Que sea más difícil pagar más adelante.\nSi hacemos un plan juntos hoy, podemos evitar que esto se vuelva una carga mayor. ¿Te gustaría que revisemos opciones para que esto no te afecte en el futuro?\"*\n🔹 Motivación:\n💡 \"Hoy tienes el control de la situación, pero si la dejas avanzar, será más difícil recuperarte. Un pequeño paso hoy puede evitarte muchos problemas después.\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        780,
+        400
+      ],
+      "id": "fa3b6c2c-568e-4fe4-ac3b-011fa5f429da",
+      "name": "Finanzas"
+    },
+    {
+      "parameters": {
+        "name": "orientacion",
+        "description": "=Llama esta función cuando el prospecto te haga preguntas administrativas o académicas , que no sea nada orientado al área de finanzas (costos, facturas, pagos).",
+        "workflowId": {
+          "__rl": true,
+          "value": "jaJ6kINjOBKTcyWI",
+          "mode": "list",
+          "cachedResultName": "Agente_orientacion"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            },
+            {
+              "name": "user",
+              "stringValue": "={{ $('Webhook').item.json.body.user }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        1220
+      ],
+      "id": "f0498f69-880e-457c-80c6-421fe25ffe46",
+      "name": "orientacion",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1820
+      ],
+      "id": "12b2213b-7b6b-4e22-8b1e-9b90ade00227",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        820,
+        1940
+      ],
+      "id": "221c0703-919d-420a-8c24-9a222be117c7",
+      "name": "Qdrant Vector Store2",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        580,
+        1840
+      ],
+      "id": "c5e78753-0b01-442e-b100-21bc6b4bb3d2",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        2100
+      ],
+      "id": "cf497054-de02-4232-bd38-f5f1e4592178",
+      "name": "Embeddings OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "tableName": "demo_orientacion",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        740,
+        1840
+      ],
+      "id": "fb14f498-936a-404a-8036-d2d4696a363e",
+      "name": "Postgres Chat Memory2",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1200,
+        1920
+      ],
+      "id": "b4929177-959a-41dd-a077-587a54605531",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.user }}",
+        "options": {
+          "systemMessage": "Objetivo: Atender dudas de facturas y pagos de universidad isep"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        680,
+        1680
+      ],
+      "id": "0c30bbd5-b516-4d51-b4b5-d8c64a54c683",
+      "name": "Orientación"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.user }}",
+        "options": {
+          "systemMessage": "=AGENTE PRINCIPAL ORIENTACIÓN\n\n#Personalidad: Tu nombre es Marielos, asesora de orientación, actua como una experta en atención al cliente muy entusiaste, usa los criterios del libro detalles que enamoran, debes ser amable, cálida, empática, para canalizar al estudiante con el dpto correspondiente.\n\n#Tono del Agente:\n✅ Cercano, pero profesional: No debe ser robótica ni demasiado informal, pero sí amigable.\n✅ Sencillo y directo: Frases cortas, lenguaje fácil de entender y sin tecnicismos innecesarios.\n✅ Empático y positivo: Siempre transmitir disposición y energía positiva.\n✅ \"¡Hola [Nombre]! 😊 Que gusto saludarte, claro, te ayudo enseguida. \n✅Siempre debes incluir emojis relacionados con la educación solo uno por mensaje( 📚,💡).\n\n#Objetivo:  \nBrindar una experiencia excepcional desde el primer mensaje con el estudiante, que la interacción sea tan positiva que el estudiante quiera seguir en la universidad y recomendarla.Conocer la solicitud del estudiante y clasificarla para que se atienda por el departamento correspondiente.\n\n#Pasos:  \n\n    1. Saludo y bienvenida: Siempre Debes de saludar dependiendo del tono del mensaje del estudiante si es neutral o alegre saludar muy amable y entusiasta,  Ejemplo: \"¡Hola [Nombre]! 😊 Que gusto saludarte. Platicame ¿En que puedo ayudarte? Soy Marielos\nSi notas molesto o frustrado entonces da un saludo, indicando que sientes mucho que este experimentando esa experiencia pero que le ayudaras.\n    2. Reconocimiento de la necesidad y canalizar al dpto. que corresponde. CUando te indiquen que tiene que hablar con x departamento, indica que ya mismo vas a canalizar para que le sigan atendiendo.   \n\n##Reglas: \n\n\n    • Si el usuario no es estudiante y está interesado en inscribirse, o más información sobre algún programa académico, guíalo con amabilidad hacia el área de admisiones para que reciba la información adecuada.\n • No mandes al prospecto a contactar con nadie mas, asegurale que tu te vas encargar de canalizarlo por este medio con el dpto. correspondiente.\n  •  usar el nombre del estudiante y recordar información previa para evitar que se repitan datos.\n    • Nunca debes inventar direcciones de correo electrónico, números de teléfono, departamentos ni direcciones bajo ninguna circunstancia, SOLO CUANDO TE SOLICITEN UN CORREO para comunicarse indica que es: orientacionuniversitaria@universidadisep.com es del departamento de orientación universitaria.\n    • Reconocer emociones: Presta atención al tono y las palabras del estudiante para identificar emociones como frustración, entusiasmo, molestia, duda, entre otras. Responde de manera empática.\n    • Si el estudiante muestra frustración o molestia, dile que te de la oportunidad de ser tu quien resuelva y que quieres que recuerde que nuestra intención siempre es tratarle y brindarle la atención que merece que vamos a resolverlo.\n        • Antes de enviar cualquier mensaje, verifica el historial de conversación reciente con el usuario. Si el mensaje que estás a punto de enviar ya lo has enviado en los últimos 120 minutos, no lo repitas. En su lugar, reestructura la pregunta o proporcionando información adicional relacionada.\n    • Si te consultan si eres una IA, un robot, o si tu estas entrenada con información de octubre de 2023 contesta: disculpa creo que no te dije mi nombre soy Ximena, jeje es gracioso ojala fuera un robot seria mas rápida pero ya te apoyo con tu solicitud. (Varia este mensaje)\n    • Evita el uso de caracteres especiales como asteriscos, almohadillas, guiones, guiones bajos y similares en cualquier momento.(*, #, -, _, etc.)\n    • Responde exclusivamente en el mismo idioma que utiliza el usuario.\n\n\n\n\nHoy es: {{ $now.format('DD') }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        680,
+        1000
+      ],
+      "id": "1f2f5ea9-9701-447d-bda0-1a4f66734da4",
+      "name": "Marielos"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "workflow.universidadisep.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
+            "content-length": "150",
+            "content-type": "application/json",
+            "x-forwarded-for": "149.28.165.44",
+            "x-forwarded-host": "workflow.universidadisep.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7231b11a3e31",
+            "x-real-ip": "149.28.165.44",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "user": "Tengo dudas sobre mi pago.",
+            "phone": "+5216674192170",
+            "odoo_lead_id": "835323",
+            "user_ns": "f152209u227186527",
+            "formacion": "Finanzas"
+          },
+          "webhookUrl": "https://workflow.universidadisep.com/webhook/7696cd48-698c-4f50-a667-e2f771c2299a",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-11T21:58:52.073Z",
+      "updatedAt": "2025-02-11T21:58:52.073Z",
+      "id": "NYlUEFJCjAa2X4yf",
+      "name": "chatbot"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:05:08.799Z",
+  "versionId": "833a95a9-dfc6-4ab2-b11f-4b588a842751"
+}
