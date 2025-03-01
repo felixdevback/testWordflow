@@ -1,0 +1,138 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uchat - plantilla": {
+      "main": [
+        []
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Uchat - plantilla1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T00:50:24.613Z",
+  "id": "BtspBb6vgrlfvEZx",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "PRueba_plantilla",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "27d846a2-1983-4ea4-94b1-84963b541fa5",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-node",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"node_ns\": \"f122557n122942551\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        400
+      ],
+      "id": "a6c1f1fd-9ac2-4e1a-8009-83e0dfab9156",
+      "name": "Uchat - plantilla",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"sub_flow_ns\": \"f152209s1141299\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        220
+      ],
+      "id": "5a19a6ef-3cb2-4771-b98f-3347053f8842",
+      "name": "Uchat - plantilla1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OTNQvBs96vPaobpR",
+          "name": "uchat_pruebas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        340
+      ],
+      "id": "c055bd98-8bad-4335-9839-4f097fbfc02f",
+      "name": "Wait",
+      "webhookId": "056a794d-8049-4600-a8e1-cc24b7758b86"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-26T18:55:22.934Z",
+      "updatedAt": "2025-02-26T18:55:22.934Z",
+      "id": "fZyfPOCPh5pbcx1P",
+      "name": "orientacion"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-27T00:51:41.000Z",
+  "versionId": "d19cded5-e490-4cb2-b14d-435da96cc7e8"
+}
