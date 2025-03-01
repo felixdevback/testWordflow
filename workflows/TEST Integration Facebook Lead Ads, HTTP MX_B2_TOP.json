@@ -1,0 +1,88 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-02-24T20:45:24.410Z",
+  "id": "ayuFZV50nXGgdP9P",
+  "meta": null,
+  "name": "TEST Integration Facebook Lead Ads, HTTP MX_B2_TOP",
+  "nodes": [
+    {
+      "parameters": {
+        "page": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "form": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.facebookLeadAdsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        -40
+      ],
+      "id": "233b1817-376d-4c2f-81fe-2a285f15fbc4",
+      "name": "Facebook Lead Ads Trigger",
+      "webhookId": "fc6adae6-7e23-419c-b30d-372bb2fba1e8",
+      "credentials": {
+        "facebookLeadAdsOAuth2Api": {
+          "id": "1XZzKSCIGNt2cZsy",
+          "name": "Facebook Lead Ads account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -40
+      ],
+      "id": "e886d97c-04ac-4125-a4fb-b3c9f1850a6f",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LhoR9ZqpkTGlLxPA",
+          "mode": "list",
+          "cachedResultName": "SC x UNISEP integración formularios web con CRM Odoo 2"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        -40
+      ],
+      "id": "f6f1d87b-43ef-458f-9642-fc232f7654a2",
+      "name": "Execute Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T20:45:38.000Z",
+  "versionId": "7bded553-998c-4540-a496-d13eb3437c33"
+}
