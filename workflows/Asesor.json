@@ -1,0 +1,119 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Notificar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notificar": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-14T00:17:38.638Z",
+  "id": "OvsVOqMqkYQhgnbZ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Asesor",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b57c45c0-57df-4c39-994f-dde19ff8fcd7",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-node",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $('Execute Workflow Trigger').item.json.user_ns }}\",\n  \"node_ns\": \"f122557n85897575\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        460
+      ],
+      "id": "fdaff46a-60b0-48ad-9cb6-5970f8bbbbbf",
+      "name": "Notificar",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "877e658e-6a2f-4eab-9d07-3a490b293eb1",
+              "name": "response",
+              "value": "=Cuéntale que has notificado a un asesor y que, en unos minutos, se pondrá en contacto.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        460
+      ],
+      "id": "4a4ffece-7f1f-422b-b075-355ed2c0999e",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "query": {},
+          "user_ns": "{{ $json.body.odoo_lead_id }}"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-14T00:17:59.000Z",
+  "versionId": "a113cb7d-4eb6-436f-a6a4-65fd3767c8fd"
+}
