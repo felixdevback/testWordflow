@@ -1,0 +1,589 @@
+{
+  "active": false,
+  "connections": {
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mautic": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mautic1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-03T00:18:34.589Z",
+  "id": "11",
+  "meta": null,
+  "name": "Pruebas Odoo",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "getAll",
+        "options": {}
+      },
+      "id": "b07c53e6-02c9-42ef-b3d9-13ea3dfe64e9",
+      "name": "Mautic",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        300,
+        -40
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "limit": 10,
+        "options": {}
+      },
+      "id": "933eae23-3622-4a71-bee2-fe53cecd6a10",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -260
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.opportunity_count }}",
+              "operation": "notEqual"
+            }
+          ]
+        }
+      },
+      "id": "58246ea2-f277-40ea-ac01-8dec0a0eb9ad",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "email_normalized",
+              "field2": "fields.core.email.value"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input1",
+        "options": {}
+      },
+      "id": "ba153cb6-332a-4658-8483-5155dd7b3717",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        680,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.fields.core.etapa.value }}",
+              "value2": "Perdido"
+            }
+          ]
+        }
+      },
+      "id": "e0df54ff-4d19-4024-a3f3-311ff94916c5",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 4
+            }
+          ]
+        }
+      },
+      "id": "07204a71-e8f4-4f1c-98ae-64fcf28dc25a",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 4
+            }
+          ]
+        }
+      },
+      "id": "0c784f49-cd10-49fe-a916-8099b6f40b01",
+      "name": "Schedule Trigger2",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "fruit",
+              "field2": "fruit"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input1",
+        "options": {}
+      },
+      "id": "bc56d7be-1324-46e2-8344-03774fedeed2",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        600,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n{\n\"fruit\": \"apple\",\n\"color\": \"green\",\n\"sabor\": \"apple\",\n},\n{\n\"fruit\": \"orange\",\n\"color\": \"orange\",\n\"sabor\": \"orange\", \n},\n{\n\"fruit\": \"grape\",\n\"color\": \"green\", \n\"sabor\": \"green\"\n},\n{\n\"fruit\": \"strawberry\",\n\"color\": \"red\",\n\"sabor\": \"red\",  \n},\n{\n\"fruit\": \"banana\",\n\"color\": \"yellow\",\n\"sabor\":  \"yellow\"\n}\n];"
+      },
+      "id": "f724b24a-1805-40e7-ab7c-2ca0053df8ef",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        260,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n{\n\"fruit\": \"apple\",\n\"color\": \"green\",\n},\n{\n\"fruit\": \"grape\",\n\"color\": \"purple\",\n},\n{\n\"fruit\": \"orange\",\n\"color\": \"orange\",\n},\n{\n \"fruit\": \"kiwi\",\n \"color\": \"mostly green\"\n},\n{\n\"fruit\": \"banana\",\n\"color\": \"yellow\",\n}\n];"
+      },
+      "id": "3c0d26de-9a11-4445-bdae-09d603662d4b",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        260,
+        480
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6bd5deb0-b7c3-49e0-b6f9-48c9fd6c473c",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n{\n\"fruit\": \"apple\",\n\"color\": \"green\",\n\"sabor\": \"apple\",\n},\n{\n\"fruit\": \"orange\",\n\"color\": \"orange\",\n\"sabor\": \"orange\", \n},\n{\n\"fruit\": \"grape\",\n\"color\": \"green\", \n\"sabor\": \"green\"\n},\n{\n\"fruit\": \"strawberry\",\n\"color\": \"red\",\n\"sabor\": \"red\",  \n},\n{\n\"fruit\": \"banana\",\n\"color\": \"yellow\",\n\"sabor\":  \"yellow\"\n}\n];"
+      },
+      "id": "2658f7c6-3f16-410b-8a43-21f966f05f8a",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nvar data1=[]\nvar data2=[]\nvar index=0\nfor (const item of $input.all()) {\n  console.log(item)\n  if(index%2==0){\n   data1.push(item) \n  }\n  else{\n   data2.push(item) \n  }\n  index++;\n}\nvar dataful={};\ndataful.valor=data1;\ndataful.valor2=data2;\nreturn dataful"
+      },
+      "id": "34362dc3-024c-411e-b8f2-692de64283e6",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nvar valor={}\nfor (const item of $input.all()) {\n  item.json.valor;\n  valor.data=item.json.valor\n}\n\nreturn valor;"
+      },
+      "id": "6b42b920-0491-4bb1-8a25-bb0c874a0278",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "name",
+            "type"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "type",
+              "value": "opportunity"
+            }
+          ]
+        }
+      },
+      "id": "7eec5006-1c79-461f-82bd-c8f5f4063fd2",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        660,
+        60
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  console.log(item.json);\n}\n\nreturn $input.all();"
+      },
+      "id": "48aa0483-29f9-48f5-8a83-c29d7465cec8",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {}
+          ]
+        }
+      },
+      "id": "3a528bf5-7507-4072-86b2-ad08a4cda317",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 100,
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "92338b07-d18e-4013-b78b-9842ff4dfd56",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        880,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "db631c2f-d003-450e-bd05-ade4c8a31977",
+        "options": {}
+      },
+      "id": "06ab1970-438f-458a-8fcf-163e64cdd6c2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        360
+      ],
+      "webhookId": "db631c2f-d003-450e-bd05-ade4c8a31977"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "options": {}
+      },
+      "id": "766dc978-f678-4bbd-bf94-89fbf4e49880",
+      "name": "Mautic1",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        820,
+        -340
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "a0e09607-9168-47d6-995e-4b4a92212405",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2ce3964d-1867-42e0-8bad-480a2d6aa576",
+        "options": {}
+      },
+      "id": "55c7fd51-0258-47a6-ab22-a2db777b5af5",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        200
+      ],
+      "webhookId": "2ce3964d-1867-42e0-8bad-480a2d6aa576"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "e29fc160-6be8-42f3-8fe1-63e0466d4594",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        -280,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "additionalFields": {}
+      },
+      "id": "fcb34846-a479-4d26-99a2-247bfaf1f9e7",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -40
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-23T18:22:35.000Z",
+  "versionId": "cb91b965-d8db-4be7-b097-04af90ea6edd"
+}
