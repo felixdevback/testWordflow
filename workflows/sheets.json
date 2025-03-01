@@ -1,0 +1,152 @@
+{
+  "active": false,
+  "connections": {
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-08T19:27:37.298Z",
+  "id": "p6mpV6AjZg1V39tt",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "sheets",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc",
+          "mode": "list",
+          "cachedResultName": "prueba_make odoo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Revisado",
+              "lookupValue": "sí"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5bf2c154-84aa-468a-b1ba-f762d479cb5b",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1040,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "03BCz2cGo39tBzET",
+          "name": "uisep_google"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "7bfd79d9-6275-4884-a089-2b135c15fd6d",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        840,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "custom",
+              "cronExpression": "0-05"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc",
+          "mode": "list",
+          "cachedResultName": "prueba_make odoo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc/edit#gid=0"
+        },
+        "event": "rowUpdate",
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRange",
+              "firstDataRow": 1
+            }
+          }
+        }
+      },
+      "id": "ffbb69f6-9cad-41a2-aabd-b8af5c3f0993",
+      "name": "Google Sheets Trigger",
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        320
+      ],
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "R8z3FmMbCiIB2mJ0",
+          "name": "Google Sheets Trigger account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Google Sheets Trigger": {
+      "documentId": "1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc",
+      "sheetId": 0,
+      "lastRevision": 13,
+      "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc&revision=13&exportFormat=xlsx"
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-25T01:43:19.000Z",
+  "versionId": "20d35ce5-7537-4769-9601-464fe9debbec"
+}
