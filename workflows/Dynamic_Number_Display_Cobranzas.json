@@ -1,0 +1,1831 @@
+{
+  "active": false,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "chingadera",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dead_Numero_Gastado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca_Numeros_Disponibles1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nuevo_Numero_Usar": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Busca_Numeros_Disponibles1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revisa_Numero_Ventas": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revisa_Numero_Ventas1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca_Numeros_Disponibles2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Busca_Numeros_Disponibles2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "chingadera1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dead_Numero_Gastado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dead_Numero_Gastado": {
+      "main": [
+        [
+          {
+            "node": "Nuevo_Numero_Usar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dead_Numero_Gastado1": {
+      "main": [
+        [
+          {
+            "node": "Nuevo_Numero_Usar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca_Numeros_Disponibles4": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "chingadera2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dead_Numero_Gastado2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dead_Numero_Gastado2": {
+      "main": [
+        [
+          {
+            "node": "Nuevo_Numero_Usar2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nuevo_Numero_Usar2": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revisa_Numero_Ventas2": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Busca_Numeros_Disponibles4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Nuevo_Numero_Usar1": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chingadera": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chingadera1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chingadera2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Revisa_Numero_Ventas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Revisa_Numero_Ventas1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Revisa_Numero_Ventas2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-20T05:25:57.601Z",
+  "id": "in2ertaUHKWiXxXZ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Dynamic_Number_Display_Cobranzas",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e492c8d6-36a2-4faa-bccb-107ae2529f74",
+              "leftValue": "={{ $json.friendly_name }}",
+              "rightValue": "chingadera",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "908eb164-8f86-4b96-99e6-1453b459ab69",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -280,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "country",
+              "value": "={{ $json.campaign_country }}"
+            },
+            {
+              "column": "use",
+              "value": "Stock"
+            }
+          ]
+        },
+        "sort": {
+          "values": [
+            {
+              "column": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "59c3fb05-9963-4f82-823f-a0028780401a",
+      "name": "Busca_Numeros_Disponibles1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -520,
+        -440
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "active": true,
+            "number": "={{ $('Busca_Numeros_Disponibles1').item.json.number }}",
+            "friendly_name": "=Ventas_Mexico",
+            "use": "Ventas",
+            "country": "={{ $('Busca_Numeros_Disponibles1').item.json.country }}"
+          },
+          "matchingColumns": [
+            "number"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "number",
+              "displayName": "number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "friendly_name",
+              "displayName": "friendly_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "use",
+              "displayName": "use",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_calls",
+              "displayName": "max_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "days_to_sue",
+              "displayName": "days_to_sue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "227a201f-9b42-40b5-b00c-21c87e05ca6e",
+      "name": "Nuevo_Numero_Usar",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        180,
+        -240
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba72cbc7-5d67-4e2e-9908-558985bba6a4",
+              "leftValue": "={{ $json.total_calls }}",
+              "rightValue": 2000,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "e726b360-2906-41b2-86f3-8ec6bc28e97b",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_summary_view",
+          "mode": "list",
+          "cachedResultName": "call_summary_view"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "total_calls",
+              "condition": ">=",
+              "value": "2000"
+            },
+            {
+              "column": "campaign_group",
+              "value": "Cobranzas"
+            },
+            {
+              "column": "campaign_country",
+              "value": "Mexico"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe6de3d0-7ed6-4ff4-8bf0-f597397278cb",
+      "name": "Revisa_Numero_Ventas",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -900,
+        -280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_summary_view",
+          "mode": "list",
+          "cachedResultName": "call_summary_view"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "total_calls",
+              "condition": ">=",
+              "value": "2000"
+            },
+            {
+              "column": "campaign_group",
+              "value": "Cobranzas"
+            },
+            {
+              "column": "campaign_country",
+              "value": "Colombia"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2d81d79e-3ccd-4f87-a204-c590830e6a25",
+      "name": "Revisa_Numero_Ventas1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -920,
+        -40
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "country",
+              "value": "={{ $json.campaign_country }}"
+            },
+            {
+              "column": "use",
+              "value": "Stock"
+            }
+          ]
+        },
+        "sort": {
+          "values": [
+            {
+              "column": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2b097f6-4234-4ef4-9fb8-4d2366b41d0a",
+      "name": "Busca_Numeros_Disponibles2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -520,
+        -120
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba72cbc7-5d67-4e2e-9908-558985bba6a4",
+              "leftValue": "={{ $json.total_calls }}",
+              "rightValue": 2000,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "faeea5af-daa2-4c35-a8ba-75e7922085f7",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e492c8d6-36a2-4faa-bccb-107ae2529f74",
+              "leftValue": "={{ $json.friendly_name }}",
+              "rightValue": "chingadera",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1e9205a5-8a3d-4fb1-b512-bdecabdebfea",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -360,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "active": false,
+            "number": "={{ $('Revisa_Numero_Ventas').item.json.from_number }}",
+            "friendly_name": "={{ $('Revisa_Numero_Ventas').item.json.campaign_group }}_{{ $('Revisa_Numero_Ventas').item.json.campaign_country }}_Descartado",
+            "use": "Dead"
+          },
+          "matchingColumns": [
+            "number"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "number",
+              "displayName": "number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "friendly_name",
+              "displayName": "friendly_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "use",
+              "displayName": "use",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_calls",
+              "displayName": "max_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "days_to_sue",
+              "displayName": "days_to_sue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c9c5f49-00ca-441c-9e47-551e3e13a8c8",
+      "name": "Dead_Numero_Gastado",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -20,
+        -260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "active": false,
+            "number": "={{ $('Revisa_Numero_Ventas1').item.json.from_number }}",
+            "friendly_name": "={{ $('Revisa_Numero_Ventas1').item.json.campaign_group }}_{{ $('Revisa_Numero_Ventas1').item.json.campaign_country }}_Descartado",
+            "use": "=Dead"
+          },
+          "matchingColumns": [
+            "number"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "number",
+              "displayName": "number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "friendly_name",
+              "displayName": "friendly_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "use",
+              "displayName": "use",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "max_calls",
+              "displayName": "max_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "days_to_sue",
+              "displayName": "days_to_sue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c98bdb07-7cf8-4053-9263-94f43a7b7375",
+      "name": "Dead_Numero_Gastado1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -40,
+        20
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "4ba4e7e6-b679-41d0-89cc-8f0d62127a3a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        980,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "country",
+              "value": "={{ $json.campaign_country }}"
+            },
+            {
+              "column": "use",
+              "value": "Stock"
+            }
+          ]
+        },
+        "sort": {
+          "values": [
+            {
+              "column": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1d9e3f80-f834-4692-b242-9b6024c18496",
+      "name": "Busca_Numeros_Disponibles4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -480,
+        280
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e492c8d6-36a2-4faa-bccb-107ae2529f74",
+              "leftValue": "={{ $json.friendly_name }}",
+              "rightValue": "chingadera",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c4aba2e9-7b69-4674-9e81-6450ecede5cf",
+      "name": "If5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -340,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "active": false,
+            "number": "={{ $('Revisa_Numero_Ventas2').item.json.from_number }}",
+            "friendly_name": "={{ $('Revisa_Numero_Ventas2').item.json.campaign_group }}_{{ $('Revisa_Numero_Ventas2').item.json.campaign_country }}_Descartado",
+            "use": "=Dead"
+          },
+          "matchingColumns": [
+            "number"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "number",
+              "displayName": "number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "friendly_name",
+              "displayName": "friendly_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "use",
+              "displayName": "use",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "max_calls",
+              "displayName": "max_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "days_to_sue",
+              "displayName": "days_to_sue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "40fc17ba-6ed5-4d20-ab5b-b769545da542",
+      "name": "Dead_Numero_Gastado2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -40,
+        280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "active": true,
+            "number": "={{ $('Busca_Numeros_Disponibles4').item.json.number }}",
+            "friendly_name": "=Ventas_Brasil",
+            "use": "Ventas",
+            "country": "={{ $('Busca_Numeros_Disponibles4').item.json.country }}"
+          },
+          "matchingColumns": [
+            "number"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "number",
+              "displayName": "number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "friendly_name",
+              "displayName": "friendly_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "use",
+              "displayName": "use",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_calls",
+              "displayName": "max_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "days_to_sue",
+              "displayName": "days_to_sue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3db2dac1-20b9-42c8-b6ca-dda793624861",
+      "name": "Nuevo_Numero_Usar2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        180,
+        280
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_summary_view",
+          "mode": "list",
+          "cachedResultName": "call_summary_view"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "total_calls",
+              "condition": ">=",
+              "value": "2000"
+            },
+            {
+              "column": "campaign_group",
+              "value": "Cobranzas"
+            },
+            {
+              "column": "campaign_country",
+              "value": "Brasil"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b50bb90c-d242-4f64-ae2f-7438395818b8",
+      "name": "Revisa_Numero_Ventas2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -920,
+        200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba72cbc7-5d67-4e2e-9908-558985bba6a4",
+              "leftValue": "={{ $json.total_calls }}",
+              "rightValue": 2000,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "20e06e74-7ac7-40dc-8c98-139bd6dd60d7",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "notificaciones@universidadisep.com",
+        "fromName": "Dinamic_numbers_display",
+        "toEmail": "iallamadas@universidadisep.com,caraujo@universidadisep.com",
+        "subject": "Stock de Números telefónicos Brasil Cobranzas agotado",
+        "contentType": "text/html",
+        "contentValue": "comprar Brasil",
+        "additionalFields": {}
+      },
+      "id": "d8389b67-a0a4-4172-8e0f-3bf5fa5e9643",
+      "name": "chingadera2",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        140
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "notificaciones@universidadisep.com",
+        "fromName": "Dinamic_numbers_display",
+        "toEmail": "iallamadas@universidadisep.com,caraujo@universidadisep.com",
+        "subject": "Stock de Números telefónicos Colombia Cobranzas agotado",
+        "contentType": "text/html",
+        "contentValue": "comprar Colombia",
+        "additionalFields": {}
+      },
+      "id": "74cc82a4-b77a-4d70-967f-4963c3040d48",
+      "name": "chingadera1",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -140
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "notificaciones@universidadisep.com",
+        "fromName": "Dinamic_numbers_display",
+        "toEmail": "iallamadas@universidadisep.com,caraujo@universidadisep.com",
+        "subject": "Stock de Números telefónicos Mexico Cobranzas agotado",
+        "contentType": "text/html",
+        "contentValue": "comprar Mexico",
+        "additionalFields": {}
+      },
+      "id": "596f1b57-3ebf-404b-9cf2-75f4546f9626",
+      "name": "chingadera",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -420
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "active": true,
+            "number": "={{ $('Busca_Numeros_Disponibles2').item.json.number }}",
+            "friendly_name": "=Ventas_Colombia",
+            "use": "Ventas",
+            "country": "={{ $('Busca_Numeros_Disponibles2').item.json.country }}"
+          },
+          "matchingColumns": [
+            "number"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "number",
+              "displayName": "number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "friendly_name",
+              "displayName": "friendly_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "use",
+              "displayName": "use",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_calls",
+              "displayName": "max_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "days_to_sue",
+              "displayName": "days_to_sue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ea3c356c-c327-4c9d-bcf4-03f8cf4a8e7a",
+      "name": "Nuevo_Numero_Usar1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        180,
+        20
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound\nSET from_number = \n    CASE\n        WHEN reason_for_call LIKE '%Cobranzas%' AND reason_for_call LIKE '%MX' THEN '{{ $json.number }}'\n        ELSE from_number\n    END\nWHERE reason_for_call LIKE '%Cobranzas%';",
+        "options": {}
+      },
+      "id": "a413bb86-d57f-4a03-a9e1-08042366c647",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        460,
+        -240
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound\nSET from_number = \n    CASE\n        WHEN reason_for_call LIKE '%Cobranzas%' AND reason_for_call LIKE '%CO' THEN '{{ $json.number }}'\n        ELSE from_number\n    END\nWHERE reason_for_call LIKE '%Cobranzas%';",
+        "options": {}
+      },
+      "id": "0a2c3121-787a-40af-a627-ea5d71059a06",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        480,
+        0
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound\nSET from_number = \n    CASE\n        WHEN reason_for_call LIKE '%Cobranzas%' AND reason_for_call LIKE '%BR' THEN '{{ $json.number }}'\n        ELSE from_number\n    END\nWHERE reason_for_call LIKE '%Cobranzas%';",
+        "options": {}
+      },
+      "id": "bfa074ea-deb2-4c1d-9e1a-39f81ee93328",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        480,
+        280
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "07fef6ca-099a-42c8-8c86-f5b8efe675b8",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        780,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8f84a3c9-dba8-4adb-9c9a-09c617a06efb",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "id": "2b789536-4922-4e53-95c4-57ccf4447ed3",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1320,
+        20
+      ],
+      "webhookId": "8f84a3c9-dba8-4adb-9c9a-09c617a06efb"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-19T22:53:31.528Z",
+      "updatedAt": "2024-12-19T22:53:31.528Z",
+      "id": "JeuR9KgbxHoHPzZx",
+      "name": "Dinamic_Number_Display"
+    },
+    {
+      "createdAt": "2025-02-28T02:29:41.371Z",
+      "updatedAt": "2025-02-28T02:29:41.371Z",
+      "id": "QNHsMjTjYVpVyiXd",
+      "name": "cobranzas"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T21:26:55.000Z",
+  "versionId": "6063b6b4-4870-4d33-b05a-4f1a5cfb6a10"
+}
