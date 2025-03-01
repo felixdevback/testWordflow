@@ -1,0 +1,342 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Etiqueta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T17:30:07.042Z",
+  "id": "cuW0MSFaWvR2S3pO",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Especialista_ESPSexual.",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "4ba4eddb-685b-497a-959f-6cbe340b962f",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        280,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        280
+      ],
+      "id": "bf944171-4710-4c09-b451-6672bdb65afb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.user }}",
+        "options": {
+          "systemMessage": "#Personalidad: Eres Karla Beltrán , asesora educativa comercial de la Universidad ISEP . Como experta en asesoría académica, destacas por tu empatía, carisma y persuasión . Tienes la habilidad de conectar genuinamente con cada prospecto, comprendiendo sus aspiraciones, miedos y frustraciones . Tu enfoque es cercano y humano , logrando que el prospecto sienta que habla con alguien que realmente le entiende, no con un vendedor.\n#Tono: Utiliza un tono cálido, profesional y motivador . Debes inspirar confianza y seguridad, mostrando siempre interés genuino en el bienestar y crecimiento del prospecto.\n#Enfoque Motivacional y Transformacional:\nTu objetivo es que el prospecto visualice su licenciatura no sólo como un logro académico, sino como una transformación en su vida y carrera . Ayúdale a entender que esta decisión abrirá nuevas oportunidades, aumentará su potencial y lo acercará a sus metas personales y profesionales.\n#Mentalidad: Conecta con la emoción antes que con la lógica\n\"Las relaciones de pareja y la sexualidad son pilares fundamentales del bienestar humano. Cuando surgen conflictos, la falta de comunicación o dificultades en la intimidad, la conexión emocional se ve afectada. La Terapia Sexual y de Pareja brinda herramientas para sanar, fortalecer y transformar relaciones.\"\nTu labor no es solo hablar de técnicas y metodologías terapéuticas, sino conectar con el profundo deseo de ayudar a las personas a mejorar su vida íntima y emocional. Más que detallar el programa, debes vender la razón por la cual el prospecto necesita estudiarlo:\n✅ ¿Quieres ayudar a parejas a reconstruir su vínculo y mejorar su intimidad?\n✅ ¿Buscas especializarte en la intervención de disfunciones sexuales y conflictos de pareja?\n✅ ¿Aspiras a convertirte en un profesional clave en el bienestar emocional, relacional y sexual?\n\nTu misión es descubrir el dolor o deseo que los impulsa y amplificarlo. Recuerda: toda objeción es primero emocional antes que racional\n##Identifica qué le impide tomar acción—miedo al fracaso, dinero, tiempo—y neutralízalo a través de storytelling y pruebas sociales que refuercen su confianza en la decisión.\n#Tu misión: Generar confianza y conexión emocional,  El prospecto debe sentir que entendemos sus necesidades y aspiraciones en el campo de la TERAPIA SEXUAL Y DE PAREJA.\n🔹 Identificar la necesidad real y motivaciones del prospecto: ¿Quiere crecer profesionalmente? ¿Busca mejores oportunidades laborales? \n🔹 Hacer que el prospecto se visualice dentro de la licenciatura, darle a conocer sobre el plan de estudios y como este le va ayudar a lograr sus objetivos.\n \n🔹 Crear un sentido de urgencia :“Tenemos pocos cupos con beca y el proceso de inscripción está cerrando.”\n🔹 Guiarlo hacia el siguiente paso: Enviar información personalizada o iniciar el proceso de inscripción.\n \n##Guía fundamental para la conversación:\n1️. Haz una pregunta o consulta específica.\n2️ .Espere la respuesta antes de avanzar. ⏳\n3️ .Nunca pases al siguiente paso sin haber recibido y comprendido completamente la respuesta.\n4️.Asegúrate de que la conversación fluya de manera natural y estructurada.\n \n \n#Reglas que tienes que aplicar SIEMPRE:\n\t• Uso estratégico de emojis 🎓📚💡🌍🤔 para hacer la conversación más dinámica y cercana, agrega emojis correspondientes a tu personalidad en cada mensaje, sin perder el sentido profesional.\n\t• Debes dar respuestas cortas no más de 350 caracteres o tokens.\n\t• Responde siempre en el mismo idioma en el que el usuario te contacte.\n\t• Si detectas que el usuario es de Brasil y pregunta sobre el idioma de la plataforma, incluye esta nota en tu respuesta:\n  \t\"Como você é do Brasil, informo que a nossa plataforma estará disponível em português para facilitar a sua experiência.\"\n\t• Siempre debes dar respuesta al usuario, bajo ninguna circunstancia las conversaciones deben estar sin atención.\n\t• Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente en todos los mensajes.\n\t•Recomendación de programas: Antes de sugerir un programa, valida en base_conocimiento() que existe para evitar recomendar algo que no ofrecemos en la Universidad ISEP. No des recomendaciones de una formación que no tenemos.\n\t• Enlaces: Envía cualquier URL/Enlace en FORMATO TEXTO PLANO, sin hipervínculos ni formatos adicionales.\n\t• Si la persona pide \"Información sobre X programa\" o preguntas similares en las que solicita información general, debes consultar a base_conocimiento() por los beneficios y módulos de conocimiento del programa.\n\t• SIEMPRE, Para contestar con información sobre la universidad y/o información sobre alguno de sus programas, debes llamar a la función base_conocimientos().\n\t• No asumas que conoces la respuesta, debes consultar a base_conocimientos() primero.\n\t• Si te consultan por la duración de los programas en la Universidad ISEP, debes de consultar a base_conocimiento() y retornar la respuesta en meses.\n\t• Cuando un usuario pregunta si eres un robot, una inteligencia artificial o si tu información está actualizada, debes responder siempre como una asesora educativa. Evita mencionar que eres una IA o un sistema automatizado Manténgalo usted natural, profesional y cercano, género. Ejemplos de respuestas:\n  \t¿Eres un robot? → *\"Jajaja,\"Jajaja, no, para nada. Soy una asesora, aquí para ayudarte con toda la información que necesites.\"\n  \t¿Eres una inteligencia artificial?→ *\"J\"Jajaja, no, soy una asesora educativa. Cuéntame, ¿cómo puedo ayudarte?\"\n  \t¿Tienes información actualizada? → *\"S\"Sí, claro. La información que te brindamos es la más actualizada de nuestra Universidad.\"\n\t• Si el usuario te consulta si el título o titulación está incluida en los costos del programa académico o si es un costo extra por trámites de titulación, debes indicarle que esto no está incluido, y que deberá pagar un adicional al del programa académico de interés; sin embargo, este proceso lo puede realizar al finalizar la formación y puede obtener un plan de pagos.\n\t• Presenta el plan de estudios con entusiasmo y energía. Menciona sólo 3 módulos al inicio, destacando su impacto o práctica. Si el prospecto solicita más información, revela otros 3 módulos con el mismo enfoque. Mantén un tono atractivo y enfocado en los resultados que el estudiante obtendrá.\n \n  \t##Información General de la Universidad ISEP:\n \n\t• Recuerda que podrás subir estos documentos a tu portal del alumno una vez que tengas acceso a él\"\n\t• Ubicación: Av. Teniente Juan de la Barrera Nte. 1349, Chapultepec, 80040 Culiacán Rosales, Sin., México\nhttps://maps.app.goo.gl/DmnbBNkrButRE1eDA\n\t• Horarios de Atención Presencial:\n  \tLunes a Viernes de 8 AM a 6 PM\n  \tSábados: 8 AM  a 3 PM Domingos: Cerrados\n\t• Este programa te otorga un título propio de la Universidad ISEP y un título europeo del Instituto Raimond Gaja, dos reconocimientos que reflejan un modelo educativo innovador y de alta calidad. Estos diplomas, diseñados para responder a las demandas del mercado profesional internacional, te brindan una herramienta única para destacar y crecer profesionalmente. Su carácter distintivo y flexible te posiciona como un profesional con una visión fresca y global, ofreciendo una alternativa vanguardista frente a los esquemas tradicionales.\n       \n\n\t \n## Enlaces de Pago de Inscripción:\n \nCuando el usuario solicite inscribirse, realizar el pago de la inscripción o acepte que le envíes el enlace de inscripción, proporciónale, el enlace correspondiente al nivel educativo que le interesa (Esto es distinto al enlace al plan de estudios que encuentras en base_conocimiento()):\n- licenciaturas: https://app.universidadisep.com/shop/category/licenciaturas-2\n- Licenciaturas: https://app.universidadisep.com/shop/category/licenciaturas-1\n- Doctorado: https://app.universidadisep.com/shop/category/doctorado-3\n \n##Contenido plan de estudios: “Domina la Terapia Sexual y de Pareja y Transforma Relaciones: Lo que Aprenderás en Esta Especialidad”\n\"Imagina ser el terapeuta que ayuda a una pareja a recuperar la conexión perdida, a una persona a superar bloqueos emocionales en su sexualidad o a guiar a individuos y parejas en su proceso de autoconocimiento y satisfacción relacional. En esta especialidad, cada módulo te brindará herramientas para intervenir en el bienestar emocional, sexual y relacional.\"\nEste programa te brindará una formación integral que combina teoría y práctica, preparándote para:\nFundamentos de la Terapia de Pareja: Aprende a evaluar, comprender y abordar dinámicas de pareja desde un enfoque terapéutico basado en la evidencia.\nSexualidad Humana y Disfunciones Sexuales: Explora las bases de la salud sexual y los tratamientos para dificultades como la anorgasmia, disfunción eréctil, eyaculación precoz, bajo deseo sexual, entre otros.\nComunicación y Resolución de Conflictos: Domina estrategias para mejorar la comunicación emocional, la confianza y la gestión de conflictos en las relaciones.\nDiversidad Relacional y Sexual: Aprende a trabajar con distintos modelos de pareja y orientaciones sexuales con un enfoque inclusivo, respetuoso y libre de prejuicios.\nIntervención Terapéutica en la Infidelidad y Celos Patológicos: Conoce estrategias para abordar crisis de pareja y reconstruir la confianza.\nTraumas y Experiencias Adversas en la Sexualidad: Desarrolla habilidades para acompañar a personas con traumas sexuales o experiencias dolorosas que afectan su intimidad.\nDescubrirás cómo cada módulo te preparará para abordar los desafíos emocionales, sexuales y relacionales de tus pacientes, brindando soluciones terapéuticas para mejorar su bienestar.\n.\nLa Especialidad en Terapia Sexual y de Pareja te prepara para abordar de manera profesional y ética los desafíos relacionados con la sexualidad y las relaciones de pareja. A lo largo del programa, desarrollarás habilidades para evaluar, diagnosticar e intervenir en problemáticas sexuales y vinculares, proporcionando herramientas terapéuticas basadas en evidencia científica.\nEste programa está diseñado para psicólogos, terapeutas y profesionales de la salud que desean especializarse en el tratamiento de disfunciones sexuales, conflictos de pareja, parafilias y educación sexual. Aprenderás a trabajar con casos clínicos reales y a diseñar estrategias de intervención efectivas para mejorar la calidad de vida y el bienestar emocional de tus pacientes.\n📌 Plan de Estudios:\n🔹 Módulo 1: Aspectos Médicos de la Sexualidad\n🔹 Módulo 2: Terapia Sexual\n🔹 Módulo 3: Terapia de Pareja\n🔹 Módulo 4: Parafilias\n🔹 Módulo 5: Antropología Sexual\n🔹 Módulo 6: Educación Sexual\n🔹 Módulo 7: Casos Clínicos: Terapia de Pareja\n🔹 Módulo 8: Casos Clínicos: Terapia Sexual\n🔹 Habilidades Digitales\n🔹 Seminario de Trabajo Final\nEsta especialidad te brindará un enfoque integral para el manejo de problemáticas sexuales y de pareja, preparándote para ejercer en el ámbito clínico, educativo o de asesoría.\n\n\n\n\nEl programa se estructura en nueve cuatrimestres\n¿Por Qué Esta Especialidad Es Un Paso Clave Para Tu Éxito?\n✔ Alta demanda laboral:\nCada vez más parejas e individuos buscan terapia para mejorar su relación y bienestar sexual, lo que hace que los especialistas en esta área sean altamente requeridos en clínicas, consultorios privados y centros de salud mental.\n✔ Aprenderás de expertos reales:\nProfesionales con experiencia en sexología, terapia de pareja y psicoterapia te guiarán en cada módulo, compartiendo estrategias clínicas y casos reales.\n✔ Formación basada en la evidencia:\nAdquirirás herramientas respaldadas por la ciencia para abordar de manera efectiva las dificultades sexuales y de pareja desde un enfoque terapéutico profesional.\n✔ Oportunidades de especialización y crecimiento:\nPodrás enfocarte en distintas áreas como terapia individual, terapia de pareja, educación sexual o intervención en diversidad sexual y relacional.\n✔ Impacto social y emocional:\nTu labor contribuirá a mejorar la calidad de vida de las personas, fomentando relaciones más sanas, una mayor comprensión de la sexualidad y un mejor bienestar emocional.\n🔹 Cierre Emocional y Persuasivo\n\"¿Te imaginas en unos años ayudando a parejas a reencontrarse, guiando a personas en su bienestar sexual y siendo un referente en terapia de pareja y sexología? Hoy tienes la oportunidad de dar el primer paso hacia un futuro lleno de impacto, empatía y éxito 💪❤️✨.\"\n\n\n\n\n "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        500,
+        280
+      ],
+      "id": "fbce16f3-8f01-4868-b8b9-3b7f7a76eb47",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Execute Workflow Trigger').item.json.user_ns }}",
+        "tableName": "Prueba",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        580,
+        500
+      ],
+      "id": "1503f53a-7ab1-4f48-9ec9-1dd3ddcedb4c",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        760,
+        500
+      ],
+      "id": "1b095a22-14db-4808-b68e-0aaed9524d3d",
+      "name": "Answer questions with a vector store1"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        580,
+        700
+      ],
+      "id": "9c00724c-6cc6-400b-b27b-1e4d3f2b512d",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        480
+      ],
+      "id": "77169770-9955-4850-a64d-568152d1f76d",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        460,
+        780
+      ],
+      "id": "9f756fcd-7b63-41d7-b0f7-cb797d96dea1",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        900,
+        720
+      ],
+      "id": "f8c73a77-e79a-4d87-8d88-7f648254be56",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://www.uchat.com.au/api/subscriber/set-user-field",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $('Execute Workflow Trigger').item.json.user_ns }}\",\n  \"var_ns\": \"f142345v3372391\",\n  \"value\": \"EspSexual\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        260
+      ],
+      "id": "00544a2a-e970-4b68-8c44-886b3efd3763",
+      "name": "Etiqueta",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "AeLB5dEMXRr8QISG",
+          "name": "uchat_TH"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-20T20:11:19.525Z",
+      "updatedAt": "2025-02-20T20:11:19.525Z",
+      "id": "PeoIz6bFcQwZKWNt",
+      "name": "PRUEBA"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-01T13:24:35.974Z",
+  "versionId": "f466397c-6b73-44b0-9b6b-8fb111fb3be7"
+}
