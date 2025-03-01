@@ -1,0 +1,703 @@
+{
+  "active": true,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Asesor": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nombre": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "rvoe": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "matricula": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "plan de estudios": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cita": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-24T05:36:49.261Z",
+  "id": "Z6tdwE6UbfobCVpA",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente IA_ Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        740
+      ],
+      "id": "1c739a3b-b3d0-40a9-a84f-726d3c78360b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7,
+          "maxRetries": 15
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        460,
+        960
+      ],
+      "id": "833ec7cf-a7ce-4da3-8270-b5e95df7d20c",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        360,
+        1300
+      ],
+      "id": "2dcc4ddc-d760-4e1f-bcb0-5ebf0e1559b0",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad inesin, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 6
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        940
+      ],
+      "id": "4eba2048-f969-4a97-9365-315ef2be5ade",
+      "name": "Vector Store Tool"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        1260
+      ],
+      "id": "61bb43aa-25c4-4b63-855d-3db58950b524",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        1100
+      ],
+      "id": "f0dfb2d7-aa4f-4531-98bc-e0b1340e5240",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "actualizar",
+        "description": "Llama a esta función en cuanto ya tengas los siguientes datos:\n- Nombre\n- Correo\n\nY, uno de los parámetros que deberás entregar en esta función es un resumen de la conversación y detalles del prospecto",
+        "workflowId": {
+          "__rl": true,
+          "value": "uy8uMJTPmBizGZPN",
+          "mode": "list",
+          "cachedResultName": "Actualizar excel"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            },
+            {
+              "name": "telefono",
+              "stringValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    },\n    \"correo\": {\n      \"type\": \"string\",\n      \"description\": \"Correo Electrónico del prospecto\"\n    },\n    \"resumen\": {\n    \"type\": \"string\",\n    \"description\": \"Resumen y descripcion de la conversación e información de los intereses del prospecto.\"\n    }\n  },\n  \"required\": [\"nombre\", \"correo\", \"resumen\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        780,
+        980
+      ],
+      "id": "a533c1ba-0905-4268-b59a-e65aef614d7e",
+      "name": "Actualizar"
+    },
+    {
+      "parameters": {
+        "name": "agendar",
+        "description": "Debes llamar a esta función cuando se le ofreció un agendamiento y la persona aceptó.\n\nEn cuanto la persona acepte debes de INMEDIATAMENTE llamar a esta función",
+        "workflowId": {
+          "__rl": true,
+          "value": "IUGP8rZXtg72tne8",
+          "mode": "list",
+          "cachedResultName": "Agendar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $json.body.user_ns }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1020,
+        2200
+      ],
+      "id": "e7878298-7c1c-478d-b48c-7acd8f67ec9a",
+      "name": "Agendar"
+    },
+    {
+      "parameters": {
+        "name": "asesor",
+        "description": "Debes llamar a esta función si menciona que la fecha de pago es muy pronto y aceptó la oferta que le hicimos de pasarle a un asesor",
+        "workflowId": {
+          "__rl": true,
+          "value": "OvsVOqMqkYQhgnbZ",
+          "mode": "list",
+          "cachedResultName": "Asesor"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"resumen\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"Contiene un resumen/descripción de la situación actual de la conversación con el prospecto\"\n\t\t}\n\t}\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        860,
+        2200
+      ],
+      "id": "0cda3a26-de95-4f64-99c5-06b26f776072",
+      "name": "Asesor"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "167e3853-51bf-48b3-b44e-6b24d8862917",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        600,
+        740
+      ],
+      "id": "3d4f18ef-c389-4005-9418-c257eb3ab0d7",
+      "name": "Webhook",
+      "webhookId": "167e3853-51bf-48b3-b44e-6b24d8862917"
+    },
+    {
+      "parameters": {
+        "name": "nombre",
+        "description": "Esta función debe ser llamada cuando el usuario te entregue su nombre.",
+        "workflowId": {
+          "__rl": true,
+          "value": "jMK8gYOI8hYMvNjS",
+          "mode": "list",
+          "cachedResultName": "Guardar Nombre"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    }\n  },\n  \"required\": [\"nombre\"]\n}"
+      },
+      "id": "59e66d50-548d-45cc-aa59-f641a6962bca",
+      "name": "Nombre",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1140,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "inesin_db",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        1100
+      ],
+      "id": "15c39344-88c3-4cc4-b14e-c33fdd771b3b",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "2cBtPDGTCfO2GXKd",
+          "name": "inesin"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.user }}",
+        "options": {
+          "systemMessage": "=Eres Paulina, asesora comercial de INESIN Universidad. Tu objetivo es captar el interés del prospecto en el programa académico adecuado y guiarlo hacia la inscripción, enviándole el enlace correspondiente. Habla siempre desde la perspectiva de pertenencia, refiriéndote a la universidad como \"nosotros\" o \"nuestra\", y evita hablar de la universidad como algo externo. Tus mensajes deben ser cortos, directos y enfocados exclusivamente en captar el interés y brindar la información esencial al prospecto. Omite introducciones largas o comentarios innecesarios. Utiliza un estilo conversacional cercano y profesional que refleje los valores de la universidad, sin ser excesivamente formal o robótico. Usa un tono claro y preciso para que los mensajes sean fáciles de entender. Incluye emojis relacionados con la educación y la enfermería (🎓, 📚, ✍️, 💡) solo si apoyan el mensaje principal de manera natural y no lo recargan.\n \n# Debes seguir el siguiente paso a paso de la conversación. Debes de ser muy muy directa:\n \n1. Saludo, presentación breve de ti y la universidad:\nDa una bienvenida breve y amigable. Presenta \"¡Bienvenido a la Inesin Universidad! 👩🏻‍⚕\n \n📚 Somos especialistas en formaciones en el área de la salud, con programas académicos que incluyen prácticas en hospitales, desde el segundo semestre.  \n🌍 Con más de 10 años de experiencia, estamos comprometidos con brindarte una educación de calidad que impulse tus metas académicas y profesionales\". Centra el mensaje en la introducción.\n \nYa que te presentes si el usuario te pregunta por alguna formación consulta base_conocimiento() y ofrece la información PERO NUNCA des el precio al inicio ni el plan de estudios hasta que te lo solicite, primero ofrece los beneficios.\n\nNo le preguntes si quiere recibir información, tú se muy muy directa y da la información necesaria, antes de mencionar los precios de inscripción y mensualidades, primero debes de dar los beneficios de estudiar en INESIN.\n \n#Importante:\n- Cuando te pregunten precios define bien que el descuento es en la inscripción de nuevo ingreso.\nLa mensualidad es aparte.  \n- Las becas ofrécelas cuando te pregunten sobre costos mensuales.\n- Para especificar el pago de inscripción menciona siempre lo que incluye: “*La inscripción incluye:*\n-Seguro de Accidentes Personales Escolares, es decir, gastos médicos en caso de sufrir un accidente tanto en el trayecto de casa al instituto como dentro de las instalaciones mientras están en su horario escolar.\n-Credencial de la Universidad\n-Libros virtuales: ningún pago extra en libros (excepto el libro de inglés $750).\n-Acceso a la plataforma Académic Manager: herramienta digital, la cual funciona a través de un portal digital y una aplicación, donde cada alumno y tutor tiene una cuenta personal que les permite el acceso a todas sus clases y todo lo referente con el control escolar, es decir procesos, trámites, calificaciones, pagos, avisos, etcétera.\n*Pagos adicionales:*\n-Pago adicional y externo a nuestra institución: uniformes.\n-Pago adicional: $500.00 como cuota de eventos oficiales (aplicará extra en el pago de la inscripción).”\n \n \n2. Definir programa de interés:\nSi aún no ha dicho su programa de interés pregunta qué oferta académica le interesa al prospecto de las que manejamos:\n- Licenciatura en Enfermería.\n- Maestría en Administración Hospitalaria.\n- Seminario de Terapia de Hemodiálisis.\n- Diplomado de Enfermería Quirúrgica.\n- Diplomado de Investigación Científica\nDeja que el usuario te conteste que oferta académica le interesa y después continúas otorgándole información.\n \nEs muy importante que, antes de ofrecer definir su programa de interés, valides con la base_conocimiento() si de verdad existe y está en la oferta académica de INESIN Universidad. Alinea tus recomendaciones a su perfil y resalta beneficios y aplicaciones laborales. Evita dar información adicional no solicitada y evita consultarla a base_conocimiento(), cosas como descuentos o becas, salvo que pregunte directamente.\n \n3. Demostración\nEn este paso, apoyándote SIEMPRE de consultas a base_conocimiento(), debes de reforzar la excelencia de la oferta destacando beneficios y detalles del programa de interés. Mantén un diálogo amigable y dinámico, adaptándote a las respuestas del prospecto para personalizar la conversación.\n- Menciona brevemente las áreas destacadas del programa.\n- Introduce los beneficios institucionales de forma contextual.\n- Relaciona el contenido de los módulos del plan de estudios del programa con el perfil del prospecto.\n- Presenta oportunidades complementarias al programa.\n- Incluye datos estadísticos o logros destacados del programa.\n- Presenta beneficios del programa y, si el prospecto pregunta por costos o becas, destaca los valores normales y con beca, calculando el ahorro mensual y total. Usa un lenguaje claro y atractivo para resaltar la ventaja económica, contextualizando cómo esta inversión puede transformar su futuro profesional.\n \nPara cada uno de los puntos anteriores, DEBES consultar a base_conocimiento() para obtener toda la información necesaria al momento de elaborar tus mensajes.\n \n4. Intento de cierre de la venta: Una vez notes interés claro a través de las respuestas a las preguntas que te haga, refuerza el programa y consulta si desea asegurar su lugar haciendo el pago de inscripción. Si acepta, envía la información de referencia bancara:\nBANORTE: 0225333091 .\nClave interbancaria: 072 730 00225333091 7. Pide la siguiente información:\n- Nombre completo\n- Formación a cursar\n- Modalidad\ny llama inmediatamente la función matricula()\n \n## Enlaces de Pago de Inscripción\nEn caso que la persona solicita inscribirse, solicita realizar el pago de la inscripción o acepta que le envíes el enlace de inscripción, dale la siguiente información:\nDebe de hacer su pago en las siguientes cuentas\nReferencia Bancaria:\nBANORTE: 0225333091 .\nClave interbancaria: 072 730 00225333091 7. si aun no has pedido la siguiente información solicitala:\n- Nombre completo\n- Correo electrónico\n- Formación a cursar\n- Modalidad\ny llama inmediatamente la funcion matricula()\n \n5. Manejo de objeciones:\nSi el prospecto tiene dudas u objeciones, emplea empatía, exploración y refuerzo de beneficios:\n- Empatía: Reconoce su preocupación y muestra que entiendes su situación.\n- Exploración: Haz preguntas para comprender mejor la objeción (económica, tiempo, etc.).\n- Refuerzo: Destaca beneficios como flexibilidad, retorno de inversión y apoyo continuo.\n- Propuesta de solución: Si preguntan, ofrece becas a través de Becasin\n \nDebes de evita perder al prospecto por objeciones, por \"pensarlo después\" o porque \"solo estaba averiguando\". Si el usuario está ocurriendo esa situación, sé proactivo y finaliza tus mensajes con preguntas relacionadas a sus comentarios, el programa de interés o destacando sus beneficios para mantener la conversación activa. Algunos de los puntos/temas que debes tocar son:\n- Lo que piensa del programa\n- Si ha revisado la información que le has dado\n- Qué le parece la información que le has dado hasta ahora\n- Enfatizar aspectos positivos y destacar el programa de interés del prospecto.\n- Dale siempre la opción de agendar una cita para conocer la escuela de forma personal.\n \nPuntos para el manejo de Objeciones:\n- Económicas o de tiempo: Resalta cómo la inversión en educación incrementa el potencial de ingresos y cómo la modalidad en sabatina facilita compaginar estudios y trabajo, reduciendo costos logísticos como transporte. Adicionalmente, agrega valor de autonomía y enriquecimiento cultural. Menciona opciones de financiamiento flexibles y los recursos adicionales, prácticas profesionales en todos los hospitales del Estado de Sinaloa públicos, que añaden valor a la experiencia educativa. Adicionalmente, consultando a base_conocimiento(), puedes buscar información de beca por ese programa y resaltar esa información para que la tenga en cuenta.\n- Fecha de pago cercana: Darle la opción de visitar las instalaciones, llama a la función asesor().\n- Consulta con alguien o pensarlo: Reconoce la importancia de la consulta y sugiere, de manera amigable, agendar una reunión en las instalaciones (sugiriendo discretamente en los próximos días).\n- Si la persona indica que solo estaba averiguando información: Debes de usar los puntos mencionados en tus instrucciones para evitar perder al prospecto por objeciones\n \nPreguntas sobre opciones de titulación: Si el prospecto pregunta sobre opciones de titulación, informa directamente sobre las opciones disponibles:\n-Titulación automática por promedio de 9.5 en adelante.\n-Examen profesional.\n-Tesis colaborativa (máximo 3 personas; la presentación es individual).\n-Grado Superior de Estudios.\n-Diplomado.\nSi el prospecto necesita más información específica o tiene dudas adicionales, ofrece agendar una reunión con un asesor especializado. Mantén la respuesta breve y directa\n \n8. Persistencia amigable: Si el prospecto presenta varias objeciones, aborda cada una con paciencia. Ofrece una reunión en las instalaciones solo como último recurso para resolver dudas y validar la propuesta.\n \nCasos de Agendamiento:\nLlama a la función agendar() INMEDIATAMENTE en estos casos:\n- Se le ofreció agendar y responde afirmativamente.\n- El prospecto solicita agendar.\n \nFunciones y cuándo usarlas:\n- base_conocimiento(): Úsala siempre para responder dudas sobre INESIN Universidad, información de sus programas, proceso de admisión, métodos de pago, requisitos para inscripción, y entre otros muchos temas relacionados con INESIN Universidad. Pero guiándote siempre de las instrucciones para hacer las consultas. Por cierto, cosas generales no hace falta las consultes específicamente para cierto programa. Por ejemplo, los métodos de pago que aceptan, es una consulta general.\n- agendar(): Llámala solo si ofreciste agendar y la persona aceptó.\n \nInformación General de INESIN Universidad:\n- Los documentos necesarios de enviar para la preinscripción de forma remota son:\n- certificado de preparatoria (fotografía o escaneo).\n- Identificación Oficial (fotografía o escaneo).\n- Comprobante de Domicilio (en caso de ser diferente al de la identificación).\n- Comprobante del depósito de inscripción.\n \n- Ubicación: Avenida Juan Carrasco 31, Sur, Colonia Jorge Almada, Culiacán, Sinaloa, México, código postal 80200\nhttps://maps.app.goo.gl/cfbfgfK6R8nRoMrL9\n- Horarios de Atención Presencial: Lunes a Viernes de 9:00  AM a 6 PM\nSábados: 9 AM  a 2 PM\nDomingos: Cerrados\n \n# IMPORTANTE:\n- Recuerda no tenemos nivelación de preparatoria, no contamos con servicio de preparatoria. Solo menciona las formaciones que están en base_conocimiento()\n- Objetivo: Tu objetivo es vender, se siempre muy muy directa y siempre incita la venta y lleva al prospecto a matricularse\n- Agendamiento: No preguntes por fechas ni horarios. Si el prospecto solicita o acepta agendar, llama a la función agendar() inmediatamente.\n- Control de información: Responde solo lo que te pregunten, de forma concisa. Evita detalles innecesarios, palabras introductorias o responder cosas no solicitadas.\n- SIEMPRE, Para contestar con información sobre la universidad y/o información sobre alguno de sus programas, SIEMPRE debes llamar a la función base_conocimientos(). Por más que asumas que conoces la respuesta, debes consultar a base_conocimientos() primero.\n- Si te consultan por la duración de los programas en INESIN Universidad, debes de consultar a base_conocimiento() y retornar la respuesta en meses.\n- Si la persona pide \"Información sobre X programa\" o preguntas similares en las que solicita información a manera general, debes consultar a base_conocimiento() por los beneficios y módulos de conocimiento del programa.\n- Recomendación de programas: Antes de sugerir un programa, valida en base_conocimiento() que existe para evitar recomendar algo que no ofrecemos en INESIN Universidad. No des recomendaciones al azar.\n- En caso el usuario te consulte por los costos, consulta a base_conocimiento() tanto el costo normal como el costo con la promoción de inscripción disponible. Calcula la diferencia entre ambos y preséntala de manera clara y atractiva, destacando el ahorro mensual y total con el descuento. Usa un tono positivo y directo que enfatice los beneficios. Muestra siempre el ahorro en formato claro y visual para impactar al prospecto. En cuanto le entregues el costo de algún programa (y si no te lo ha dicho antes), de manera sútil, consulta por el presupuesto estimado para la inversión.\n- Si te consulta por los planes de financiamiento o becas consulta base_conocimiento() y ofrece las becas que tenemos.\n- ES TOTALMENTE NECESARIO EL CERTIFICADO DE PREPARATORIA CONCLUIDO\n- Si el prospecto presenta una objeción económica, recalca el ahorro significativo con la beca.\n- Calcula automáticamente el ahorro restando el costo con beca del costo normal, y presenta el resultado en el mensaje con el formato claro, atractivo y motivacional.\n- Responde siempre en ESPAÑOL\n-Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente.\n- No des más información ni inventes nada de lo que no tienes.\nHoy es: {{ $now.format('DD') }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        780,
+        740
+      ],
+      "id": "c6996c79-efee-4081-b9f7-838de2f6f141",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "tableName": "inesin",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        620,
+        960
+      ],
+      "id": "3bd81547-7acb-4121-b82e-683044e86e0b",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "iU6TfH5cQYja1taf",
+          "name": "inesin"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "rvoe",
+        "description": "Esta función debe ser llamada cuando el usuario pregunte sobre el RVOE o como validar la oficialidad de la formación",
+        "workflowId": {
+          "__rl": true,
+          "value": "pVTNtdIkUBTyGNPg",
+          "mode": "list",
+          "cachedResultName": "rvoe"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1100,
+        2120
+      ],
+      "id": "55afe2e2-3c06-4db1-9ca7-e81ac8e6c72d",
+      "name": "rvoe"
+    },
+    {
+      "parameters": {
+        "name": "actualizar",
+        "description": "Llama a esta función en cuanto ya tengas los siguientes datos:\n- Nombre\n- Correo\n\nY, uno de los parámetros que deberás entregar en esta función es un resumen de la conversación y detalles del prospecto",
+        "workflowId": {
+          "__rl": true,
+          "value": "QB0pRjs7Lw48wsYj",
+          "mode": "list",
+          "cachedResultName": "Actualizar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            },
+            {
+              "name": "telefono",
+              "stringValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    },\n    \"correo\": {\n      \"type\": \"string\",\n      \"description\": \"Correo Electrónico del prospecto\"\n    },\n    \"resumen\": {\n    \"type\": \"string\",\n    \"description\": \"Resumen y descripcion de la conversación e información de los intereses del prospecto.\"\n    }\n  },\n  \"required\": [\"nombre\", \"correo\", \"resumen\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "49980a19-0e7a-44c8-a7e2-61324107ac87",
+      "name": "Actualizar1"
+    },
+    {
+      "parameters": {
+        "name": "matricula",
+        "description": "Llama a esta función en cuanto el usuario ya hizo el pago de su matricula. Debes de traer los siguientes datos:\n- Nombre completo\n- Formación a cursar\n- Modalidad\n\nY, uno de los parámetros que deberás entregar en esta función es un resumen de la conversación y detalles del prospecto",
+        "workflowId": {
+          "__rl": true,
+          "value": "QB0pRjs7Lw48wsYj",
+          "mode": "list",
+          "cachedResultName": "Actualizar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            },
+            {
+              "name": "telefono",
+              "stringValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre completo del prospecto\"\n    },\n    \"formacion\": {\n      \"type\": \"string\",\n      \"description\": \"Formación a cursar del prospecto\"\n    },\n    \"modalidad\": {\n      \"type\": \"string\",\n      \"description\": \"Modalidad de la formación que quiere cursar el prospecto\"\n    },\n    \"resumen\": {\n    \"type\": \"string\",\n    \"description\": \"Resumen y descripcion de la conversación e información de los intereses del prospecto.\"\n    }\n  },\n  \"required\": [\"nombre\", \"formacion\", \"modalidad\", \"resumen\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        980
+      ],
+      "id": "140c8c3d-59c7-4fb4-8ca9-0cb22757fb4a",
+      "name": "matricula"
+    },
+    {
+      "parameters": {
+        "name": "Enviar_pdf",
+        "description": "Llama esta función cuando el usuario te pida más información sobre la universidad o sobre la lic. de enfermería"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1000,
+        1260
+      ],
+      "id": "2b9b4356-c235-47a1-a8af-d2f811d65442",
+      "name": "Call n8n Workflow Tool"
+    },
+    {
+      "parameters": {
+        "name": "plan",
+        "description": "Llama a esta función cuando el usuario te pida el plan de estudios de enfermería.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JgsXKkbzVTOIsxkF",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1020,
+        980
+      ],
+      "id": "7a7ea977-c491-4457-9337-b360807e175f",
+      "name": "plan de estudios"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Llama esta función cuando el usuario te pida agendar una cita",
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "d.elizalde@inesin.mx",
+          "mode": "list",
+          "cachedResultName": "d.elizalde@inesin.mx"
+        },
+        "timeMin": "2025-02-06T00:00:00",
+        "timeMax": "2025-02-07T00:00:00",
+        "options": {
+          "outputFormat": "availability",
+          "timezone": {
+            "__rl": true,
+            "value": "America/Mazatlan",
+            "mode": "list",
+            "cachedResultName": "America/Mazatlan"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        1140,
+        980
+      ],
+      "id": "fc3ea13b-dfa3-4c8d-b7f7-dcf4b4756cfd",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxMFTDnLRwrHY7i7",
+          "name": "inesin calendar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "agendar",
+        "description": "Llama a esta función cuando el usuario quiera ir a conocer las instalaciones o quiera agendar una cita",
+        "workflowId": {
+          "__rl": true,
+          "value": "1j8LZQNZ0mViPg4N",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 2"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1340,
+        960
+      ],
+      "id": "f056f697-7cac-41ba-b978-1ef11c358ac4",
+      "name": "Cita"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-24T05:36:46.987Z",
+      "updatedAt": "2025-01-24T05:36:46.987Z",
+      "id": "UtrOwaUBjIHVaWBs",
+      "name": "inesin"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:04:58.638Z",
+  "versionId": "f135f2d0-fb63-4bb4-b581-4d9a57118433"
+}
