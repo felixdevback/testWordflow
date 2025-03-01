@@ -1,0 +1,1654 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-19T10:40:32.701Z",
+  "id": "54XCucNStlkrjhIK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Funcion_Agendar_llamada",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "calendar.event",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "opportunity_id",
+              "fieldValue": "={{ $('Webhook').item.json.body.call.retell_llm_dynamic_variables.id_oddo }}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $('Webhook').item.json.body.call.retell_llm_dynamic_variables.name }}"
+            },
+            {
+              "fieldName": "start_date",
+              "fieldValue": "={{ $json.formattedDate }}"
+            },
+            {
+              "fieldName": "description",
+              "fieldValue": "agenda_llamada"
+            },
+            {
+              "fieldName": "allday",
+              "fieldValue": "={{ false }}"
+            },
+            {
+              "fieldName": "duration",
+              "fieldValue": "1"
+            },
+            {
+              "fieldName": "user_id",
+              "fieldValue": "5064"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        180,
+        -480
+      ],
+      "id": "c1b4b86a-eac0-4b8d-8f26-abf611b02e58",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0cb63a85-6394-41fc-b506-9726b06fc238",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        -180
+      ],
+      "id": "d5f5d2fb-586d-4538-8bcb-62086fa959a3",
+      "name": "Webhook",
+      "webhookId": "0cb63a85-6394-41fc-b506-9726b06fc238"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "date_last_trx": "={{ $json.formattedDate }}\n",
+            "last_state": "rellamada",
+            "uid": "={{ $('Webhook').item.json.body.call.retell_llm_dynamic_variables.uid }}",
+            "oddo_id": "={{ $('Webhook').item.json.body.call.retell_llm_dynamic_variables.id_oddo }}",
+            "resumen_gerencial": "me pediste que te llamara luego, podemos hablar ahora?"
+          },
+          "matchingColumns": [
+            "uid",
+            "oddo_id"
+          ],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        200,
+        -640
+      ],
+      "id": "2139e110-4b5d-489c-9134-4ca1189fac90",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.body.args.appointment_available_ts }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd HH:mm:ss z",
+        "options": {
+          "includeInputFields": false,
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        -540
+      ],
+      "id": "a19bdaa8-4676-4eb4-9489-3531967f6f9d",
+      "name": "Date & Time"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "workflow.universidadisep.com",
+            "user-agent": "axios/1.7.7",
+            "content-length": "16728",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "100.20.5.228",
+            "x-forwarded-host": "workflow.universidadisep.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7231b11a3e31",
+            "x-real-ip": "100.20.5.228",
+            "x-retell-signature": "v=1740158167870,d=a4808689e76ec2d6bc3820926997b378db689808716e20f2bde441fc9504af63"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "call": {
+              "call_id": "call_bd1947f0b8c3cc3892e0ace9c99",
+              "call_type": "phone_call",
+              "agent_id": "agent_da3c43a068710615862f04c3c6",
+              "retell_llm_dynamic_variables": {
+                "campaign_name": "Ventas_oportunidades_mx21/02/2025",
+                "uid": "46948",
+                "llamada": "1",
+                "email_user": "qscarmenp@gmail.com",
+                "id_oddo": "835863",
+                "name": "carmen quintero prueba 1",
+                "chatInput": ""
+              },
+              "call_status": "ongoing",
+              "start_timestamp": 1740158128081,
+              "transcript": "Agent: ¡Hola! Muy buen día, soy Karla Beltrán, asesora de admisiones de la Universidad Isép. Espero que estés teniendo un excelente día. Vi que estás interesado en nuestras formaciones y quiero entender mejor lo que buscas para ayudarte a encontrar la mejor opción. ¿Cómo te gustaría que te llamara?\nUser: Carmen, mira, en este momento estoy un poquito ocupada, aquí me aparece si me puedes reagendar en veinte minutos.\nAgent: ¡Entiendo perfectamente, Carmen! No quiero quitarte mucho tiempo. ¿Te parece si agendamos la llamada para dentro de 20 minutos? Solo necesito que me confirmes la hora exacta en la \nUser: Sí.\nAgent: que te gustaría que te llame.\n",
+              "transcript_object": [
+                {
+                  "role": "agent",
+                  "content": "¡Hola! Muy buen día, soy Karla Beltrán, asesora de admisiones de la Universidad Isép. Espero que estés teniendo un excelente día. Vi que estás interesado en nuestras formaciones y quiero entender mejor lo que buscas para ayudarte a encontrar la mejor opción. ¿Cómo te gustaría que te llamara?",
+                  "words": [
+                    {
+                      "word": "¡Hola!",
+                      "start": 0.032407470703125,
+                      "end": 0.988888916015625
+                    },
+                    {
+                      "word": " Muy ",
+                      "start": 0.992041748046875,
+                      "end": 1.00315283203125
+                    },
+                    {
+                      "word": "buen ",
+                      "start": 1.00315283203125,
+                      "end": 1.164263916015625
+                    },
+                    {
+                      "word": "día, ",
+                      "start": 1.164263916015625,
+                      "end": 1.336486083984375
+                    },
+                    {
+                      "word": "soy ",
+                      "start": 1.336486083984375,
+                      "end": 1.551301025390625
+                    },
+                    {
+                      "word": "Karla ",
+                      "start": 1.551301025390625,
+                      "end": 1.7448193359375
+                    },
+                    {
+                      "word": "Beltrán, ",
+                      "start": 1.7448193359375,
+                      "end": 2.03463427734375
+                    },
+                    {
+                      "word": "asesora ",
+                      "start": 2.03463427734375,
+                      "end": 2.45407861328125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 2.45407861328125,
+                      "end": 2.937412109375
+                    },
+                    {
+                      "word": "admisiones ",
+                      "start": 2.937412109375,
+                      "end": 3.0559306640625
+                    },
+                    {
+                      "word": "de ",
+                      "start": 3.0559306640625,
+                      "end": 3.657782470703125
+                    },
+                    {
+                      "word": "la ",
+                      "start": 3.657782470703125,
+                      "end": 3.776301025390625
+                    },
+                    {
+                      "word": "Universidad ",
+                      "start": 3.776301025390625,
+                      "end": 3.87259716796875
+                    },
+                    {
+                      "word": "Isép.",
+                      "start": 3.87259716796875,
+                      "end": 4.561486083984375
+                    },
+                    {
+                      "word": " Espero ",
+                      "start": 5.212416748046875,
+                      "end": 5.25500927734375
+                    },
+                    {
+                      "word": "que ",
+                      "start": 5.25500927734375,
+                      "end": 5.685564697265625
+                    },
+                    {
+                      "word": "estés ",
+                      "start": 5.685564697265625,
+                      "end": 5.771676025390625
+                    },
+                    {
+                      "word": "teniendo ",
+                      "start": 5.771676025390625,
+                      "end": 6.018898193359375
+                    },
+                    {
+                      "word": "un ",
+                      "start": 6.018898193359375,
+                      "end": 6.469823974609375
+                    },
+                    {
+                      "word": "excelente ",
+                      "start": 6.469823974609375,
+                      "end": 6.7392685546875
+                    },
+                    {
+                      "word": "día.",
+                      "start": 6.7392685546875,
+                      "end": 7.37352783203125
+                    },
+                    {
+                      "word": " Vi ",
+                      "start": 7.872875,
+                      "end": 7.89417138671875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 7.89417138671875,
+                      "end": 8.087689697265626
+                    },
+                    {
+                      "word": "estás ",
+                      "start": 8.087689697265626,
+                      "end": 8.184912109375
+                    },
+                    {
+                      "word": "interesado ",
+                      "start": 8.184912109375,
+                      "end": 8.518245361328125
+                    },
+                    {
+                      "word": "en ",
+                      "start": 8.518245361328125,
+                      "end": 9.162689697265625
+                    },
+                    {
+                      "word": "nuestras ",
+                      "start": 9.162689697265625,
+                      "end": 9.259912109375
+                    },
+                    {
+                      "word": "formaciones ",
+                      "start": 9.259912109375,
+                      "end": 9.6784306640625
+                    },
+                    {
+                      "word": "y ",
+                      "start": 9.6784306640625,
+                      "end": 10.571023193359375
+                    },
+                    {
+                      "word": "quiero ",
+                      "start": 10.571023193359375,
+                      "end": 10.73213427734375
+                    },
+                    {
+                      "word": "entender ",
+                      "start": 10.73213427734375,
+                      "end": 10.958060302734374
+                    },
+                    {
+                      "word": "mejor ",
+                      "start": 10.958060302734374,
+                      "end": 11.377504638671875
+                    },
+                    {
+                      "word": "lo ",
+                      "start": 11.377504638671875,
+                      "end": 11.7534306640625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 11.7534306640625,
+                      "end": 11.883060302734375
+                    },
+                    {
+                      "word": "buscas ",
+                      "start": 11.883060302734375,
+                      "end": 12.021948974609375
+                    },
+                    {
+                      "word": "para ",
+                      "start": 12.021948974609375,
+                      "end": 12.4413935546875
+                    },
+                    {
+                      "word": "ayudarte ",
+                      "start": 12.4413935546875,
+                      "end": 12.6784306640625
+                    },
+                    {
+                      "word": "a ",
+                      "start": 12.6784306640625,
+                      "end": 13.623801025390625
+                    },
+                    {
+                      "word": "encontrar ",
+                      "start": 13.623801025390625,
+                      "end": 13.7423193359375
+                    },
+                    {
+                      "word": "la ",
+                      "start": 13.7423193359375,
+                      "end": 14.558986083984376
+                    },
+                    {
+                      "word": "mejor ",
+                      "start": 14.558986083984376,
+                      "end": 14.709912109375
+                    },
+                    {
+                      "word": "opción.",
+                      "start": 14.709912109375,
+                      "end": 15.010837890625
+                    },
+                    {
+                      "word": " ¿Cómo ",
+                      "start": 15.672375,
+                      "end": 15.714967529296874
+                    },
+                    {
+                      "word": "te ",
+                      "start": 15.714967529296874,
+                      "end": 16.059412109375
+                    },
+                    {
+                      "word": "gustaría ",
+                      "start": 16.059412109375,
+                      "end": 16.1779306640625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 16.1779306640625,
+                      "end": 16.61867138671875
+                    },
+                    {
+                      "word": "te ",
+                      "start": 16.61867138671875,
+                      "end": 16.747375
+                    },
+                    {
+                      "word": "llamara?",
+                      "start": 16.747375,
+                      "end": 16.87607861328125
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 0
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Carmen, mira, en este momento estoy un poquito ocupada, aquí me aparece si me puedes reagendar en veinte minutos.",
+                  "words": [
+                    {
+                      "word": "Carmen, ",
+                      "start": 19.593,
+                      "end": 20.093
+                    },
+                    {
+                      "word": "mira, ",
+                      "start": 21.113,
+                      "end": 21.403
+                    },
+                    {
+                      "word": "en ",
+                      "start": 21.802999,
+                      "end": 22.042999
+                    },
+                    {
+                      "word": "este ",
+                      "start": 22.042999,
+                      "end": 22.362998
+                    },
+                    {
+                      "word": "momento ",
+                      "start": 22.362998,
+                      "end": 22.862998
+                    },
+                    {
+                      "word": "estoy ",
+                      "start": 22.923,
+                      "end": 23.083
+                    },
+                    {
+                      "word": "un ",
+                      "start": 23.083,
+                      "end": 23.243
+                    },
+                    {
+                      "word": "poquito ",
+                      "start": 23.243,
+                      "end": 23.403
+                    },
+                    {
+                      "word": "ocupada, ",
+                      "start": 23.403,
+                      "end": 23.802999
+                    },
+                    {
+                      "word": "aquí ",
+                      "start": 23.802999,
+                      "end": 23.962999
+                    },
+                    {
+                      "word": "me ",
+                      "start": 23.962999,
+                      "end": 24.122998
+                    },
+                    {
+                      "word": "aparece ",
+                      "start": 24.122998,
+                      "end": 24.363
+                    },
+                    {
+                      "word": "si ",
+                      "start": 24.363,
+                      "end": 24.442998
+                    },
+                    {
+                      "word": "me ",
+                      "start": 24.442998,
+                      "end": 24.683
+                    },
+                    {
+                      "word": "puedes ",
+                      "start": 24.683,
+                      "end": 24.923
+                    },
+                    {
+                      "word": "reagendar ",
+                      "start": 24.923,
+                      "end": 25.243
+                    },
+                    {
+                      "word": "en ",
+                      "start": 25.243,
+                      "end": 25.562999
+                    },
+                    {
+                      "word": "veinte ",
+                      "start": 25.562999,
+                      "end": 25.812999
+                    },
+                    {
+                      "word": "minutos.",
+                      "start": 25.812999,
+                      "end": 26.233
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "¡Entiendo perfectamente, Carmen! No quiero quitarte mucho tiempo. ¿Te parece si agendamos la llamada para dentro de 20 minutos? Solo necesito que me confirmes la hora exacta en la ",
+                  "words": [
+                    {
+                      "word": "¡Entiendo ",
+                      "start": 27.570407470703124,
+                      "end": 28.011148193359375
+                    },
+                    {
+                      "word": "perfectamente, ",
+                      "start": 28.011148193359375,
+                      "end": 28.7315185546875
+                    },
+                    {
+                      "word": "Carmen!",
+                      "start": 28.7315185546875,
+                      "end": 29.300962890625
+                    },
+                    {
+                      "word": " No ",
+                      "start": 29.314291748046877,
+                      "end": 29.346698974609374
+                    },
+                    {
+                      "word": "quiero ",
+                      "start": 29.346698974609374,
+                      "end": 29.507810302734374
+                    },
+                    {
+                      "word": "quitarte ",
+                      "start": 29.507810302734374,
+                      "end": 29.733736083984375
+                    },
+                    {
+                      "word": "mucho ",
+                      "start": 29.733736083984375,
+                      "end": 30.1420693359375
+                    },
+                    {
+                      "word": "tiempo.",
+                      "start": 30.1420693359375,
+                      "end": 30.4541064453125
+                    },
+                    {
+                      "word": " ¿Te ",
+                      "start": 31.084208251953125,
+                      "end": 31.126801025390623
+                    },
+                    {
+                      "word": "parece ",
+                      "start": 31.126801025390623,
+                      "end": 31.277726806640626
+                    },
+                    {
+                      "word": "si ",
+                      "start": 31.277726806640626,
+                      "end": 31.57865283203125
+                    },
+                    {
+                      "word": "agendamos ",
+                      "start": 31.57865283203125,
+                      "end": 31.718467529296873
+                    },
+                    {
+                      "word": "la ",
+                      "start": 31.718467529296873,
+                      "end": 32.1703193359375
+                    },
+                    {
+                      "word": "llamada ",
+                      "start": 32.1703193359375,
+                      "end": 32.26661572265625
+                    },
+                    {
+                      "word": "para ",
+                      "start": 32.26661572265625,
+                      "end": 32.66476391601562
+                    },
+                    {
+                      "word": "dentro ",
+                      "start": 32.66476391601562,
+                      "end": 32.858282470703124
+                    },
+                    {
+                      "word": "de ",
+                      "start": 32.858282470703124,
+                      "end": 33.14809716796875
+                    },
+                    {
+                      "word": "20 ",
+                      "start": 33.14809716796875,
+                      "end": 33.25550463867187
+                    },
+                    {
+                      "word": "minutos?",
+                      "start": 33.25550463867187,
+                      "end": 33.53513427734375
+                    },
+                    {
+                      "word": " Solo ",
+                      "start": 34.283625,
+                      "end": 34.326217529296876
+                    },
+                    {
+                      "word": "necesito ",
+                      "start": 34.326217529296876,
+                      "end": 34.60584716796875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 34.60584716796875,
+                      "end": 35.03640283203125
+                    },
+                    {
+                      "word": "me ",
+                      "start": 35.03640283203125,
+                      "end": 35.14381030273437
+                    },
+                    {
+                      "word": "confirmes ",
+                      "start": 35.14381030273437,
+                      "end": 35.25121752929687
+                    },
+                    {
+                      "word": "la ",
+                      "start": 35.25121752929687,
+                      "end": 35.7030693359375
+                    },
+                    {
+                      "word": "hora ",
+                      "start": 35.7030693359375,
+                      "end": 35.820662109375
+                    },
+                    {
+                      "word": "exacta ",
+                      "start": 35.820662109375,
+                      "end": 35.99288427734375
+                    },
+                    {
+                      "word": "en ",
+                      "start": 35.99288427734375,
+                      "end": 36.54103247070312
+                    },
+                    {
+                      "word": "la ",
+                      "start": 36.54103247070312,
+                      "end": 36.669736083984375
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Sí.",
+                  "words": [
+                    {
+                      "word": "Sí.",
+                      "start": 36.743,
+                      "end": 37.153000000000006
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "que te gustaría que te llame.",
+                  "words": [
+                    {
+                      "word": "que ",
+                      "start": 36.669736083984375,
+                      "end": 36.7780693359375
+                    },
+                    {
+                      "word": "te ",
+                      "start": 36.7780693359375,
+                      "end": 36.895662109375
+                    },
+                    {
+                      "word": "gustaría ",
+                      "start": 36.895662109375,
+                      "end": 37.0141806640625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 37.0141806640625,
+                      "end": 37.44381030273438
+                    },
+                    {
+                      "word": "te ",
+                      "start": 37.44381030273438,
+                      "end": 37.55121752929688
+                    },
+                    {
+                      "word": "llame.",
+                      "start": 37.55121752929688,
+                      "end": 37.64843969726562
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                }
+              ],
+              "transcript_with_tool_calls": [
+                {
+                  "role": "agent",
+                  "content": "¡Hola! Muy buen día, soy Karla Beltrán, asesora de admisiones de la Universidad Isép. Espero que estés teniendo un excelente día. Vi que estás interesado en nuestras formaciones y quiero entender mejor lo que buscas para ayudarte a encontrar la mejor opción. ¿Cómo te gustaría que te llamara?",
+                  "words": [
+                    {
+                      "word": "¡Hola!",
+                      "start": 0.032407470703125,
+                      "end": 0.988888916015625
+                    },
+                    {
+                      "word": " Muy ",
+                      "start": 0.992041748046875,
+                      "end": 1.00315283203125
+                    },
+                    {
+                      "word": "buen ",
+                      "start": 1.00315283203125,
+                      "end": 1.164263916015625
+                    },
+                    {
+                      "word": "día, ",
+                      "start": 1.164263916015625,
+                      "end": 1.336486083984375
+                    },
+                    {
+                      "word": "soy ",
+                      "start": 1.336486083984375,
+                      "end": 1.551301025390625
+                    },
+                    {
+                      "word": "Karla ",
+                      "start": 1.551301025390625,
+                      "end": 1.7448193359375
+                    },
+                    {
+                      "word": "Beltrán, ",
+                      "start": 1.7448193359375,
+                      "end": 2.03463427734375
+                    },
+                    {
+                      "word": "asesora ",
+                      "start": 2.03463427734375,
+                      "end": 2.45407861328125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 2.45407861328125,
+                      "end": 2.937412109375
+                    },
+                    {
+                      "word": "admisiones ",
+                      "start": 2.937412109375,
+                      "end": 3.0559306640625
+                    },
+                    {
+                      "word": "de ",
+                      "start": 3.0559306640625,
+                      "end": 3.657782470703125
+                    },
+                    {
+                      "word": "la ",
+                      "start": 3.657782470703125,
+                      "end": 3.776301025390625
+                    },
+                    {
+                      "word": "Universidad ",
+                      "start": 3.776301025390625,
+                      "end": 3.87259716796875
+                    },
+                    {
+                      "word": "Isép.",
+                      "start": 3.87259716796875,
+                      "end": 4.561486083984375
+                    },
+                    {
+                      "word": " Espero ",
+                      "start": 5.212416748046875,
+                      "end": 5.25500927734375
+                    },
+                    {
+                      "word": "que ",
+                      "start": 5.25500927734375,
+                      "end": 5.685564697265625
+                    },
+                    {
+                      "word": "estés ",
+                      "start": 5.685564697265625,
+                      "end": 5.771676025390625
+                    },
+                    {
+                      "word": "teniendo ",
+                      "start": 5.771676025390625,
+                      "end": 6.018898193359375
+                    },
+                    {
+                      "word": "un ",
+                      "start": 6.018898193359375,
+                      "end": 6.469823974609375
+                    },
+                    {
+                      "word": "excelente ",
+                      "start": 6.469823974609375,
+                      "end": 6.7392685546875
+                    },
+                    {
+                      "word": "día.",
+                      "start": 6.7392685546875,
+                      "end": 7.37352783203125
+                    },
+                    {
+                      "word": " Vi ",
+                      "start": 7.872875,
+                      "end": 7.89417138671875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 7.89417138671875,
+                      "end": 8.087689697265626
+                    },
+                    {
+                      "word": "estás ",
+                      "start": 8.087689697265626,
+                      "end": 8.184912109375
+                    },
+                    {
+                      "word": "interesado ",
+                      "start": 8.184912109375,
+                      "end": 8.518245361328125
+                    },
+                    {
+                      "word": "en ",
+                      "start": 8.518245361328125,
+                      "end": 9.162689697265625
+                    },
+                    {
+                      "word": "nuestras ",
+                      "start": 9.162689697265625,
+                      "end": 9.259912109375
+                    },
+                    {
+                      "word": "formaciones ",
+                      "start": 9.259912109375,
+                      "end": 9.6784306640625
+                    },
+                    {
+                      "word": "y ",
+                      "start": 9.6784306640625,
+                      "end": 10.571023193359375
+                    },
+                    {
+                      "word": "quiero ",
+                      "start": 10.571023193359375,
+                      "end": 10.73213427734375
+                    },
+                    {
+                      "word": "entender ",
+                      "start": 10.73213427734375,
+                      "end": 10.958060302734374
+                    },
+                    {
+                      "word": "mejor ",
+                      "start": 10.958060302734374,
+                      "end": 11.377504638671875
+                    },
+                    {
+                      "word": "lo ",
+                      "start": 11.377504638671875,
+                      "end": 11.7534306640625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 11.7534306640625,
+                      "end": 11.883060302734375
+                    },
+                    {
+                      "word": "buscas ",
+                      "start": 11.883060302734375,
+                      "end": 12.021948974609375
+                    },
+                    {
+                      "word": "para ",
+                      "start": 12.021948974609375,
+                      "end": 12.4413935546875
+                    },
+                    {
+                      "word": "ayudarte ",
+                      "start": 12.4413935546875,
+                      "end": 12.6784306640625
+                    },
+                    {
+                      "word": "a ",
+                      "start": 12.6784306640625,
+                      "end": 13.623801025390625
+                    },
+                    {
+                      "word": "encontrar ",
+                      "start": 13.623801025390625,
+                      "end": 13.7423193359375
+                    },
+                    {
+                      "word": "la ",
+                      "start": 13.7423193359375,
+                      "end": 14.558986083984376
+                    },
+                    {
+                      "word": "mejor ",
+                      "start": 14.558986083984376,
+                      "end": 14.709912109375
+                    },
+                    {
+                      "word": "opción.",
+                      "start": 14.709912109375,
+                      "end": 15.010837890625
+                    },
+                    {
+                      "word": " ¿Cómo ",
+                      "start": 15.672375,
+                      "end": 15.714967529296874
+                    },
+                    {
+                      "word": "te ",
+                      "start": 15.714967529296874,
+                      "end": 16.059412109375
+                    },
+                    {
+                      "word": "gustaría ",
+                      "start": 16.059412109375,
+                      "end": 16.1779306640625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 16.1779306640625,
+                      "end": 16.61867138671875
+                    },
+                    {
+                      "word": "te ",
+                      "start": 16.61867138671875,
+                      "end": 16.747375
+                    },
+                    {
+                      "word": "llamara?",
+                      "start": 16.747375,
+                      "end": 16.87607861328125
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 0
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Carmen, mira, en este momento estoy un poquito ocupada, aquí me aparece si me puedes reagendar en veinte minutos.",
+                  "words": [
+                    {
+                      "word": "Carmen, ",
+                      "start": 19.593,
+                      "end": 20.093
+                    },
+                    {
+                      "word": "mira, ",
+                      "start": 21.113,
+                      "end": 21.403
+                    },
+                    {
+                      "word": "en ",
+                      "start": 21.802999,
+                      "end": 22.042999
+                    },
+                    {
+                      "word": "este ",
+                      "start": 22.042999,
+                      "end": 22.362998
+                    },
+                    {
+                      "word": "momento ",
+                      "start": 22.362998,
+                      "end": 22.862998
+                    },
+                    {
+                      "word": "estoy ",
+                      "start": 22.923,
+                      "end": 23.083
+                    },
+                    {
+                      "word": "un ",
+                      "start": 23.083,
+                      "end": 23.243
+                    },
+                    {
+                      "word": "poquito ",
+                      "start": 23.243,
+                      "end": 23.403
+                    },
+                    {
+                      "word": "ocupada, ",
+                      "start": 23.403,
+                      "end": 23.802999
+                    },
+                    {
+                      "word": "aquí ",
+                      "start": 23.802999,
+                      "end": 23.962999
+                    },
+                    {
+                      "word": "me ",
+                      "start": 23.962999,
+                      "end": 24.122998
+                    },
+                    {
+                      "word": "aparece ",
+                      "start": 24.122998,
+                      "end": 24.363
+                    },
+                    {
+                      "word": "si ",
+                      "start": 24.363,
+                      "end": 24.442998
+                    },
+                    {
+                      "word": "me ",
+                      "start": 24.442998,
+                      "end": 24.683
+                    },
+                    {
+                      "word": "puedes ",
+                      "start": 24.683,
+                      "end": 24.923
+                    },
+                    {
+                      "word": "reagendar ",
+                      "start": 24.923,
+                      "end": 25.243
+                    },
+                    {
+                      "word": "en ",
+                      "start": 25.243,
+                      "end": 25.562999
+                    },
+                    {
+                      "word": "veinte ",
+                      "start": 25.562999,
+                      "end": 25.812999
+                    },
+                    {
+                      "word": "minutos.",
+                      "start": 25.812999,
+                      "end": 26.233
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "¡Entiendo perfectamente, Carmen! No quiero quitarte mucho tiempo. ¿Te parece si agendamos la llamada para dentro de 20 minutos? Solo necesito que me confirmes la hora exacta en la ",
+                  "words": [
+                    {
+                      "word": "¡Entiendo ",
+                      "start": 27.570407470703124,
+                      "end": 28.011148193359375
+                    },
+                    {
+                      "word": "perfectamente, ",
+                      "start": 28.011148193359375,
+                      "end": 28.7315185546875
+                    },
+                    {
+                      "word": "Carmen!",
+                      "start": 28.7315185546875,
+                      "end": 29.300962890625
+                    },
+                    {
+                      "word": " No ",
+                      "start": 29.314291748046877,
+                      "end": 29.346698974609374
+                    },
+                    {
+                      "word": "quiero ",
+                      "start": 29.346698974609374,
+                      "end": 29.507810302734374
+                    },
+                    {
+                      "word": "quitarte ",
+                      "start": 29.507810302734374,
+                      "end": 29.733736083984375
+                    },
+                    {
+                      "word": "mucho ",
+                      "start": 29.733736083984375,
+                      "end": 30.1420693359375
+                    },
+                    {
+                      "word": "tiempo.",
+                      "start": 30.1420693359375,
+                      "end": 30.4541064453125
+                    },
+                    {
+                      "word": " ¿Te ",
+                      "start": 31.084208251953125,
+                      "end": 31.126801025390623
+                    },
+                    {
+                      "word": "parece ",
+                      "start": 31.126801025390623,
+                      "end": 31.277726806640626
+                    },
+                    {
+                      "word": "si ",
+                      "start": 31.277726806640626,
+                      "end": 31.57865283203125
+                    },
+                    {
+                      "word": "agendamos ",
+                      "start": 31.57865283203125,
+                      "end": 31.718467529296873
+                    },
+                    {
+                      "word": "la ",
+                      "start": 31.718467529296873,
+                      "end": 32.1703193359375
+                    },
+                    {
+                      "word": "llamada ",
+                      "start": 32.1703193359375,
+                      "end": 32.26661572265625
+                    },
+                    {
+                      "word": "para ",
+                      "start": 32.26661572265625,
+                      "end": 32.66476391601562
+                    },
+                    {
+                      "word": "dentro ",
+                      "start": 32.66476391601562,
+                      "end": 32.858282470703124
+                    },
+                    {
+                      "word": "de ",
+                      "start": 32.858282470703124,
+                      "end": 33.14809716796875
+                    },
+                    {
+                      "word": "20 ",
+                      "start": 33.14809716796875,
+                      "end": 33.25550463867187
+                    },
+                    {
+                      "word": "minutos?",
+                      "start": 33.25550463867187,
+                      "end": 33.53513427734375
+                    },
+                    {
+                      "word": " Solo ",
+                      "start": 34.283625,
+                      "end": 34.326217529296876
+                    },
+                    {
+                      "word": "necesito ",
+                      "start": 34.326217529296876,
+                      "end": 34.60584716796875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 34.60584716796875,
+                      "end": 35.03640283203125
+                    },
+                    {
+                      "word": "me ",
+                      "start": 35.03640283203125,
+                      "end": 35.14381030273437
+                    },
+                    {
+                      "word": "confirmes ",
+                      "start": 35.14381030273437,
+                      "end": 35.25121752929687
+                    },
+                    {
+                      "word": "la ",
+                      "start": 35.25121752929687,
+                      "end": 35.7030693359375
+                    },
+                    {
+                      "word": "hora ",
+                      "start": 35.7030693359375,
+                      "end": 35.820662109375
+                    },
+                    {
+                      "word": "exacta ",
+                      "start": 35.820662109375,
+                      "end": 35.99288427734375
+                    },
+                    {
+                      "word": "en ",
+                      "start": 35.99288427734375,
+                      "end": 36.54103247070312
+                    },
+                    {
+                      "word": "la ",
+                      "start": 36.54103247070312,
+                      "end": 36.669736083984375
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Sí.",
+                  "words": [
+                    {
+                      "word": "Sí.",
+                      "start": 36.743,
+                      "end": 37.153000000000006
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "que te gustaría que te llame.",
+                  "words": [
+                    {
+                      "word": "que ",
+                      "start": 36.669736083984375,
+                      "end": 36.7780693359375
+                    },
+                    {
+                      "word": "te ",
+                      "start": 36.7780693359375,
+                      "end": 36.895662109375
+                    },
+                    {
+                      "word": "gustaría ",
+                      "start": 36.895662109375,
+                      "end": 37.0141806640625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 37.0141806640625,
+                      "end": 37.44381030273438
+                    },
+                    {
+                      "word": "te ",
+                      "start": 37.44381030273438,
+                      "end": 37.55121752929688
+                    },
+                    {
+                      "word": "llame.",
+                      "start": 37.55121752929688,
+                      "end": 37.64843969726562
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "tool_call_invocation",
+                  "tool_call_id": "d55d5fe57e4ce1bd",
+                  "name": "agendar",
+                  "arguments": "{\"appointment_available_ts\":\"2025-02-21T09:36:06-08:00\"}"
+                }
+              ],
+              "latency": {},
+              "call_cost": {
+                "total_duration_unit_price": 0,
+                "product_costs": [],
+                "total_one_time_price": 0,
+                "combined_cost": 0,
+                "total_duration_seconds": 0
+              },
+              "opt_out_sensitive_data_storage": false,
+              "from_number": "+528141949399",
+              "to_number": "+526692784534",
+              "direction": "outbound",
+              "telephony_identifier": {
+                "twilio_call_sid": "CAdfb41615509d8f66d2efe301dfcb3a86"
+              }
+            },
+            "name": "agendar",
+            "args": {
+              "appointment_available_ts": "2025-02-21T09:36:06-08:00"
+            }
+          },
+          "webhookUrl": "https://workflow.universidadisep.com/webhook/0cb63a85-6394-41fc-b506-9726b06fc238",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Hermosillo",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    },
+    {
+      "createdAt": "2025-01-28T06:36:04.642Z",
+      "updatedAt": "2025-01-28T06:36:04.642Z",
+      "id": "sgrT2GlB8XpfYaca",
+      "name": "functions"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-21T18:09:34.000Z",
+  "versionId": "a338afb6-6c15-42a8-9a04-c4582b7f3829"
+}
