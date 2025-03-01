@@ -1,0 +1,143 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-12T22:28:35.604Z",
+  "id": "nPJUpcBOLCOi5PWV",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "cron_llamadas_rellamadas_test",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "=* 8-20 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "867857bd-5046-4732-9a46-536ee49223b1",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        300,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "138NA9FLceEIQb4BA3mznLg6s6YTUPm4IIzZxiWIiXL8",
+          "mode": "list",
+          "cachedResultName": "quien con cual",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/138NA9FLceEIQb4BA3mznLg6s6YTUPm4IIzZxiWIiXL8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/138NA9FLceEIQb4BA3mznLg6s6YTUPm4IIzZxiWIiXL8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Etiquetas de fila": "={{now}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Etiquetas de fila",
+              "displayName": "Etiquetas de fila",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Agente",
+              "displayName": "Agente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "patologías del lenguaje y del habla",
+              "displayName": "patologías del lenguaje y del habla",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_ea0bef5e74ecb775846f137c7f",
+              "displayName": "agent_ea0bef5e74ecb775846f137c7f",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "971a4efe-b09c-48b8-a32b-36009404d197",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        580,
+        280
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "4UcTF8tUg1bsArv3",
+          "name": "Google Sheets account 3"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-12T22:55:12.000Z",
+  "versionId": "e1d99240-19f3-49f5-8881-2ac5f0271c29"
+}
