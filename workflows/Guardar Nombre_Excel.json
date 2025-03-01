@@ -1,0 +1,207 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar a Make": {
+      "main": [
+        []
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-24T06:22:24.459Z",
+  "id": "rLeFQUYqEPwNn7wl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Guardar Nombre_Excel",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2e56c5ce-7a6e-4738-8965-fbc92abb5f2b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us2.make.com/2lpedds3wv9fsgymov6jycqnn0f3skh9",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "odoo_lead_id",
+              "value": "={{ $json.odoo_lead_id }}"
+            },
+            {
+              "name": "nombre",
+              "value": "={{ $json.query.nombre }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        260
+      ],
+      "id": "75aa782e-7b8e-44ae-97c8-cbc6f5843577",
+      "name": "Enviar a Make"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9724f99-341a-41f0-bcce-77e141b3f3f2",
+              "name": "response",
+              "value": "IMPORTANTE: NO LE COMENTES QUE HAS REGISTRADO SU INFORMACIÓN NI SU NOMBRE.\n\nSimplemente, continua al siguiente paso, siguiendo con la conversación natural que te dicen tus instrucciones sigas.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        460
+      ],
+      "id": "55409899-c674-4c87-a246-189a5c7fbbc5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1M7aaaYZgl63APQF2CWiqjYfaWHhkqW7DFBHvAP0PIQM",
+          "mode": "list",
+          "cachedResultName": "BBDD - Chatbot",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M7aaaYZgl63APQF2CWiqjYfaWHhkqW7DFBHvAP0PIQM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Información",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M7aaaYZgl63APQF2CWiqjYfaWHhkqW7DFBHvAP0PIQM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.query.nombre }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resumen",
+              "displayName": "Resumen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        660,
+        460
+      ],
+      "id": "12279a8f-56c9-4b6b-a67a-7de0975c6101",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "G9P8mWgfQkRwDbE1",
+          "name": "inesin_google"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "query": {
+            "nombre": "Jairo"
+          },
+          "odoo_lead_id": "831380"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-24T05:36:46.987Z",
+      "updatedAt": "2025-01-24T05:36:46.987Z",
+      "id": "UtrOwaUBjIHVaWBs",
+      "name": "inesin"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-28T16:28:06.000Z",
+  "versionId": "ae347890-6bb0-491c-8477-1c95724dd90d"
+}
