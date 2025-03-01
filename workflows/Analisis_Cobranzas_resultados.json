@@ -1,0 +1,156 @@
+{
+  "active": false,
+  "connections": {
+    "limpia_tabla_analisis": {
+      "main": [
+        [
+          {
+            "node": "crea_nuevo_Tabla_Analisis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "limpia_tabla_analisis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T17:12:25.720Z",
+  "id": "JYRJi0FoomqGLz9h",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Analisis_Cobranzas_resultados",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "resumen_cobranzas_ia_tabla",
+          "mode": "list",
+          "cachedResultName": "resumen_cobranzas_ia_tabla"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -40,
+        -20
+      ],
+      "id": "5df5cc1a-069e-4c0b-882d-b05e2731d4ee",
+      "name": "limpia_tabla_analisis",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO resumen_cobranzas_ia_tabla (\n  id_oddo,\n  total_llamadas,\n  llamadas_efectivas_ultimos_5_dias,\n  llamadas_efectivas_total,\n  llamadas_no_efectivas,\n  contestadora,\n  sin_contestar_agent,\n  llamada_colgada_user,\n  llamada_colgada_agent,\n  llamada_fallida,\n  llamada_inactiva,\n  pct_voicemail,\n  pct_no_answer,\n  pct_hangup,\n  intentos_realizados,\n  estado,\n  ultima_act,\n  contador_estado,\n  pct_fails,\n  pct_inactive\n) \nSELECT\n  call_details.id_oddo,\n  COUNT(*) AS total_llamadas,\n  SUM(\n    CASE\n      WHEN call_details.duration_minutes > 2 :: DOUBLE PRECISION \n      AND call_details.start_timestamp >= (now() - '5 days' :: INTERVAL) THEN 1 ELSE 0 \n    END\n  ) AS llamadas_efectivas_ultimos_5_dias,\n  SUM(CASE WHEN call_details.duration_minutes > 2 :: DOUBLE PRECISION THEN 1 ELSE 0 END) AS llamadas_efectivas_total,\n  SUM(CASE WHEN call_details.duration_minutes <= 2 :: DOUBLE PRECISION THEN 1 ELSE 0 END) AS llamadas_no_efectivas,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'voicemail_reached' :: TEXT THEN 1 ELSE 0 END) AS contestadora,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'dial_no_answer' :: TEXT THEN 1 ELSE 0 END) AS sin_contestar_agent,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'user_hangup' :: TEXT THEN 1 ELSE 0 END) AS llamada_colgada_user,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'agent_hangup' :: TEXT THEN 1 ELSE 0 END) AS llamada_colgada_agent,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'dial_failed' :: TEXT THEN 1 ELSE 0 END) AS llamada_fallida,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'inactivity' :: TEXT THEN 1 ELSE 0 END) AS llamada_inactiva,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'voicemail_reached' :: TEXT THEN 1 ELSE 0 END) :: NUMERIC * 100.0 / COUNT(*) :: NUMERIC AS pct_voicemail,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'dial_no_answer' :: TEXT THEN 1 ELSE 0 END) :: NUMERIC * 100.0 / COUNT(*) :: NUMERIC AS pct_no_answer,\n  SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'user_hangup' :: TEXT THEN 1 ELSE 0 END) :: NUMERIC * 100.0 / COUNT(*) :: NUMERIC AS pct_hangup,\n\n  COUNT(DISTINCT call_details.ID) AS intentos_realizados,\n\n  -- Estado: \"excluido\" si los criterios se cumplen, de lo contrario NULL o mantener el valor actual\n  CASE \n    WHEN (SUM(CASE WHEN call_details.disconnection_reason IN ('voicemail_reached', 'dial_no_answer', 'user_hangup','dial_failed','inactivity') THEN 1 ELSE 0 END) :: NUMERIC * 100.0 / COUNT(*) :: NUMERIC) > 30.0\n    AND COUNT(DISTINCT call_details.ID) > 15 \n    THEN 'excluido' \n    ELSE NULL \n  END AS estado,\n\n  -- Última actualización (timestamp actual)\n  NOW() AS ultima_act,\n\n  -- Contador de cambios en estado (incrementa si el estado cambia)\n  0 AS contador_estado,\n    SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'dial_failed' :: TEXT THEN 1 ELSE 0 END) :: NUMERIC * 100.0 / COUNT(*) :: NUMERIC AS pct_fails,\n        SUM(CASE WHEN call_details.disconnection_reason :: TEXT = 'inactivity' :: TEXT THEN 1 ELSE 0 END) :: NUMERIC * 100.0 / COUNT(*) :: NUMERIC AS pct_inactive  \nFROM call_details\nWHERE call_details.campaign_name ILIKE '%Cobranz%'\nGROUP BY call_details.id_oddo\nON CONFLICT (id_oddo) \nDO UPDATE SET \n  total_llamadas = EXCLUDED.total_llamadas,\n  llamadas_efectivas_ultimos_5_dias = EXCLUDED.llamadas_efectivas_ultimos_5_dias,\n  llamadas_efectivas_total = EXCLUDED.llamadas_efectivas_total,\n  llamadas_no_efectivas = EXCLUDED.llamadas_no_efectivas,\n  contestadora = EXCLUDED.contestadora,\n  sin_contestar_agent = EXCLUDED.sin_contestar_agent,\n  llamada_colgada_user = EXCLUDED.llamada_colgada_user,\n  llamada_colgada_agent = EXCLUDED.llamada_colgada_agent,\n  llamada_fallida = EXCLUDED.llamada_fallida,\n  llamada_inactiva = EXCLUDED.llamada_inactiva,\n  pct_voicemail = EXCLUDED.pct_voicemail,\n  pct_inactive = EXCLUDED.pct_inactive,\n  pct_fails = EXCLUDED.pct_fails,\n  pct_no_answer = EXCLUDED.pct_no_answer,\n  pct_hangup = EXCLUDED.pct_hangup,\n  intentos_realizados = EXCLUDED.intentos_realizados,\n  \n  -- Actualiza la última actualización\n  ultima_act = NOW(),\n  \n  -- Actualiza el estado si se cumplen los criterios\n  estado = CASE \n    WHEN (EXCLUDED.pct_voicemail + EXCLUDED.pct_no_answer + EXCLUDED.pct_hangup + EXCLUDED.pct_fails + EXCLUDED.pct_inactive) > 30.0\n    AND EXCLUDED.intentos_realizados > 21 \n    THEN 'excluido' \n    ELSE resumen_cobranzas_ia_tabla.estado\n  END;\n\n-- Ahora actualizamos la tabla de contador_estado\nINSERT INTO contador_estado_cobranzas (id_oddo, contador_estado)\nSELECT id_oddo, 1\nFROM resumen_cobranzas_ia_tabla\nWHERE estado = 'excluido'\nON CONFLICT (id_oddo)\nDO UPDATE SET \n  contador_estado = contador_estado_cobranzas.contador_estado + 1;\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        240,
+        -20
+      ],
+      "id": "ba2af3c6-8c9d-4457-8678-7c05dc38b031",
+      "name": "crea_nuevo_Tabla_Analisis",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE contador_estado_cobranzas\nSET contador_estado = contador_estado - 1\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        540,
+        -280
+      ],
+      "id": "ecbe02f8-bca1-4e5d-8da4-4c4214ddc1a2",
+      "name": "Regresa_contador-1",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -280,
+        -20
+      ],
+      "id": "a46f48d8-c722-4d8f-81ac-da234cc74210",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Hermosillo",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-02-28T02:29:41.371Z",
+      "updatedAt": "2025-02-28T02:29:41.371Z",
+      "id": "QNHsMjTjYVpVyiXd",
+      "name": "cobranzas"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T03:31:25.000Z",
+  "versionId": "a61ee153-c71a-4055-8fd8-2c4737cc0184"
+}
