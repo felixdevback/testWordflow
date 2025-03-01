@@ -1,0 +1,2455 @@
+{
+  "active": true,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo4": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo6": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo8": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo10": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo11": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo12": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo13": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo14": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo15": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo16": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo17": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo18": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo20": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo21": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo22": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo23": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo24": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo25": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo26": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo27": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo28": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo29": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo30": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo31": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo32": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo5": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo7": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo9": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo10",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo11",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo12",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo14",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo15",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo16",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo17",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo18",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo20",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo21",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo22",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo23",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo24",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo25",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo26",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo27",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo28",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo29",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo30",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo31",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo32",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-17T17:04:11.001Z",
+  "id": "jsHtNvmXZFexAslQ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Documentos",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 PS-MAESTRÍA EN PSICOLOGÍA CLÍNICA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "93b017de-0dee-446b-a6b6-72b02842315f",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 TH-MAESTRÍA EN NEUROMANAGEMENT Y GESTIÓN DEL TALENTO (NEUROGESTIÓN DEL TALENTO)"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "0b4b7fbe-e5ff-4eb1-97e6-2671aef7aedc",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 NC-MÁSTER EN NEUROPSICOLOGÍA CLÍNICA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "15826d84-9093-4735-b1a1-df8c368d2392",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 LP-MAESTRÍA EN PATOLOGÍAS DEL LENGUAJE Y EL HABLA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "8c72bf99-9771-4f33-95ff-f36c8d2bd168",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        100
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 PV-MAESTRÍA EN PSICOPEDAGOGÍA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "7d38084d-950d-4b4e-a9f2-4e663ffaecb4",
+      "name": "Odoo4",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -60
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 ES-MAESTRÍA EN EDUCACIÓN ESPECIAL"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "f0c36ac9-f6ef-4de5-bd96-66be6950fdbc",
+      "name": "Odoo5",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 AD-MAESTRÍA EN ADMINISTRACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "676e8f31-544f-431d-b720-d36ffca651ed",
+      "name": "Odoo6",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        840
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 ED-MAESTRÍA EN EDUCACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "5911be8e-e064-4af7-83d8-baf4da0f00c0",
+      "name": "Odoo7",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 DE-DOCTORADO EN EDUCACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "92bda999-420d-453f-87b7-689a1960063f",
+      "name": "Odoo8",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1020
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-1 ML-MAESTRÍA EN PSICOLOGÍA FORENSE"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "3157c9a8-7a64-46a5-b651-7021f23540d5",
+      "name": "Odoo9",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 PS-MAESTRÍA EN PSICOLOGÍA CLÍNICA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "cd3f3fff-eab7-4c74-8dad-501c54faae35",
+      "name": "Odoo10",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 ML-MAESTRÍA EN PSICOLOGÍA FORENSE"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "422727a1-4b86-49ff-a273-6d8b420200a4",
+      "name": "Odoo11",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 ED-MAESTRÍA EN EDUCACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "b3dc5f42-5a53-4350-8425-da91de2dad48",
+      "name": "Odoo12",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 ES-MAESTRÍA EN EDUCACIÓN ESPECIAL"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "0b6cb80f-0933-478d-8de8-8bcb608b182a",
+      "name": "Odoo13",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1700
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 PV-MAESTRÍA EN PSICOPEDAGOGÍA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "55b95ee4-c19c-4b82-ae33-d89846490470",
+      "name": "Odoo14",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1860
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 LP-MAESTRÍA EN PATOLOGÍAS DEL LENGUAJE Y EL HABLA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "9790657e-e380-4e7a-9138-bacc64db783f",
+      "name": "Odoo15",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        2060
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 TH-MAESTRÍA EN NEUROMANAGEMENT Y GESTIÓN DEL TALENTO (NEUROGESTIÓN DEL TALENTO)"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "534a5486-99c2-4bd2-9cf2-a1b9d074b827",
+      "name": "Odoo16",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        2260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 NC-MÁSTER EN NEUROPSICOLOGÍA CLÍNICA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "e052a5aa-a95f-4f5e-ba74-c1dc588a94fe",
+      "name": "Odoo17",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        2460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 AD-MAESTRÍA EN ADMINISTRACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "44c8fc7c-13e2-4911-aa1a-ac480b85665a",
+      "name": "Odoo18",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        2640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 DP-MAESTRÍA EN DIRECCIÓN DE PROYECTOS"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "53826ce0-c1f2-49c3-b06a-c0eadf2e7d1c",
+      "name": "Odoo19",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        2820
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 BB-MAESTRÍA EN BIG DATA Y BUSINESS INTELLIGENCE (MAESTRÍA EN INTELIGENCIA DE NEGOCIOS Y DATOS MASIVOS)"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "ab9b728d-cef6-4cdd-8b96-0dde798a9d19",
+      "name": "Odoo20",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        2980
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 PC - MAESTRÍA EN PSICOLOGÍA CLÍNICA Y DE LA SALUD"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "8fe935b6-6cc1-430b-bb0a-b42b3ed2d0ac",
+      "name": "Odoo21",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        3140
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-2 DE-DOCTORADO EN EDUCACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "944e41dd-731b-4888-b0ed-81c39e6811c7",
+      "name": "Odoo22",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        3300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 PS-MAESTRÍA EN PSICOLOGÍA CLÍNICA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "51cde501-b6c0-47fd-80aa-0163cd47abd8",
+      "name": "Odoo23",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        3460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 ML-MAESTRÍA EN PSICOLOGÍA FORENSE"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "70b01320-d2f4-4bf8-90ad-6bb09498e449",
+      "name": "Odoo24",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        3620
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 ED-MAESTRÍA EN EDUCACIÓN"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "151a79c7-e294-4c4e-80fb-3ae7f172df80",
+      "name": "Odoo25",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        3780
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 ES-MAESTRÍA EN EDUCACIÓN ESPECIAL"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "4ec0aa1b-b6b5-475f-81cc-99d7960e3212",
+      "name": "Odoo26",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        3960
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 LP-MAESTRÍA EN PATOLOGÍAS DEL LENGUAJE Y EL HABLA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "254d5aca-08f0-44c1-b2e6-69c293520a44",
+      "name": "Odoo27",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        4120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 TH-MAESTRÍA EN NEUROMANAGEMENT Y GESTIÓN DEL TALENTO (NEUROGESTIÓN DEL TALENTO)"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "42e9277c-5d89-4394-87fe-2eb8ba254c31",
+      "name": "Odoo28",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        4280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 NC-MÁSTER EN NEUROPSICOLOGÍA CLÍNICA"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "07d41bdf-cebb-45ec-b40c-b10dce8962c7",
+      "name": "Odoo29",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        4440
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 DP-MAESTRÍA EN DIRECCIÓN DE PROYECTOS"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "773e407b-15c6-48eb-b6ec-d17cbd5afdd6",
+      "name": "Odoo30",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        4600
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 BB-MAESTRÍA EN BIG DATA Y BUSINESS INTELLIGENCE (MAESTRÍA EN INTELIGENCIA DE NEGOCIOS Y DATOS MASIVOS)"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "6e579354-4863-40c7-9a34-34a9ce2c18e5",
+      "name": "Odoo31",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        4760
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "accepted_percentage",
+            "admission_date",
+            "batch_id",
+            "phone",
+            "mobile",
+            "email",
+            "course_id",
+            "name",
+            "partner_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "register_id",
+              "operator": "in",
+              "value": "2024-3 PC - MAESTRÍA EN PSICOLOGÍA CLÍNICA Y DE LA SALUD"
+            },
+            {
+              "fieldName": "accepted_percentage",
+              "operator": "notEqual",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "done"
+            }
+          ]
+        }
+      },
+      "id": "b3502b9f-edfd-42da-abc7-1566156302f8",
+      "name": "Odoo32",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        4920
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "={{ $json.mobile }}",
+        "template": "retormar_conversacion_orientacion|es_MX",
+        "requestOptions": {}
+      },
+      "id": "285a4ba9-5457-47c3-ac43-03b0ffa2d309",
+      "name": "WhatsApp Business Cloud",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        3620,
+        880
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 2,
+              "triggerAtHour": 15
+            }
+          ]
+        }
+      },
+      "id": "59267df5-e7aa-4c12-927a-29e957ac8e4b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1060,
+        2960
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "orientacionuniversitaria@universidadisep.com",
+        "fromName": "Orientación Universitaria",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Importante: Solicitud de documentos para tu expediente",
+        "contentType": "text/html",
+        "contentValue": "=<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            line-height: 1.6;\n            max-width: 800px;\n            margin: 20px auto;\n            padding: 20px;\n            background-color: #f5f7fa;\n        }\n        .container {\n            background-color: white;\n            padding: 30px;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n        }\n        .header {\n            border-bottom: 2px solid #1a5f7a;\n            padding-bottom: 10px;\n            margin-bottom: 20px;\n        }\n        .subject {\n            color: #1a5f7a;\n            font-size: 1.4em;\n            font-weight: bold;\n            margin-bottom: 15px;\n        }\n        .section {\n            margin: 20px 0;\n            padding: 15px;\n            background-color: #f8f9fa;\n            border-radius: 5px;\n        }\n        .section-title {\n            color: #1a5f7a;\n            font-weight: bold;\n            font-size: 1.1em;\n            margin-bottom: 10px;\n        }\n        .document-list {\n            list-style-type: none;\n            padding-left: 20px;\n        }\n        .document-list li {\n            margin-bottom: 15px;\n            position: relative;\n        }\n        .document-list li:before {\n            content: \"•\";\n            color: #1a5f7a;\n            font-weight: bold;\n            position: absolute;\n            left: -15px;\n        }\n        .important {\n            background-color: #fff3e0;\n            padding: 15px;\n            border-left: 4px solid #ff9800;\n            margin: 20px 0;\n        }\n        .footer {\n            margin-top: 30px;\n            padding-top: 20px;\n            border-top: 1px solid #dee2e6;\n            font-size: 0.9em;\n            color: #666;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <div class=\"subject\">Importante: Documentos requeridos para tu inscripción en ISEP</div>\n        </div>\n\n        <p>Estimado/a {{ $json.name }},</p>\n\n        <p>Espero que te encuentres bien. Me comunico contigo en relación a un asunto importante sobre tu proceso de inscripción en la Universidad ISEP. Para formalizar tu expediente ante la Secretaría de Educación Pública (SEP), necesitamos que nos proporciones la siguiente documentación:</p>\n\n        <div class=\"section\">\n            <div class=\"section-title\">Documentos Requeridos:</div>\n            <ul class=\"document-list\">\n                <li><strong>Título de licenciatura</strong><br>\n                    Copia certificada por notario público o título electrónico</li>\n                <li><strong>Acta de nacimiento</strong><br>\n                    Documento original o documento electrónico</li>\n                <li><strong>Certificado total de estudios con calificaciones</strong><br>\n                    Copia certificada o versión electrónica</li>\n                <li><strong>Identificación oficial</strong><br>\n                    Credencial de elector, pasaporte o documento de identidad vigente</li>\n                <li><strong>CURP (Solo México)</strong><br>\n                    Copia de la Clave Única de Registro de Población</li>\n                <li><strong>Fotografía</strong><br>\n                    Las especificaciones exactas serán confirmadas según los requerimientos de la SEP</li>\n            </ul>\n        </div>\n\n        <div class=\"section\">\n            <div class=\"section-title\">Proceso de entrega:</div>\n            <ol>\n                <li>Accede a tu cuenta en el campus virtual</li>\n                <li>Navega hasta el módulo \"Documentos\"</li>\n                <li>Utiliza la opción \"Seleccionar archivo\" para cada documento</li>\n                <li>Verifica que cada archivo se haya cargado correctamente</li>\n            </ol>\n        </div>\n\n        <div class=\"important\">\n            <div class=\"section-title\">Importante:</div>\n            <ul>\n                <li>Este proceso es fundamental para asegurar tu lugar en la universidad</li>\n                <li>La entrega oportuna garantiza el cumplimiento de los requisitos legales</li>\n                <li>Los documentos deben ser claros y legibles</li>\n                <li>Te notificaremos una vez que hayamos verificado tus documentos</li>\n            </ul>\n        </div>\n\n        <p>Si tienes alguna duda sobre el proceso o los requisitos de los documentos, no dudes en contactarnos. Estamos aquí para apoyarte en completar tu inscripción exitosamente.</p>\n\n        <p>Agradecemos tu atención y pronta respuesta a esta solicitud.</p>\n\n        <div class=\"footer\">\n            <p>Saludos cordiales,<br>\n            Orientación Universitaria<br>\n            Universidad ISEP</p>\n        </div>\n    </div>\n</body>\n</html>",
+        "additionalFields": {}
+      },
+      "id": "a2e11664-1c4c-4055-9370-4b66815e6082",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        3620,
+        1100
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "email, name",
+        "options": {}
+      },
+      "id": "cca13456-4e00-4a15-b2ce-c29a11c3082b",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        2980,
+        880
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://iallamadas.universidadisep.com/outbound-call",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to_number\":\"{{ $json.phone }}\",\"p_number\":\"+528159807695\",\"id_agent\":\"3977748ad57d925e87a7aabcea5f45d1\",\"custom_variables\": {\"name\":\"{{ $json.name }}\"}} ",
+        "options": {}
+      },
+      "id": "53cc1fd7-9e2a-4cf5-9efd-3e4c40a35846",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3620,
+        700
+      ],
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        363
+      ]
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:01:49.285Z",
+  "versionId": "6dd26c5a-b520-4fe5-a392-cf9453c1c0d1"
+}
