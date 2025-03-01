@@ -1,0 +1,286 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta IA": {
+      "main": [
+        [
+          {
+            "node": "Si hay respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta No hay": {
+      "main": [
+        [
+          {
+            "node": "No hay respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Respuesta IA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respuesta No hay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-26T22:49:28.368Z",
+  "id": "U4SkgAtVbgcYOLbo",
+  "meta": null,
+  "name": "[Timeout] mensajes",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "73698501-dc4c-44bc-b9bf-08f1eef5331a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1333e0af-b600-47af-a0fc-6e52d9196b10",
+      "name": "Webhook",
+      "webhookId": "73698501-dc4c-44bc-b9bf-08f1eef5331a"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "37178432-9688-4a44-8925-e9d382d03106",
+      "name": "Chat Memory Manager"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "205d92b0-f206-4bf0-8319-9e0696eb0049",
+              "name": "output",
+              "value": "={{ $('Chat Memory Manager').item.json.messages.last().ai }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0195acee-cef9-4ce8-9d4c-ba355436d5e6",
+      "name": "Respuesta IA",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "205d92b0-f206-4bf0-8319-9e0696eb0049",
+              "name": "output",
+              "value": "=",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2e5f7041-10d9-484b-861e-b03f12dae097",
+      "name": "Respuesta No hay",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cdea51bd-fb87-4b49-9e48-0aef01eca464",
+      "name": "No hay respuesta",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1000,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0e59b177-6320-43b7-b1fe-9525b156dfb5",
+      "name": "Si hay respuesta",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1000,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Chat Memory Manager').item.json.messages.last().ai }}",
+                    "rightValue": "={{ $('Chat Memory Manager').item.json.messages.last().ai }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "108bc42c-cfdc-4014-9926-f223068b0e0b",
+                    "leftValue": "={{ $('Chat Memory Manager').item.json.messages.last().ai }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eac278a1-adea-4dd2-8bf1-c8dbbb4983d2",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        580,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "tableName": "inesin",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        300,
+        220
+      ],
+      "id": "11b12dd2-df44-46a4-9db4-90949c1a747a",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "iU6TfH5cQYja1taf",
+          "name": "inesin"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-24T05:36:46.987Z",
+      "updatedAt": "2025-01-24T05:36:46.987Z",
+      "id": "UtrOwaUBjIHVaWBs",
+      "name": "inesin"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:01:45.893Z",
+  "versionId": "6062920b-fdae-41ab-ac61-23c04850e14e"
+}
