@@ -1,0 +1,77 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-11T17:35:06.738Z",
+  "id": "YxoVNgi8JvRIRc6v",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "send_tickets",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "82d2802c-00b1-41e9-9822-3c347150f90f",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://workflow.universidadisep.com/webhook/cc2f0158-2a44-4cd5-a62c-6627161ccee5",
+        "options": {}
+      },
+      "id": "4f3f6efc-974a-4e98-952e-8956c8764b51",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        280
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-28T03:03:46.000Z",
+  "versionId": "13795595-69f2-466f-a55d-8e4142f14163"
+}
