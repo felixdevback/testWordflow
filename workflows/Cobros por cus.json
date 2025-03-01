@@ -1,0 +1,176 @@
+{
+  "active": false,
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Stripe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stripe": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-05-20T16:02:32.825Z",
+  "id": "7",
+  "meta": null,
+  "name": "Cobros por cus",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "charge",
+        "operation": "create",
+        "customerId": "={{ $json.Cus_id }}",
+        "amount": "={{ $json.Importe }}",
+        "currency": "={{ $json.Moneda }}",
+        "source": "={{ Null }}",
+        "additionalFields": {}
+      },
+      "id": "79f80ea5-d014-476b-b7e9-698c376425f9",
+      "name": "Stripe",
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [
+        760,
+        260
+      ],
+      "credentials": {
+        "stripeApi": {
+          "id": "2",
+          "name": "Stripe account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 1,
+              "unit": "minutes"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8",
+          "mode": "list",
+          "cachedResultName": "Cobro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8/edit#gid=0"
+        },
+        "event": "rowAdded",
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRange"
+            }
+          },
+          "valueRender": "FORMATTED_VALUE"
+        }
+      },
+      "id": "b02cc812-aa9a-49ae-a2a8-f3e0f280ef40",
+      "name": "Google Sheets Trigger",
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        540,
+        260
+      ],
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "11",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8",
+          "mode": "list",
+          "cachedResultName": "Cobro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8/edit#gid=0"
+        },
+        "columnToMatchOn": "Cus_id",
+        "valueToMatchOn": "={{ $json.customer }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "Accion",
+              "fieldValue": "Hecho"
+            },
+            {
+              "column": "Charge_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f202a2e5-1582-4979-a517-6cb366e0a256",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Google Sheets Trigger": {
+      "documentId": "1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8",
+      "sheetId": "0",
+      "lastIndexChecked": 232,
+      "lastRevision": 118,
+      "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1zmU8e0NMfulQ_QBPUe4LGEB0uM4b9J7gRwI_qtiJ9F8&revision=118&exportFormat=xlsx"
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-07-19T17:03:59.000Z",
+  "versionId": "305e034d-e1a7-488a-8f41-428d00566cb8"
+}
