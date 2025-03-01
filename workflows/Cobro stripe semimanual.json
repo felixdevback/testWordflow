@@ -1,0 +1,416 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Get datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get datos": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Stripe",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Leer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stripe": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Contador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Editar datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-05-06T20:40:35.475Z",
+  "id": "2",
+  "meta": null,
+  "name": "Cobro stripe semimanual",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2745fe3b-84d2-4e0b-9fa0-7321859ddabd",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "importe = $node[\"Get datos\"].json[\"Importe\"];\nporciento = 0.5;\nvalor = importe * porciento;\nreturn {\n  json:{\n  \"no\": $node[\"Get datos\"].json[\"No.\"],\n  \"cus\": $node[\"Get datos\"].json[\"Cus_ID\"],\n  \"importe\": valor,\n  \"moneda\": $node[\"Get datos\"].json[\"Moneda\"]\n}\n};"
+      },
+      "id": "d47cd725-2507-44c4-8497-2f4eb456d16f",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0",
+          "mode": "list",
+          "cachedResultName": "Cobrar stripe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 737165590,
+          "mode": "list",
+          "cachedResultName": "29-06-23",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit#gid=737165590"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Deudor",
+              "lookupValue": "1"
+            }
+          ]
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "detectAutomatically",
+              "readRowsUntil": "firstEmptyRow"
+            }
+          },
+          "outputFormatting": {
+            "values": {
+              "general": "FORMATTED_VALUE",
+              "date": "FORMATTED_STRING"
+            }
+          },
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "b047464d-2348-41b3-9abd-fa76044a7d09",
+      "name": "Get datos",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        -260,
+        660
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "charge",
+        "operation": "create",
+        "customerId": "={{ $json[\"cus\"] }}",
+        "amount": "={{ Math.round($json[\"importe\"]) }}",
+        "currency": "={{ $json[\"moneda\"] }}",
+        "source": "={{ Null }}",
+        "additionalFields": {}
+      },
+      "id": "46186d43-a3ec-4a16-ae81-9e2520524940",
+      "name": "Stripe",
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [
+        180,
+        660
+      ],
+      "retryOnFail": false,
+      "credentials": {
+        "stripeApi": {
+          "id": "2",
+          "name": "Stripe account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"status\"] }}",
+              "value2": "={{ \"succeeded\" }}"
+            }
+          ]
+        }
+      },
+      "id": "21786d70-51e7-4784-affc-0dba33278a0e",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        660,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0",
+          "mode": "list",
+          "cachedResultName": "Cobrar stripe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 737165590,
+          "mode": "list",
+          "cachedResultName": "29-06-23",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit#gid=737165590"
+        },
+        "columnToMatchOn": "No.",
+        "valueToMatchOn": "={{ $json[\"No.\"] }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "Cobrado",
+              "fieldValue": "={{$json[\"amount_captured\"] | parseFloat + $json[\"Cobrado\"] | parseFloat}}"
+            },
+            {
+              "column": "Importe",
+              "fieldValue": "={{ $json[\"Importe\"] - $json[\"amount_captured\"] }}"
+            },
+            {
+              "column": "25%",
+              "fieldValue": "={{ $json[\"id\"] }}"
+            },
+            {
+              "column": "Suma %",
+              "fieldValue": "={{ parseFloat($json[\"Suma %\"])  + 25 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "594b0981-c5e2-4e82-9bcb-d44bc754d768",
+      "name": "Editar datos",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        880,
+        540
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0",
+          "mode": "list",
+          "cachedResultName": "Cobrar stripe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2039331972,
+          "mode": "list",
+          "cachedResultName": "16-05-23",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit#gid=2039331972"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Cus_ID",
+              "lookupValue": "={{ $json[\"cus\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "outputFormatting": {
+            "values": {
+              "general": "FORMATTED_VALUE",
+              "date": "FORMATTED_STRING"
+            }
+          },
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "22c5ae70-ac82-487c-b7ef-71c1ff9b56b6",
+      "name": "Leer",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        180,
+        840
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "customer",
+              "field2": "Cus_ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b787a597-8b2e-4372-8491-97b96bbbad6a",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        460,
+        640
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0",
+          "mode": "list",
+          "cachedResultName": "Cobrar stripe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2039331972,
+          "mode": "list",
+          "cachedResultName": "16-05-23",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZS6l90JjISexRmltS2B4mYwmyeYiSME_yEXld_p3cM0/edit#gid=2039331972"
+        },
+        "columnToMatchOn": "No.",
+        "valueToMatchOn": "={{ $node[\"Code\"].json[\"no\"] }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "Intentos",
+              "fieldValue": "={{ parseInt($node[\"Get datos\"].json[\"Intentos\"], 10) + 1 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "49109684-cce7-4b1b-be19-37e7e8090abd",
+      "name": "Contador",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-05-06T20:40:17.532Z",
+      "updatedAt": "2023-05-06T20:40:17.532Z",
+      "id": "1",
+      "name": "Stripe"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-08-12T15:05:38.000Z",
+  "versionId": "453aad63-2c74-47f4-9a9c-52178ac202af"
+}
