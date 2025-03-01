@@ -1,0 +1,102 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-07T01:55:46.347Z",
+  "id": "t6mruSdEpwpgNvhp",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "plan_estudios",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n  \"user_ns\": {{ $json.user_ns }}\n  \"sub_flow_ns\": f145111s1388857",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        340
+      ],
+      "id": "fd68a4ad-cf6c-4f28-b083-8e9fb8d71cea",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "kP2Ml3x0f3BHAk0F",
+          "name": "inesin_omni"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1d0ed55a-b2e5-4bfc-9acf-10b314bde514",
+              "name": "response",
+              "value": "Continua con el siguiente paso.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        700,
+        340
+      ],
+      "id": "3f07af2b-bcee-4f27-94d8-7b8ce7bca900",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-07T01:58:30.000Z",
+  "versionId": "ce9223b0-4317-4d8a-9e3c-35f9932e54ef"
+}
