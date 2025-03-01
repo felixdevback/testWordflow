@@ -1,0 +1,1098 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FTP": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Actualizar BBDD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Actualizar BBDD1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store2": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool1": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-13T16:49:49.892Z",
+  "id": "ogV7htCgtTC9SzBs",
+  "meta": null,
+  "name": "Revisión_Esquema",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2680,
+        860
+      ],
+      "id": "6e1052fe-0d6b-492e-a2eb-6a0121a8f79e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "protocol": "sftp",
+        "path": "=/mnt/db_filestore/filestore/_data/.local/share/Odoo/filestore/UniversidadISep2/{{ $json.store_fname }}"
+      },
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -40
+      ],
+      "id": "c8b15441-582d-42d3-8c4f-565e3977a2ea",
+      "name": "FTP",
+      "credentials": {
+        "sftp": {
+          "id": "kfHErZcdewjYfFsz",
+          "name": "FTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "ir.attachment",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "store_fname",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.Id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        -40
+      ],
+      "id": "7cafe154-2809-4b16-815f-ac761eebe995",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        60,
+        -40
+      ],
+      "id": "8ba020bc-34a2-4152-a982-7775861728d6",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "prueba",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        -2720,
+        1280
+      ],
+      "id": "85825040-2dc7-42b4-a9dc-00249c6df840",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2680,
+        1500
+      ],
+      "id": "708beec7-7c20-4edf-93e1-1a726a8a0d13",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        -2580,
+        1500
+      ],
+      "id": "45c1a767-ac77-4cae-9983-e6535fe1f79c",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkSize": 10000,
+        "chunkOverlap": 200
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        1720
+      ],
+      "id": "d5b255fe-9e46-4ae8-93b7-a88958a523fe",
+      "name": "Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://4d91cd74-12c0-4ebc-a7fe-dd98ea7d71a2.us-east4-0.gcp.cloud.qdrant.io/collections/prueba",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2520,
+        860
+      ],
+      "id": "284d8295-dc89-4681-ba56-3ecec75d403b",
+      "name": "HTTP Request",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2360,
+        860
+      ],
+      "id": "c32fd954-6bb8-403f-a7c2-aaaf41db723b",
+      "name": "Wait",
+      "webhookId": "c5cdc2bf-dd27-4eb0-ae3a-14fe63de79d1"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://4d91cd74-12c0-4ebc-a7fe-dd98ea7d71a2.us-east4-0.gcp.cloud.qdrant.io/collections/prueba",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"vectors\": {\n    \"size\": 1536,\n    \"distance\": \"Cosine\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2220,
+        860
+      ],
+      "id": "fcdfcb80-8f26-4bf8-bb14-a5d2f0055cf4",
+      "name": "HTTP Request1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "37d23913-5211-4c0c-9751-61a7de9072f1",
+              "name": "nombre",
+              "value": "={{ $json.Nombre }}",
+              "type": "string"
+            },
+            {
+              "id": "dd2c9855-3e36-4940-bd92-6a46871aa7ab",
+              "name": "historial",
+              "value": "={{ $json.historial_esquema }}",
+              "type": "string"
+            },
+            {
+              "id": "33160034-0a98-46e8-ad2d-6813a354f855",
+              "name": "tesis",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "28ef598b-5776-4917-be84-b934c8cd60d6",
+              "name": "inteto",
+              "value": "={{ $json.intentos_esquema }}",
+              "type": "number"
+            },
+            {
+              "id": "f720db23-ec20-47ce-adb5-ed0ce1e48cc7",
+              "name": "id_noco",
+              "value": "={{ $json.Id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        120
+      ],
+      "id": "8ffa62ef-3d79-411c-806f-b76912f934e4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e8f748de-3b41-48fa-bbf9-de825b52ecb2",
+              "leftValue": "={{ $json.historial }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        120
+      ],
+      "id": "ff35dc1d-8271-4ad6-b6a8-80015c989ec1",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=\"Eres un agente evaluador de tesis. El alumno {{ $json.nombre }} envió su tesis y se ha extraído el siguiente contenido: {{ $json.tesis }}. Proporciona una evaluación inicial detallada, incluyendo calificación y recomendaciones para mejorar.\""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        900,
+        -260
+      ],
+      "id": "3e1751e5-7a41-4f35-9f7f-7b73c28beee2",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Siempre que revises un trabajo DEBES consultar aquí. Esta función tiene información sobre la rúbrica, parámetros e información necesaria que el trabajo final de master debe de llevar. Además de ser una guía para ti para dar una revisión a TODAS las tésis",
+        "topK": 6
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        -100
+      ],
+      "id": "d9d1cf2d-30d4-45c0-a8f6-3fa7497720fa",
+      "name": "Vector Store Tool"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1220,
+        20
+      ],
+      "id": "e427ef50-cb43-4980-8ccb-af2bf36646c7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "tesis",
+          "mode": "list",
+          "cachedResultName": "tesis"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        840,
+        20
+      ],
+      "id": "ffb85983-88e0-4ecb-ac0c-b17eccb06535",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1080,
+        120
+      ],
+      "id": "5044d968-1644-4878-b6d4-3398bcfbfee1",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Eres un agente evaluador de tesis. El alumno {{ $json.nombre }} ya tiene evaluaciones previas: {{ $json.historial }}. Ahora ha enviado una nueva versión con el siguiente contenido: {{ $json.tesis }}. Compara con evaluaciones anteriores, actualiza la calificación y proporciona recomendaciones adicionales y felicita por las modificaciones en caso de que el alumno hizo bien las modificaciones."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        900,
+        380
+      ],
+      "id": "d55ae596-944e-4007-90ab-6143cf510722",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "returnAll": true,
+        "options": {
+          "where": "=(Nombre,eq,{{ $json.name }})"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -300,
+        300
+      ],
+      "id": "b24eac37-5867-4794-bf6e-0b5c7acdeeac",
+      "name": "NocoDB",
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "82a6a4d5-ca7f-49b7-8ae2-a06385986ae6",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -120,
+        300
+      ],
+      "id": "e7c769a9-acb3-4c28-963c-e484e69b6700",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Nombre",
+              "fieldValue": "={{ $('Odoo').first.json.name }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -2740,
+        1140
+      ],
+      "id": "e5b56612-30b3-4810-a2bc-2a1de1a166b4",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        320,
+        120
+      ],
+      "id": "c399caaf-0f9e-4d18-aafa-ded3c7bb38ec",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "path": "455a0050-903f-47f0-89f7-ac606003ba4b",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -540,
+        160
+      ],
+      "id": "d0da4392-d14b-4c23-b33e-85ba5d6739d3",
+      "name": "Webhook",
+      "webhookId": "455a0050-903f-47f0-89f7-ac606003ba4b"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        -340
+      ],
+      "id": "34de2d7e-8252-4cf8-99f9-8e4dea96254c",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        300
+      ],
+      "id": "8d499299-2581-4d71-b41b-30897c994c8b",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Siempre que revises un trabajo DEBES consultar aquí. Esta función tiene información sobre la rúbrica, parámetros e información necesaria que el trabajo final de master debe de llevar. Además de ser una guía para ti para dar una revisión a TODAS las tésis",
+        "topK": 6
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        980,
+        540
+      ],
+      "id": "b7eef6fb-9020-4dc7-98f9-250fed6ce048",
+      "name": "Vector Store Tool1"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        660
+      ],
+      "id": "78f9352f-9a5c-4b8b-b095-1c6cf283208b",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "prueba",
+          "mode": "list",
+          "cachedResultName": "prueba"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        820,
+        660
+      ],
+      "id": "f2166270-5b1c-4b37-bd61-3d98b06b9e8c",
+      "name": "Qdrant Vector Store2",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1060,
+        760
+      ],
+      "id": "97ad0bc0-12bf-4485-b9ed-ebe35182c6ad",
+      "name": "Embeddings OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "4gXi5X6sZU0gX39u",
+          "mode": "list",
+          "cachedResultName": "info_tesis_inicial"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        400
+      ],
+      "id": "cbc33cdb-0b46-4bd1-9442-df8b882252ae",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('Edit Fields').item.json.Id_noco }}"
+            },
+            {
+              "fieldName": "historial_esquema",
+              "fieldValue": "={{ $json.message.content }}"
+            },
+            {
+              "fieldName": "último_envio_esquema",
+              "fieldValue": "={{ $now.format('yyyy-MM-dd') }}"
+            },
+            {
+              "fieldName": "intentos_esquema",
+              "fieldValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        -180
+      ],
+      "id": "2bfcc9a4-be2c-4190-b650-7532999988d0",
+      "name": "Actualizar BBDD",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('Edit Fields').item.json.Id_noco }}"
+            },
+            {
+              "fieldName": "historial_esquema",
+              "fieldValue": "={{ $json.message.content }}"
+            },
+            {
+              "fieldName": "último_envio_esquema",
+              "fieldValue": "={{ $now.format('yyyy-MM-dd') }}"
+            },
+            {
+              "fieldName": "intentos_esquema",
+              "fieldValue": "={{ parseInt ($('Edit Fields').item.json.intentos) + 1 }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        480
+      ],
+      "id": "cbe93fcb-3d99-4a81-8f1e-b775eadd866b",
+      "name": "Actualizar BBDD1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-20T17:44:53.000Z",
+  "versionId": "0a641de2-b9ce-465a-bec1-f5f07cce12ed"
+}
