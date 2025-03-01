@@ -1,0 +1,110 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "plantilla de respuesta a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "plantilla de respuesta a video": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-27T23:43:20.226Z",
+  "id": "SGkfynGxCpLp8SVT",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "respuesta negativa a testimonial",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c5c443fc-f4ad-4d32-8137-451629646aec",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "Es muy importante que no le digas que has enviado la información.\n\nContinúa al siguiente paso, siguiendo con la conversación natural y las instrucciones que tienes.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        660,
+        340
+      ],
+      "id": "5e6a9084-3a5d-434b-93d7-016cf2565900",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-node",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"node_ns\": \"f139403n128383981\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        340
+      ],
+      "id": "4b420298-cb18-4ace-a84e-45c23c699196",
+      "name": "plantilla de respuesta a video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "dg8x51hc3Za4mbFc",
+          "name": "uchat orientacion"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T23:43:48.000Z",
+  "versionId": "24e0bf11-176e-43a7-a892-014ba4cb3307"
+}
