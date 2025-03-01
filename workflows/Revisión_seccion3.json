@@ -1,0 +1,1104 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FTP": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Actualizar BBDD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Actualizar BBDD1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store2": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool1": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T23:38:49.408Z",
+  "id": "R8g1G3bwNDNHGMbB",
+  "meta": null,
+  "name": "Revisión_seccion3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2680,
+        860
+      ],
+      "id": "458bf37a-8763-46da-b421-eb780548e6da",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "protocol": "sftp",
+        "path": "=/mnt/db_filestore/filestore/_data/.local/share/Odoo/filestore/UniversidadISep2/{{ $json.store_fname }}"
+      },
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -40
+      ],
+      "id": "6c1d2628-6efe-4840-8c09-8dddcf4a65f7",
+      "name": "FTP",
+      "credentials": {
+        "sftp": {
+          "id": "kfHErZcdewjYfFsz",
+          "name": "FTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "ir.attachment",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "store_fname",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "Teorias 1..pdf"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -40
+      ],
+      "id": "47afe331-ce15-4dbb-9814-0fb6ce483ad6",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -40
+      ],
+      "id": "26a2a636-43f5-4ff9-9ab3-9bd8813dab26",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "prueba",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        -2720,
+        1280
+      ],
+      "id": "bbd7dd40-1c7a-4fd9-9846-fdebe9d90807",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2680,
+        1500
+      ],
+      "id": "300edaa1-f332-4117-819d-76044ff8a26e",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        -2580,
+        1500
+      ],
+      "id": "1bddc3d2-3b81-46f0-a2cf-145f0b3b244b",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkSize": 10000,
+        "chunkOverlap": 200
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        1720
+      ],
+      "id": "5b6d23a9-3921-44fe-a881-e9f579d67e01",
+      "name": "Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://4d91cd74-12c0-4ebc-a7fe-dd98ea7d71a2.us-east4-0.gcp.cloud.qdrant.io/collections/prueba",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2520,
+        860
+      ],
+      "id": "e713289f-4f31-48b6-89ff-12f0e2ad3bd9",
+      "name": "HTTP Request",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2360,
+        860
+      ],
+      "id": "e58c8f59-ca66-446b-884f-59212b3f2ab4",
+      "name": "Wait",
+      "webhookId": "673d898b-b9cb-492f-a51d-8a57a0bdfba8"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://4d91cd74-12c0-4ebc-a7fe-dd98ea7d71a2.us-east4-0.gcp.cloud.qdrant.io/collections/prueba",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"vectors\": {\n    \"size\": 1536,\n    \"distance\": \"Cosine\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2220,
+        860
+      ],
+      "id": "48a81012-cb4d-4136-8fbc-42b992db7428",
+      "name": "HTTP Request1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "37d23913-5211-4c0c-9751-61a7de9072f1",
+              "name": "nombre",
+              "value": "{{ $json.Nombre }}",
+              "type": "string"
+            },
+            {
+              "id": "dd2c9855-3e36-4940-bd92-6a46871aa7ab",
+              "name": "historial",
+              "value": "={{ $json.Historial_revision_seccion3 }}",
+              "type": "string"
+            },
+            {
+              "id": "33160034-0a98-46e8-ad2d-6813a354f855",
+              "name": "tesis",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "75e960b9-8b74-40cf-9341-9137e0da08fe",
+              "name": "intentos",
+              "value": "={{ $json.Revisiones_seccion3 }}",
+              "type": "string"
+            },
+            {
+              "id": "b7735b4d-22fa-44cc-a93d-09fc72b06f19",
+              "name": "Id_noco",
+              "value": "={{ $json.Id }}",
+              "type": "number"
+            },
+            {
+              "id": "b2d6f0c8-76fe-40ff-8b66-3046085e5c55",
+              "name": "tutor",
+              "value": "={{ $json.tutor }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        120
+      ],
+      "id": "c340c9b4-6ae7-4810-9158-424c623600e8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e8f748de-3b41-48fa-bbf9-de825b52ecb2",
+              "leftValue": "={{ $json.historial }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        120
+      ],
+      "id": "72611e8d-99a5-41aa-9d47-b0c0d2809ba7",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1",
+          "mode": "list",
+          "cachedResultName": "O1"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Instrucciones del Sistema (Contexto)\nEres {{ $json.tutor }} un tutor de tesis para alumnos de maestría en la Universidad ISEP. Tu estilo de asesoría combina el rigor académico con una actitud de apoyo y cercanía. Te aseguras de que cada aspecto de la tesis cumpla con los estándares solicitados, revisando cuidadosamente la estructura, la redacción y la coherencia del contenido. Sin embargo, evitas ser excesivamente estricto: en lugar de señalar errores con dureza, ofreces retroalimentación constructiva y explicaciones claras para que el estudiante comprenda cómo mejorar su trabajo.\nTe interesa que el alumno se sienta guiado y respaldado durante todo el proceso, por lo que mantienes una comunicación abierta y empática. No obstante, eres firme al exigir que los requisitos y lineamientos académicos se cumplan: si detectas áreas de oportunidad, las destacas de forma amable pero precisa, de modo que el estudiante sepa exactamente en qué debe concentrarse para lograr la calidad requerida. Te preocupas mucho por la excelencia académica, pero también eres comprensivo y orientado a ayudar al estudiante a crecer profesional y personalmente, siempre buscando el equilibrio entre el rigor y la motivación.\nEres experto en ciencias de la educación, y requieres que todas las tesis cumplan de manera adecuada con la versión vigente del formato APA. Mantienes una revisión cuidadosa, señalando los errores de forma precisa y ofreciendo orientaciones claras para su corrección. Cuando identificas alguna inconsistencia, proporcionas explicaciones detalladas y amables, indicando la ubicación específica (página, párrafo o sección) y la justificación de tu observación. Con ello, facilitas que los estudiantes entiendan y apliquen las normas de forma correcta, en lugar de solo corregirlas sin comprender su fundamento.\n\nEstas especializado en la Sección Inicial de la tesis. Esta sección incluye la portada, epígrafe (opcional), dedicatoria/agradecimientos (opcional), índice, resumen/abstract, palabras clave e introducción.\nSe te facilita el texto completo para tener contexto, pero tu retroalimentación y calificación deben centrarse únicamente en la Sección 3 (Sección Inicial de la tesis).\n\nRúbrica/Criterios:\nSIEMPRE debes de consultar base_conocimiento() para revisar la rúbrica\n\nTexto Proporcionado por el Estudiante:\nTexto completo de la tesis: \n{{ $json.tesis }}\n\n\nTarea\n\n- Lee todo el texto para comprender la relación de esta sección con el resto de la tesis.\n- Evalúa solo la Sección 3 (portada, abstract, introducción, etc.) según la rúbrica indicada.\n- Ofrece una calificación numérica (p. ej., de 1 a 10) y comentarios constructivos específicos de la Sección 2.\n- Si es una revisión adicional, compara esta versión con la retroalimentación anterior.\n- Evita comentar secciones como la metodología o resultados, a menos que sea estrictamente necesario para justificar tu evaluación de las conclusiones.\n- Agrega un feedback detallado de cada parte. Recuerda que eres un guía para que el alumno logre terminar la tesis entonces debes orientarlo, encaminarlo y darle las herramientas necesarias para que su tesis tenga la calidad deseada\n- Toda revisión debe estar fundamentada en APA 7\n\nhoy es: {{ $now.format('dd-MM-yyyy') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        900,
+        -260
+      ],
+      "id": "99657691-c011-4de5-a637-8da9686c5152",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Siempre que revises un trabajo DEBES consultar aquí. Esta función tiene información sobre la rúbrica, parámetros e información necesaria que el trabajo final de master debe de llevar. Además de ser una guía para ti para dar una revisión a TODAS las tésis",
+        "topK": 6
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        -100
+      ],
+      "id": "711f25b3-d23b-4369-8fe8-aa07395a4cb7",
+      "name": "Vector Store Tool"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1220,
+        20
+      ],
+      "id": "a87e9447-04e3-4a0b-ad9d-5bbef93744ce",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "seccion3",
+          "mode": "list",
+          "cachedResultName": "seccion3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        840,
+        20
+      ],
+      "id": "d6c244f8-8a4c-45d7-a955-f5de94c60b9c",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1080,
+        120
+      ],
+      "id": "0adf117b-4a0c-47a3-8dcc-5be46d934831",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1",
+          "mode": "list",
+          "cachedResultName": "O1"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Instrucciones del Sistema (Contexto)\nEres {{ $json.tutor }} un tutor de tesis para alumnos de maestría en la Universidad ISEP. Tu estilo de asesoría combina el rigor académico con una actitud de apoyo y cercanía. Te aseguras de que cada aspecto de la tesis cumpla con los estándares solicitados, revisando cuidadosamente la estructura, la redacción y la coherencia del contenido. Sin embargo, evitas ser excesivamente estricto: en lugar de señalar errores con dureza, ofreces retroalimentación constructiva y explicaciones claras para que el estudiante comprenda cómo mejorar su trabajo.\nTe interesa que el alumno se sienta guiado y respaldado durante todo el proceso, por lo que mantienes una comunicación abierta y empática. No obstante, eres firme al exigir que los requisitos y lineamientos académicos se cumplan: si detectas áreas de oportunidad, las destacas de forma amable pero precisa, de modo que el estudiante sepa exactamente en qué debe concentrarse para lograr la calidad requerida. Te preocupas mucho por la excelencia académica, pero también eres comprensivo y orientado a ayudar al estudiante a crecer profesional y personalmente, siempre buscando el equilibrio entre el rigor y la motivación.\nEres experto en ciencias de la educación, y requieres que todas las tesis cumplan de manera adecuada con la versión vigente del formato APA. Mantienes una revisión cuidadosa, señalando los errores de forma precisa y ofreciendo orientaciones claras para su corrección. Cuando identificas alguna inconsistencia, proporcionas explicaciones detalladas y amables, indicando la ubicación específica (página, párrafo o sección) y la justificación de tu observación. Con ello, facilitas que los estudiantes entiendan y apliquen las normas de forma correcta, en lugar de solo corregirlas sin comprender su fundamento.\n\nEstas especializado en la Sección Inicial de la tesis. Esta sección incluye la portada, epígrafe (opcional), dedicatoria/agradecimientos (opcional), índice, resumen/abstract, palabras clave e introducción.\nSe te facilita el texto completo para tener contexto, pero tu retroalimentación y calificación deben centrarse únicamente en la Sección 3 (Sección Inicial de la tesis).\n\nRúbrica/Criterios:\nSIEMPRE debes de consultar base_conocimiento() para revisar la rúbrica\n\nHistorial de Revisiones Previas:\n{{ $('Edit Fields').item.json.historial }}\n\nTexto Proporcionado por el Estudiante:\nTexto completo de la tesis: \n{{ $json.tesis }}\n\n\nTarea\n\n- Lee todo el texto para comprender la relación de esta sección con el resto de la tesis.\n- Evalúa solo la Sección 3 (portada, abstract, introducción, etc.) según la rúbrica indicada.\n- Ofrece una calificación numérica (p. ej., de 1 a 10) y comentarios constructivos específicos de la Sección 2.\n- Si es una revisión adicional, compara esta versión con la retroalimentación anterior.\n- Evita comentar secciones como la metodología o resultados, a menos que sea estrictamente necesario para justificar tu evaluación de las conclusiones.\n- Agrega un feedback detallado de cada parte. Recuerda que eres un guía para que el alumno logre terminar la tesis entonces debes orientarlo, encaminarlo y darle las herramientas necesarias para que su tesis tenga la calidad deseada\n- Toda revisión debe estar fundamentada en APA 7\n\nhoy es: {{ $now.format('dd-MM-yyyy') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        900,
+        380
+      ],
+      "id": "e05bbfe2-3ab3-4c72-b03d-5585f16caa8b",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "returnAll": true,
+        "options": {
+          "where": "=(Nombre,eq,{{ $json.name }})"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -300,
+        180
+      ],
+      "id": "713dcb4d-5398-4a91-b3e8-da4e05ff20e7",
+      "name": "NocoDB",
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "82a6a4d5-ca7f-49b7-8ae2-a06385986ae6",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -120,
+        180
+      ],
+      "id": "85f78ec4-59d2-4c96-a70f-27130a0aaecc",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Nombre",
+              "fieldValue": "={{ $('Odoo').first.json.name }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -2740,
+        1140
+      ],
+      "id": "31a0b76c-9695-4c98-94ea-ba3e0653fc6b",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        320,
+        120
+      ],
+      "id": "66cc37a8-c698-4176-9fdd-da70ac76b23a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "path": "75b0dcf9-26fc-4384-b6e5-0609e17e4182",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -540,
+        160
+      ],
+      "id": "8a3c0cac-df2e-47d5-b548-06ec0be6b18c",
+      "name": "Webhook",
+      "webhookId": "75b0dcf9-26fc-4384-b6e5-0609e17e4182"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        -340
+      ],
+      "id": "828225a2-3c33-4bbe-a3c2-6769ed6917e8",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        300
+      ],
+      "id": "9bf226a5-0039-42fd-8a86-19759d60fcd9",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Siempre que revises un trabajo DEBES consultar aquí. Esta función tiene información sobre la rúbrica, parámetros e información necesaria que el trabajo final de master debe de llevar. Además de ser una guía para ti para dar una revisión a TODAS las tésis",
+        "topK": 6
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        980,
+        540
+      ],
+      "id": "544da23d-4062-40a0-887b-578a67e69aad",
+      "name": "Vector Store Tool1"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        660
+      ],
+      "id": "63a02d17-7989-444f-b0d8-3697b950a125",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "seccion3",
+          "mode": "list",
+          "cachedResultName": "seccion3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        820,
+        660
+      ],
+      "id": "0f5e3fe1-f3c6-48de-8e74-4dec1439582b",
+      "name": "Qdrant Vector Store2",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1060,
+        760
+      ],
+      "id": "79d17887-cc8f-4aad-b27f-238ddfb06d40",
+      "name": "Embeddings OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "4gXi5X6sZU0gX39u",
+          "mode": "list",
+          "cachedResultName": "info_tesis_inicial"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        300
+      ],
+      "id": "ecc2cc3e-0e7d-4078-8419-6567409aca4d",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('Edit Fields').item.json.Id_noco }}"
+            },
+            {
+              "fieldName": "Historial_revision_seccion3",
+              "fieldValue": "={{ $json.message.content }}"
+            },
+            {
+              "fieldName": "Última_revision_seccion3",
+              "fieldValue": "={{ $now.format('yyyy-MM-dd') }}"
+            },
+            {
+              "fieldName": "Revisiones_seccion3",
+              "fieldValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        -180
+      ],
+      "id": "18d2e7de-50a5-4574-83cf-a19337489a6d",
+      "name": "Actualizar BBDD",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('Edit Fields').item.json.Id_noco }}"
+            },
+            {
+              "fieldName": "Historial_revision_seccion3",
+              "fieldValue": "={{ \n  ($(\"Edit Fields\").item.json.historial || \"\") + \"\\n-----------\\n\" + ($json.message.content)\n}}"
+            },
+            {
+              "fieldName": "Última_revision_seccion3",
+              "fieldValue": "={{ $now.format('yyyy-MM-dd') }}"
+            },
+            {
+              "fieldName": "Revisiones_seccion3",
+              "fieldValue": "={{ parseInt ($('Edit Fields').item.json.intentos) + 1 }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        460
+      ],
+      "id": "08dcfe59-2647-4cd6-a986-0d4c405dc787",
+      "name": "Actualizar BBDD1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-20T17:46:17.000Z",
+  "versionId": "25082582-a044-4192-a0d3-0a27b069860f"
+}
