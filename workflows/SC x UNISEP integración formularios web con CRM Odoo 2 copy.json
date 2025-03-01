@@ -1,0 +1,2613 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agente_Brasil",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Postgres9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres9": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres10": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Brasil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres11": {
+      "main": [
+        [
+          {
+            "node": "Agente_pais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres8": {
+      "main": [
+        [
+          {
+            "node": "España",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Postgres11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "España": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente_pais": {
+      "main": [
+        [
+          {
+            "node": "Postgres8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "Agente_pais1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente_pais1": {
+      "main": [
+        [
+          {
+            "node": "Postgres13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres13": {
+      "main": [
+        [
+          {
+            "node": "row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "row": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brasil": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente_Brasil": {
+      "main": [
+        [
+          {
+            "node": "Postgres10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T18:20:02.374Z",
+  "id": "hNKYjZu4DfjSqRgn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SC x UNISEP integración formularios web con CRM Odoo 2 copy",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "96bc3f8e-d8f1-4c2b-b52e-73cbcc273896",
+              "name": "body.telefono",
+              "value": "={{ $json.phone.replace(/\\s+/g, '')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3457553c-c02c-4be9-b2e8-8159266c9640",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas_oportunidades_mx"
+            },
+            {
+              "column": "Country",
+              "value": "row"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0a203a02-cac0-4513-93e1-470310859f3d",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        200,
+        100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas_oportunidades_co"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eef4ad29-4284-4723-8130-ca7229722cf9",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        200,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "maximum_attempts": 6,
+            "time_between_calls": 1,
+            "attempts_counter": 0,
+            "name": "={{ $('When Executed by Another Workflow').item.json.name }}",
+            "phone_number": "={{ $('Edit Fields').item.json.body.telefono }}",
+            "oddo_id": "={{ $('When Executed by Another Workflow').item.json.id }}",
+            "date_uploda": "={{ $now }}",
+            "campaign_name": "={{ $('Agente_Brasil').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "reason_for_call": "={{ $('Agente_Brasil').item.json.use }}",
+            "from_number": "={{ $json.number }}",
+            "agent_id": "={{ $('Agente_Brasil').item.json.id_agent }}",
+            "formation": "={{ $('When Executed by Another Workflow').item.json.formacion }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "cbba3b55-2bd6-4287-92b8-e895d97c4910",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        620,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "maximum_attempts": 6,
+            "time_between_calls": 1,
+            "attempts_counter": 0,
+            "name": "={{ $('When Executed by Another Workflow').item.json.name }}",
+            "phone_number": "={{ $('Edit Fields').item.json.body.telefono }}",
+            "oddo_id": "={{ $('When Executed by Another Workflow').item.json.id }}",
+            "date_uploda": "={{ $now }}",
+            "campaign_name": "={{ $('Postgres1').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "reason_for_call": "={{ $('Postgres1').item.json.use }}",
+            "from_number": "={{ $json.number }}",
+            "agent_id": "={{ $('Postgres1').item.json.id_agent }}",
+            "formation": "={{ $('When Executed by Another Workflow').item.json.formacion }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "9f164765-6e26-44c1-a17e-342b5818f289",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        620,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "maximum_attempts": 6,
+            "time_between_calls": 1,
+            "attempts_counter": 0,
+            "name": "={{ $('When Executed by Another Workflow').item.json.name }}",
+            "phone_number": "={{ $('Edit Fields').item.json.body.telefono }}",
+            "oddo_id": "={{ $('When Executed by Another Workflow').item.json.id }}",
+            "date_uploda": "={{ $now }}",
+            "campaign_name": "={{ $('Postgres').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "reason_for_call": "={{ $('Postgres').item.json.use }}",
+            "from_number": "={{ $json.number }}",
+            "agent_id": "={{ $('Postgres').item.json.id_agent }}",
+            "formation": "={{ $('When Executed by Another Workflow').item.json.formacion }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "54f98ac2-3d8f-402f-8d62-58714794cbb4",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        620,
+        100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e45da10c-cc73-45c9-a0d8-f29c729efaf2",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) }}",
+              "rightValue": "={{ $('Postgres1').item.json.initial_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "1d61aad8-efcc-4e30-97e1-ed2aaf8de998",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) }}",
+              "rightValue": "={{ $('Postgres1').item.json.end_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "63d8d3aa-d419-4378-9fbe-2c94c9b6f194",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e45da10c-cc73-45c9-a0d8-f29c729efaf2",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) }}",
+              "rightValue": "={{ $('Postgres').item.json.initial_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "1d61aad8-efcc-4e30-97e1-ed2aaf8de998",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) }}",
+              "rightValue": "={{ $('Postgres').item.json.end_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "26b89c59-33c9-49d0-8946-0f5b4179598d",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to_number\":\"{{ $json.phone_number }}\",\n\"from_number\":\"{{ $('Postgres9').item.json.number }}\",\n\"override_agent_id\":\"{{ $json.agent_id }}\",\n\"retell_llm_dynamic_variables\":{\"name\":\"{{ $('When Executed by Another Workflow').item.json.name }}\",\"campaign_name\":\"{{ $('Postgres1').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}\",\"llamada\": \"{{ 1 }}\",\"id_oddo\":\"{{ $('When Executed by Another Workflow').item.json.id }}\",\"email_user\":\"{{ $('When Executed by Another Workflow').item.json.email }}\",\"uid\":\"{{ $('Postgres4').item.json.uid }}\",\n\"chatInput\":\"\"}} ",
+        "options": {}
+      },
+      "id": "a682335e-9b83-4fbc-b22d-3c9fc5673bcd",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        260
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UZWddF8I8s7OjOEp",
+          "name": "retell"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to_number\":\"{{ $json.phone_number }}\",\n\"from_number\":\"{{ $('Postgres6').item.json.number }}\",\n\"override_agent_id\":\"{{ $json.agent_id }}\",\n\"retell_llm_dynamic_variables\":{\"name\":\"{{ $('When Executed by Another Workflow').item.json.name }}\",\"campaign_name\":\"{{ $('Postgres').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}\",\"llamada\": \"{{ 1 }}\",\"id_oddo\":\"{{ $('When Executed by Another Workflow').item.json.id }}\",\"email_user\":\"{{ $('When Executed by Another Workflow').item.json.email }}\",\"uid\":\"{{ $('Postgres5').item.json.uid }}\",\n\"chatInput\":\"\"}} ",
+        "options": {}
+      },
+      "id": "66aeb0ed-766e-4317-bf46-81ce754e1f29",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UZWddF8I8s7OjOEp",
+          "name": "retell"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to_number\":\"{{ $json.phone_number }}\",\n\"from_number\":\"{{ $('Postgres10').item.json.number }}\",\n\"override_agent_id\":\"{{ $json.agent_id }}\",\n\"retell_llm_dynamic_variables\":{\"name\":\"{{ $('When Executed by Another Workflow').item.json.name }}\",\"campaign_name\":\"{{ $('Agente_Brasil').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}\",\"llamada\": \"{{ 1 }}\",\"id_oddo\":\"{{ $('When Executed by Another Workflow').item.json.id }}\",\"email_user\":\"{{ $('When Executed by Another Workflow').item.json.email }}\",\"uid\":\"{{ $('Postgres3').item.json.uid }}\",\n\"chatInput\":\"\"}} ",
+        "options": {}
+      },
+      "id": "98165b45-3ba6-4f44-b1ac-cb55a457e6e3",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        420
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UZWddF8I8s7OjOEp",
+          "name": "retell"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas"
+            },
+            {
+              "column": "country",
+              "value": "Mexico"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0e42eac3-a21d-45a9-b814-cadb6b362fb9",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        380,
+        100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "maximum_attempts": 6,
+            "time_between_calls": 1,
+            "attempts_counter": 0,
+            "name": "={{ $('When Executed by Another Workflow').item.json.name }}",
+            "phone_number": "={{ $('Edit Fields').item.json.body.telefono }}",
+            "oddo_id": "={{ $('When Executed by Another Workflow').item.json.id }}",
+            "date_uploda": "={{ $now }}",
+            "campaign_name": "={{ $('Agente_pais').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "reason_for_call": "={{ $('Agente_pais').item.json.use }}",
+            "from_number": "={{ $('Postgres11').item.json.number }}",
+            "agent_id": "={{ $('Agente_pais').item.json.id_agent }}",
+            "formation": "={{ $('When Executed by Another Workflow').item.json.formacion }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "c696e47c-1aa7-4f65-89bb-ff6b9544eae2",
+      "name": "Postgres8",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        620,
+        600
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to_number\":\"{{ $json.phone_number }}\",\n\"from_number\":\"{{ $('Agente_pais').item.json.phone_number }}\",\n\"override_agent_id\":\"{{ $json.agent_id }}\",\n\"retell_llm_dynamic_variables\":{\"name\":\"{{ $('When Executed by Another Workflow').item.json.name }}\",\"campaign_name\":\"{{ $('Agente_pais').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}\",\"llamada\": \"{{ 1 }}\",\"id_oddo\":\"{{ $('When Executed by Another Workflow').item.json.id }}\",\"email_user\":\"{{ $('When Executed by Another Workflow').item.json.email }}\",\"uid\":\"{{ $('Postgres8').item.json.uid }}\",\n\"chatInput\":\"\"}} ",
+        "options": {}
+      },
+      "id": "3b4e466b-7e4b-4702-b670-233c5c546298",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        600
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UZWddF8I8s7OjOEp",
+          "name": "retell"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas"
+            },
+            {
+              "column": "country",
+              "value": "Colombia"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4cab6eda-0e0a-4cb1-817a-2a6e48537690",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        380,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas"
+            },
+            {
+              "column": "country",
+              "value": "Brasil"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "726d6c58-ab04-47c8-a72e-2e9c48d9e896",
+      "name": "Postgres10",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        400,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas"
+            },
+            {
+              "column": "country",
+              "value": "Mexico"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b0e68a55-a83c-47b1-b684-b787c447c4d5",
+      "name": "Postgres11",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        600
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Edit Fields').item.json.body.telefono }}",
+                    "rightValue": "+52",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "MX"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2892ffb6-b41e-46db-a613-71bb3680672f",
+                    "leftValue": "={{ $('Edit Fields').item.json.body.telefono }}",
+                    "rightValue": "+57",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "673dff41-212f-44c8-a6a8-418d64c85c13",
+                    "leftValue": "={{ $('Edit Fields').item.json.body.telefono }}",
+                    "rightValue": "+55",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BR"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ea37b130-be15-43e3-8d83-9ee1c1a38238",
+                    "leftValue": "={{ $('Edit Fields').item.json.body.telefono }}",
+                    "rightValue": "+52 or +57",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notStartsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ROW"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "db055125-5d1e-477b-a3c3-8805bfee0940",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -60,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4fc5dde8-63cf-4e66-8bb1-f43effa3d1dd",
+              "leftValue": "={{ $('Edit Fields').item.json.body.telefono.substring(0, 3)  }}",
+              "rightValue": "+34",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        40,
+        700
+      ],
+      "id": "e55e74a4-9bc0-41b1-963a-c866745315a7",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e45da10c-cc73-45c9-a0d8-f29c729efaf2",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) + parseInt($('Agente_pais').item.json.dif_hours, 10) }}",
+              "rightValue": "={{ $('Agente_pais').item.json.initial_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "1d61aad8-efcc-4e30-97e1-ed2aaf8de998",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10)+ parseInt($('Agente_pais').item.json.dif_hours, 10) }}",
+              "rightValue": "={{ $('Agente_pais').item.json.end_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "0f353a62-67c5-4f39-a273-adc536c86cc3",
+      "name": "España",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas_oportunidades_mx"
+            },
+            {
+              "column": "Country",
+              "value": "España"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "329b9065-8487-40f9-a175-b48f5c2c73aa",
+      "name": "Agente_pais",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        400,
+        600
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phone_numbers",
+          "mode": "list",
+          "cachedResultName": "phone_numbers"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas"
+            },
+            {
+              "column": "country",
+              "value": "Mexico"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "644683ec-dc3c-4aeb-8233-e945d7333bbd",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        800
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas_oportunidades_mx"
+            },
+            {
+              "column": "Country",
+              "value": "row"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5afe0ea1-6c93-4a5d-9225-086b9891c56d",
+      "name": "Agente_pais1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        400,
+        800
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": "={{ true }}",
+            "active": true,
+            "maximum_attempts": 6,
+            "time_between_calls": 1,
+            "attempts_counter": 0,
+            "name": "={{ $('When Executed by Another Workflow').item.json.name }}",
+            "phone_number": "={{ $('Edit Fields').item.json.body.telefono }}",
+            "oddo_id": "={{ $('When Executed by Another Workflow').item.json.id }}",
+            "date_uploda": "={{ $now }}",
+            "campaign_name": "={{ $('Agente_pais1').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "reason_for_call": "={{ $('Agente_pais1').item.json.use }}",
+            "from_number": "={{ $('Postgres12').item.json.number }}",
+            "agent_id": "={{ $('Agente_pais1').item.json.id_agent }}",
+            "formation": "={{ $('When Executed by Another Workflow').item.json.formacion }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "a41611ae-ceff-4970-b5e0-a6cc4884b741",
+      "name": "Postgres13",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        620,
+        800
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to_number\":\"{{ $json.phone_number }}\",\n\"from_number\":\"{{ $('Agente_pais1').item.json.phone_number }}\",\n\"override_agent_id\":\"{{ $json.agent_id }}\",\n\"retell_llm_dynamic_variables\":{\"name\":\"{{ $('When Executed by Another Workflow').item.json.name }}\",\"campaign_name\":\"{{ $('Agente_pais1').item.json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}\",\"llamada\": \"{{ 1 }}\",\"id_oddo\":\"{{ $('When Executed by Another Workflow').item.json.id }}\",\"email_user\":\"{{ $('When Executed by Another Workflow').item.json.email }}\",\"uid\":\"{{ $('Postgres13').item.json.uid }}\",\n\"chatInput\":\"\"}} ",
+        "options": {}
+      },
+      "id": "55db3217-b54e-425c-a3c1-25922762a3d7",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UZWddF8I8s7OjOEp",
+          "name": "retell"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e45da10c-cc73-45c9-a0d8-f29c729efaf2",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) + parseInt($('Agente_pais1').item.json.dif_hours, 10) }}",
+              "rightValue": "={{ $('Agente_pais1').item.json.initial_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "1d61aad8-efcc-4e30-97e1-ed2aaf8de998",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10)+ parseInt($('Agente_pais1').item.json.dif_hours, 10) }}",
+              "rightValue": "={{ $('Agente_pais1').item.json.end_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "b9659cfa-234a-4c63-bf33-8c09f7c48395",
+      "name": "row",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e45da10c-cc73-45c9-a0d8-f29c729efaf2",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) }}",
+              "rightValue": "={{ $('Agente_Brasil').item.json.initial_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "1d61aad8-efcc-4e30-97e1-ed2aaf8de998",
+              "leftValue": "={{ parseInt($now.toFormat(\"HH\"), 10) }}",
+              "rightValue": "={{ $('Agente_Brasil').item.json.end_time_to_call }}",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "8a5f8810-9efb-4882-8bad-632611991a41",
+      "name": "Brasil",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Ventas_oportunidades_br"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "09390876-8db3-450f-8180-f6fcda024cdf",
+      "name": "Agente_Brasil",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        200,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -560,
+        260
+      ],
+      "id": "12ead744-7b1a-4d2f-b16c-30094888097d",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {
+    "Postgres12": [
+      {
+        "json": {
+          "id": 25,
+          "number": "+528140534172",
+          "friendly_name": "Ventas_Mexico",
+          "country": "Mexico",
+          "use": "Ventas",
+          "max_calls": "2000",
+          "days_to_sue": "all",
+          "active": true
+        }
+      }
+    ],
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "id": "836694",
+          "name": "Fernanda Dorantes",
+          "email": "marfer.dgalvan@gmail.com",
+          "phone": "+525517328964",
+          "formacion": "Maestría en Psicología Clínica Infantojuvenil",
+          "codigo_pais": "+52",
+          "pais": "Mexico (México)"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-19T22:53:31.528Z",
+      "updatedAt": "2024-12-19T22:53:31.528Z",
+      "id": "JeuR9KgbxHoHPzZx",
+      "name": "Dinamic_Number_Display"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-27T18:44:28.000Z",
+  "versionId": "6adfdd83-2d26-4558-ab24-43a629ee9a97"
+}
