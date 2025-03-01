@@ -1,0 +1,93 @@
+{
+  "active": false,
+  "connections": {
+    "Postgres Trigger": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-14T22:44:31.770Z",
+  "id": "efc8lqzy69ppcSAK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "duplicates_call_outbound",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH ranked_records AS (\n    SELECT \n        uid, -- Identificador único\n        ROW_NUMBER() OVER (\n            PARTITION BY phone_number, email, campaign_name, agent_id -- Campos para identificar duplicados\n            ORDER BY date_uploda ASC -- Mantener el registro más antiguo como no duplicado\n        ) AS row_num\n    FROM calloutbound\n)\nUPDATE calloutbound\nSET duplicate = CASE\n    WHEN ranked_records.row_num > 1 THEN true\n    ELSE false\nEND\nFROM ranked_records\nWHERE calloutbound.uid = ranked_records.uid;",
+        "options": {}
+      },
+      "id": "90febe79-7834-4c88-84d3-537d1ea0f929",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1000,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "tableName": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "additionalFields": {},
+        "options": {}
+      },
+      "id": "142f1044-ce3b-48b5-b483-ff833b9db650",
+      "name": "Postgres Trigger",
+      "type": "n8n-nodes-base.postgresTrigger",
+      "typeVersion": 1,
+      "position": [
+        700,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-20T22:15:40.000Z",
+  "versionId": "00134af9-19f6-4cfc-bc25-9c21dd044ef8"
+}
