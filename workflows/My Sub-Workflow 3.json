@@ -1,0 +1,53 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-06T16:05:21.019Z",
+  "id": "Z0bA48gDec5CFNyJ",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "My Sub-Workflow 3",
+  "nodes": [
+    {
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        520,
+        340
+      ],
+      "parameters": {}
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-06T16:05:21.019Z",
+  "versionId": "e7c304bd-9f3b-4b33-8109-eae82a47feaf"
+}
