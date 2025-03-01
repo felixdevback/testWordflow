@@ -1,0 +1,1098 @@
+{
+  "active": false,
+  "connections": {
+    "Informacion_Odoo": {
+      "main": [
+        [
+          {
+            "node": "Descarta_ya_llamados_2da",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cita_Calendar_Odoo": {
+      "main": [
+        [
+          {
+            "node": "Informacion_Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descarta_ya_llamados_2da": {
+      "main": [
+        [
+          {
+            "node": "Informacion_Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos_transcripts": {
+      "main": [
+        [
+          {
+            "node": "Limpia_Transcripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI_crea_resumen_para_IA": {
+      "main": [
+        [
+          {
+            "node": "Dispara_Llamada",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Informacion_Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Datos_transcripts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpia_Transcripts": {
+      "main": [
+        [
+          {
+            "node": "OpenAI_crea_resumen_para_IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Cita_Calendar_Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dispara_Llamada": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-01-06T15:02:31.332Z",
+  "id": "CzN4etPAnBc5Iv7k",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Segunda_llamada",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.call.summary",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "call_number",
+              "operator": "greaterThen",
+              "value": "0"
+            },
+            {
+              "fieldName": "call_summary",
+              "value": "True"
+            },
+            {
+              "fieldName": "crm_lead_id",
+              "value": "={{ $json.opportunity_id[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "4ff3be65-88b0-4d76-8cc7-afea4c23acb6",
+      "name": "Informacion_Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -540
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "calendar.event",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "create_date",
+            "description",
+            "name",
+            "partner_id",
+            "id",
+            "opportunity_id",
+            "start_date"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "description",
+              "operator": "like",
+              "value": "segunda_llamada"
+            },
+            {
+              "fieldName": "start_date",
+              "value": "={{ (() => {\n  const today = new Date();\n  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;\n})() }}\n"
+            }
+          ]
+        }
+      },
+      "id": "b1ba23b9-9775-4d6d-88b9-2a30e05c7ec5",
+      "name": "Cita_Calendar_Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -320
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener los datos del nodo anterior\nconst data = $input.all();\n\n// Crear un mapa para contar las ocurrencias de crm_lead_id\nconst leadCount = {};\n\n// Contar cuántas veces aparece cada crm_lead_id\ndata.forEach(item => {\n  const crmLeadId = item.json.crm_lead_id[0]; // Usar el primer elemento del array\n  if (leadCount[crmLeadId]) {\n    leadCount[crmLeadId]++;\n  } else {\n    leadCount[crmLeadId] = 1;\n  }\n});\n\n// Filtrar registros únicos donde crm_lead_id no esté duplicado\nconst filteredData = data.filter(item => {\n  const crmLeadId = item.json.crm_lead_id[0]; // Usar el primer elemento del array\n  return leadCount[crmLeadId] === 1; // Incluir solo si no está duplicado\n});\n\n// Retornar los datos filtrados\nreturn filteredData;\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -440,
+        -240
+      ],
+      "id": "af1ed973-398d-4101-9234-61a7e4950da2",
+      "name": "Descarta_ya_llamados_2da"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_details",
+          "mode": "list",
+          "cachedResultName": "call_details"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "id_oddo",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "column": "duration_minutes",
+              "condition": ">",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95baf110-9383-4bfc-a70e-6bc5caf204c1",
+      "name": "Datos_transcripts",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        100,
+        -620
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un asistente que hace un resumen de las transcripciones de conversaciones, tu resumen se enfocará en lo expresado por el user, no usas caracteres especiales en tu resumen, tampoco saltos de línea.",
+              "role": "system"
+            },
+            {
+              "content": "={{ $('Limpia_Transcripts').item.json.cleanedTranscript }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e312e078-9328-4cd5-bd02-ea49c97aa621",
+      "name": "OpenAI_crea_resumen_para_IA",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        580,
+        -180
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"to_number\":\"+{{ $('Datos_transcripts').item.json.to_number }}\",\n\"from_number\":\"{{ $('Datos_transcripts').item.json.from_number }}\",\n\"override_agent_id\":{{\"agent_c2a4dd1504ee67b825b5d4b008\"}},\n\"retell_llm_dynamic_variables\": {\n\"name\":\"{{ $('Datos_transcripts').item.json.name }}\",\n\"campaign_name\":\"{{ $('Datos_transcripts').item.json.campaign_name }}\",\n\"llamada\": \"{{ 2 }}\",\n\"id_oddo\":\"{{ $('Datos_transcripts').item.json.id_oddo }}\",\n\"email_user\":\"{{ $('Informacion_Odoo1').item.json.email_normalized }}}\",\n\"date_last_conversation\": \"{{$('Informacion_Odoo').item.json.create_date}}\",\n\"formation\": \"{{ $('Informacion_Odoo').item.json.crm_lead_id[1] }}\",\n\"chatInput\":\"\",\n\"last_conversation\": \"{{ $json.message.content}}\"}} ",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "c7b4c8ed-3f88-4f27-a048-77ab040ec904",
+      "name": "Dispara_Llamada",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        940,
+        -860
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UZWddF8I8s7OjOEp",
+          "name": "retell"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "user_id",
+            "email_normalized"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $('Informacion_Odoo').item.json.crm_lead_id[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "8a50d130-a52f-4ace-8284-193ad77500e1",
+      "name": "Informacion_Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -420
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// 1. Obtén los datos del JSON entrante\nconst data = $json;\n\n// 2. Limpiar el campo 'transcript' (eliminar saltos de línea y emojis)\nconst cleanedTranscript = data.transcript.replace(/\\\\n/g, \" \")\n                .replace(/\\n/g, \" \")\n              .replace(/[\\u{1F600}-\\u{1F64F}]/gu, \"\")  // Emoticones (caras)\n                         .replace(/[\\u{1F300}-\\u{1F5FF}]/gu, \"\")  // Símbolos y pictogramas\n                         .replace(/[\\u{1F680}-\\u{1F6FF}]/gu, \"\")  // Transporte y mapas\n                         .replace(/[\\u{1F700}-\\u{1F77F}]/gu, \"\"); // Otros símbolos\n// Obtén los datos desde el nodo anterior (Postgres)\n\n\n// 3. Extraer los campos para la segunda base de datos\nconst idOdoo = data.id_oddo;\nconst email = data.email || null; // Si no hay email, asigna null\nconst campaign_name = data.campaign_name || null; // Si no hay email, asigna null\n\n// Itera sobre los datos y extrae los tres campos\n\n  return {\n    idOdoo,\n    cleanedTranscript,\n    email,\n    campaign_name\n  };\n\n"
+      },
+      "id": "2ddfe206-29ab-47cc-adaf-8b2f0a57a011",
+      "name": "Limpia_Transcripts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        420,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 1-6"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1080,
+        -580
+      ],
+      "id": "6de922aa-8b54-4539-8f01-fe012bf17921",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "time_between_calls": 2,
+            "attempts_counter": 0,
+            "phone_number": "={{ $('Datos_transcripts').item.json.to_number }}",
+            "name": "={{ $('Datos_transcripts').item.json.name }}",
+            "oddo_id": "={{ $('Datos_transcripts').item.json.id_oddo }}",
+            "campaign_name": "={{ $('Datos_transcripts').item.json.campaign_name }}",
+            "from_number": "={{ $('Datos_transcripts').item.json.from_number }}",
+            "agent_id": "agent_c2a4dd1504ee67b825b5d4b008",
+            "maximum_attempts": 6,
+            "formation": "={{ $('Informacion_Odoo').item.json.crm_lead_id[1] }}",
+            "email": "={{ $('Informacion_Odoo1').item.json.email_normalized }}",
+            "date_uploda": "={{ (() => {\n  const today = new Date();\n  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;\n})() }}\n\n",
+            "reason_for_call": "={{ $('Datos_transcripts').item.json.campaign_name.substring(0, $('Datos_transcripts').item.json.campaign_name.length - 10) }}\n",
+            "resumen_gerencial": "={{ $('OpenAI_crea_resumen_para_IA').item.json.message.content }}",
+            "date_last_conversation": "={{ $('Datos_transcripts').item.json.start_timestamp }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1220,
+        -700
+      ],
+      "id": "c0e91ae7-5460-443b-a81f-b4ea3af30df2",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "=crm.lead",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "stage_id",
+              "fieldValue": "={{2}}"
+            },
+            {
+              "fieldName": "user_id",
+              "fieldValue": "5064"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -240
+      ],
+      "id": "8f727d8d-a261-4b99-b6bc-3e11c9bd4941",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Informacion_Odoo1": [
+      {
+        "json": {
+          "id": 834457,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "serguer6@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834446,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "efren.villalba@imssbienestar.gob.mx"
+        }
+      },
+      {
+        "json": {
+          "id": 834436,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "eliayanamor@yahoo.es"
+        }
+      },
+      {
+        "json": {
+          "id": 834452,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "eriazuniga70@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834160,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "ana.centurion26@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834461,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "margaretquiroz73@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834449,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "martin.ibarra0902@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834220,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "mari.jomc@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834228,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "rcarrarocoach@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834464,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "ivettevg2001@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834462,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "canocecilia2023@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834355,
+          "user_id": [
+            136,
+            "Clarissa Lopez"
+          ],
+          "email_normalized": "christian_montoya@outlook.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834321,
+          "user_id": [
+            222,
+            "Yoselinne Gómez"
+          ],
+          "email_normalized": "jesuscamacho950228@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 833815,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "samanthaguajardoreyes@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834422,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "psicologiactiv@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 833895,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "dannibaeza15@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834425,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "mjcastillovaldez@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834230,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "lechugagunner74@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834377,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "miconsultor01@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 833894,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "jdgm_02@outlook.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834427,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "doncella0303@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834262,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "pereznjenitzy@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834362,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "laurodriguezbertran@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834177,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "lupithaa_fhta@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834354,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "raquelito82@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834308,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "aaron.ptraining@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 833861,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "tbsistemica@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 833904,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "marisol_connie@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834211,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "majo_melo03@hotmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834309,
+          "user_id": [
+            136,
+            "Clarissa Lopez"
+          ],
+          "email_normalized": "abrahamdemoya@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834331,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "yolitza.lpz@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834369,
+          "user_id": [
+            186,
+            "Mabel Rodríguez"
+          ],
+          "email_normalized": "upnbetyrc2@gmail.com"
+        }
+      },
+      {
+        "json": {
+          "id": 834421,
+          "user_id": [
+            2,
+            "Administrator"
+          ],
+          "email_normalized": "psiclinicosergioh@outlook.com"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-01-23T23:41:08.981Z",
+      "updatedAt": "2025-01-23T23:41:08.981Z",
+      "id": "2VgmmSnEzCyglmLn",
+      "name": "Segunda_llamada"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-13T22:58:25.000Z",
+  "versionId": "e83b2fe2-23de-40cb-a904-31b9322aec5c"
+}
