@@ -1,0 +1,480 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-26T20:30:42.069Z",
+  "id": "wEEWruhpBDKsxyjp",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Factuas_odoo_chatbot",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1688359d-1708-4328-a4da-1780baeb492d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "order_subscription_id",
+            "date",
+            "invoice_origin",
+            "name",
+            "amount_residual",
+            "currency_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $('Odoo1').item.json.id }}"
+            },
+            {
+              "fieldName": "invoice_origin",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "fieldName": "payment_state",
+              "value": "not_paid"
+            },
+            {
+              "fieldName": "state",
+              "value": "posted"
+            },
+            {
+              "fieldName": "sequence_prefix",
+              "value": "INV/"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        600,
+        100
+      ],
+      "id": "edab51f1-a470-4b8c-99c2-2349b3701f6c",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "email",
+              "value": "juliethguerra995@gmail.com"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        260,
+        0
+      ],
+      "id": "65f4eae2-edef-4745-a99b-fdb28034feb3",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "sale.order",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "name",
+            "overdue_invoice_count_s"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "cf876799-07ab-4578-afb0-f1345d5c7034",
+      "name": "Odoo2",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "order_subscription_id",
+            "date",
+            "invoice_origin",
+            "amount_residual",
+            "name",
+            "currency_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $('Odoo1').item.json.id }}"
+            },
+            {
+              "fieldName": "invoice_origin",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "fieldName": "payment_state",
+              "value": "partial"
+            },
+            {
+              "fieldName": "state",
+              "value": "posted"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        600,
+        -120
+      ],
+      "id": "2917c807-4a6b-40ef-a03f-e88b5f82702e",
+      "name": "Odoo3",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dcb844ed-cdd7-4a39-b9c2-760c7f4a58b7",
+              "name": "response",
+              "value": "=Tienes {{ $json[\"Facturas vencidas\"] }} facturas vencidas, una deuda total de: {{ $json[\"deuda_total\"] }} {{ $json.moneda }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1420,
+        -40
+      ],
+      "id": "c370c7b6-9323-49e1-84eb-552176fb2e06",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5ba0e0ce-25e2-4e4e-bdde-96ff060c45b8",
+              "name": "Facturas vencidas",
+              "value": "={{ $('Odoo2').item.json.overdue_invoice_count_s }}",
+              "type": "string"
+            },
+            {
+              "id": "1211c645-e107-4512-a163-fb6191de8230",
+              "name": "Factura_residual1_monto",
+              "value": "={{ $json.data[0].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "7f3a9d4b-daaf-414d-914a-9dd8a04ec1d5",
+              "name": "Factura_residual1_date",
+              "value": "={{ $json.data[0].date }}",
+              "type": "string"
+            },
+            {
+              "id": "6f5719a7-bfcb-4642-8c87-0ff304cf49f4",
+              "name": "Factura1_monto",
+              "value": "={{ $json.data[1].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "492cdadd-7ed1-4945-b571-d978a313d65a",
+              "name": "Factura1_date",
+              "value": "={{ $json.data[1].date }}",
+              "type": "string"
+            },
+            {
+              "id": "14402727-ec0d-4757-890d-a29fa04dcffe",
+              "name": "Factura2_monto",
+              "value": "={{ $json.data[2].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "8fbb232d-9085-44fc-8f9c-73f3d05bcdf1",
+              "name": "Factura2_date",
+              "value": "={{ $json.data[2].date }}",
+              "type": "string"
+            },
+            {
+              "id": "5af0eaf2-84c2-4ae6-a303-cc2466715f01",
+              "name": "Factura3_monto",
+              "value": "={{ $json.data[3].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "7bf348db-d791-425c-af6b-4d3ccf01d540",
+              "name": "Factura3_date",
+              "value": "={{ $json.data[3].date }}",
+              "type": "string"
+            },
+            {
+              "id": "dc47d1b0-7f66-431a-9d39-7f1b92dfab22",
+              "name": "Factura4_monto",
+              "value": "={{ $json.data[4].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "5dbac88d-afb6-4101-b4e1-031b7b6587ca",
+              "name": "Factura4_date",
+              "value": "={{ $json.data[4].date }}",
+              "type": "string"
+            },
+            {
+              "id": "58c66c5b-5f70-4df5-bfc7-0e300814d60f",
+              "name": "Factura5_monto",
+              "value": "={{ $json.data[5].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "f745ac65-660b-4425-b3af-3fb6bacb7388",
+              "name": "Factura5_date",
+              "value": "={{ $json.data[5].date }}",
+              "type": "string"
+            },
+            {
+              "id": "b7588688-4a11-4a56-9b3a-784037518e05",
+              "name": "Factura6_monto",
+              "value": "={{ $json.data[6].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "588df9ef-a1ca-48ad-a5e3-46ab019797cd",
+              "name": "Factura6_date",
+              "value": "={{ $json.data[6].date }}",
+              "type": "string"
+            },
+            {
+              "id": "e779311c-47f7-4b6a-81d8-9a4e55ffdc1f",
+              "name": "Factura7_monto",
+              "value": "={{ $json.data[7].amount_residual }}",
+              "type": "string"
+            },
+            {
+              "id": "a43ba89e-d97d-405c-9e9e-8b7d76dbde17",
+              "name": "Factura6_date",
+              "value": "={{ $json.data[7].date }}",
+              "type": "string"
+            },
+            {
+              "id": "eb7d5f0b-f5e2-4911-861a-971ff151f6aa",
+              "name": "deuda_total",
+              "value": "={{ $('Odoo2').item.json.amount_due_total\n  }}",
+              "type": "string"
+            },
+            {
+              "id": "62b0d7b3-009e-43a9-8f09-80f2290e93cd",
+              "name": "moneda",
+              "value": "={{ $json.data[7].currency_id[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1220,
+        -40
+      ],
+      "id": "18187aa5-2a32-41c3-bae5-461928ac0ff2",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        800,
+        -40
+      ],
+      "id": "a6914ca0-2fcf-49a8-b142-7cec1cd473ae",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        -40
+      ],
+      "id": "06477ad7-b2be-4b68-a83e-20cc72afa474",
+      "name": "Aggregate"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-28T16:48:41.000Z",
+  "versionId": "99739cbc-ae75-4ca3-ae79-5a3155ca1057"
+}
