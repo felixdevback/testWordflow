@@ -1,0 +1,172 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-16T21:26:24.006Z",
+  "id": "UhQ5WS71LbRupDUm",
+  "meta": null,
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e1c95416-9bd2-4b16-8e9d-2d8421ba6df1",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        -80
+      ],
+      "id": "d3d482bd-19b5-45ca-aaab-7fc15c1bfc77",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "operation": "get",
+        "customResourceId": "513",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -20
+      ],
+      "id": "b3eecedd-7de4-4d60-90fa-8022d12eae09",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $json.name }}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "n8n_modifcado"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        580,
+        120
+      ],
+      "id": "a8cb0c62-3d4f-481c-a9f6-1256cee2b509",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a8b4e64-10bf-423f-869f-47beb57a60be",
+              "name": "id",
+              "value": 513,
+              "type": "number"
+            },
+            {
+              "id": "fcc579d8-d424-4fbe-bd5b-f3951fa3f8c1",
+              "name": "html",
+              "value": "=<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n        <h1>1.1. Definición y Alcance de la Psicopatología</h1>\n\n        <h2>Introducción a la Psicopatología</h2>\n        <p>\n            La <strong>psicopatología</strong> es una disciplina dentro de la psicología que se encarga del estudio de los trastornos mentales. Su objetivo es entender las causas, los síntomas, el desarrollo y las consecuencias de los trastornos psicológicos, así como proporcionar un marco para el diagnóstico y tratamiento. La psicopatología se basa en múltiples enfoques teóricos, que incluyen la perspectiva biológica, la perspectiva psicológica y la perspectiva sociocultural.\n        </p>\n\n        <h2>Perspectivas de la Psicopatología</h2>\n\n        <h3>Perspectiva Biológica</h3>\n        <p>\n            La perspectiva biológica se enfoca en los factores genéticos, neuroquímicos y estructurales del cerebro que pueden contribuir a los trastornos mentales. La investigación en neurociencia ha demostrado que desequilibrios químicos, anomalías en la estructura cerebral y predisposiciones genéticas pueden desempeñar un papel crucial en el desarrollo de trastornos mentales como la esquizofrenia, el trastorno bipolar y la depresión.\n        </p>\n        <!-- Resto del contenido -->\n    </div>",
+              "type": "string"
+            },
+            {
+              "id": "6a80400e-50f7-4377-8ccf-5e1b59279294",
+              "name": "name",
+              "value": "prueba n8n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        280,
+        120
+      ],
+      "id": "b1f42ab1-bb44-4edd-8d40-96121c9ac3c6",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-17T00:01:42.000Z",
+  "versionId": "fe1c5515-3595-4b3c-bb77-a8f8a5652120"
+}
