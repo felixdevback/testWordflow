@@ -1,0 +1,116 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Uchat - plantilla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uchat - plantilla": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-28T23:20:32.572Z",
+  "id": "XuhzAZ6TvuWBGWri",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "video_benefi_isepEmprende",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "00f4369a-cc03-4e06-a273-ab8ead4179be",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "Es muy importante que no le digas que has enviado la información.\n\nContinúa al siguiente paso, siguiendo con la conversación natural y las instrucciones que tienes.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        660,
+        340
+      ],
+      "id": "9465ee5a-e2a1-4708-96e1-68546dcb23fe",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-node",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"node_ns\": \"f122557n129478417\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        340
+      ],
+      "id": "8ee4da00-dba4-441a-80b5-bcdc1f909d4c",
+      "name": "Uchat - plantilla",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-23T21:59:00.802Z",
+      "updatedAt": "2025-01-23T21:59:00.802Z",
+      "id": "8dZDEqxdddUExqJK",
+      "name": "Contenido multimedia"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-28T23:20:39.000Z",
+  "versionId": "8a949d88-9f25-4a27-85a3-0799102b120a"
+}
