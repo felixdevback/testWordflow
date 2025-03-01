@@ -1,0 +1,159 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-06T18:42:44.794Z",
+  "id": "rtwgpJUjfMv8Afp4",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Revisar información odoo",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b8d46090-0442-4a86-975b-495fafce944a",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        440,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us2.make.com/2lpedds3wv9fsgymov6jycqnn0f3skh9",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "odoo_lead_id",
+              "value": "={{ $json.odoo_lead_id }}"
+            },
+            {
+              "name": "nombre",
+              "value": "={{ $json.query.nombre }}"
+            },
+            {
+              "name": "nombre"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        460
+      ],
+      "id": "167d282c-b2a7-462b-bfcd-49b7117ae7fe",
+      "name": "Enviar a Make"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9724f99-341a-41f0-bcce-77e141b3f3f2",
+              "name": "response",
+              "value": "=saluda diciendole: Hola {{ $json.name }} y simplemente, continua al siguiente paso, siguiendo con la conversación natural que te dicen tus instrucciones sigas.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        680
+      ],
+      "id": "06a51541-b578-440a-b1c8-a70117a5f8de",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $json.telefono }}"
+            }
+          ]
+        }
+      },
+      "id": "2f634d50-1b81-4f32-a5b3-0bf62b299b67",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        660,
+        680
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "query": "Dolores Muñoz Padilla",
+          "odoo_lead_id": "826667",
+          "telefono": "+5215532079155"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-07T18:26:41.000Z",
+  "versionId": "8a96d2b5-b0a9-49cd-8df0-3633b103518f"
+}
