@@ -1,0 +1,424 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Crear Collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Collection": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Crear Collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T03:06:29.521Z",
+  "id": "QgUhjAj0xnGWeN6z",
+  "meta": null,
+  "name": "My workflow 23",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        380
+      ],
+      "id": "a3a3cf00-9c4f-4da3-823d-cfd73b077107",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        220
+      ],
+      "id": "b1643c48-2e97-4a0d-97b3-5095a49f085a",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "=\"Número de departamento\": {{ $('NocoDB').item.json[\"Número de Departamento\"] }}\n\"Recamaras\": {{ $('NocoDB').item.json.Recamaras }}\n\"Baños\": {{ $('NocoDB').item.json[\"BAÑOS\"] }}\n\"Modelo\": {{ $('NocoDB').item.json.MODELO }}\n\"M2 INT\": {{ $('NocoDB').item.json[\"M2 INT\"] }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "Número departamento",
+                "value": "={{ $('NocoDB').item.json[\"Número de Departamento\"] }}"
+              },
+              {
+                "name": "Precio",
+                "value": "={{ $('NocoDB').item.json[\"PRECIO DE LISTA\"] }} MXN"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        220
+      ],
+      "id": "0e60bf0d-5900-4307-8e9f-65e048bbc855",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 200
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        320
+      ],
+      "id": "eeb3efd8-417c-4ee8-9d86-eea543334b8f",
+      "name": "Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://60d9e3ce-a19c-4dba-b4ba-d01c48b70905.europe-west3-0.gcp.cloud.qdrant.io/collections/noco_db_jv",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"vectors\": {\n    \"size\": 1536,\n    \"distance\": \"Cosine\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        160
+      ],
+      "id": "781881c7-97c2-4a4a-9a5e-1e080e759420",
+      "name": "Crear Collection",
+      "credentials": {
+        "qdrantApi": {
+          "id": "DlviG9QoYbSTYF0r",
+          "name": "QdrantApi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "916a5bab-0e3a-41b2-85d0-282fcfeadde9",
+              "name": "url",
+              "value": "={{ $json.Enlace }}",
+              "type": "string"
+            },
+            {
+              "id": "e2ac4349-3496-40db-8f43-363e617ef0bc",
+              "name": "Tema",
+              "value": "={{ $json['Nombre Referencial'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "227e8795-bf27-4df3-a1ef-6ca62d91acad",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "af8ae8e9-f92c-4a6c-af36-a751e49982fc",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "o28KQTXSQY7IYEvH",
+          "mode": "list",
+          "cachedResultName": "Descargar Módulos y Subir_nocodb"
+        },
+        "mode": "each",
+        "options": {}
+      },
+      "id": "3efcbb91-2611-4064-a764-a15c7f54898c",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        1380,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "=noco_db_jv",
+          "mode": "id"
+        },
+        "options": {
+          "collectionConfig": "="
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        40
+      ],
+      "id": "2aab2e32-9624-4aef-8ebd-112d24c03d7b",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "DlviG9QoYbSTYF0r",
+          "name": "QdrantApi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "de387a47-ff3a-4b5c-912d-67efe9e9c306",
+        "options": {}
+      },
+      "id": "17c3fcbf-855f-4038-b977-46ed95b68361",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        40,
+        700
+      ],
+      "webhookId": "de387a47-ff3a-4b5c-912d-67efe9e9c306",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 3,
+              "triggerAtHour": 3
+            }
+          ]
+        }
+      },
+      "id": "ce8524f1-5eb8-4794-b1a5-f7f3e2f14fc2",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "workspaceId": "w19r4mnf",
+        "projectId": "p0v3sueatsbe5jw",
+        "table": "myic8wupegcfd8m",
+        "returnAll": true,
+        "options": {
+          "fields": []
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        880,
+        80
+      ],
+      "id": "7081b2b7-6f2a-4cf6-8806-ef8b08ab7f51",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "S73E5HlMGfP8VPSr",
+          "name": "NocoDB Token account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pz36jcwwef36v89",
+        "table": "mdpjjjbibpt4wxz",
+        "returnAll": true,
+        "options": {
+          "fields": [],
+          "where": "(Estado,eq,Activo)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        800,
+        360
+      ],
+      "id": "fa69beea-4ed8-4e9a-907f-e69deb4477c5",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "s5P2QFmMipXho8qh",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-27T03:15:22.000Z",
+  "versionId": "2c4892a1-84c3-43ca-8da4-b7d49c08fc47"
+}
