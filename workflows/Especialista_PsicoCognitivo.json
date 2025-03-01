@@ -101,8 +101,8 @@
       ]
     }
   },
-  "createdAt": "2025-02-27T19:17:34.359Z",
-  "id": "So8Necxw9aYga7Sl",
+  "createdAt": "2025-02-27T19:15:47.783Z",
+  "id": "yByviqeSzrvRnz4I",
   "meta": {
     "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
     "templateCredsSetupCompleted": true
@@ -111,7 +111,7 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "c9e8d6aa-b86e-4995-a01f-548728b9d26d",
+      "id": "5c5bcd8a-ae1a-4303-8c8f-3a2bc2ecb263",
       "name": "Execute Workflow Trigger",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
@@ -139,7 +139,7 @@
         860,
         280
       ],
-      "id": "8a8be78e-e0ab-4162-8d95-1a3c6bcfe3b3",
+      "id": "1a4c86a2-ef5d-4e2d-bdbe-e9f88f8fc157",
       "name": "Edit Fields"
     },
     {
@@ -156,7 +156,7 @@
         500,
         280
       ],
-      "id": "f260a3d9-1936-4d90-aaf6-589b575e02a7",
+      "id": "d5e508ab-079c-43de-93ed-19c174d8d310",
       "name": "AI Agent"
     },
     {
@@ -172,7 +172,7 @@
         580,
         500
       ],
-      "id": "5bea7d54-5b37-426c-9e88-7c625883019e",
+      "id": "668d1743-0780-4390-b376-284263d95e59",
       "name": "Postgres Chat Memory",
       "credentials": {
         "postgres": {
@@ -193,7 +193,7 @@
         760,
         500
       ],
-      "id": "f7908687-9067-4de8-b8ea-f9e42e33c852",
+      "id": "7370ce18-df43-4052-a6aa-17703954f302",
       "name": "Answer questions with a vector store1"
     },
     {
@@ -212,7 +212,7 @@
         580,
         700
       ],
-      "id": "beae4086-78fc-4874-af47-cb940016e24e",
+      "id": "60fa8519-77cf-4765-bf14-e39ea0482d08",
       "name": "Qdrant Vector Store1",
       "credentials": {
         "qdrantApi": {
@@ -237,7 +237,7 @@
         420,
         480
       ],
-      "id": "b3395d88-27b5-4878-b170-e23c1cf85b47",
+      "id": "56d132d8-91c1-4805-b293-d0e61049c892",
       "name": "OpenAI Chat Model2",
       "credentials": {
         "openAiApi": {
@@ -256,7 +256,7 @@
         460,
         780
       ],
-      "id": "4414ebc3-648b-4a3d-b7d9-1ad2dcf8562d",
+      "id": "081e24ba-548f-4871-874b-54e39489198b",
       "name": "Embeddings OpenAI1",
       "credentials": {
         "openAiApi": {
@@ -281,7 +281,7 @@
         900,
         720
       ],
-      "id": "2c9b7c39-0cd3-4434-8d22-130c07ac5edc",
+      "id": "99e5b6de-21fb-4219-8e48-0052115e33c1",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
@@ -307,7 +307,7 @@
         1060,
         260
       ],
-      "id": "880cd764-2c50-4a38-be5d-6fcc8a8e519d",
+      "id": "13e44ddf-3034-4bc9-8bfa-34c39ad3ec53",
       "name": "Etiqueta",
       "credentials": {
         "httpHeaderAuth": {
@@ -337,6 +337,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-02-27T19:18:32.000Z",
-  "versionId": "833aa072-3691-453d-8517-98e4b583e6c7"
+  "updatedAt": "2025-02-27T19:16:36.000Z",
+  "versionId": "f1108f7c-c81e-4df5-9384-b3e67cc75842"
 }
