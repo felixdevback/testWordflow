@@ -1,0 +1,243 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T21:20:32.604Z",
+  "id": "UKvBGLdXb2LULlR4",
+  "meta": null,
+  "name": "batch_carmen",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "827975c7-8312-4f1d-a66e-66bf98de4067",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "prgwysolpfprh8d",
+        "table": "ma0cn1ixzv1cbvm",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "39453f04-440c-4c88-a735-94720c52fdd5",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "s5P2QFmMipXho8qh",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.admission",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "batch_id",
+            "email"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "application_number",
+              "value": "={{ $json['Numero aplicacion'] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "72189330-c8cf-4129-87f1-468a5b001df5",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.batch",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "start_date",
+            "end_date"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.batch_id[0] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        640,
+        160
+      ],
+      "id": "1edd182d-f1c1-49f6-b1ae-fbdeab972799",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        860,
+        20
+      ],
+      "id": "d8f1e42a-1797-486e-8b7c-9c574c704d60",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "prgwysolpfprh8d",
+        "table": "ma0cn1ixzv1cbvm",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('NocoDB').item.json.Id }}"
+            },
+            {
+              "fieldName": "batch",
+              "fieldValue": "={{ $json.batch_id[1] }}"
+            },
+            {
+              "fieldName": "Fecha inicio",
+              "fieldValue": "={{ $json.start_date }}"
+            },
+            {
+              "fieldName": "Fecha final",
+              "fieldValue": "={{ $json.end_date }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1080,
+        20
+      ],
+      "id": "9e74f505-b832-4a1f-852a-11d59b6844da",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "s5P2QFmMipXho8qh",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-14T23:02:47.000Z",
+  "versionId": "5b47fea2-cc2f-4630-af12-c23d423298d4"
+}
