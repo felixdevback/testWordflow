@@ -1,0 +1,137 @@
+{
+  "active": false,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-21T22:33:54.515Z",
+  "id": "25",
+  "meta": null,
+  "name": "MAE_MX_MBA_20marzo",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.campaign_id = 3;\n  item.json.medium_id = 15;\n  item.json.source_id = 193;\n  item.json.team_id = 15;\n}\n\nreturn $input.all();"
+      },
+      "id": "812fab4c-95dd-4ab8-82b0-eb8dfdbd2bad",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.body.contact_name}} - MAESTRIA"
+            },
+            {
+              "fieldName": "type",
+              "fieldValue": "lead"
+            },
+            {
+              "fieldName": "contact_name",
+              "fieldValue": "={{ $json.body.contact_name}}"
+            },
+            {
+              "fieldName": "email_from",
+              "fieldValue": "={{ $json.body.email_from}}"
+            },
+            {
+              "fieldName": "x_studio_programa_de_inters",
+              "fieldValue": "={{ $json.body.x_studio_programa_academico}}"
+            },
+            {
+              "fieldName": "phone",
+              "fieldValue": "={{ $json.body.phone}}"
+            },
+            {
+              "fieldName": "website",
+              "fieldValue": "={{ $json.body.website}}"
+            },
+            {
+              "fieldName": "medium_id",
+              "fieldValue": "={{ $json[\"medium_id\"] }}"
+            },
+            {
+              "fieldName": "campaign_id",
+              "fieldValue": "={{ $json[\"campaign_id\"] }}"
+            },
+            {
+              "fieldName": "source_id",
+              "fieldValue": "={{ $json[\"source_id\"] }}"
+            },
+            {
+              "fieldName": "team_id",
+              "fieldValue": "={{ $json.team_id }}"
+            }
+          ]
+        }
+      },
+      "id": "abb11388-4a5a-4a45-b233-342a1829db37",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        400
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "50c1b515-a8fd-4a0d-8043-49d373680a29",
+        "options": {}
+      },
+      "id": "c4dea799-ee20-4020-b512-ce5745d4fb4b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        400
+      ],
+      "webhookId": "50c1b515-a8fd-4a0d-8043-49d373680a29"
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-03T00:20:13.000Z",
+  "versionId": "cb58cf0a-697a-440f-a24b-8f5d33d1591b"
+}
