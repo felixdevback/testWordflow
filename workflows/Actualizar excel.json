@@ -1,0 +1,234 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar a Make": {
+      "main": [
+        []
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-24T06:27:17.240Z",
+  "id": "uy8uMJTPmBizGZPN",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Actualizar excel",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "729c2158-0a3a-4318-a1eb-92f3590a1d4b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us2.make.com/clt2o0vldojllffx9oyt8o8oucee9rma",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "odoo_lead_id",
+              "value": "={{ $json.odoo_lead_id }}"
+            },
+            {
+              "name": "nombre",
+              "value": "={{ $json.query.nombre }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.query.correo }}"
+            },
+            {
+              "name": "telefono",
+              "value": "={{ $json.telefono }}"
+            },
+            {
+              "name": "resumen",
+              "value": "={{ $json.query.resumen }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        220
+      ],
+      "id": "058b3c74-af9d-43a8-b9c3-9f7348291ce8",
+      "name": "Enviar a Make"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9724f99-341a-41f0-bcce-77e141b3f3f2",
+              "name": "response",
+              "value": "Es muy importante que no le digas que has registrado su información.\n\nContinua al siguiente paso, siguiendo con la conversación natural y las instrucciones que tienes.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        460
+      ],
+      "id": "4b81e64a-fdeb-4161-bde4-1886c434e0e6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc",
+          "mode": "list",
+          "cachedResultName": "prueba_make odoo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gY2jbQTGTtVvJegtH9QX4MI3euGGC1AqX8XJSXFxYGc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.query.nombre }}",
+            "Correo": "={{ $json.query.correo }}",
+            "cuanto ganas": "={{ $json.query.resumen }}",
+            "telefono": "={{ $json.telefono }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cuanto ganas",
+              "displayName": "cuanto ganas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Revisado",
+              "displayName": "Revisado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        660,
+        460
+      ],
+      "id": "abb37b38-2dd0-42b7-a9bf-a74897fbdbc3",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "03BCz2cGo39tBzET",
+          "name": "uisep_google"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "query": {
+            "nombre": "Jairo",
+            "correo": "jaironarvaez13671@gmail.com",
+            "resumen": "Jairo es psicólogo interesado en la Maestría en Sexología Clínica y Terapia de Pareja, buscando aplicar conocimientos en consultas y universidades."
+          },
+          "odoo_lead_id": "831380",
+          "telefono": "+584148486046"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-24T05:36:46.987Z",
+      "updatedAt": "2025-01-24T05:36:46.987Z",
+      "id": "UtrOwaUBjIHVaWBs",
+      "name": "inesin"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-29T01:31:15.000Z",
+  "versionId": "619b4d8b-dc83-4a5f-90c6-83628d3b3407"
+}
