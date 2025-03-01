@@ -1,0 +1,61 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-24T17:42:30.330Z",
+  "id": "yJsXO4mg0tT6BEIe",
+  "meta": null,
+  "name": "",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "67fe7646-0ced-4129-bf37-9f80b47bf70a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "380a2cf7-2b5a-4b2c-8e47-fcc796bc8880",
+      "name": "Webhook",
+      "webhookId": "67fe7646-0ced-4129-bf37-9f80b47bf70a"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "8239635f-3052-4962-9566-2da18e958729",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T17:50:03.000Z",
+  "versionId": "9b7e999b-c1ae-4a32-8e01-b1e4a7125349"
+}
