@@ -1,0 +1,213 @@
+{
+  "active": true,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Lead Ads Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-28T01:33:34.978Z",
+  "id": "1EGyoQM5uxW6e7gD",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Integration Facebook Lead Ads, HTTP_COL_B1_TOP",
+  "nodes": [
+    {
+      "parameters": {
+        "page": {
+          "__rl": true,
+          "value": "104022764963444",
+          "mode": "list",
+          "cachedResultName": "Universidad ISEP",
+          "cachedResultUrl": "https://facebook.com/104022764963444"
+        },
+        "form": {
+          "__rl": true,
+          "value": "1342685879753492",
+          "mode": "list",
+          "cachedResultName": "COL_MAE_B1_TOP_Convertion_abr"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.facebookLeadAdsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        -100
+      ],
+      "id": "1871e600-24b1-45d1-b808-bb3bbc1c3903",
+      "name": "Facebook Lead Ads Trigger",
+      "webhookId": "ae33611d-6c3d-4978-9d84-7704c8268e00",
+      "credentials": {
+        "facebookLeadAdsOAuth2Api": {
+          "id": "EoRlYPObogRHaaj7",
+          "name": "Facebook Lead Ads account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.data.full_name }}"
+            },
+            {
+              "fieldName": "type",
+              "fieldValue": "lead"
+            },
+            {
+              "fieldName": "contact_name",
+              "fieldValue": "={{ $json.data.full_name }}"
+            },
+            {
+              "fieldName": "email_from",
+              "fieldValue": "={{ $json.data.email }}"
+            },
+            {
+              "fieldName": "phone",
+              "fieldValue": "={{ $json.data.phone_number }}"
+            },
+            {
+              "fieldName": "country_id",
+              "fieldValue": "49"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -100
+      ],
+      "id": "bff52f26-0f40-4d94-860f-da65f8d9829f",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://workflow.universidadisep.com/webhook/6df49dfe-210b-45aa-b62d-efae56c711d3",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Facebook Lead Ads Trigger').item.json.data.full_name }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Facebook Lead Ads Trigger').item.json.data.email }}"
+            },
+            {
+              "name": "telefono",
+              "value": "={{ $('Facebook Lead Ads Trigger').item.json.data.phone_number }}"
+            },
+            {
+              "name": "formacion",
+              "value": "= {{ $('Facebook Lead Ads Trigger').item.json.data[\"Maestría\"] }}- Facebook"
+            },
+            {
+              "name": "pais",
+              "value": "Mexico"
+            },
+            {
+              "name": "oddo_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        -100
+      ],
+      "id": "f0229275-9c5c-430e-843e-f746b17315ab",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "notificaciones@universidadisep.com",
+        "fromName": "test",
+        "toEmail": "maikelguzman111@gmail.com",
+        "subject": "testfacebook_lead",
+        "contentValue": "test",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        480,
+        -100
+      ],
+      "id": "06493ded-7b04-43bb-8b51-1dd1dd896552",
+      "name": "SendGrid",
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-02-28T23:35:32.014Z",
+  "versionId": "930053d7-0e53-40af-a047-4d3e06349d8a"
+}
