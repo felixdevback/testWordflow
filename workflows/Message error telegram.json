@@ -1,0 +1,73 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-28T17:27:10.251Z",
+  "id": "eXrqA7vJfW3kIU2i",
+  "meta": null,
+  "name": "Message error telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "=527163413",
+        "text": "=¡Hubo un error en el flujo de trabajo!\nNombre del wordflow:{{ $json.workflow.name }}\nNodo que falló: {{ $json.execution.lastNodeExecuted }}\nMensaje de error: {{ $json.execution.error.message }}\n",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        -120
+      ],
+      "id": "0999688d-7384-4336-bdcb-2b0cb743f7c5",
+      "name": "Telegram",
+      "webhookId": "4400a403-f255-4de8-af0e-940aabe41390",
+      "credentials": {
+        "telegramApi": {
+          "id": "0dbd352BLujegzqR",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -120
+      ],
+      "id": "564e745a-b3c5-407b-b08c-3b43a75f1262",
+      "name": "Error Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-20T20:11:19.525Z",
+      "updatedAt": "2025-02-20T20:11:19.525Z",
+      "id": "PeoIz6bFcQwZKWNt",
+      "name": "PRUEBA"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-28T17:29:46.000Z",
+  "versionId": "94a8b23c-9658-4a82-9de7-339d059ea0b5"
+}
