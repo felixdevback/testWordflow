@@ -1,0 +1,3095 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Buzon",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "no_buzon",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Colgo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "no contestó",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colgo": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "no contestó": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buzon": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "no_buzon": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-04T00:43:32.920Z",
+  "id": "GIxWab1LyT2SrTYx",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "data-retell-historica-a-postgres",
+  "nodes": [
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_details",
+          "mode": "list",
+          "cachedResultName": "call_details"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "needs_followup": false,
+            "answered": false,
+            "is_duplicate": false,
+            "sent_to_oddo": false,
+            "from_number": "={{$json.body.call.from_number}}",
+            "to_number": "={{ $json.body.call.to_number }}",
+            "call_summary": "={{ $json.body.call?.call_analysis?.call_summary ? $json.body.call.call_analysis.call_summary : $json.body.call.disconnection_reason }}\n",
+            "start_timestamp": "={{ $json.body.call.start_timestamp.toDateTime('ms') }}",
+            "end_timestamp": "={{ $json.body.call.end_timestamp.toDateTime('ms') }}",
+            "call_status": "={{ $json.body.call.call_status }}",
+            "disconnection_reason": "={{ $json.body.call.disconnection_reason }}",
+            "duration_minutes": "={{ $json.body.call.duration_ms/60000 }}",
+            "agent_id": "={{ $json.body.call.agent_id }}",
+            "campaign_name": "={{ $json.body.call.retell_llm_dynamic_variables.campaign_name }}",
+            "recording_url": "={{ $json.body.call.recording_url }}",
+            "transcript": "={{ \n  !$json.body.call?.transcript || \n  $json.body.call.transcript.trim() === \"\" || \n  !/user|cliente|nombre del usuario/i.test($json.body.call.transcript) || \n  /buzón de voz|mensaje automático|la persona no está disponible|seu recado|deje su mensaje|número no disponible/i.test($json.body.call.transcript) \n    ? (/buzón de voz|mensaje automático|seu recado|deje su mensaje/i.test($json.body.call.transcript) \n        ? \"voicemail_reached\" \n        : $json.body.call.disconnection_reason) \n    : $json.body.call.transcript \n}}\n\n",
+            "id_oddo": "={{ $json.body.call.retell_llm_dynamic_variables.id_oddo }}",
+            "resultado": "={{ \n  $json.body.call?.call_analysis?.custom_analysis_data?._oportunidad === false \n    ? \"\" \n    : $json.body.call.call_analysis.custom_analysis_data._oportunidad \n}}\n",
+            "name": "={{ $json.body.call.retell_llm_dynamic_variables.name }}",
+            "call_id": "={{ $json.body.call.call_id}}",
+            "llamada_numero": "={{ $json.body.call.retell_llm_dynamic_variables.llamada }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "to_number",
+              "displayName": "to_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_summary",
+              "displayName": "call_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "start_timestamp",
+              "displayName": "start_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "end_timestamp",
+              "displayName": "end_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "needs_followup",
+              "displayName": "needs_followup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "answered",
+              "displayName": "answered",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "is_duplicate",
+              "displayName": "is_duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_status",
+              "displayName": "call_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "disconnection_reason",
+              "displayName": "disconnection_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duration_minutes",
+              "displayName": "duration_minutes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recording_url",
+              "displayName": "recording_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_id",
+              "displayName": "call_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_oddo",
+              "displayName": "id_oddo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sent_to_oddo",
+              "displayName": "sent_to_oddo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resultado",
+              "displayName": "resultado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "llamada_numero",
+              "displayName": "llamada_numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "249964e3-ee05-4f4f-98b1-245217dac623",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        540,
+        -360
+      ],
+      "notesInFlow": false,
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c272f17b-c5f2-404f-8725-abb80242d304",
+        "options": {}
+      },
+      "id": "cb30f3dc-5f9d-45f4-bcaf-d993a25006fc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -440,
+        -40
+      ],
+      "webhookId": "c272f17b-c5f2-404f-8725-abb80242d304"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f4c27b32-46ee-4144-984f-a4e89aebae40",
+              "leftValue": "={{ $json.body.call.call_analysis.call_summary }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "3e801c72-2375-442a-ade7-cf2bcd32d03d",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "call_analyzed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "72793366-4894-4974-b99f-257119b4ee6a",
+              "leftValue": "={{ $json.body.call.transcript_object}}",
+              "rightValue": "user",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -240,
+        -200
+      ],
+      "id": "7aedd220-17ab-4fcb-9f2f-f4daeb4e83e9",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a9fd007a-ca6b-4e40-a3d4-82836c924c3e",
+              "leftValue": "={{ $('Webhook').item.json.body.call.call_status }}",
+              "rightValue": "ended",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "99ceeaf5-4f0d-4250-a6b7-c2ec73da01ea",
+              "leftValue": "={{ $json.body.call.disconnection_reason }}",
+              "rightValue": "voicemail_reached",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "0b5f74fd-1435-42b0-ad5d-705b6a0798db",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "call_analyzed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "id": "79074db8-06aa-4bf8-95ce-09a049127ae3",
+      "name": "Colgo",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        -20
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a9fd007a-ca6b-4e40-a3d4-82836c924c3e",
+              "leftValue": "={{ $('Webhook').item.json.body.call.call_status }}",
+              "rightValue": "error",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "2792467c-624e-484e-98d7-e8889e882605",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "call_analyzed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "id": "b8799c9f-a3b8-4348-8dfe-04d6b1a21c5c",
+      "name": "no contestó",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        120
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a9fd007a-ca6b-4e40-a3d4-82836c924c3e",
+              "leftValue": "={{ $('Webhook').item.json.body.call.call_status }}",
+              "rightValue": "ended",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "99ceeaf5-4f0d-4250-a6b7-c2ec73da01ea",
+              "leftValue": "={{ $json.body.call.disconnection_reason }}",
+              "rightValue": "voicemail_reached",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "id": "68b1480a-fd3a-4ebd-b5c9-7726ef21f9cc",
+      "name": "Buzon",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        -180
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a9fd007a-ca6b-4e40-a3d4-82836c924c3e",
+              "leftValue": "={{ $('Webhook').item.json.body.call.call_status }}",
+              "rightValue": "ended",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "99ceeaf5-4f0d-4250-a6b7-c2ec73da01ea",
+              "leftValue": "={{ $json.body.call.disconnection_reason }}",
+              "rightValue": "voicemail_reached",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "id": "d2c07b8e-999c-4b96-8938-f119d0dbdf53",
+      "name": "no_buzon",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        -360
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_details",
+          "mode": "list",
+          "cachedResultName": "call_details"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "needs_followup": false,
+            "answered": false,
+            "is_duplicate": false,
+            "sent_to_oddo": false,
+            "from_number": "={{$json.body.call.from_number}}",
+            "to_number": "={{ $json.body.call.to_number }}",
+            "call_summary": "={{ $json.body.call?.call_analysis?.call_summary ? $json.body.call.call_analysis.call_summary : $json.body.call.disconnection_reason }}\n",
+            "start_timestamp": "={{ $json.body.call.start_timestamp.toDateTime('ms') }}",
+            "end_timestamp": "={{ $json.body.call.end_timestamp.toDateTime('ms') }}",
+            "call_status": "={{ $json.body.call.call_status }}",
+            "disconnection_reason": "={{ $json.body.call.disconnection_reason }}",
+            "duration_minutes": "={{ $json.body.call.duration_ms/60000 }}",
+            "agent_id": "={{ $json.body.call.agent_id }}",
+            "campaign_name": "={{ $json.body.call.retell_llm_dynamic_variables.campaign_name }}",
+            "recording_url": "={{ $json.body.call.recording_url }}",
+            "transcript": "voicemail_reached\n",
+            "id_oddo": "={{ $json.body.call.retell_llm_dynamic_variables.id_oddo }}",
+            "resultado": "={{ $json.body.call.call_analysis.custom_analysis_data._oportunidad }}",
+            "name": "={{ $json.body.call.retell_llm_dynamic_variables.name }}",
+            "call_id": "={{ $json.body.call.call_id}}",
+            "llamada_numero": "={{ $json.body.call.retell_llm_dynamic_variables.llamada }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "to_number",
+              "displayName": "to_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_summary",
+              "displayName": "call_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "start_timestamp",
+              "displayName": "start_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "end_timestamp",
+              "displayName": "end_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "needs_followup",
+              "displayName": "needs_followup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "answered",
+              "displayName": "answered",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "is_duplicate",
+              "displayName": "is_duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_status",
+              "displayName": "call_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "disconnection_reason",
+              "displayName": "disconnection_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duration_minutes",
+              "displayName": "duration_minutes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recording_url",
+              "displayName": "recording_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_id",
+              "displayName": "call_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_oddo",
+              "displayName": "id_oddo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sent_to_oddo",
+              "displayName": "sent_to_oddo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resultado",
+              "displayName": "resultado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "llamada_numero",
+              "displayName": "llamada_numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0700bfa-6286-4854-8cf1-0dc54814d682",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        540,
+        -180
+      ],
+      "notesInFlow": false,
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "workflow.universidadisep.com",
+            "user-agent": "axios/1.7.7",
+            "content-length": "32434",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "100.20.5.228",
+            "x-forwarded-host": "workflow.universidadisep.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "3bed2e0862fe",
+            "x-real-ip": "100.20.5.228",
+            "x-retell-signature": "v=1738906802708,d=4140a611897fdb4cd279cc4264686bd88ef129c9e636f40811b55804fdccd215"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "call_analyzed",
+            "call": {
+              "call_id": "call_542af343ed66176de4a55588423",
+              "call_type": "phone_call",
+              "agent_id": "agent_d2f34fd56bdcf5cbef12d706c2",
+              "retell_llm_dynamic_variables": {
+                "name": "maikel guzman",
+                "campaign_name": "Ventas mexico",
+                "chatInput": "",
+                "llamada": "1",
+                "email_user": "maikelguzman130477@gmail.com",
+                "id_oddo": "833886"
+              },
+              "call_status": "ended",
+              "start_timestamp": 1738906682972,
+              "end_timestamp": 1738906800674,
+              "duration_ms": 117702,
+              "transcript": "Agent: Olá! Muito bom dia, sou Laura Ibarra, assessora de admissões da Universidade Isép. Espero que você esteja muito bem. Estou entrando em contato porque você solicitou informações sobre nossas formações. Para que eu possa oferecer um atendimento mais personalizado, você poderia me informar o seu nome, por gentileza?\nAgent: Entendo que você pode estar ocupado. Se preferir, posso aguardar \nUser: Os\nAgent: Muito obrigada, Os! Antes de prosseguirmos, é um bom momento para conversarmos sobre a formação? Ou você prefere que eu retome a ligação em outro horário que seja mais conveniente para você?\nUser: Pode ampliar\nAgent: Claro, Os! Fico feliz que você esteja interessado em saber mais. Na nossa universidade, oferecemos uma variedade de formações que podem se encaixar nas suas necessidades e objetivos. Você tem algum programa específico em mente ou gostaria de uma visão geral das opções disponíveis? Isso me ajudará a direcionar melhor as informações para você.\nAgent: Entendo que você pode estar ocupado, Os. Se precisar de um momento para pensar ou se tiver alguma dúvida específica, estou aqui para ajudar. Posso também enviar um e-mail com as informações que discutimos até agora, caso você prefira. O que você acha?\n",
+              "transcript_object": [
+                {
+                  "role": "agent",
+                  "content": "Olá! Muito bom dia, sou Laura Ibarra, assessora de admissões da Universidade Isép. Espero que você esteja muito bem. Estou entrando em contato porque você solicitou informações sobre nossas formações. Para que eu possa oferecer um atendimento mais personalizado, você poderia me informar o seu nome, por gentileza?",
+                  "words": [
+                    {
+                      "word": "Olá!",
+                      "start": 0.001,
+                      "end": 0.409163330078125
+                    },
+                    {
+                      "word": " Muito ",
+                      "start": 0.772541748046875,
+                      "end": 1.180704833984375
+                    },
+                    {
+                      "word": "bom ",
+                      "start": 1.180704833984375,
+                      "end": 1.5888681640625
+                    },
+                    {
+                      "word": "dia, ",
+                      "start": 1.5888681640625,
+                      "end": 1.997031494140625
+                    },
+                    {
+                      "word": "sou ",
+                      "start": 1.997031494140625,
+                      "end": 2.40519482421875
+                    },
+                    {
+                      "word": "Laura ",
+                      "start": 2.40519482421875,
+                      "end": 2.81335791015625
+                    },
+                    {
+                      "word": "Ibarra, ",
+                      "start": 2.81335791015625,
+                      "end": 3.221521240234375
+                    },
+                    {
+                      "word": "assessora ",
+                      "start": 3.221521240234375,
+                      "end": 3.6296845703125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 3.6296845703125,
+                      "end": 4.037847900390625
+                    },
+                    {
+                      "word": "admissões ",
+                      "start": 4.037847900390625,
+                      "end": 4.446010986328125
+                    },
+                    {
+                      "word": "da ",
+                      "start": 4.24850341796875,
+                      "end": 4.656666748046875
+                    },
+                    {
+                      "word": "Universidade ",
+                      "start": 4.24850341796875,
+                      "end": 4.656666748046875
+                    },
+                    {
+                      "word": "Isép.",
+                      "start": 4.24850341796875,
+                      "end": 4.656666748046875
+                    },
+                    {
+                      "word": " Espero ",
+                      "start": 4.656666748046875,
+                      "end": 5.064829833984375
+                    },
+                    {
+                      "word": "que ",
+                      "start": 5.064829833984375,
+                      "end": 5.4729931640625
+                    },
+                    {
+                      "word": "você ",
+                      "start": 5.4729931640625,
+                      "end": 5.881156494140625
+                    },
+                    {
+                      "word": "esteja ",
+                      "start": 5.881156494140625,
+                      "end": 6.28931982421875
+                    },
+                    {
+                      "word": "muito ",
+                      "start": 6.28931982421875,
+                      "end": 6.69748291015625
+                    },
+                    {
+                      "word": "bem.",
+                      "start": 6.30362841796875,
+                      "end": 6.711791748046875
+                    },
+                    {
+                      "word": " Estou ",
+                      "start": 6.711791748046875,
+                      "end": 7.119954833984375
+                    },
+                    {
+                      "word": "entrando ",
+                      "start": 7.119954833984375,
+                      "end": 7.5281181640625
+                    },
+                    {
+                      "word": "em ",
+                      "start": 7.5281181640625,
+                      "end": 7.936281494140625
+                    },
+                    {
+                      "word": "contato ",
+                      "start": 7.936281494140625,
+                      "end": 8.34444482421875
+                    },
+                    {
+                      "word": "porque ",
+                      "start": 8.34444482421875,
+                      "end": 8.75260791015625
+                    },
+                    {
+                      "word": "você ",
+                      "start": 8.75260791015625,
+                      "end": 9.160771240234375
+                    },
+                    {
+                      "word": "solicitou ",
+                      "start": 9.160771240234375,
+                      "end": 9.5689345703125
+                    },
+                    {
+                      "word": "informações ",
+                      "start": 9.5689345703125,
+                      "end": 9.977097900390625
+                    },
+                    {
+                      "word": "sobre ",
+                      "start": 9.977097900390625,
+                      "end": 10.385260986328126
+                    },
+                    {
+                      "word": "nossas ",
+                      "start": 10.385260986328126,
+                      "end": 10.79342431640625
+                    },
+                    {
+                      "word": "formações.",
+                      "start": 10.62337841796875,
+                      "end": 11.031541748046875
+                    },
+                    {
+                      "word": " Para ",
+                      "start": 11.031541748046875,
+                      "end": 11.439704833984376
+                    },
+                    {
+                      "word": "que ",
+                      "start": 11.439704833984376,
+                      "end": 11.8478681640625
+                    },
+                    {
+                      "word": "eu ",
+                      "start": 11.8478681640625,
+                      "end": 12.256031494140625
+                    },
+                    {
+                      "word": "possa ",
+                      "start": 12.256031494140625,
+                      "end": 12.66419482421875
+                    },
+                    {
+                      "word": "oferecer ",
+                      "start": 12.66419482421875,
+                      "end": 13.07235791015625
+                    },
+                    {
+                      "word": "um ",
+                      "start": 13.07235791015625,
+                      "end": 13.480521240234374
+                    },
+                    {
+                      "word": "atendimento ",
+                      "start": 13.480521240234374,
+                      "end": 13.8886845703125
+                    },
+                    {
+                      "word": "mais ",
+                      "start": 13.8886845703125,
+                      "end": 14.296847900390626
+                    },
+                    {
+                      "word": "personalizado, ",
+                      "start": 14.296847900390626,
+                      "end": 14.705010986328125
+                    },
+                    {
+                      "word": "você ",
+                      "start": 14.705010986328125,
+                      "end": 15.11317431640625
+                    },
+                    {
+                      "word": "poderia ",
+                      "start": 15.11317431640625,
+                      "end": 15.521337646484374
+                    },
+                    {
+                      "word": "me ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "informar ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "o ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "seu ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "nome, ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "por ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "gentileza?",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 0
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "Entendo que você pode estar ocupado. Se preferir, posso aguardar ",
+                  "words": [
+                    {
+                      "word": "Entendo ",
+                      "start": 26.324,
+                      "end": 26.732163330078127
+                    },
+                    {
+                      "word": "que ",
+                      "start": 26.732163330078127,
+                      "end": 27.140326416015625
+                    },
+                    {
+                      "word": "você ",
+                      "start": 27.140326416015625,
+                      "end": 27.54848974609375
+                    },
+                    {
+                      "word": "pode ",
+                      "start": 27.54848974609375,
+                      "end": 27.956653076171875
+                    },
+                    {
+                      "word": "estar ",
+                      "start": 27.92787841796875,
+                      "end": 28.336041748046874
+                    },
+                    {
+                      "word": "ocupado.",
+                      "start": 27.92787841796875,
+                      "end": 28.336041748046874
+                    },
+                    {
+                      "word": " Se ",
+                      "start": 28.336041748046874,
+                      "end": 28.744204833984377
+                    },
+                    {
+                      "word": "preferir, ",
+                      "start": 28.744204833984377,
+                      "end": 29.1523681640625
+                    },
+                    {
+                      "word": "posso ",
+                      "start": 29.1523681640625,
+                      "end": 29.560531494140626
+                    },
+                    {
+                      "word": "aguardar ",
+                      "start": 29.560531494140626,
+                      "end": 29.96869482421875
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Os",
+                  "words": [
+                    {
+                      "word": "Os",
+                      "start": 29.985,
+                      "end": 30.215
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "Muito obrigada, Os! Antes de prosseguirmos, é um bom momento para conversarmos sobre a formação? Ou você prefere que eu retome a ligação em outro horário que seja mais conveniente para você?",
+                  "words": [
+                    {
+                      "word": "Muito ",
+                      "start": 34.325,
+                      "end": 34.73316333007813
+                    },
+                    {
+                      "word": "obrigada, ",
+                      "start": 34.73316333007813,
+                      "end": 35.14132641601562
+                    },
+                    {
+                      "word": "Os!",
+                      "start": 35.14132641601562,
+                      "end": 35.54948974609375
+                    },
+                    {
+                      "word": " Antes ",
+                      "start": 36.380958251953125,
+                      "end": 36.78912158203125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 36.78912158203125,
+                      "end": 37.197284912109374
+                    },
+                    {
+                      "word": "prosseguirmos, ",
+                      "start": 37.197284912109374,
+                      "end": 37.6054482421875
+                    },
+                    {
+                      "word": "é ",
+                      "start": 37.6054482421875,
+                      "end": 38.013611328125
+                    },
+                    {
+                      "word": "um ",
+                      "start": 38.013611328125,
+                      "end": 38.42177465820313
+                    },
+                    {
+                      "word": "bom ",
+                      "start": 38.42177465820313,
+                      "end": 38.82993798828125
+                    },
+                    {
+                      "word": "momento ",
+                      "start": 38.82993798828125,
+                      "end": 39.23810107421875
+                    },
+                    {
+                      "word": "para ",
+                      "start": 39.23810107421875,
+                      "end": 39.64626440429687
+                    },
+                    {
+                      "word": "conversarmos ",
+                      "start": 39.64626440429687,
+                      "end": 40.054427734375
+                    },
+                    {
+                      "word": "sobre ",
+                      "start": 40.054427734375,
+                      "end": 40.46259106445312
+                    },
+                    {
+                      "word": "a ",
+                      "start": 40.379170166015626,
+                      "end": 40.78733325195312
+                    },
+                    {
+                      "word": "formação?",
+                      "start": 40.379170166015626,
+                      "end": 40.78733325195312
+                    },
+                    {
+                      "word": " Ou ",
+                      "start": 40.78733325195312,
+                      "end": 41.19549658203125
+                    },
+                    {
+                      "word": "você ",
+                      "start": 41.19549658203125,
+                      "end": 41.60365991210937
+                    },
+                    {
+                      "word": "prefere ",
+                      "start": 41.60365991210937,
+                      "end": 42.0118232421875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 42.0118232421875,
+                      "end": 42.419986328125
+                    },
+                    {
+                      "word": "eu ",
+                      "start": 42.419986328125,
+                      "end": 42.828149658203124
+                    },
+                    {
+                      "word": "retome ",
+                      "start": 42.828149658203124,
+                      "end": 43.23631298828125
+                    },
+                    {
+                      "word": "a ",
+                      "start": 43.23631298828125,
+                      "end": 43.64447607421875
+                    },
+                    {
+                      "word": "ligação ",
+                      "start": 43.64447607421875,
+                      "end": 44.052639404296876
+                    },
+                    {
+                      "word": "em ",
+                      "start": 44.052639404296876,
+                      "end": 44.460802734375
+                    },
+                    {
+                      "word": "outro ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "horário ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "que ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "seja ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "mais ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "conveniente ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "para ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "você?",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 2
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Pode ampliar",
+                  "words": [
+                    {
+                      "word": "Pode ",
+                      "start": 46.155,
+                      "end": 46.475
+                    },
+                    {
+                      "word": "ampliar",
+                      "start": 46.475,
+                      "end": 46.975
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "Claro, Os! Fico feliz que você esteja interessado em saber mais. Na nossa universidade, oferecemos uma variedade de formações que podem se encaixar nas suas necessidades e objetivos. Você tem algum programa específico em mente ou gostaria de uma visão geral das opções disponíveis? Isso me ajudará a direcionar melhor as informações para você.",
+                  "words": [
+                    {
+                      "word": "Claro, ",
+                      "start": 51.95433325195312,
+                      "end": 52.36249658203125
+                    },
+                    {
+                      "word": "Os!",
+                      "start": 52.36249658203125,
+                      "end": 52.77065991210937
+                    },
+                    {
+                      "word": " Fico ",
+                      "start": 53.248,
+                      "end": 53.65616333007812
+                    },
+                    {
+                      "word": "feliz ",
+                      "start": 53.65616333007812,
+                      "end": 54.064326416015625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 54.064326416015625,
+                      "end": 54.47248974609375
+                    },
+                    {
+                      "word": "você ",
+                      "start": 54.47248974609375,
+                      "end": 54.880653076171875
+                    },
+                    {
+                      "word": "esteja ",
+                      "start": 54.880653076171875,
+                      "end": 55.28881640625
+                    },
+                    {
+                      "word": "interessado ",
+                      "start": 55.28881640625,
+                      "end": 55.6969794921875
+                    },
+                    {
+                      "word": "em ",
+                      "start": 55.39583666992188,
+                      "end": 55.804
+                    },
+                    {
+                      "word": "saber ",
+                      "start": 55.39583666992188,
+                      "end": 55.804
+                    },
+                    {
+                      "word": "mais.",
+                      "start": 55.39583666992188,
+                      "end": 55.804
+                    },
+                    {
+                      "word": " Na ",
+                      "start": 55.804,
+                      "end": 56.21216333007813
+                    },
+                    {
+                      "word": "nossa ",
+                      "start": 56.21216333007813,
+                      "end": 56.62032641601562
+                    },
+                    {
+                      "word": "universidade, ",
+                      "start": 56.62032641601562,
+                      "end": 57.02848974609375
+                    },
+                    {
+                      "word": "oferecemos ",
+                      "start": 57.02848974609375,
+                      "end": 57.43665307617187
+                    },
+                    {
+                      "word": "uma ",
+                      "start": 57.43665307617187,
+                      "end": 57.84481640625
+                    },
+                    {
+                      "word": "variedade ",
+                      "start": 57.84481640625,
+                      "end": 58.2529794921875
+                    },
+                    {
+                      "word": "de ",
+                      "start": 58.2529794921875,
+                      "end": 58.661142822265624
+                    },
+                    {
+                      "word": "formações ",
+                      "start": 58.661142822265624,
+                      "end": 59.06930615234375
+                    },
+                    {
+                      "word": "que ",
+                      "start": 59.06930615234375,
+                      "end": 59.477469482421874
+                    },
+                    {
+                      "word": "podem ",
+                      "start": 59.477469482421874,
+                      "end": 59.88563256835938
+                    },
+                    {
+                      "word": "se ",
+                      "start": 59.88563256835938,
+                      "end": 60.2937958984375
+                    },
+                    {
+                      "word": "encaixar ",
+                      "start": 60.2937958984375,
+                      "end": 60.701959228515626
+                    },
+                    {
+                      "word": "nas ",
+                      "start": 60.701959228515626,
+                      "end": 61.11012255859375
+                    },
+                    {
+                      "word": "suas ",
+                      "start": 61.11012255859375,
+                      "end": 61.51828564453125
+                    },
+                    {
+                      "word": "necessidades ",
+                      "start": 61.391795166015626,
+                      "end": 61.79995825195312
+                    },
+                    {
+                      "word": "e ",
+                      "start": 61.391795166015626,
+                      "end": 61.79995825195312
+                    },
+                    {
+                      "word": "objetivos.",
+                      "start": 61.391795166015626,
+                      "end": 61.79995825195312
+                    },
+                    {
+                      "word": " Você ",
+                      "start": 61.79995825195312,
+                      "end": 62.20812158203125
+                    },
+                    {
+                      "word": "tem ",
+                      "start": 62.20812158203125,
+                      "end": 62.61628491210938
+                    },
+                    {
+                      "word": "algum ",
+                      "start": 62.61628491210938,
+                      "end": 63.0244482421875
+                    },
+                    {
+                      "word": "programa ",
+                      "start": 63.0244482421875,
+                      "end": 63.432611328125
+                    },
+                    {
+                      "word": "específico ",
+                      "start": 63.432611328125,
+                      "end": 63.840774658203124
+                    },
+                    {
+                      "word": "em ",
+                      "start": 63.840774658203124,
+                      "end": 64.24893798828126
+                    },
+                    {
+                      "word": "mente ",
+                      "start": 64.24893798828126,
+                      "end": 64.65710107421874
+                    },
+                    {
+                      "word": "ou ",
+                      "start": 64.65710107421874,
+                      "end": 65.06526440429687
+                    },
+                    {
+                      "word": "gostaria ",
+                      "start": 65.06526440429687,
+                      "end": 65.473427734375
+                    },
+                    {
+                      "word": "de ",
+                      "start": 65.473427734375,
+                      "end": 65.88159106445312
+                    },
+                    {
+                      "word": "uma ",
+                      "start": 65.88159106445312,
+                      "end": 66.28975415039062
+                    },
+                    {
+                      "word": "visão ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "geral ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "das ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "opções ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "disponíveis?",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": " Isso ",
+                      "start": 66.46758325195313,
+                      "end": 66.87574658203125
+                    },
+                    {
+                      "word": "me ",
+                      "start": 66.87574658203125,
+                      "end": 67.28390991210938
+                    },
+                    {
+                      "word": "ajudará ",
+                      "start": 67.28390991210938,
+                      "end": 67.6920732421875
+                    },
+                    {
+                      "word": "a ",
+                      "start": 67.6920732421875,
+                      "end": 68.100236328125
+                    },
+                    {
+                      "word": "direcionar ",
+                      "start": 68.100236328125,
+                      "end": 68.50839965820313
+                    },
+                    {
+                      "word": "melhor ",
+                      "start": 68.50839965820313,
+                      "end": 68.91656298828126
+                    },
+                    {
+                      "word": "as ",
+                      "start": 68.91656298828126,
+                      "end": 69.32472607421874
+                    },
+                    {
+                      "word": "informações ",
+                      "start": 69.13621166992188,
+                      "end": 69.544375
+                    },
+                    {
+                      "word": "para ",
+                      "start": 69.13621166992188,
+                      "end": 69.544375
+                    },
+                    {
+                      "word": "você.",
+                      "start": 69.13621166992188,
+                      "end": 69.544375
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 3
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "Entendo que você pode estar ocupado, Os. Se precisar de um momento para pensar ou se tiver alguma dúvida específica, estou aqui para ajudar. Posso também enviar um e-mail com as informações que discutimos até agora, caso você prefira. O que você acha?",
+                  "words": [
+                    {
+                      "word": "Entendo ",
+                      "start": 80.859,
+                      "end": 81.26716333007812
+                    },
+                    {
+                      "word": "que ",
+                      "start": 81.26716333007812,
+                      "end": 81.67532641601562
+                    },
+                    {
+                      "word": "você ",
+                      "start": 81.67532641601562,
+                      "end": 82.08348974609375
+                    },
+                    {
+                      "word": "pode ",
+                      "start": 82.08348974609375,
+                      "end": 82.49165307617187
+                    },
+                    {
+                      "word": "estar ",
+                      "start": 82.49165307617187,
+                      "end": 82.89981640625
+                    },
+                    {
+                      "word": "ocupado, ",
+                      "start": 82.89981640625,
+                      "end": 83.3079794921875
+                    },
+                    {
+                      "word": "Os.",
+                      "start": 83.07229516601562,
+                      "end": 83.48045825195312
+                    },
+                    {
+                      "word": " Se ",
+                      "start": 83.48045825195312,
+                      "end": 83.88862158203125
+                    },
+                    {
+                      "word": "precisar ",
+                      "start": 83.88862158203125,
+                      "end": 84.29678491210937
+                    },
+                    {
+                      "word": "de ",
+                      "start": 84.29678491210937,
+                      "end": 84.7049482421875
+                    },
+                    {
+                      "word": "um ",
+                      "start": 84.7049482421875,
+                      "end": 85.113111328125
+                    },
+                    {
+                      "word": "momento ",
+                      "start": 85.113111328125,
+                      "end": 85.52127465820313
+                    },
+                    {
+                      "word": "para ",
+                      "start": 85.52127465820313,
+                      "end": 85.92943798828125
+                    },
+                    {
+                      "word": "pensar ",
+                      "start": 85.92943798828125,
+                      "end": 86.33760107421875
+                    },
+                    {
+                      "word": "ou ",
+                      "start": 86.33760107421875,
+                      "end": 86.74576440429688
+                    },
+                    {
+                      "word": "se ",
+                      "start": 86.74576440429688,
+                      "end": 87.153927734375
+                    },
+                    {
+                      "word": "tiver ",
+                      "start": 87.153927734375,
+                      "end": 87.56209106445313
+                    },
+                    {
+                      "word": "alguma ",
+                      "start": 87.56209106445313,
+                      "end": 87.97025415039063
+                    },
+                    {
+                      "word": "dúvida ",
+                      "start": 87.97025415039063,
+                      "end": 88.37841748046876
+                    },
+                    {
+                      "word": "específica, ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "estou ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "aqui ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "para ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "ajudar.",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": " Posso ",
+                      "start": 88.62704174804688,
+                      "end": 89.03520483398438
+                    },
+                    {
+                      "word": "também ",
+                      "start": 89.03520483398438,
+                      "end": 89.4433681640625
+                    },
+                    {
+                      "word": "enviar ",
+                      "start": 89.4433681640625,
+                      "end": 89.85153149414063
+                    },
+                    {
+                      "word": "um ",
+                      "start": 89.85153149414063,
+                      "end": 90.25969482421876
+                    },
+                    {
+                      "word": "e-mail ",
+                      "start": 90.25969482421876,
+                      "end": 90.66785791015624
+                    },
+                    {
+                      "word": "com ",
+                      "start": 90.66785791015624,
+                      "end": 91.07602124023437
+                    },
+                    {
+                      "word": "as ",
+                      "start": 91.07602124023437,
+                      "end": 91.4841845703125
+                    },
+                    {
+                      "word": "informações ",
+                      "start": 91.4841845703125,
+                      "end": 91.89234790039062
+                    },
+                    {
+                      "word": "que ",
+                      "start": 91.89234790039062,
+                      "end": 92.30051098632812
+                    },
+                    {
+                      "word": "discutimos ",
+                      "start": 92.30051098632812,
+                      "end": 92.70867431640625
+                    },
+                    {
+                      "word": "até ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "agora, ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "caso ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "você ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "prefira.",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": " O ",
+                      "start": 92.9465,
+                      "end": 93.35466333007813
+                    },
+                    {
+                      "word": "que ",
+                      "start": 93.35466333007813,
+                      "end": 93.76282641601563
+                    },
+                    {
+                      "word": "você ",
+                      "start": 93.76282641601563,
+                      "end": 94.17098974609375
+                    },
+                    {
+                      "word": "acha?",
+                      "start": 93.85354516601562,
+                      "end": 94.26170825195312
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 4
+                  }
+                }
+              ],
+              "transcript_with_tool_calls": [
+                {
+                  "role": "agent",
+                  "content": "Olá! Muito bom dia, sou Laura Ibarra, assessora de admissões da Universidade Isép. Espero que você esteja muito bem. Estou entrando em contato porque você solicitou informações sobre nossas formações. Para que eu possa oferecer um atendimento mais personalizado, você poderia me informar o seu nome, por gentileza?",
+                  "words": [
+                    {
+                      "word": "Olá!",
+                      "start": 0.001,
+                      "end": 0.409163330078125
+                    },
+                    {
+                      "word": " Muito ",
+                      "start": 0.772541748046875,
+                      "end": 1.180704833984375
+                    },
+                    {
+                      "word": "bom ",
+                      "start": 1.180704833984375,
+                      "end": 1.5888681640625
+                    },
+                    {
+                      "word": "dia, ",
+                      "start": 1.5888681640625,
+                      "end": 1.997031494140625
+                    },
+                    {
+                      "word": "sou ",
+                      "start": 1.997031494140625,
+                      "end": 2.40519482421875
+                    },
+                    {
+                      "word": "Laura ",
+                      "start": 2.40519482421875,
+                      "end": 2.81335791015625
+                    },
+                    {
+                      "word": "Ibarra, ",
+                      "start": 2.81335791015625,
+                      "end": 3.221521240234375
+                    },
+                    {
+                      "word": "assessora ",
+                      "start": 3.221521240234375,
+                      "end": 3.6296845703125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 3.6296845703125,
+                      "end": 4.037847900390625
+                    },
+                    {
+                      "word": "admissões ",
+                      "start": 4.037847900390625,
+                      "end": 4.446010986328125
+                    },
+                    {
+                      "word": "da ",
+                      "start": 4.24850341796875,
+                      "end": 4.656666748046875
+                    },
+                    {
+                      "word": "Universidade ",
+                      "start": 4.24850341796875,
+                      "end": 4.656666748046875
+                    },
+                    {
+                      "word": "Isép.",
+                      "start": 4.24850341796875,
+                      "end": 4.656666748046875
+                    },
+                    {
+                      "word": " Espero ",
+                      "start": 4.656666748046875,
+                      "end": 5.064829833984375
+                    },
+                    {
+                      "word": "que ",
+                      "start": 5.064829833984375,
+                      "end": 5.4729931640625
+                    },
+                    {
+                      "word": "você ",
+                      "start": 5.4729931640625,
+                      "end": 5.881156494140625
+                    },
+                    {
+                      "word": "esteja ",
+                      "start": 5.881156494140625,
+                      "end": 6.28931982421875
+                    },
+                    {
+                      "word": "muito ",
+                      "start": 6.28931982421875,
+                      "end": 6.69748291015625
+                    },
+                    {
+                      "word": "bem.",
+                      "start": 6.30362841796875,
+                      "end": 6.711791748046875
+                    },
+                    {
+                      "word": " Estou ",
+                      "start": 6.711791748046875,
+                      "end": 7.119954833984375
+                    },
+                    {
+                      "word": "entrando ",
+                      "start": 7.119954833984375,
+                      "end": 7.5281181640625
+                    },
+                    {
+                      "word": "em ",
+                      "start": 7.5281181640625,
+                      "end": 7.936281494140625
+                    },
+                    {
+                      "word": "contato ",
+                      "start": 7.936281494140625,
+                      "end": 8.34444482421875
+                    },
+                    {
+                      "word": "porque ",
+                      "start": 8.34444482421875,
+                      "end": 8.75260791015625
+                    },
+                    {
+                      "word": "você ",
+                      "start": 8.75260791015625,
+                      "end": 9.160771240234375
+                    },
+                    {
+                      "word": "solicitou ",
+                      "start": 9.160771240234375,
+                      "end": 9.5689345703125
+                    },
+                    {
+                      "word": "informações ",
+                      "start": 9.5689345703125,
+                      "end": 9.977097900390625
+                    },
+                    {
+                      "word": "sobre ",
+                      "start": 9.977097900390625,
+                      "end": 10.385260986328126
+                    },
+                    {
+                      "word": "nossas ",
+                      "start": 10.385260986328126,
+                      "end": 10.79342431640625
+                    },
+                    {
+                      "word": "formações.",
+                      "start": 10.62337841796875,
+                      "end": 11.031541748046875
+                    },
+                    {
+                      "word": " Para ",
+                      "start": 11.031541748046875,
+                      "end": 11.439704833984376
+                    },
+                    {
+                      "word": "que ",
+                      "start": 11.439704833984376,
+                      "end": 11.8478681640625
+                    },
+                    {
+                      "word": "eu ",
+                      "start": 11.8478681640625,
+                      "end": 12.256031494140625
+                    },
+                    {
+                      "word": "possa ",
+                      "start": 12.256031494140625,
+                      "end": 12.66419482421875
+                    },
+                    {
+                      "word": "oferecer ",
+                      "start": 12.66419482421875,
+                      "end": 13.07235791015625
+                    },
+                    {
+                      "word": "um ",
+                      "start": 13.07235791015625,
+                      "end": 13.480521240234374
+                    },
+                    {
+                      "word": "atendimento ",
+                      "start": 13.480521240234374,
+                      "end": 13.8886845703125
+                    },
+                    {
+                      "word": "mais ",
+                      "start": 13.8886845703125,
+                      "end": 14.296847900390626
+                    },
+                    {
+                      "word": "personalizado, ",
+                      "start": 14.296847900390626,
+                      "end": 14.705010986328125
+                    },
+                    {
+                      "word": "você ",
+                      "start": 14.705010986328125,
+                      "end": 15.11317431640625
+                    },
+                    {
+                      "word": "poderia ",
+                      "start": 15.11317431640625,
+                      "end": 15.521337646484374
+                    },
+                    {
+                      "word": "me ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "informar ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "o ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "seu ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "nome, ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "por ",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    },
+                    {
+                      "word": "gentileza?",
+                      "start": 15.16087841796875,
+                      "end": 15.569041748046875
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 0
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "Entendo que você pode estar ocupado. Se preferir, posso aguardar ",
+                  "words": [
+                    {
+                      "word": "Entendo ",
+                      "start": 26.324,
+                      "end": 26.732163330078127
+                    },
+                    {
+                      "word": "que ",
+                      "start": 26.732163330078127,
+                      "end": 27.140326416015625
+                    },
+                    {
+                      "word": "você ",
+                      "start": 27.140326416015625,
+                      "end": 27.54848974609375
+                    },
+                    {
+                      "word": "pode ",
+                      "start": 27.54848974609375,
+                      "end": 27.956653076171875
+                    },
+                    {
+                      "word": "estar ",
+                      "start": 27.92787841796875,
+                      "end": 28.336041748046874
+                    },
+                    {
+                      "word": "ocupado.",
+                      "start": 27.92787841796875,
+                      "end": 28.336041748046874
+                    },
+                    {
+                      "word": " Se ",
+                      "start": 28.336041748046874,
+                      "end": 28.744204833984377
+                    },
+                    {
+                      "word": "preferir, ",
+                      "start": 28.744204833984377,
+                      "end": 29.1523681640625
+                    },
+                    {
+                      "word": "posso ",
+                      "start": 29.1523681640625,
+                      "end": 29.560531494140626
+                    },
+                    {
+                      "word": "aguardar ",
+                      "start": 29.560531494140626,
+                      "end": 29.96869482421875
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Os",
+                  "words": [
+                    {
+                      "word": "Os",
+                      "start": 29.985,
+                      "end": 30.215
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 1
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "Muito obrigada, Os! Antes de prosseguirmos, é um bom momento para conversarmos sobre a formação? Ou você prefere que eu retome a ligação em outro horário que seja mais conveniente para você?",
+                  "words": [
+                    {
+                      "word": "Muito ",
+                      "start": 34.325,
+                      "end": 34.73316333007813
+                    },
+                    {
+                      "word": "obrigada, ",
+                      "start": 34.73316333007813,
+                      "end": 35.14132641601562
+                    },
+                    {
+                      "word": "Os!",
+                      "start": 35.14132641601562,
+                      "end": 35.54948974609375
+                    },
+                    {
+                      "word": " Antes ",
+                      "start": 36.380958251953125,
+                      "end": 36.78912158203125
+                    },
+                    {
+                      "word": "de ",
+                      "start": 36.78912158203125,
+                      "end": 37.197284912109374
+                    },
+                    {
+                      "word": "prosseguirmos, ",
+                      "start": 37.197284912109374,
+                      "end": 37.6054482421875
+                    },
+                    {
+                      "word": "é ",
+                      "start": 37.6054482421875,
+                      "end": 38.013611328125
+                    },
+                    {
+                      "word": "um ",
+                      "start": 38.013611328125,
+                      "end": 38.42177465820313
+                    },
+                    {
+                      "word": "bom ",
+                      "start": 38.42177465820313,
+                      "end": 38.82993798828125
+                    },
+                    {
+                      "word": "momento ",
+                      "start": 38.82993798828125,
+                      "end": 39.23810107421875
+                    },
+                    {
+                      "word": "para ",
+                      "start": 39.23810107421875,
+                      "end": 39.64626440429687
+                    },
+                    {
+                      "word": "conversarmos ",
+                      "start": 39.64626440429687,
+                      "end": 40.054427734375
+                    },
+                    {
+                      "word": "sobre ",
+                      "start": 40.054427734375,
+                      "end": 40.46259106445312
+                    },
+                    {
+                      "word": "a ",
+                      "start": 40.379170166015626,
+                      "end": 40.78733325195312
+                    },
+                    {
+                      "word": "formação?",
+                      "start": 40.379170166015626,
+                      "end": 40.78733325195312
+                    },
+                    {
+                      "word": " Ou ",
+                      "start": 40.78733325195312,
+                      "end": 41.19549658203125
+                    },
+                    {
+                      "word": "você ",
+                      "start": 41.19549658203125,
+                      "end": 41.60365991210937
+                    },
+                    {
+                      "word": "prefere ",
+                      "start": 41.60365991210937,
+                      "end": 42.0118232421875
+                    },
+                    {
+                      "word": "que ",
+                      "start": 42.0118232421875,
+                      "end": 42.419986328125
+                    },
+                    {
+                      "word": "eu ",
+                      "start": 42.419986328125,
+                      "end": 42.828149658203124
+                    },
+                    {
+                      "word": "retome ",
+                      "start": 42.828149658203124,
+                      "end": 43.23631298828125
+                    },
+                    {
+                      "word": "a ",
+                      "start": 43.23631298828125,
+                      "end": 43.64447607421875
+                    },
+                    {
+                      "word": "ligação ",
+                      "start": 43.64447607421875,
+                      "end": 44.052639404296876
+                    },
+                    {
+                      "word": "em ",
+                      "start": 44.052639404296876,
+                      "end": 44.460802734375
+                    },
+                    {
+                      "word": "outro ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "horário ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "que ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "seja ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "mais ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "conveniente ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "para ",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    },
+                    {
+                      "word": "você?",
+                      "start": 44.17583666992188,
+                      "end": 44.584
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 2
+                  }
+                },
+                {
+                  "role": "user",
+                  "content": "Pode ampliar",
+                  "words": [
+                    {
+                      "word": "Pode ",
+                      "start": 46.155,
+                      "end": 46.475
+                    },
+                    {
+                      "word": "ampliar",
+                      "start": 46.475,
+                      "end": 46.975
+                    }
+                  ]
+                },
+                {
+                  "role": "agent",
+                  "content": "Claro, Os! Fico feliz que você esteja interessado em saber mais. Na nossa universidade, oferecemos uma variedade de formações que podem se encaixar nas suas necessidades e objetivos. Você tem algum programa específico em mente ou gostaria de uma visão geral das opções disponíveis? Isso me ajudará a direcionar melhor as informações para você.",
+                  "words": [
+                    {
+                      "word": "Claro, ",
+                      "start": 51.95433325195312,
+                      "end": 52.36249658203125
+                    },
+                    {
+                      "word": "Os!",
+                      "start": 52.36249658203125,
+                      "end": 52.77065991210937
+                    },
+                    {
+                      "word": " Fico ",
+                      "start": 53.248,
+                      "end": 53.65616333007812
+                    },
+                    {
+                      "word": "feliz ",
+                      "start": 53.65616333007812,
+                      "end": 54.064326416015625
+                    },
+                    {
+                      "word": "que ",
+                      "start": 54.064326416015625,
+                      "end": 54.47248974609375
+                    },
+                    {
+                      "word": "você ",
+                      "start": 54.47248974609375,
+                      "end": 54.880653076171875
+                    },
+                    {
+                      "word": "esteja ",
+                      "start": 54.880653076171875,
+                      "end": 55.28881640625
+                    },
+                    {
+                      "word": "interessado ",
+                      "start": 55.28881640625,
+                      "end": 55.6969794921875
+                    },
+                    {
+                      "word": "em ",
+                      "start": 55.39583666992188,
+                      "end": 55.804
+                    },
+                    {
+                      "word": "saber ",
+                      "start": 55.39583666992188,
+                      "end": 55.804
+                    },
+                    {
+                      "word": "mais.",
+                      "start": 55.39583666992188,
+                      "end": 55.804
+                    },
+                    {
+                      "word": " Na ",
+                      "start": 55.804,
+                      "end": 56.21216333007813
+                    },
+                    {
+                      "word": "nossa ",
+                      "start": 56.21216333007813,
+                      "end": 56.62032641601562
+                    },
+                    {
+                      "word": "universidade, ",
+                      "start": 56.62032641601562,
+                      "end": 57.02848974609375
+                    },
+                    {
+                      "word": "oferecemos ",
+                      "start": 57.02848974609375,
+                      "end": 57.43665307617187
+                    },
+                    {
+                      "word": "uma ",
+                      "start": 57.43665307617187,
+                      "end": 57.84481640625
+                    },
+                    {
+                      "word": "variedade ",
+                      "start": 57.84481640625,
+                      "end": 58.2529794921875
+                    },
+                    {
+                      "word": "de ",
+                      "start": 58.2529794921875,
+                      "end": 58.661142822265624
+                    },
+                    {
+                      "word": "formações ",
+                      "start": 58.661142822265624,
+                      "end": 59.06930615234375
+                    },
+                    {
+                      "word": "que ",
+                      "start": 59.06930615234375,
+                      "end": 59.477469482421874
+                    },
+                    {
+                      "word": "podem ",
+                      "start": 59.477469482421874,
+                      "end": 59.88563256835938
+                    },
+                    {
+                      "word": "se ",
+                      "start": 59.88563256835938,
+                      "end": 60.2937958984375
+                    },
+                    {
+                      "word": "encaixar ",
+                      "start": 60.2937958984375,
+                      "end": 60.701959228515626
+                    },
+                    {
+                      "word": "nas ",
+                      "start": 60.701959228515626,
+                      "end": 61.11012255859375
+                    },
+                    {
+                      "word": "suas ",
+                      "start": 61.11012255859375,
+                      "end": 61.51828564453125
+                    },
+                    {
+                      "word": "necessidades ",
+                      "start": 61.391795166015626,
+                      "end": 61.79995825195312
+                    },
+                    {
+                      "word": "e ",
+                      "start": 61.391795166015626,
+                      "end": 61.79995825195312
+                    },
+                    {
+                      "word": "objetivos.",
+                      "start": 61.391795166015626,
+                      "end": 61.79995825195312
+                    },
+                    {
+                      "word": " Você ",
+                      "start": 61.79995825195312,
+                      "end": 62.20812158203125
+                    },
+                    {
+                      "word": "tem ",
+                      "start": 62.20812158203125,
+                      "end": 62.61628491210938
+                    },
+                    {
+                      "word": "algum ",
+                      "start": 62.61628491210938,
+                      "end": 63.0244482421875
+                    },
+                    {
+                      "word": "programa ",
+                      "start": 63.0244482421875,
+                      "end": 63.432611328125
+                    },
+                    {
+                      "word": "específico ",
+                      "start": 63.432611328125,
+                      "end": 63.840774658203124
+                    },
+                    {
+                      "word": "em ",
+                      "start": 63.840774658203124,
+                      "end": 64.24893798828126
+                    },
+                    {
+                      "word": "mente ",
+                      "start": 64.24893798828126,
+                      "end": 64.65710107421874
+                    },
+                    {
+                      "word": "ou ",
+                      "start": 64.65710107421874,
+                      "end": 65.06526440429687
+                    },
+                    {
+                      "word": "gostaria ",
+                      "start": 65.06526440429687,
+                      "end": 65.473427734375
+                    },
+                    {
+                      "word": "de ",
+                      "start": 65.473427734375,
+                      "end": 65.88159106445312
+                    },
+                    {
+                      "word": "uma ",
+                      "start": 65.88159106445312,
+                      "end": 66.28975415039062
+                    },
+                    {
+                      "word": "visão ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "geral ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "das ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "opções ",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": "disponíveis?",
+                      "start": 66.05942016601563,
+                      "end": 66.46758325195313
+                    },
+                    {
+                      "word": " Isso ",
+                      "start": 66.46758325195313,
+                      "end": 66.87574658203125
+                    },
+                    {
+                      "word": "me ",
+                      "start": 66.87574658203125,
+                      "end": 67.28390991210938
+                    },
+                    {
+                      "word": "ajudará ",
+                      "start": 67.28390991210938,
+                      "end": 67.6920732421875
+                    },
+                    {
+                      "word": "a ",
+                      "start": 67.6920732421875,
+                      "end": 68.100236328125
+                    },
+                    {
+                      "word": "direcionar ",
+                      "start": 68.100236328125,
+                      "end": 68.50839965820313
+                    },
+                    {
+                      "word": "melhor ",
+                      "start": 68.50839965820313,
+                      "end": 68.91656298828126
+                    },
+                    {
+                      "word": "as ",
+                      "start": 68.91656298828126,
+                      "end": 69.32472607421874
+                    },
+                    {
+                      "word": "informações ",
+                      "start": 69.13621166992188,
+                      "end": 69.544375
+                    },
+                    {
+                      "word": "para ",
+                      "start": 69.13621166992188,
+                      "end": 69.544375
+                    },
+                    {
+                      "word": "você.",
+                      "start": 69.13621166992188,
+                      "end": 69.544375
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 3
+                  }
+                },
+                {
+                  "role": "agent",
+                  "content": "Entendo que você pode estar ocupado, Os. Se precisar de um momento para pensar ou se tiver alguma dúvida específica, estou aqui para ajudar. Posso também enviar um e-mail com as informações que discutimos até agora, caso você prefira. O que você acha?",
+                  "words": [
+                    {
+                      "word": "Entendo ",
+                      "start": 80.859,
+                      "end": 81.26716333007812
+                    },
+                    {
+                      "word": "que ",
+                      "start": 81.26716333007812,
+                      "end": 81.67532641601562
+                    },
+                    {
+                      "word": "você ",
+                      "start": 81.67532641601562,
+                      "end": 82.08348974609375
+                    },
+                    {
+                      "word": "pode ",
+                      "start": 82.08348974609375,
+                      "end": 82.49165307617187
+                    },
+                    {
+                      "word": "estar ",
+                      "start": 82.49165307617187,
+                      "end": 82.89981640625
+                    },
+                    {
+                      "word": "ocupado, ",
+                      "start": 82.89981640625,
+                      "end": 83.3079794921875
+                    },
+                    {
+                      "word": "Os.",
+                      "start": 83.07229516601562,
+                      "end": 83.48045825195312
+                    },
+                    {
+                      "word": " Se ",
+                      "start": 83.48045825195312,
+                      "end": 83.88862158203125
+                    },
+                    {
+                      "word": "precisar ",
+                      "start": 83.88862158203125,
+                      "end": 84.29678491210937
+                    },
+                    {
+                      "word": "de ",
+                      "start": 84.29678491210937,
+                      "end": 84.7049482421875
+                    },
+                    {
+                      "word": "um ",
+                      "start": 84.7049482421875,
+                      "end": 85.113111328125
+                    },
+                    {
+                      "word": "momento ",
+                      "start": 85.113111328125,
+                      "end": 85.52127465820313
+                    },
+                    {
+                      "word": "para ",
+                      "start": 85.52127465820313,
+                      "end": 85.92943798828125
+                    },
+                    {
+                      "word": "pensar ",
+                      "start": 85.92943798828125,
+                      "end": 86.33760107421875
+                    },
+                    {
+                      "word": "ou ",
+                      "start": 86.33760107421875,
+                      "end": 86.74576440429688
+                    },
+                    {
+                      "word": "se ",
+                      "start": 86.74576440429688,
+                      "end": 87.153927734375
+                    },
+                    {
+                      "word": "tiver ",
+                      "start": 87.153927734375,
+                      "end": 87.56209106445313
+                    },
+                    {
+                      "word": "alguma ",
+                      "start": 87.56209106445313,
+                      "end": 87.97025415039063
+                    },
+                    {
+                      "word": "dúvida ",
+                      "start": 87.97025415039063,
+                      "end": 88.37841748046876
+                    },
+                    {
+                      "word": "específica, ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "estou ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "aqui ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "para ",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": "ajudar.",
+                      "start": 88.21887841796875,
+                      "end": 88.62704174804688
+                    },
+                    {
+                      "word": " Posso ",
+                      "start": 88.62704174804688,
+                      "end": 89.03520483398438
+                    },
+                    {
+                      "word": "também ",
+                      "start": 89.03520483398438,
+                      "end": 89.4433681640625
+                    },
+                    {
+                      "word": "enviar ",
+                      "start": 89.4433681640625,
+                      "end": 89.85153149414063
+                    },
+                    {
+                      "word": "um ",
+                      "start": 89.85153149414063,
+                      "end": 90.25969482421876
+                    },
+                    {
+                      "word": "e-mail ",
+                      "start": 90.25969482421876,
+                      "end": 90.66785791015624
+                    },
+                    {
+                      "word": "com ",
+                      "start": 90.66785791015624,
+                      "end": 91.07602124023437
+                    },
+                    {
+                      "word": "as ",
+                      "start": 91.07602124023437,
+                      "end": 91.4841845703125
+                    },
+                    {
+                      "word": "informações ",
+                      "start": 91.4841845703125,
+                      "end": 91.89234790039062
+                    },
+                    {
+                      "word": "que ",
+                      "start": 91.89234790039062,
+                      "end": 92.30051098632812
+                    },
+                    {
+                      "word": "discutimos ",
+                      "start": 92.30051098632812,
+                      "end": 92.70867431640625
+                    },
+                    {
+                      "word": "até ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "agora, ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "caso ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "você ",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": "prefira.",
+                      "start": 92.53833666992188,
+                      "end": 92.9465
+                    },
+                    {
+                      "word": " O ",
+                      "start": 92.9465,
+                      "end": 93.35466333007813
+                    },
+                    {
+                      "word": "que ",
+                      "start": 93.35466333007813,
+                      "end": 93.76282641601563
+                    },
+                    {
+                      "word": "você ",
+                      "start": 93.76282641601563,
+                      "end": 94.17098974609375
+                    },
+                    {
+                      "word": "acha?",
+                      "start": 93.85354516601562,
+                      "end": 94.26170825195312
+                    }
+                  ],
+                  "metadata": {
+                    "response_id": 4
+                  }
+                }
+              ],
+              "recording_url": "https://dxc03zgurdly9.cloudfront.net/call_542af343ed66176de4a55588423/recording.wav",
+              "public_log_url": "https://dxc03zgurdly9.cloudfront.net/call_542af343ed66176de4a55588423/public.log",
+              "disconnection_reason": "user_hangup",
+              "latency": {
+                "llm": {
+                  "p50": 558,
+                  "p90": 1774.1999999999994,
+                  "p95": 2136.5999999999995,
+                  "p99": 2426.52,
+                  "min": 401,
+                  "max": 2499,
+                  "num": 5,
+                  "values": [
+                    401,
+                    558,
+                    486,
+                    2499,
+                    687
+                  ]
+                },
+                "e2e": {
+                  "p50": 4403.5,
+                  "p90": 4638.3,
+                  "p95": 4667.65,
+                  "p99": 4691.13,
+                  "min": 4110,
+                  "max": 4697,
+                  "num": 2,
+                  "values": [
+                    4110,
+                    4697
+                  ]
+                },
+                "tts": {
+                  "p50": 309,
+                  "p90": 1371.1999999999998,
+                  "p95": 1463.6,
+                  "p99": 1537.52,
+                  "min": 201,
+                  "max": 1556,
+                  "num": 5,
+                  "values": [
+                    261,
+                    201,
+                    1556,
+                    1094,
+                    309
+                  ]
+                },
+                "knowledge_base": {
+                  "p50": 70,
+                  "p90": 74.2,
+                  "p95": 75.1,
+                  "p99": 75.82,
+                  "min": 61,
+                  "max": 76,
+                  "num": 4,
+                  "values": [
+                    76,
+                    61,
+                    70,
+                    70
+                  ]
+                }
+              },
+              "cost_metadata": {
+                "knowledge_base": true,
+                "telecommunication": "custom",
+                "llm_model": "gpt-4o-mini",
+                "voice_provider": "play"
+              },
+              "call_cost": {
+                "total_duration_unit_price": 0.1516666,
+                "product_costs": [
+                  {
+                    "product": "retell_platform",
+                    "unit_price": 0,
+                    "cost": 0
+                  },
+                  {
+                    "product": "play_tts",
+                    "unit_price": 0.1333333,
+                    "cost": 15.7333333
+                  },
+                  {
+                    "product": "gpt_4o_mini",
+                    "unit_price": 0.01,
+                    "cost": 1.18
+                  },
+                  {
+                    "product": "knowledge_base_usage",
+                    "unit_price": 0.0083333,
+                    "cost": 0.9833333
+                  }
+                ],
+                "total_one_time_price": 0,
+                "combined_cost": 17.8966666,
+                "total_duration_seconds": 118
+              },
+              "call_analysis": {
+                "call_summary": "The call was initiated by Laura Ibarra, an admissions advisor from Universidade Isép, to provide information about their programs. The user, Os, expressed interest in receiving more details and was engaged in the conversation, indicating a willingness to learn about the available options.",
+                "in_voicemail": false,
+                "user_sentiment": "Positive",
+                "call_successful": true,
+                "custom_analysis_data": {
+                  "oportunidad": "Sí, el usuario mostró interés en recibir la información relacionada a la maestría.",
+                  "_oportunidad": true,
+                  "_s_i le interesa": "Sí, el usuario mostró interés en lo ofrecido por la agente."
+                }
+              },
+              "opt_out_sensitive_data_storage": false,
+              "from_number": "+528141949399",
+              "to_number": "+5511947414271",
+              "direction": "outbound",
+              "telephony_identifier": {
+                "twilio_call_sid": "CAbcd8bebab50d34cdef79374a0c2fc5f9"
+              }
+            }
+          },
+          "webhookUrl": "https://workflow.universidadisep.com/webhook/c272f17b-c5f2-404f-8725-abb80242d304",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-07T05:47:18.000Z",
+  "versionId": "491cd983-3991-482d-840c-f20f8744b63d"
+}
