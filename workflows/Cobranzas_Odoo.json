@@ -1,0 +1,3523 @@
+{
+  "active": false,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Mex",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Bra",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ROW",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ROW": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bra": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "selecciona_agente_4m_mx",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "selecciona_agente_6m_mx",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insertar_a_bdd2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insertar_a_bdd4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "SendGrid4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insertar_a_bdd5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "SendGrid5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insertar_a_bdd6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mex": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insertar_a_bdd": {
+      "main": [
+        [
+          {
+            "node": "update_excluidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insertar_a_bdd1": {
+      "main": [
+        [
+          {
+            "node": "update_excluidos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "selecciona_agente_6m_mx": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insertar_a_bdd1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "selecciona_agente_4m_mx": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insertar_a_bdd",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insertar_a_bdd2": {
+      "main": [
+        [
+          {
+            "node": "update_excluidos2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insertar_a_bdd4": {
+      "main": [
+        [
+          {
+            "node": "update_excluidos3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insertar_a_bdd5": {
+      "main": [
+        [
+          {
+            "node": "update_excluidos4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insertar_a_bdd6": {
+      "main": [
+        [
+          {
+            "node": "update_excluidos5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_excluidos": {
+      "main": [
+        [
+          {
+            "node": "update_reincluidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_excluidos1": {
+      "main": [
+        [
+          {
+            "node": "update_reincluidos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_excluidos2": {
+      "main": [
+        [
+          {
+            "node": "update_reincluidos2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_excluidos3": {
+      "main": [
+        [
+          {
+            "node": "update_reincluidos3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_excluidos4": {
+      "main": [
+        [
+          {
+            "node": "update_reincluidos4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_excluidos5": {
+      "main": [
+        [
+          {
+            "node": "update_reincluidos5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-12T04:46:58.709Z",
+  "id": "qvLC00HJ2A5yE23b",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Cobranzas_Odoo",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "sale.order",
+        "operation": "getAll",
+        "limit": 1000,
+        "options": {
+          "fieldsList": [
+            "id",
+            "name",
+            "date_order",
+            "amount_total",
+            "invoice_status",
+            "stage_id",
+            "partner_id",
+            "overdue_invoice_count_s"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "overdue_invoice_count_s",
+              "operator": "greaterThen",
+              "value": "1"
+            },
+            {
+              "fieldName": "state",
+              "value": "sale"
+            }
+          ]
+        }
+      },
+      "id": "e4d7e491-7510-4287-b698-197765ad2030",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        120
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6c4a8e58-a171-456a-9c8f-c935fd780342",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "=false",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "7c06fea5-6cdb-46ae-bde4-815df996ff2a",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "FALSE",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "12b01aac-adff-4d27-bf22-c7dcd7a0e90b",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "[null]",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "beaab42e-100c-4dd6-857c-4ac6404b9ced",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5c9d9aee-d4b3-4eba-918d-f2020381fc7b",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        280,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a15fe649-a17c-4f6e-a0fd-9b9db146ab17",
+              "name": "phone",
+              "value": "={{ $json.phone.trim().replace(/[\\s+\\-'\\n]/g, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "528d7e69-e695-44ca-a758-cada7b83363f",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        40,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16be3742-d6da-43ae-8528-fd4a8f72872c",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "55",
+              "operator": {
+                "type": "string",
+                "operation": "notStartsWith"
+              }
+            },
+            {
+              "id": "158cfab9-32b2-482a-a3bc-b4bc497c2f88",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "52",
+              "operator": {
+                "type": "string",
+                "operation": "notStartsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "536c669f-ea1e-4abb-9892-30d401cbe167",
+      "name": "ROW",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "dade5d6e-9b9b-4387-b4b1-8e3d49baf4c4",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -640,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16be3742-d6da-43ae-8528-fd4a8f72872c",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "55",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "cba10d91-0892-44b9-a72f-41c7ec031dcb",
+      "name": "Bra",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Odoo').item.json.overdue_invoice_count_s }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4 y menos"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f82865fb-1751-45e2-bb3a-7ca0ed884fea",
+                    "leftValue": "={{ $('Odoo').item.json.overdue_invoice_count_s }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": ">4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "120c280b-bc57-4acb-89f6-ed2cdd54e613",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        760,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Odoo').item.json.overdue_invoice_count_s }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4 y menos"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f82865fb-1751-45e2-bb3a-7ca0ed884fea",
+                    "leftValue": "={{ $('Odoo').item.json.overdue_invoice_count_s }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": ">4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4efd7b2e-97ad-48f0-bd7d-232aea959d51",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        740,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Odoo').item.json.overdue_invoice_count_s }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4 y menos"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f82865fb-1751-45e2-bb3a-7ca0ed884fea",
+                    "leftValue": "={{ $('Odoo').item.json.overdue_invoice_count_s }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": ">4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "08441bd1-4d0d-4d6f-81bb-633d80989077",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        720,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "cobranza@universidadisep.com  ",
+        "fromName": "Cobranza",
+        "toEmail": "={{ $('Odoo1').item.json.email }}",
+        "subject": "Acción requerida: Regulariza tu cuenta ahora",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <style>         body {             font-family: Arial, sans-serif;             line-height: 1.6;             max-width: 800px;             margin: 20px auto;             padding: 20px;             background-color: #f5f7fa;         }         .container {             background-color: white;             padding: 30px;             border-radius: 8px;             box-shadow: 0 2px 4px rgba(0,0,0,0.1);         }         .header {             background-color: #ff6b6b;             color: white;             padding: 15px;             border-radius: 8px 8px 0 0;             margin: -30px -30px 20px -30px;         }         .subject {             font-size: 1.4em;             font-weight: bold;             margin-bottom: 15px;         }         .urgent {             background-color: #fff3e0;             padding: 15px;             border-left: 4px solid #ff9800;             margin: 20px 0;         }         .contact {             background-color: #e8f4f8;             padding: 15px;             border-radius: 5px;             margin: 20px 0;         }         .phone-numbers {             font-size: 1.1em;             margin: 10px 0;         }         .footer {             margin-top: 30px;             padding-top: 20px;             border-top: 1px solid #dee2e6;             color: #666;         }     </style> </head> <body>     <div class=\"container\">         <div class=\"header\">             <div class=\"subject\">Acción requerida: Regulariza tu cuenta ahora</div>         </div>          <p>Hola,</p>          <div class=\"urgent\">             <p>Te recordamos que tu cuenta aún tiene un saldo vencido y requiere atención inmediata. Si no regularizas tu pago a la mayor brevedad, podrías experimentar interrupciones en el acceso a nuestros servicios educativos y recursos digitales.</p>         </div>          <p>Queremos brindarte toda la asistencia que necesites para resolver esta situación, por lo que te solicitamos que realices el pago lo antes posible. El proceso es sencillo y puede realizarse directamente en nuestro portal de pagos.</p>          <div class=\"contact\">             <p>Si tienes alguna pregunta o necesitas apoyo adicional, estamos a tu disposición en los siguientes números:</p>             <div class=\"phone-numbers\">                 📲 <strong>Línea Telefónica</strong>: +523321013999<br>                 📲 <strong>Línea de WhatsApp</strong>: +523334008005             </div>         </div>          <p>Recuerda que esta situación necesita ser resuelta con urgencia. Actúa ahora para evitar cualquier inconveniente adicional.</p>          <div class=\"footer\">             <p>Saludos cordiales,<br>             Universidad Isep</p>         </div>     </div> </body> </html>",
+        "additionalFields": {}
+      },
+      "id": "25576624-ee2e-4ddf-a016-16be5e3961be",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        -1100
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_4meses_MX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bda7dd97-dbc4-46c9-b639-400f39875761",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1000,
+        -140
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_6meses_MX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb797527-2bdd-43aa-b9d0-64eed163d36d",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1000,
+        400
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_4meses_BR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c4a19b5b-ffb6-456c-9a32-30f587542449",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1020,
+        960
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_6meses_BR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1eb48f6-6746-4fca-9600-3f6367783123",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1040,
+        1480
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "96c9b08f-5545-4fc3-a3ef-04a19dda996d",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "52",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "0ef7e847-9d5e-4e12-a8c6-43b5330d6ca9",
+      "name": "Mex",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "contactId": "={{$json.partner_id\n[0]  }}",
+        "options": {
+          "fieldsList": [
+            "phone",
+            "name",
+            "email"
+          ]
+        }
+      },
+      "id": "ec6d8d14-18eb-45b7-a85b-95fd726d3e51",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        120
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "={{ $('Mex').item.json.phone }}",
+        "template": "ha_de_finanzas|es_MX",
+        "requestOptions": {}
+      },
+      "id": "add0a0c5-efcc-4dac-b51d-be0da91f9374",
+      "name": "WhatsApp Business Cloud",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        -1500
+      ],
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "={{ $('Mex').item.json.phone }}",
+        "template": "ha_de_finanzas|es_MX",
+        "requestOptions": {}
+      },
+      "id": "72766b82-e9c8-4ee7-b8ee-718b4d20ff80",
+      "name": "WhatsApp Business Cloud1",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        -900
+      ],
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "=",
+        "template": "solicitud_de_datos|es_MX",
+        "requestOptions": {}
+      },
+      "id": "d8dbf0e3-9dfc-499f-b1c6-f4911b225f49",
+      "name": "WhatsApp Business Cloud4",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        780
+      ],
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "={{ $('Switch2').item.json.phone }}",
+        "template": "solicitud_de_datos|es_MX",
+        "requestOptions": {}
+      },
+      "id": "06611d37-e8aa-4600-936e-667ef417cd9c",
+      "name": "WhatsApp Business Cloud3",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        1320
+      ],
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "cobranza@universidadisep.com  ",
+        "fromName": "Cobranza",
+        "toEmail": "={{ $('Odoo1').item.json.email }}",
+        "subject": "Ação necessária: Regularize sua conta agora",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <style>         body {             font-family: Arial, sans-serif;             line-height: 1.6;             max-width: 800px;             margin: 20px auto;             padding: 20px;             background-color: #f5f7fa;         }         .container {             background-color: white;             padding: 30px;             border-radius: 8px;             box-shadow: 0 2px 4px rgba(0,0,0,0.1);         }         .header {             background-color: #ff6b6b;             color: white;             padding: 15px;             border-radius: 8px 8px 0 0;             margin: -30px -30px 20px -30px;         }         .subject {             font-size: 1.4em;             font-weight: bold;             margin-bottom: 15px;         }         .urgent {             background-color: #fff3e0;             padding: 15px;             border-left: 4px solid #ff9800;             margin: 20px 0;         }         .contact {             background-color: #e8f4f8;             padding: 15px;             border-radius: 5px;             margin: 20px 0;         }         .phone-numbers {             font-size: 1.1em;             margin: 10px 0;         }         .footer {             margin-top: 30px;             padding-top: 20px;             border-top: 1px solid #dee2e6;             color: #666;         }     </style> </head> <body>     <div class=\"container\">         <div class=\"header\">             <div class=\"subject\">Ação necessária: Regularize sua conta agora</div>         </div>          <p>Olá,</p>          <div class=\"urgent\">             <p>Lembramos que sua conta ainda possui um saldo vencido e requer atenção imediata. Se você não regularizar seu pagamento o mais rápido possível, poderá experimentar interrupções no acesso aos nossos serviços educacionais e recursos digitais.</p>         </div>          <p>Queremos oferecer toda a assistência necessária para resolver esta situação, por isso solicitamos que você efetue o pagamento o quanto antes. O processo é simples e pode ser realizado diretamente em nosso portal de pagamentos.</p>          <div class=\"contact\">             <p>Se você tiver alguma dúvida ou precisar de suporte adicional, estamos à sua disposição nos seguintes números:</p>             <div class=\"phone-numbers\">                 📲 <strong>Telefone</strong>: +523321013999<br>                 📲 <strong>WhatsApp</strong>: +523334008005             </div>         </div>          <p>Lembre-se que esta situação precisa ser resolvida com urgência. Aja agora para evitar qualquer inconveniente adicional.</p>          <div class=\"footer\">             <p>Atenciosamente,<br>             Universidade Isep</p>         </div>     </div> </body> </html>",
+        "additionalFields": {}
+      },
+      "id": "ea32838f-edf4-4bfc-a288-ca80eb962d29",
+      "name": "SendGrid4",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        1140
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "cobranza@universidadisep.com",
+        "fromName": "Cobranza",
+        "toEmail": "={{ $('Odoo1').item.json.email }}",
+        "subject": "Ação necessária: Regularize sua conta agora",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <style>         body {             font-family: Arial, sans-serif;             line-height: 1.6;             max-width: 800px;             margin: 20px auto;             padding: 20px;             background-color: #f5f7fa;         }         .container {             background-color: white;             padding: 30px;             border-radius: 8px;             box-shadow: 0 2px 4px rgba(0,0,0,0.1);         }         .header {             background-color: #ff6b6b;             color: white;             padding: 15px;             border-radius: 8px 8px 0 0;             margin: -30px -30px 20px -30px;         }         .subject {             font-size: 1.4em;             font-weight: bold;             margin-bottom: 15px;         }         .urgent {             background-color: #fff3e0;             padding: 15px;             border-left: 4px solid #ff9800;             margin: 20px 0;         }         .contact {             background-color: #e8f4f8;             padding: 15px;             border-radius: 5px;             margin: 20px 0;         }         .phone-numbers {             font-size: 1.1em;             margin: 10px 0;         }         .footer {             margin-top: 30px;             padding-top: 20px;             border-top: 1px solid #dee2e6;             color: #666;         }     </style> </head> <body>     <div class=\"container\">         <div class=\"header\">             <div class=\"subject\">Ação necessária: Regularize sua conta agora</div>         </div>          <p>Olá,</p>          <div class=\"urgent\">             <p>Lembramos que sua conta ainda possui um saldo vencido e requer atenção imediata. Se você não regularizar seu pagamento o mais rápido possível, poderá experimentar interrupções no acesso aos nossos serviços educacionais e recursos digitais.</p>         </div>          <p>Queremos oferecer toda a assistência necessária para resolver esta situação, por isso solicitamos que você efetue o pagamento o quanto antes. O processo é simples e pode ser realizado diretamente em nosso portal de pagamentos.</p>          <div class=\"contact\">             <p>Se você tiver alguma dúvida ou precisar de suporte adicional, estamos à sua disposição nos seguintes números:</p>             <div class=\"phone-numbers\">                 📲 <strong>Telefone</strong>: +523321013999<br>                 📲 <strong>WhatsApp</strong>: +523334008005             </div>         </div>          <p>Lembre-se que esta situação precisa ser resolvida com urgência. Aja agora para evitar qualquer inconveniente adicional.</p>          <div class=\"footer\">             <p>Atenciosamente,<br>             Universidade Isep</p>         </div>     </div> </body> </html>",
+        "additionalFields": {}
+      },
+      "id": "182591b6-946e-4360-b7f7-3d8463cf4852",
+      "name": "SendGrid5",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        1700
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "cobranza@universidadisep.com  ",
+        "fromName": "Cobranza",
+        "toEmail": "={{ $('Odoo1').item.json.email }}",
+        "subject": "Acción requerida: Regulariza tu cuenta ahora",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <style>         body {             font-family: Arial, sans-serif;             line-height: 1.6;             max-width: 800px;             margin: 20px auto;             padding: 20px;             background-color: #f5f7fa;         }         .container {             background-color: white;             padding: 30px;             border-radius: 8px;             box-shadow: 0 2px 4px rgba(0,0,0,0.1);         }         .header {             background-color: #ff6b6b;             color: white;             padding: 15px;             border-radius: 8px 8px 0 0;             margin: -30px -30px 20px -30px;         }         .subject {             font-size: 1.4em;             font-weight: bold;             margin-bottom: 15px;         }         .urgent {             background-color: #fff3e0;             padding: 15px;             border-left: 4px solid #ff9800;             margin: 20px 0;         }         .contact {             background-color: #e8f4f8;             padding: 15px;             border-radius: 5px;             margin: 20px 0;         }         .phone-numbers {             font-size: 1.1em;             margin: 10px 0;         }         .footer {             margin-top: 30px;             padding-top: 20px;             border-top: 1px solid #dee2e6;             color: #666;         }     </style> </head> <body>     <div class=\"container\">         <div class=\"header\">             <div class=\"subject\">Acción requerida: Regulariza tu cuenta ahora</div>         </div>          <p>Hola,</p>          <div class=\"urgent\">             <p>Te recordamos que tu cuenta aún tiene un saldo vencido y requiere atención inmediata. Si no regularizas tu pago a la mayor brevedad, podrías experimentar interrupciones en el acceso a nuestros servicios educativos y recursos digitales.</p>         </div>          <p>Queremos brindarte toda la asistencia que necesites para resolver esta situación, por lo que te solicitamos que realices el pago lo antes posible. El proceso es sencillo y puede realizarse directamente en nuestro portal de pagos.</p>          <div class=\"contact\">             <p>Si tienes alguna pregunta o necesitas apoyo adicional, estamos a tu disposición en los siguientes números:</p>             <div class=\"phone-numbers\">                 📲 <strong>Línea Telefónica</strong>: +523321013999<br>                 📲 <strong>Línea de WhatsApp</strong>: +523334008005             </div>         </div>          <p>Recuerda que esta situación necesita ser resuelta con urgencia. Actúa ahora para evitar cualquier inconveniente adicional.</p>          <div class=\"footer\">             <p>Saludos cordiales,<br>             Universidad Isep</p>         </div>     </div> </body> </html>",
+        "additionalFields": {}
+      },
+      "id": "9dedd065-447c-4cc7-acf2-ca09606c6805",
+      "name": "SendGrid1",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        -500
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "cobranza@universidadisep.com  ",
+        "fromName": "Cobranza",
+        "toEmail": "={{ $('Odoo1').item.json.email }}",
+        "subject": "Acción requerida: Regulariza tu cuenta ahora",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <style>         body {             font-family: Arial, sans-serif;             line-height: 1.6;             max-width: 800px;             margin: 20px auto;             padding: 20px;             background-color: #f5f7fa;         }         .container {             background-color: white;             padding: 30px;             border-radius: 8px;             box-shadow: 0 2px 4px rgba(0,0,0,0.1);         }         .header {             background-color: #ff6b6b;             color: white;             padding: 15px;             border-radius: 8px 8px 0 0;             margin: -30px -30px 20px -30px;         }         .subject {             font-size: 1.4em;             font-weight: bold;             margin-bottom: 15px;         }         .urgent {             background-color: #fff3e0;             padding: 15px;             border-left: 4px solid #ff9800;             margin: 20px 0;         }         .contact {             background-color: #e8f4f8;             padding: 15px;             border-radius: 5px;             margin: 20px 0;         }         .phone-numbers {             font-size: 1.1em;             margin: 10px 0;         }         .footer {             margin-top: 30px;             padding-top: 20px;             border-top: 1px solid #dee2e6;             color: #666;         }     </style> </head> <body>     <div class=\"container\">         <div class=\"header\">             <div class=\"subject\">Acción requerida: Regulariza tu cuenta ahora</div>         </div>          <p>Hola,</p>          <div class=\"urgent\">             <p>Te recordamos que tu cuenta aún tiene un saldo vencido y requiere atención inmediata. Si no regularizas tu pago a la mayor brevedad, podrías experimentar interrupciones en el acceso a nuestros servicios educativos y recursos digitales.</p>         </div>          <p>Queremos brindarte toda la asistencia que necesites para resolver esta situación, por lo que te solicitamos que realices el pago lo antes posible. El proceso es sencillo y puede realizarse directamente en nuestro portal de pagos.</p>          <div class=\"contact\">             <p>Si tienes alguna pregunta o necesitas apoyo adicional, estamos a tu disposición en los siguientes números:</p>             <div class=\"phone-numbers\">                 📲 <strong>Línea Telefónica</strong>: +523321013999<br>                 📲 <strong>Línea de WhatsApp</strong>: +523334008005             </div>         </div>          <p>Recuerda que esta situación necesita ser resuelta con urgencia. Actúa ahora para evitar cualquier inconveniente adicional.</p>          <div class=\"footer\">             <p>Saludos cordiales,<br>             Universidad Isep</p>         </div>     </div> </body> </html>",
+        "additionalFields": {}
+      },
+      "id": "211a0c4a-775f-4cf6-9e3d-ec06ad5ed894",
+      "name": "SendGrid2",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        40
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "cobranza@universidadisep.com  ",
+        "fromName": "Cobranza",
+        "toEmail": "={{ $('Odoo1').item.json.email }}",
+        "subject": "Acción requerida: Regulariza tu cuenta ahora",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <style>         body {             font-family: Arial, sans-serif;             line-height: 1.6;             max-width: 800px;             margin: 20px auto;             padding: 20px;             background-color: #f5f7fa;         }         .container {             background-color: white;             padding: 30px;             border-radius: 8px;             box-shadow: 0 2px 4px rgba(0,0,0,0.1);         }         .header {             background-color: #ff6b6b;             color: white;             padding: 15px;             border-radius: 8px 8px 0 0;             margin: -30px -30px 20px -30px;         }         .subject {             font-size: 1.4em;             font-weight: bold;             margin-bottom: 15px;         }         .urgent {             background-color: #fff3e0;             padding: 15px;             border-left: 4px solid #ff9800;             margin: 20px 0;         }         .contact {             background-color: #e8f4f8;             padding: 15px;             border-radius: 5px;             margin: 20px 0;         }         .phone-numbers {             font-size: 1.1em;             margin: 10px 0;         }         .footer {             margin-top: 30px;             padding-top: 20px;             border-top: 1px solid #dee2e6;             color: #666;         }     </style> </head> <body>     <div class=\"container\">         <div class=\"header\">             <div class=\"subject\">Acción requerida: Regulariza tu cuenta ahora</div>         </div>          <p>Hola,</p>          <div class=\"urgent\">             <p>Te recordamos que tu cuenta aún tiene un saldo vencido y requiere atención inmediata. Si no regularizas tu pago a la mayor brevedad, podrías experimentar interrupciones en el acceso a nuestros servicios educativos y recursos digitales.</p>         </div>          <p>Queremos brindarte toda la asistencia que necesites para resolver esta situación, por lo que te solicitamos que realices el pago lo antes posible. El proceso es sencillo y puede realizarse directamente en nuestro portal de pagos.</p>          <div class=\"contact\">             <p>Si tienes alguna pregunta o necesitas apoyo adicional, estamos a tu disposición en los siguientes números:</p>             <div class=\"phone-numbers\">                 📲 <strong>Línea Telefónica</strong>: +523321013999<br>                 📲 <strong>Línea de WhatsApp</strong>: +523334008005             </div>         </div>          <p>Recuerda que esta situación necesita ser resuelta con urgencia. Actúa ahora para evitar cualquier inconveniente adicional.</p>          <div class=\"footer\">             <p>Saludos cordiales,<br>             Universidad Isep</p>         </div>     </div> </body> </html>",
+        "additionalFields": {}
+      },
+      "id": "f4503b1a-f353-43c1-8acb-00f56ccf5c57",
+      "name": "SendGrid3",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        580
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "={{ $('Switch1').item.json.phone }}",
+        "template": "ha_de_finanzas|es_MX",
+        "requestOptions": {}
+      },
+      "id": "ba8a9a1a-6cbf-40d9-b6e0-9ef0dd5de899",
+      "name": "WhatsApp Business Cloud2",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        -320
+      ],
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "185054518030833",
+        "recipientPhoneNumber": "={{ $('Switch1').item.json.phone }}",
+        "template": "ha_de_finanzas|es_MX",
+        "requestOptions": {}
+      },
+      "id": "9450d456-24df-4b91-91a3-f7229b215f90",
+      "name": "WhatsApp Business Cloud5",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        200
+      ],
+      "credentials": {
+        "whatsAppApi": {
+          "id": "1euK00KG2FDkGJSR",
+          "name": "Uisep"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound_cobranzas",
+          "mode": "list",
+          "cachedResultName": "calloutbound_cobranzas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "=+{{ $('Switch').item.json.phone }}",
+            "name": "={{ $('Odoo1').item.json.name }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "maximum_attempts": 3,
+            "time_between_calls": 6,
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "email": "={{ $('Odoo1').item.json.email }}",
+            "oddo_id": "={{ $('Odoo1').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "665f7e00-fb17-4dc3-827b-7abe3d158c39",
+      "name": "Insertar_a_bdd",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1200,
+        -1300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound_cobranzas",
+          "mode": "list",
+          "cachedResultName": "calloutbound_cobranzas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "=+{{ $('Switch').item.json.phone }}",
+            "name": "={{ $('Odoo1').item.json.name }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "maximum_attempts": 3,
+            "time_between_calls": 6,
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "email": "={{ $('Odoo1').item.json.email }}",
+            "oddo_id": "={{ $('Odoo1').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "f6670a26-9989-4aa8-9c8e-deb2a6547d64",
+      "name": "Insertar_a_bdd1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1240,
+        -680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_6meses_MX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "57a75201-4045-4a5e-9678-9b0a52422001",
+      "name": "selecciona_agente_6m_mx",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        980,
+        -680
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_4meses_MX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0384929b-edac-4cfc-9861-3092d9c73b62",
+      "name": "selecciona_agente_4m_mx",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        960,
+        -1300
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound_cobranzas",
+          "mode": "list",
+          "cachedResultName": "calloutbound_cobranzas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "=+{{ $('Switch1').item.json.phone }}",
+            "name": "={{ $('Odoo1').item.json.name }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "maximum_attempts": 3,
+            "time_between_calls": 6,
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "email": "={{ $('Odoo1').item.json.email }}",
+            "oddo_id": "={{ $('Odoo1').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "33b8fc3a-669c-4a83-99ca-dd1b84fc047c",
+      "name": "Insertar_a_bdd2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1260,
+        -140
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = resumen.estado\nFROM resumen_cobranzas_ia_tabla AS resumen\nWHERE callout.oddo_id = resumen.id_oddo;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1380,
+        -1300
+      ],
+      "id": "b44fe41e-c84c-473b-9c73-ba3f52d72fd6",
+      "name": "update_excluidos",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = resumen.estado\nFROM resumen_cobranzas_ia_tabla AS resumen\nWHERE callout.oddo_id = resumen.id_oddo;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1440,
+        -680
+      ],
+      "id": "b373a7d7-8bd5-4dde-8fe6-dd434e018765",
+      "name": "update_excluidos1",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = resumen.estado\nFROM resumen_cobranzas_ia_tabla AS resumen\nWHERE callout.oddo_id = resumen.id_oddo;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1480,
+        -140
+      ],
+      "id": "8ef8003e-b038-4071-b6b7-febc3b99aa69",
+      "name": "update_excluidos2",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound_cobranzas",
+          "mode": "list",
+          "cachedResultName": "calloutbound_cobranzas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "=+{{ $('Switch1').item.json.phone }}",
+            "name": "={{ $('Odoo1').item.json.name }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "maximum_attempts": 3,
+            "time_between_calls": 6,
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "email": "={{ $('Odoo1').item.json.email }}",
+            "oddo_id": "={{ $('Odoo1').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "07e1d8c0-136b-41a6-adb7-7f6b42c80696",
+      "name": "Insertar_a_bdd4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1280,
+        400
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = resumen.estado\nFROM resumen_cobranzas_ia_tabla AS resumen\nWHERE callout.oddo_id = resumen.id_oddo;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1500,
+        400
+      ],
+      "id": "1a134c5e-0dfa-4212-9484-e9306021e1a2",
+      "name": "update_excluidos3",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound_cobranzas",
+          "mode": "list",
+          "cachedResultName": "calloutbound_cobranzas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "=+{{ $('Switch2').item.json.phone }}",
+            "name": "={{ $('Odoo1').item.json.name }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "maximum_attempts": 3,
+            "time_between_calls": 6,
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "email": "={{ $('Odoo1').item.json.email }}",
+            "oddo_id": "={{ $('Odoo1').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "58c0a1e0-95a8-4042-983e-3850d2353585",
+      "name": "Insertar_a_bdd5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1300,
+        960
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = resumen.estado\nFROM resumen_cobranzas_ia_tabla AS resumen\nWHERE callout.oddo_id = resumen.id_oddo;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1520,
+        960
+      ],
+      "id": "2c2618a3-5cbd-45c1-9a5b-46e5ede229e5",
+      "name": "update_excluidos4",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound_cobranzas",
+          "mode": "list",
+          "cachedResultName": "calloutbound_cobranzas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "=+{{ $('Switch2').item.json.phone }}",
+            "name": "={{ $('Odoo1').item.json.name }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "maximum_attempts": 3,
+            "time_between_calls": 6,
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "email": "={{ $('Odoo1').item.json.email }}",
+            "oddo_id": "={{ $('Odoo1').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "call_sid",
+              "displayName": "call_sid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "337ca0a4-3f8d-46ae-8d24-9461b9a36e11",
+      "name": "Insertar_a_bdd6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1320,
+        1480
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = resumen.estado\nFROM resumen_cobranzas_ia_tabla AS resumen\nWHERE callout.oddo_id = resumen.id_oddo;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1520,
+        1480
+      ],
+      "id": "259867da-326f-4bc1-8f51-47703fc6bbf7",
+      "name": "update_excluidos5",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = NULL \nFROM contador_estado_cobranzas AS resumen\nWHERE callout.oddo_id = resumen.id_oddo \nAND (resumen.contador_estado = 7 or resumen.contador_estado = 10 or resumen.contador_estado = 13 or resumen.contador_estado = 16 or resumen.contador_estado = 19 or resumen.contador_estado = 22 or resumen.contador_estado = 25 or  resumen.contador_estado = 28 or resumen.contador_estado = 31);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1560,
+        -1300
+      ],
+      "id": "16f738f3-0686-48ef-b1dd-33a4009bce0f",
+      "name": "update_reincluidos",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = NULL \nFROM contador_estado_cobranzas AS resumen\nWHERE callout.oddo_id = resumen.id_oddo \nAND (resumen.contador_estado = 7 or resumen.contador_estado = 10 or resumen.contador_estado = 13 or resumen.contador_estado = 16 or resumen.contador_estado = 19 or resumen.contador_estado = 22 or resumen.contador_estado = 25 or  resumen.contador_estado = 28 or resumen.contador_estado = 31);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1620,
+        -680
+      ],
+      "id": "fd16e625-de36-4df3-9998-dc94e4420cb8",
+      "name": "update_reincluidos1",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = NULL \nFROM contador_estado_cobranzas AS resumen\nWHERE callout.oddo_id = resumen.id_oddo \nAND (resumen.contador_estado = 7 or resumen.contador_estado = 10 or resumen.contador_estado = 13 or resumen.contador_estado = 16 or resumen.contador_estado = 19 or resumen.contador_estado = 22 or resumen.contador_estado = 25 or  resumen.contador_estado = 28 or resumen.contador_estado = 31);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1700,
+        -140
+      ],
+      "id": "6300fa35-9fcf-4d84-9f16-72bc17bacba1",
+      "name": "update_reincluidos2",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = NULL \nFROM contador_estado_cobranzas AS resumen\nWHERE callout.oddo_id = resumen.id_oddo \nAND (resumen.contador_estado = 7 or resumen.contador_estado = 10 or resumen.contador_estado = 13 or resumen.contador_estado = 16 or resumen.contador_estado = 19 or resumen.contador_estado = 22 or resumen.contador_estado = 25 or  resumen.contador_estado = 28 or resumen.contador_estado = 31);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1740,
+        400
+      ],
+      "id": "e35c17ab-cde0-42df-a1a9-ab9f17bd278d",
+      "name": "update_reincluidos3",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = NULL \nFROM contador_estado_cobranzas AS resumen\nWHERE callout.oddo_id = resumen.id_oddo \nAND (resumen.contador_estado = 7 or resumen.contador_estado = 10 or resumen.contador_estado = 13 or resumen.contador_estado = 16 or resumen.contador_estado = 19 or resumen.contador_estado = 22 or resumen.contador_estado = 25 or  resumen.contador_estado = 28 or resumen.contador_estado = 31);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1800,
+        980
+      ],
+      "id": "fa87cf1c-8cab-4017-98d3-41938df434a0",
+      "name": "update_reincluidos4",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE calloutbound_cobranzas AS callout\nSET last_state = NULL \nFROM contador_estado_cobranzas AS resumen\nWHERE callout.oddo_id = resumen.id_oddo \nAND (resumen.contador_estado = 7 or resumen.contador_estado = 10 or resumen.contador_estado = 13 or resumen.contador_estado = 16 or resumen.contador_estado = 19 or resumen.contador_estado = 22 or resumen.contador_estado = 25 or  resumen.contador_estado = 28 or resumen.contador_estado = 31);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1780,
+        1480
+      ],
+      "id": "33e55ea4-a851-45cb-9715-a333957d428a",
+      "name": "update_reincluidos5",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-02-28T02:29:41.371Z",
+      "updatedAt": "2025-02-28T02:29:41.371Z",
+      "id": "QNHsMjTjYVpVyiXd",
+      "name": "cobranzas"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T17:23:44.000Z",
+  "versionId": "20858f01-b0cb-4c67-8be0-0df33f4ab356"
+}
