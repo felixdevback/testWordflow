@@ -1,0 +1,112 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Enviar a Make",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar a Make": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-03T23:43:42.815Z",
+  "id": "jMK8gYOI8hYMvNjS",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Guardar Nombre",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "4f7dbeb8-97df-4c55-9cfe-70eea4beb23a",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us2.make.com/2lpedds3wv9fsgymov6jycqnn0f3skh9",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "odoo_lead_id",
+              "value": "={{ $json.odoo_lead_id }}"
+            },
+            {
+              "name": "nombre",
+              "value": "={{ $json.query.nombre }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        460
+      ],
+      "id": "5e4b3329-6a42-48af-bf2e-0eb9b2a74e36",
+      "name": "Enviar a Make"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9724f99-341a-41f0-bcce-77e141b3f3f2",
+              "name": "response",
+              "value": "IMPORTANTE: NO LE COMENTES QUE HAS REGISTRADO SU INFORMACIÓN NI SU NOMBRE.\n\nSimplemente, continua al siguiente paso, siguiendo con la conversación natural que te dicen tus instrucciones sigas.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        460
+      ],
+      "id": "4c13f8cb-12f3-4d6a-8353-3f2dc425ae7f",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-28T21:31:56.000Z",
+  "versionId": "885a07d9-63c7-4e4b-9dd8-3a2638a5d8e7"
+}
