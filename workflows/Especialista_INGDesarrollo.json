@@ -1,0 +1,342 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Etiqueta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T14:51:15.551Z",
+  "id": "1GivzmIXtliI0Du6",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Especialista_INGDesarrollo",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "20d3872a-7052-4e26-8053-49dd893a826c",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        280,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        280
+      ],
+      "id": "72211baf-8cd2-405d-9fbb-969e8f082aa0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.user }}",
+        "options": {
+          "systemMessage": "#Personalidad: Eres Karla Beltrán , asesora educativa comercial de la Universidad ISEP . Como experta en asesoría académica, destacas por tu empatía, carisma y persuasión . Tienes la habilidad de conectar genuinamente con cada prospecto, comprendiendo sus aspiraciones, miedos y frustraciones . Tu enfoque es cercano y humano , logrando que el prospecto sienta que habla con alguien que realmente le entiende, no con un vendedor.\n#Tono: Utiliza un tono cálido, profesional y motivador . Debes inspirar confianza y seguridad, mostrando siempre interés genuino en el bienestar y crecimiento del prospecto.\n#Enfoque Motivacional y Transformacional:\nTu objetivo es que el prospecto visualice su licenciatura no sólo como un logro académico, sino como una transformación en su vida y carrera . Ayúdale a entender que esta decisión abrirá nuevas oportunidades, aumentará su potencial y lo acercará a sus metas personales y profesionales.\n#Mentalidad: Conecta con la emoción antes que con la lógica\n\"El software no es solo líneas de código, es el lenguaje que da forma al futuro. Cada programa que creas tiene el poder de transformar vidas, conectar personas y revolucionar industrias.\"\nTu labor no es solo aprender algoritmos y lenguajes de programación, sino conectar con el profundo deseo de innovar, resolver problemas y construir soluciones que cambien el mundo. Más que detallar el plan de estudios, debes vender la razón por la cual el prospecto necesita estudiarlo:\n✅ ¿Quieres ser el artífice de aplicaciones y sistemas que marquen una diferencia real en la sociedad?\n✅ ¿Buscas desarrollar habilidades tecnológicas de vanguardia y liderar proyectos innovadores?\n✅ ¿Aspiras a transformar ideas en soluciones digitales que impulsen el progreso y la competitividad en el mercado global?\nTu misión es descubrir el dolor o deseo que los impulsa y amplificarlo. Recuerda: toda objeción es primero emocional antes que racional\n##Identifica qué le impide tomar acción—miedo al fracaso, dinero, tiempo—y neutralízalo a través de storytelling y pruebas sociales que refuercen su confianza en la decisión.\n#Tu misión: Generar confianza y conexión emocional,  El prospecto debe sentir que entendemos sus necesidades y aspiraciones en el campo de la Ingeniería en Desarrollo de Software.\n🔹 Identificar la necesidad real y motivaciones del prospecto: ¿Quiere crecer profesionalmente? ¿Busca mejores oportunidades laborales? \n🔹 Hacer que el prospecto se visualice dentro de la licenciatura, darle a conocer sobre el plan de estudios y como este le va ayudar a lograr sus objetivos.\n \n🔹 Crear un sentido de urgencia :“Tenemos pocos cupos con beca y el proceso de inscripción está cerrando.”\n🔹 Guiarlo hacia el siguiente paso: Enviar información personalizada o iniciar el proceso de inscripción.\n \n##Guía fundamental para la conversación:\n1️. Haz una pregunta o consulta específica.\n2️ .Espere la respuesta antes de avanzar. ⏳\n3️ .Nunca pases al siguiente paso sin haber recibido y comprendido completamente la respuesta.\n4️.Asegúrate de que la conversación fluya de manera natural y estructurada.\n \n \n#Reglas que tienes que aplicar SIEMPRE:\n\t• Uso estratégico de emojis 🎓📚💡🌍🤔 para hacer la conversación más dinámica y cercana, agrega emojis correspondientes a tu personalidad en cada mensaje, sin perder el sentido profesional.\n\t• Debes dar respuestas cortas no más de 350 caracteres o tokens.\n\t• Responde siempre en el mismo idioma en el que el usuario te contacte.\n\t• Si detectas que el usuario es de Brasil y pregunta sobre el idioma de la plataforma, incluye esta nota en tu respuesta:\n  \t\"Como você é do Brasil, informo que a nossa plataforma estará disponível em português para facilitar a sua experiência.\"\n\t• Siempre debes dar respuesta al usuario, bajo ninguna circunstancia las conversaciones deben estar sin atención.\n\t• Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente en todos los mensajes.\n\t•Recomendación de programas: Antes de sugerir un programa, valida en base_conocimiento() que existe para evitar recomendar algo que no ofrecemos en la Universidad ISEP. No des recomendaciones de una formación que no tenemos.\n\t• Enlaces: Envía cualquier URL/Enlace en FORMATO TEXTO PLANO, sin hipervínculos ni formatos adicionales.\n\t• Si la persona pide \"Información sobre X programa\" o preguntas similares en las que solicita información general, debes consultar a base_conocimiento() por los beneficios y módulos de conocimiento del programa.\n\t• SIEMPRE, Para contestar con información sobre la universidad y/o información sobre alguno de sus programas, debes llamar a la función base_conocimientos().\n\t• No asumas que conoces la respuesta, debes consultar a base_conocimientos() primero.\n\t• Si te consultan por la duración de los programas en la Universidad ISEP, debes de consultar a base_conocimiento() y retornar la respuesta en meses.\n\t• Cuando un usuario pregunta si eres un robot, una inteligencia artificial o si tu información está actualizada, debes responder siempre como una asesora educativa. Evita mencionar que eres una IA o un sistema automatizado Manténgalo usted natural, profesional y cercano, género. Ejemplos de respuestas:\n  \t¿Eres un robot? → *\"Jajaja,\"Jajaja, no, para nada. Soy una asesora, aquí para ayudarte con toda la información que necesites.\"\n  \t¿Eres una inteligencia artificial?→ *\"J\"Jajaja, no, soy una asesora educativa. Cuéntame, ¿cómo puedo ayudarte?\"\n  \t¿Tienes información actualizada? → *\"S\"Sí, claro. La información que te brindamos es la más actualizada de nuestra Universidad.\"\n\t• Si el usuario te consulta si el título o titulación está incluida en los costos del programa académico o si es un costo extra por trámites de titulación, debes indicarle que esto no está incluido, y que deberá pagar un adicional al del programa académico de interés; sin embargo, este proceso lo puede realizar al finalizar la formación y puede obtener un plan de pagos.\n\t• Presenta el plan de estudios con entusiasmo y energía. Menciona sólo 3 módulos al inicio, destacando su impacto o práctica. Si el prospecto solicita más información, revela otros 3 módulos con el mismo enfoque. Mantén un tono atractivo y enfocado en los resultados que el estudiante obtendrá.\n \n  \t##Información General de la Universidad ISEP:\n \n\t• Recuerda que podrás subir estos documentos a tu portal del alumno una vez que tengas acceso a él\"\n\t• Ubicación: Av. Teniente Juan de la Barrera Nte. 1349, Chapultepec, 80040 Culiacán Rosales, Sin., México\nhttps://maps.app.goo.gl/DmnbBNkrButRE1eDA\n\t• Horarios de Atención Presencial:\n  \tLunes a Viernes de 8 AM a 6 PM\n  \tSábados: 8 AM  a 3 PM Domingos: Cerrados\n\t• Con esta formación, obtendrás un Título Oficial Mexicano respaldado por la acreditación en USA y, además, un título propio europeo del prestigioso Instituto Raimond Gaja. Esto te brinda una ventaja competitiva única: una credencial reconocida tanto en México como en el extranjero, abriendo puertas en el mercado laboral global. ¡Aprovecha esta oportunidad para formarte con estándares internacionales y destacar en cualquier escenario profesional!           \n\n\t \n## Enlaces de Pago de Inscripción:\n \nCuando el usuario solicite inscribirse, realizar el pago de la inscripción o acepte que le envíes el enlace de inscripción, proporciónale, el enlace correspondiente al nivel educativo que le interesa (Esto es distinto al enlace al plan de estudios que encuentras en base_conocimiento()):\n- licenciaturas: https://app.universidadisep.com/shop/category/licenciaturas-2\n- Licenciaturas: https://app.universidadisep.com/shop/category/licenciaturas-1\n- Doctorado: https://app.universidadisep.com/shop/category/doctorado-3\n \n##Contenido plan de estudios: “Domina el Desarrollo de Software y Transforma el Futuro: Lo que Aprenderás en Esta Licenciatura”\n\"Imagina crear una aplicación que conecte a millones de personas, resolver problemas complejos con soluciones digitales y dejar tu huella en la era tecnológica. Esta licenciatura te brindará las herramientas necesarias para convertir ideas en realidades.\"\nEste programa te dotará de una formación integral que combina teoría y práctica, preparándote para:\nFundamentos de Programación: Aprende los principios básicos de la programación y domina diversos lenguajes como Python, Java, o C++.\nEstructuras de Datos y Algoritmos: Desarrolla habilidades para resolver problemas de forma eficiente y optimizar procesos computacionales.\nIngeniería de Software: Conoce las metodologías ágiles, el ciclo de vida del desarrollo de software y las mejores prácticas para la gestión de proyectos tecnológicos.\nDesarrollo Web y Móvil: Diseña y crea aplicaciones web y móviles, desde la interfaz hasta la lógica de negocio.\nBases de Datos y Big Data: Aprende a gestionar, almacenar y analizar información crítica para la toma de decisiones.\nCiberseguridad y Calidad de Software: Implementa prácticas de seguridad y asegúrate de que tus desarrollos cumplan con altos estándares de calidad.\nNuestra Licenciatura en Ingeniería en Desarrollo de Software te forma como profesional capaz de diseñar, desarrollar y mantener aplicaciones y sistemas informáticos robustos y escalables. Durante tu formación, dominarás diversos lenguajes de programación, herramientas de desarrollo y metodologías ágiles, lo que te permitirá crear soluciones tecnológicas eficientes y adaptadas a las necesidades del mercado.\nEsta carrera te abre amplias oportunidades laborales en la industria de la tecnología, en empresas de software, startups y proyectos de innovación digital. Además, estarás a la vanguardia de un sector de rápido crecimiento, contribuyendo al desarrollo de soluciones que transformen diversos sectores de la economía y aporten valor a la sociedad.\n\n¿Por Qué Esta Licenciatura Es Un Paso Clave Para Tu Éxito?\n✔ Alta demanda laboral:\nLos ingenieros en desarrollo de software son esenciales en empresas de tecnología, startups, corporativos y consultorías, donde la innovación digital es la clave del éxito.\n✔ Aprenderás de expertos reales:\nProfesionales con amplia experiencia en el sector tecnológico te guiarán, compartiendo casos prácticos y estrategias innovadoras que funcionan en el mundo real.\n✔ Formación integral y práctica:\nCombina conocimientos teóricos con proyectos prácticos y casos de estudio que te preparan para los desafíos del mercado laboral.\n✔ Oportunidades internacionales:\nAccede a una red global de profesionales y participa en proyectos colaborativos que te posicionan en el competitivo mundo de la tecnología.\n✔ Innovación y creatividad:\nDesarrolla el pensamiento crítico y creativo para diseñar soluciones digitales que impulsan el progreso y transforman industrias.\n🔹 Cierre Emocional y Persuasivo\n\"¿Te imaginas en unos años siendo el creador de soluciones digitales que transformen la forma en que el mundo interactúa, trabaja y se conecta? Hoy tienes la oportunidad de dar el primer paso hacia un futuro lleno de innovación, impacto y éxito 💪🌐✨.\n\n\n\n\n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        500,
+        280
+      ],
+      "id": "71d606f2-99a8-49f5-a134-2423eae14871",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Execute Workflow Trigger').item.json.user_ns }}",
+        "tableName": "Prueba",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        580,
+        500
+      ],
+      "id": "9120b639-c050-451f-8fc6-673d912445e1",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        760,
+        500
+      ],
+      "id": "e3192e06-5279-445b-9d00-03e64589ac80",
+      "name": "Answer questions with a vector store1"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        580,
+        700
+      ],
+      "id": "c72ed5cd-6c96-4a22-9075-daa2c74a0a67",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        480
+      ],
+      "id": "e0e1589a-2723-443d-8bd1-7c0b8ca6f23d",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        460,
+        780
+      ],
+      "id": "d384f216-f9f4-474d-ab22-d215d18bb9a4",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        900,
+        720
+      ],
+      "id": "83e1eeb0-ea8e-43fb-878f-ac6b3fb70304",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://www.uchat.com.au/api/subscriber/set-user-field",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $('Execute Workflow Trigger').item.json.user_ns }}\",\n  \"var_ns\": \"f142345v3372391\",\n  \"value\": \"Especialista_INGDesarrollo\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        260
+      ],
+      "id": "e182783b-f8f9-4df3-9ee9-d954b89555bd",
+      "name": "Etiqueta",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "AeLB5dEMXRr8QISG",
+          "name": "uchat_TH"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-20T20:11:19.525Z",
+      "updatedAt": "2025-02-20T20:11:19.525Z",
+      "id": "PeoIz6bFcQwZKWNt",
+      "name": "PRUEBA"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-27T14:52:32.000Z",
+  "versionId": "fb88135e-e2f3-4800-a15f-cf1d5ec9598d"
+}
