@@ -1,0 +1,399 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Enviar Whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SendGrid": {
+      "main": [
+        []
+      ]
+    },
+    "Enviar Whatsapp": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-02-03T12:28:07.076Z",
+  "id": "I0cRMURTYuVUDVaS",
+  "meta": null,
+  "name": "whatsapp/email copy",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "50e96095-e2d7-4aab-aac7-eda59e05afd1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -340,
+        240
+      ],
+      "id": "c9b6d53c-2b03-4c99-a164-c3ba39f261dd",
+      "name": "Webhook",
+      "webhookId": "50e96095-e2d7-4aab-aac7-eda59e05afd1"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "admisiones52@universidadisep.com",
+        "fromName": "=universidad isep",
+        "toEmail": "={{ $('Webhook').item.json.body.args.email_user }}",
+        "subject": "Formaciones Académicas Universidad ISEP",
+        "contentType": "text/html",
+        "contentValue": "={{ $json.output }}",
+        "additionalFields": {
+          "bccEmail": "admisiones44@universidadisep.com"
+        }
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -160
+      ],
+      "id": "973cca31-310c-4b50-b744-8b1da9e92013",
+      "name": "SendGrid",
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"user_ns\":\"{{ $json.data.user_ns }}\",\"sub_flow_ns\": \"f122557s1385965\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        620
+      ],
+      "id": "3e1b034e-0c31-421e-b106-74521102f55f",
+      "name": "Enviar Whatsapp",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "iKru720rDTYWScpq",
+          "name": "Twillio_prod"
+        },
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/create",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"phone\": \"{{ $json.body.call.to_number }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        440
+      ],
+      "id": "b18708a7-b3e5-4586-9d36-7e6000c8e38b",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.args.chatInput }}",
+        "options": {
+          "systemMessage": "=Eres un agente de Universidad Isep, experto en crear correos electrónicos.\n\nNecesito que hagas un correo electrónico en HTML para el usuario, consulta base_conocimiento() para dar la respuesta del correo:\n\n{{ $json.body.args.chatInput }}\n\n#output solo dame el HTML sin contestarme nada más y sin agregar ```html\n\n#Importante agrega emojis"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        180,
+        -140
+      ],
+      "id": "0ff66ab5-3f5c-4d3b-ac81-ed55176279db",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad inesin, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        460,
+        60
+      ],
+      "id": "18e74aec-9825-4133-a540-e7374284f69a",
+      "name": "Vector Store Tool"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        400
+      ],
+      "id": "54510a00-0012-457b-a39d-bf42b52ebb33",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "noco_db",
+          "mode": "list",
+          "cachedResultName": "noco_db"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        380,
+        280
+      ],
+      "id": "7ab91748-a798-4c9a-a6e9-f907df10f692",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        480,
+        460
+      ],
+      "id": "edae863e-918f-4612-b8e1-a2cedc3e9254",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        40
+      ],
+      "id": "13017c4f-37d1-4c6e-952d-8077f3523380",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://www.uchat.com.au/api/subscriber/get-info-by-user-id",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"phone\": \"{{ $json.body.call.to_number }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -440,
+        500
+      ],
+      "id": "e381a41d-8721-42c5-b028-7decbafc4577",
+      "name": "HTTP Request1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"user_ns\":\"{{ $('HTTP Request').item.json.data.user_ns }}\",\"sub_flow_ns\": \"f122557s1063623\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        740,
+        680
+      ],
+      "id": "da811099-bf5c-4622-9942-af2a29d0e14b",
+      "name": "Enviar Whatsapp1",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "iKru720rDTYWScpq",
+          "name": "Twillio_prod"
+        },
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-26T18:26:47.000Z",
+  "versionId": "7fc5ac62-4451-4bd3-8b65-b118f4012a9d"
+}
