@@ -1,0 +1,188 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Etiqueta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uchat - plantilla": {
+      "main": [
+        []
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-26T23:35:25.193Z",
+  "id": "jaJ6kINjOBKTcyWI",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente_orientacion",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "fc6b837a-c70e-46dc-8738-a806af31592b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        220,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "=Contexto interno: Menciona que lo vas a canalizar con el área de orientación, no digas nada más.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        160
+      ],
+      "id": "2ed27807-e153-49de-bc23-7c2f837e568c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://www.uchat.com.au/api/subscriber/set-user-field",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $('Execute Workflow Trigger').item.json.user_ns }}\",\n  \"var_ns\": \"f152209v3492245\",\n  \"value\": \"Orientacion\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        160
+      ],
+      "id": "9aa8f4ea-8d4e-415e-983f-b6d4410ba334",
+      "name": "Etiqueta",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OTNQvBs96vPaobpR",
+          "name": "uchat_pruebas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"sub_flow_ns\": \"f152209s1141299\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        460
+      ],
+      "id": "a6a7e56b-e52c-44e3-89d4-43d3248fe69e",
+      "name": "Uchat - plantilla",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OTNQvBs96vPaobpR",
+          "name": "uchat_pruebas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "sbtCHanaiRb3AZjI",
+          "mode": "list",
+          "cachedResultName": "plantilla_orientación"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        160
+      ],
+      "id": "fb5c5ed9-d75c-490e-9b3d-439181f8061f",
+      "name": "Execute Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-26T18:55:22.934Z",
+      "updatedAt": "2025-02-26T18:55:22.934Z",
+      "id": "fZyfPOCPh5pbcx1P",
+      "name": "orientacion"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-28T23:04:52.846Z",
+  "versionId": "30ceaf96-a4d1-4d53-8ea9-a81bee790a08"
+}
