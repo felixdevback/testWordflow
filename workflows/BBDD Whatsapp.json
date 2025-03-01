@@ -1,0 +1,345 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-11T21:58:34.866Z",
+  "id": "mckfhcCShh69Xa8U",
+  "meta": null,
+  "name": "BBDD Whatsapp",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 3
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        20,
+        240
+      ],
+      "id": "222734af-acd2-4c20-9ee2-8445651ac771",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, session_id, message\nFROM universidad_isep\nWHERE session_id NOT IN (SELECT session_id FROM universidad_isep_consolidadas)\nORDER BY id ASC\nLIMIT 5000 OFFSET {{ $json.offset }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        480,
+        240
+      ],
+      "id": "bd677985-d763-4795-b67d-397d674c81ca",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Creamos un objeto para agrupar mensajes por session_id\nconst grouped = {};\n\n// Iteramos sobre cada registro recibido (cada item)\nfor (const item of items) {\n  const sessionId = item.json.session_id;\n  // Creamos el grupo si no existe\n  if (!grouped[sessionId]) {\n    grouped[sessionId] = [];\n  }\n  // Guardamos el id y el mensaje tal como viene\n  grouped[sessionId].push({\n    id: item.json.id,\n    message: item.json.message\n  });\n}\n\n// Preparamos el resultado agrupado\nconst results = [];\nfor (const sessionId in grouped) {\n  // Ordenamos los mensajes por id (asumiendo que un id menor es más antiguo)\n  const sortedMessages = grouped[sessionId].sort((a, b) => a.id - b.id);\n  \n  // Convertimos cada mensaje al formato deseado\n  const transcript = sortedMessages.map(m => {\n    let msgObj = m.message;\n    \n    // Si el mensaje es un string, tratamos de parsearlo como JSON\n    if (typeof msgObj === 'string') {\n      try {\n        msgObj = JSON.parse(msgObj);\n      } catch (err) {\n        // Si falla el parseo, se deja como string\n        return msgObj;\n      }\n    }\n    \n    // Si ya es un objeto y tiene las propiedades que necesitamos,\n    // formateamos la línea incluyendo el \"type\" y el \"content\"\n    if (msgObj && typeof msgObj === 'object') {\n      // Aquí usamos \"content\" ya que es el campo que contiene el texto del mensaje.\n      // Si en algún caso usas otro campo (por ejemplo, \"text\") puedes ajustar este código.\n      return `${msgObj.type}: ${msgObj.content}`;\n    }\n    // Si no cumple las condiciones, retornamos el mensaje tal cual.\n    return msgObj;\n  }).join(\"\\n\");\n  \n  // Agregamos el resultado para este session_id\n  results.push({\n    json: {\n      session_id: sessionId,\n      transcript: transcript\n    }\n  });\n}\n\nreturn results;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        180
+      ],
+      "id": "b21f2225-5e1b-4e32-966f-6b221ff8d433",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analiza el siguiente transcript y devuelve una etiqueta que indique hasta dónde llegó la conversación. Las etiquetas son las siguientes: 'información enviada', 'costos enviados', 'Solo respondió preguntas de invesgitación'.\n\n#Solo contesta con la etiqueta\n\nTranscript:\n{{ $json.transcript }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        940,
+        0
+      ],
+      "id": "cf55fdef-6d15-421c-83d2-54f76960814c",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 500,
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        360,
+        -400
+      ],
+      "id": "a34cbbd7-ff0f-47ed-8235-2f78b7051954",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep_consolidadas",
+          "mode": "list",
+          "cachedResultName": "universidad_isep_consolidadas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $json.session_id }}",
+            "transcript": "={{ $json.transcript }}",
+            "etiqueta": "={{ $json.message.content }}"
+          },
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "etiqueta",
+              "displayName": "etiqueta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1620,
+        -20
+      ],
+      "id": "f5b6a2bc-1de6-4c8d-b86f-dc44da735a16",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1320,
+        80
+      ],
+      "id": "46565313-0ecd-4c8e-beb5-742180b93b40",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8b78046-29e0-424d-8761-da24f0ad8975",
+              "name": "offset",
+              "value": "0",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        240
+      ],
+      "id": "86700fe1-4864-44ad-b56e-c6b05a8ef18e",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        9
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-02-11T21:58:52.073Z",
+      "updatedAt": "2025-02-11T21:58:52.073Z",
+      "id": "NYlUEFJCjAa2X4yf",
+      "name": "chatbot"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:02:26.969Z",
+  "versionId": "d3a1cadb-71d1-4694-a528-c7f50bbbbbd6"
+}
