@@ -1,0 +1,1079 @@
+{
+  "active": true,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "Actualizar": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Agendar": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Asesor": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "Nombre": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "rvoe": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant_nocodb",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store_nocodb",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store_nocodb": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant_nocodb": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store_nocodb",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "img_inscrp": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "pasos_pago": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "benef_tller_terpONL": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "contac_24hrs": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "networking": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "isep_emprende": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "contac_tutor": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "proceso_inscrip": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "acceso_campus": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Postgres": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "objeciones PS": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "objeciones": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T02:46:51.979Z",
+  "id": "CRkyWM7Dnfy0Ko5m",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente_IA_Q",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1460,
+        660
+      ],
+      "id": "191f469e-89db-4d05-ae49-b9e8b97052a5",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {
+          "temperature": 0.7,
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        560,
+        960
+      ],
+      "id": "23e8e190-6b5d-4e6c-98c2-d24f531396f9",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -1020,
+        2780
+      ],
+      "id": "7fc6112c-76b7-4c0d-b042-466ee0a136e0",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "name": "actualizar",
+        "description": "Llama a esta función en cuanto ya tengas los siguientes datos:\n- Nombre\n- Correo\n\nY, uno de los parámetros que deberás entregar en esta función es un resumen de la conversación y detalles del prospecto",
+        "workflowId": {
+          "__rl": true,
+          "value": "QB0pRjs7Lw48wsYj",
+          "mode": "list",
+          "cachedResultName": "Actualizar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            },
+            {
+              "name": "telefono",
+              "stringValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    },\n    \"correo\": {\n      \"type\": \"string\",\n      \"description\": \"Correo Electrónico del prospecto\"\n    },\n    \"resumen\": {\n    \"type\": \"string\",\n    \"description\": \"Resumen y descripcion de la conversación e información de los intereses del prospecto.\"\n    }\n  },\n  \"required\": [\"nombre\", \"correo\", \"resumen\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -680,
+        3280
+      ],
+      "id": "3515b02a-aedb-432b-b7d3-0e2065b052b6",
+      "name": "Actualizar"
+    },
+    {
+      "parameters": {
+        "name": "agendar",
+        "description": "Debes llamar a esta función cuando se le ofreció un agendamiento y la persona aceptó.\n\nEn cuanto la persona acepte debes de INMEDIATAMENTE llamar a esta función",
+        "workflowId": {
+          "__rl": true,
+          "value": "IUGP8rZXtg72tne8",
+          "mode": "list",
+          "cachedResultName": "Agendar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $json.body.user_ns }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -580,
+        3280
+      ],
+      "id": "edc03379-22ff-48bf-b513-ce6e102aeea0",
+      "name": "Agendar"
+    },
+    {
+      "parameters": {
+        "name": "asesor",
+        "description": "Debes llamar a esta función si menciona que la fecha de pago es muy pronto y aceptó la oferta que le hicimos de pasarle a un asesor",
+        "workflowId": {
+          "__rl": true,
+          "value": "OvsVOqMqkYQhgnbZ",
+          "mode": "list",
+          "cachedResultName": "Asesor"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"resumen\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"Contiene un resumen/descripción de la situación actual de la conversación con el prospecto\"\n\t\t}\n\t}\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -480,
+        3280
+      ],
+      "id": "97679a23-d992-4522-a932-ee8717fdf1b4",
+      "name": "Asesor"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "67e3174b-45b1-43e3-990c-af2712162d40",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        1120
+      ],
+      "id": "1ea79e55-b70c-4a40-8e37-b4719050ca62",
+      "name": "Webhook",
+      "webhookId": "67e3174b-45b1-43e3-990c-af2712162d40"
+    },
+    {
+      "parameters": {
+        "name": "nombre",
+        "description": "Esta función debe ser llamada cuando el usuario te entregue su nombre.",
+        "workflowId": {
+          "__rl": true,
+          "value": "jMK8gYOI8hYMvNjS",
+          "mode": "list",
+          "cachedResultName": "Guardar Nombre"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    }\n  },\n  \"required\": [\"nombre\"]\n}"
+      },
+      "id": "7fefc4f0-83bc-47df-9f35-244fa8ceee32",
+      "name": "Nombre",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -380,
+        3280
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Eres Julio Vega, un asesor comercial especializado en ventas de Real State en zonas turísticas, en específico Mazatlán, Sinaloa. (No menciones tu puesto, ni que eres especialista en ventas, solo menciona que eres Julio Vega de QABU)\n\nTu tarea es perfilar los leads entrantes y siempre debes de seguir los siguientes pasos al entrar un lead:\n\n1- Presentarte y saludar brevemente mencionando aspectos importantes sobre el desarrollo QABU consulta base_conocimiento() para obtener la información del desarrollo\n\n#Importante:\n- Nunca des el precio a la primera, ni planes de financiamiento siempre busca el agendar una visita o una llamada\n- Si no conoces alguna información no digas que no lo sabes, mejor actúa de manera ingeniosa e incentiva el agendar una llamada\n- Cuando trates de agendar una llamada propon día y hora y trata que sea una hora cercana a la que es en ese momento\n- Los mensajes que envíes deben de ser más precisos y directos, resaltando lo importante\n- Debes de ser MUY humano, cuida mucho el no hacer un texto robotizado, usa emojis cuando sean necesario por ejemplo (🌊🚗🌴✨)\n- Nunca propongas una llamada en el primer mensaje, espera a que el usuario te pregunte por costos\n- Debes perfilar y conocer las motivaciones de tu cliente para comprar\n\nHoy es: {{ $now }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        780,
+        740
+      ],
+      "id": "adf9b96f-fe26-422b-98b4-83b9c7dd49ac",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "tableName": "QAB",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        740,
+        960
+      ],
+      "id": "da5bdfd4-91a6-4273-a8b0-ef14dd67f9d6",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "rvoe",
+        "description": "Esta función debe ser llamada cuando el usuario pregunte sobre el RVOE o como validar la oficialidad de la formación",
+        "workflowId": {
+          "__rl": true,
+          "value": "pVTNtdIkUBTyGNPg",
+          "mode": "list",
+          "cachedResultName": "rvoe"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -280,
+        3280
+      ],
+      "id": "16135161-7010-46f6-8b2f-7d9841fd35c5",
+      "name": "rvoe"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        1240
+      ],
+      "id": "8cac009d-2f32-438a-859d-e561d40da060",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        1080
+      ],
+      "id": "e84317e6-5988-4d12-a979-2faad311f998",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: El desarrollo QABU Boutique Living, aquí encontrarás toda la información sobre mi empresa, los modelos de viviendas que manejamos y toda información importante. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        920
+      ],
+      "id": "2f7cec0d-f001-45f5-a7f1-0421cfea800f",
+      "name": "Vector Store_nocodb"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "QABU",
+          "mode": "list",
+          "cachedResultName": "QABU"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        920,
+        1080
+      ],
+      "id": "1a755a10-6151-4488-8544-311ba74ac712",
+      "name": "Qdrant_nocodb",
+      "credentials": {
+        "qdrantApi": {
+          "id": "skLQBcOdwA24ypfP",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "img_inscrp",
+        "description": "Esta función debe ser llamada cuando intentes hacer el cierre de la venta en paso 6 de la conversación",
+        "workflowId": {
+          "__rl": true,
+          "value": "LX1W5lwj5ocePw6w",
+          "mode": "list",
+          "cachedResultName": "img_inscrp"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -260,
+        3440
+      ],
+      "id": "2254f87d-d9c3-4100-a5f2-c2aa39799150",
+      "name": "img_inscrp"
+    },
+    {
+      "parameters": {
+        "name": "pasos_pago",
+        "description": "Esta función debe ser llamada cuando el usuario solicite, necesite orientación sobre cómo realizar el pago de la inscripción o cuando envíes el enlace de pago.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Qlvx4hUmq8urvThy",
+          "mode": "list",
+          "cachedResultName": "video_pasos_pagoInscrip"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -360,
+        3440
+      ],
+      "id": "3fc4d77d-d1d3-4eef-a008-94475632ac50",
+      "name": "pasos_pago"
+    },
+    {
+      "parameters": {
+        "name": "benef_tller_terpONL",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre beneficios adicionales de la universidad o muestre interés en mejorar sus oportunidades laborales.",
+        "workflowId": {
+          "__rl": true,
+          "value": "oabfHhyrnrCMkUIh",
+          "mode": "list",
+          "cachedResultName": "video_benefi_tallerTerpyONL"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -500,
+        3440
+      ],
+      "id": "c16dfb22-08f4-437a-8abf-e6e594c19af7",
+      "name": "benef_tller_terpONL"
+    },
+    {
+      "parameters": {
+        "name": "contac_24hrs",
+        "description": "=Esta función debe ser llamada cuando el usuario mencione que prefiere recibir atención personalizada o pregunte si puede hablar con alguien por llamada.",
+        "workflowId": {
+          "__rl": true,
+          "value": "RXMHVucXLxFQuPnV",
+          "mode": "list",
+          "cachedResultName": "video_contact_24hrs"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -640,
+        3440
+      ],
+      "id": "0bba9f12-d812-4a51-aadf-f713d0f06549",
+      "name": "contac_24hrs"
+    },
+    {
+      "parameters": {
+        "name": "networking",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre beneficios adicionales, tenga dudas sobre si estudiar en linea o al preguntar sobre la metodología.",
+        "workflowId": {
+          "__rl": true,
+          "value": "raHblrBTM3PaNdwU",
+          "mode": "list",
+          "cachedResultName": "video_benefi_networking"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -760,
+        3440
+      ],
+      "id": "b4388325-329f-4728-ab1b-7691f4a822d6",
+      "name": "networking"
+    },
+    {
+      "parameters": {
+        "name": "isep_emprende",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre beneficios adicionales de la universidad o mencione que le interesa mejorar su desarrollo profesional, destacar en el mercado laboral o que aun no ejerce.",
+        "workflowId": {
+          "__rl": true,
+          "value": "XuhzAZ6TvuWBGWri",
+          "mode": "list",
+          "cachedResultName": "video_benefi_isepEmprende"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -260,
+        3600
+      ],
+      "id": "59c6e24b-7416-46cc-b499-2a1b94e59e62",
+      "name": "isep_emprende"
+    },
+    {
+      "parameters": {
+        "name": "contac_tutor",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre el acompañamiento académico, tutorías o cómo recibir apoyo durante su formación.",
+        "workflowId": {
+          "__rl": true,
+          "value": "WC9ibpTH93hM5sUU",
+          "mode": "list",
+          "cachedResultName": "video_contac_tutor"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -380,
+        3600
+      ],
+      "id": "b29a4d7d-682f-486e-922b-54989f51c703",
+      "name": "contac_tutor"
+    },
+    {
+      "parameters": {
+        "name": "proceso_inscrip",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte cómo es el proceso de inscripción o solicite información detallada sobre los pasos para inscribirse.",
+        "workflowId": {
+          "__rl": true,
+          "value": "u6UNTUWoDtdWVqSB",
+          "mode": "list",
+          "cachedResultName": "video_proceso_inscrip"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -500,
+        3600
+      ],
+      "id": "de3a0568-7c3a-4f8f-9e82-71b4e5f63f72",
+      "name": "proceso_inscrip"
+    },
+    {
+      "parameters": {
+        "name": "acceso_campus",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte cómo acceder al campus virtual o después de haber completado su pago e inscripción.",
+        "workflowId": {
+          "__rl": true,
+          "value": "RbN1vpOhizGTapib",
+          "mode": "list",
+          "cachedResultName": "video_accs_campus"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -640,
+        3600
+      ],
+      "id": "4e7cac9b-529f-4966-8221-57e656bc4b73",
+      "name": "acceso_campus"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id_odoo": "={{ $('Webhook').item.json.body.odoo_lead_id }}",
+            "session_id": "={{ $('Webhook').item.json.body.user_ns }}"
+          },
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_odoo",
+              "displayName": "id_odoo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.5,
+      "position": [
+        40,
+        3240
+      ],
+      "id": "6572713a-5762-47d4-b5f2-274906cb0784",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $('Webhook').item.json.body.user_ns }}",
+            "id_odoo": "={{ $json.id_odoo }}"
+          },
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_odoo",
+              "displayName": "id_odoo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2100,
+        4160
+      ],
+      "id": "a26156cf-0d2b-4e43-8b5c-5f1e1889e53a",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "21b5fc10-e500-496f-aba6-ecce19228dd6",
+              "name": "id_odoo",
+              "value": "={{ $('Webhook').item.json.body.odoo_lead_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1860,
+        4180
+      ],
+      "id": "303f8741-f486-4400-9aac-ac59eb51a5e6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "name": "objeciones_PS",
+        "description": "Llama a esta tool cuando el prospecto de una objeción y pidió información sobre psicología clínica",
+        "workflowId": {
+          "__rl": true,
+          "value": "Ca9m1iYvjq9y9TQa",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 4"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        180,
+        3300
+      ],
+      "id": "ca2c0918-cc52-4e30-a9d2-b7b97716dd95",
+      "name": "objeciones PS"
+    },
+    {
+      "parameters": {
+        "name": "objeciones_PS",
+        "description": "Llama a esta función cuando el prospecto haya pedido información sobre psicología clínica y mecione alguna objeción (\"Costos\", \"esta muy caro\", \"lo voy a pensar\", etc.)",
+        "workflowId": {
+          "__rl": true,
+          "value": "2pTvpiPfHe28hjYK",
+          "mode": "list",
+          "cachedResultName": "objeciones_PS"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            },
+            {
+              "name": "user",
+              "stringValue": "={{ $('Webhook').item.json.body.user }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -780,
+        3020
+      ],
+      "id": "a552394e-fc4d-474a-bd66-4e8a777f75f2",
+      "name": "objeciones"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        420,
+        740
+      ],
+      "id": "62714d38-650d-456a-be5f-e2a0f499f77c",
+      "name": "When chat message received",
+      "webhookId": "eddd7df6-69c3-44d4-bc8a-79b91da10549"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-28T06:36:04.642Z",
+      "updatedAt": "2025-01-28T06:36:04.642Z",
+      "id": "sgrT2GlB8XpfYaca",
+      "name": "functions"
+    }
+  ],
+  "triggerCount": 3,
+  "updatedAt": "2025-02-28T23:04:48.683Z",
+  "versionId": "a2477e74-9d5b-415f-aa38-cd77c187e096"
+}
