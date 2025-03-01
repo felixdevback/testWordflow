@@ -1,0 +1,105 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-23T17:47:26.176Z",
+  "id": "m1VsuguHZLGviSmW",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "run_chech_numbers",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "50 6-21 * * *"
+            }
+          ]
+        }
+      },
+      "id": "43be461c-083e-47d5-9f2c-ee98eda8f4cb",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://workflow.universidadisep.com/webhook/8f84a3c9-dba8-4adb-9c9a-09c617a06efb",
+        "options": {}
+      },
+      "id": "584f1dbb-320f-4bc9-bc04-bd7f99cc6103",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://workflow.universidadisep.com/webhook/0dbc46a1-2ad6-4bf9-be9b-0e248386701c",
+        "options": {}
+      },
+      "id": "61086af4-96cc-4b4a-b0e4-82b449f20c4a",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        520
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-19T22:53:31.528Z",
+      "updatedAt": "2024-12-19T22:53:31.528Z",
+      "id": "JeuR9KgbxHoHPzZx",
+      "name": "Dinamic_Number_Display"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-07T16:28:40.000Z",
+  "versionId": "95a8e14c-866a-4394-a471-8d5ae1b551f2"
+}
