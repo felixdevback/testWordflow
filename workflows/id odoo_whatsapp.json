@@ -1,0 +1,355 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-19T17:18:06.500Z",
+  "id": "T3RqoSOi1XpgTW4z",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "id odoo_whatsapp",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9750e0bb-fb13-434c-bbd8-2db0b67f3aaa",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9c854d0b-ceb5-438e-8555-341c9801c293",
+      "name": "Webhook",
+      "webhookId": "9750e0bb-fb13-434c-bbd8-2db0b67f3aaa"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $json.body.phone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        200,
+        0
+      ],
+      "id": "fed030ec-1413-41af-a8a4-607c2854bdce",
+      "name": "Odoo",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        -100
+      ],
+      "id": "154d441a-f2d9-4217-9ba1-f72d242f6b0b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aca68970-0d27-4e36-ac88-ca6e2a35cafc",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        380,
+        0
+      ],
+      "id": "73337c12-0058-4c66-9977-3c72cb831c07",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        580,
+        80
+      ],
+      "id": "78401b99-c62f-4038-b4c2-d983cb297307",
+      "name": "Odoo1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        -20
+      ],
+      "id": "d2b24918-7413-42e3-ae54-4b8aeb1caf98",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cb98dee6-f87a-49db-87d7-d52fcf5bdca8",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        80
+      ],
+      "id": "a5107c27-4de1-4278-a384-ac456a8a4773",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "opportunityName": "={{ $('Webhook').item.json.body.name }}",
+        "additionalFields": {
+          "phone": "={{ $('Webhook').item.json.body.phone }}"
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        940,
+        160
+      ],
+      "id": "334f3734-a57e-48f7-ac3f-004f80608ad0",
+      "name": "Odoo2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        160
+      ],
+      "id": "e710bdec-2673-4758-a8c7-1eec9e292074",
+      "name": "Respond to Webhook2"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "workflow.universidadisep.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
+            "content-length": "105",
+            "content-type": "application/json",
+            "x-forwarded-for": "45.76.112.39",
+            "x-forwarded-host": "workflow.universidadisep.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7231b11a3e31",
+            "x-real-ip": "45.76.112.39",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "name": "ꓷƎ⅄ⱯNIꓤⱯ OSⱯꓷ🦁",
+            "phone": "+5491130568453",
+            "user_ns": "f122557u222932181"
+          },
+          "webhookUrl": "https://workflow.universidadisep.com/webhook/9750e0bb-fb13-434c-bbd8-2db0b67f3aaa",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-20T17:19:51.000Z",
+  "versionId": "f51b9264-70d6-411d-9b4a-b9f4e9d4988d"
+}
