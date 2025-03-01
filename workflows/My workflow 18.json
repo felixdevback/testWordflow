@@ -1,0 +1,96 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-21T23:48:36.220Z",
+  "id": "E2FRzYBSQyEznINs",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 18",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ac62369e-8d8e-426a-9177-9f1f41fdc1a9",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "tesis.model",
+        "operation": "getAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "1f555422-1ef8-49c7-9ebe-202ba88ce5d3",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "JHDBuAn2BFqo4lba",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "protocol": "sftp"
+      },
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [
+        420,
+        20
+      ],
+      "id": "c988dae6-dab3-4603-864a-6110dce4ae99",
+      "name": "FTP",
+      "credentials": {
+        "sftp": {
+          "id": "kfHErZcdewjYfFsz",
+          "name": "FTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-22T04:42:36.000Z",
+  "versionId": "54346d68-88db-4a95-b9cc-e4ee614d86b8"
+}
