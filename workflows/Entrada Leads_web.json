@@ -1,0 +1,282 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-24T17:42:30.327Z",
+  "id": "YWAv5w4E7rm1r7v5",
+  "meta": null,
+  "name": "Entrada Leads_web",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "p7kgbgsbck3ql4v7rpx6t7vxbl9pgyal",
+        "options": {}
+      },
+      "id": "be057689-8f35-4651-9bfc-5918b2634cc4",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -120
+      ],
+      "webhookId": "db631c2f-d003-450e-bd05-ade4c8a31977"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.body.nombre }}"
+            },
+            {
+              "fieldName": "type",
+              "fieldValue": "lead"
+            },
+            {
+              "fieldName": "contact_name",
+              "fieldValue": "="
+            },
+            {
+              "fieldName": "email_from",
+              "fieldValue": "={{ $json.body.email }}"
+            },
+            {
+              "fieldName": "phone",
+              "fieldValue": "={{ $json.body.telefono }}"
+            },
+            {
+              "fieldName": "medium_id",
+              "fieldValue": "="
+            },
+            {
+              "fieldName": "campaign_id",
+              "fieldValue": "="
+            },
+            {
+              "fieldName": "source_id",
+              "fieldValue": "="
+            },
+            {
+              "fieldName": "country_id",
+              "fieldValue": "={{ $json.country_id }}"
+            }
+          ]
+        }
+      },
+      "id": "fce33110-040d-43e2-ac95-9cd9c00c4eb3",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -120
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "hNKYjZu4DfjSqRgn",
+          "mode": "list",
+          "cachedResultName": "SC x UNISEP integración formularios web con CRM Odoo 2 copy"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        -120
+      ],
+      "id": "2aa453ca-0c26-4deb-9fd8-20768d463c41",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "\nconst telefonoCountryCode = $json.body[\"telefono-country-code\"];\n\nconst countryCodes = {\n  \"+52\": 156,\n  \"+34\": 68,\n  \"+57\": 49,\n  \"+1\": 258,\n  \"+504\": 257,\n  \"+593\": 253,\n  \"+54\": 10,\n  \"+56\": 46,\n  \"+507\": 251,\n  \"+51\": 259,\n  \"+55\": 31,\n  \"+506\": 50,\n  \"+1\": 233\n};\n\nconst countryId = countryCodes[telefonoCountryCode] || null;\n\nreturn {\n  json: {\n    ...$json,\n    country_id: countryId\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -280,
+        -120
+      ],
+      "id": "c7512d5d-60d3-43b8-a94c-d531c8e47403",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6670f63d-c5be-4289-a31a-2c962d950d09",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2d045946-056f-43b7-a43c-6100993bfdcd",
+              "name": "name",
+              "value": "={{ $('Code').item.json.body.nombre }}",
+              "type": "string"
+            },
+            {
+              "id": "16399b02-282b-46ae-afef-cf308ec8064e",
+              "name": "email",
+              "value": "={{ $('Code').item.json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "0e15ba74-0be2-4dac-b1ba-d905d1edd162",
+              "name": "phone",
+              "value": "={{ $('Code').item.json.body[\"telefono-country-code\"] }}{{ $('Code').item.json.body.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "c64df677-4c6b-42a2-9e0c-9aaa461ddc66",
+              "name": "formacion",
+              "value": "={{ $('Code').item.json.body[\"nombre-formacion\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4ae8c41a-ea33-446c-897e-b4a09532a265",
+              "name": "codigo_pais",
+              "value": "={{ $('Code').item.json.body[\"telefono-country-code\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "7d41e1fc-76b8-4b3a-a6d7-6f37f88bc83e",
+              "name": "pais",
+              "value": "={{ $('Code').item.json.body.pais }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        -120
+      ],
+      "id": "3c7c5dff-0dc4-4446-a6bd-04022baa2db6",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "workflow.universidadisep.com",
+            "content-length": "266",
+            "accept": "*/*",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "131.153.238.179",
+            "x-forwarded-host": "workflow.universidadisep.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7231b11a3e31",
+            "x-real-ip": "131.153.238.179",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Andreia ",
+            "email": "andreiacosta@juliansaudevida.com.br",
+            "telefono": "51993653235",
+            "url": "",
+            "nombre-formacion": "Mestrado em Neuropsicologia Clínica",
+            "telefono-country-code": "+55",
+            "utm_medium": "",
+            "utm_source": "",
+            "utm_campaign": "",
+            "utm_content": "",
+            "ga": "",
+            "gclid": "",
+            "fbclid": "",
+            "pais": "Brazil (Brasil)"
+          },
+          "webhookUrl": "https://workflow.universidadisep.com/webhook/p7kgbgsbck3ql4v7rpx6t7vxbl9pgyal",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:04:41.399Z",
+  "versionId": "6a19da59-c8ba-40bf-8e45-babff1a7af23"
+}
