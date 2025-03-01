@@ -1,0 +1,1339 @@
+{
+  "active": false,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Mex",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Bra",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ROW",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mex": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ROW": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Postgres9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bra": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-14T17:08:19.459Z",
+  "id": "qr8KLTTO5VXyKxqe",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Recordatorio_pago_15",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "name",
+            "partner_id",
+            "amount_residual",
+            "currency_id",
+            "link_payment_static",
+            "phone",
+            "email",
+            "payment_state",
+            "display_name",
+            "invoice_date_due",
+            "amount_paid",
+            "amount_total_in_currency_signed"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "move_type",
+              "value": "out_invoice"
+            },
+            {
+              "fieldName": "invoice_date_due",
+              "operator": "greaterThen",
+              "value": "={{ $now.minus({ days: 16 }).toISO() }}"
+            },
+            {
+              "fieldName": "invoice_date_due",
+              "operator": "lesserThen",
+              "value": "={{ $now  }}"
+            },
+            {
+              "fieldName": "move_type",
+              "value": "out_invoice"
+            },
+            {
+              "fieldName": "payment_state",
+              "operator": "notEqual",
+              "value": "paid"
+            },
+            {
+              "fieldName": "payment_state",
+              "operator": "notEqual",
+              "value": "in_payment"
+            }
+          ]
+        }
+      },
+      "id": "cb87d9e8-2e23-47e8-b04b-ed0332f3f829",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -2720,
+        80
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6c4a8e58-a171-456a-9c8f-c935fd780342",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "=false",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "7c06fea5-6cdb-46ae-bde4-815df996ff2a",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "FALSE",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "12b01aac-adff-4d27-bf22-c7dcd7a0e90b",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "[null]",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "26f81971-7b75-4668-aef8-f33b097cbe48",
+              "leftValue": "={{ $json.phone.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e609dd9e-d383-40ae-a4f3-a726725b6104",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -2080,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a15fe649-a17c-4f6e-a0fd-9b9db146ab17",
+              "name": "phone",
+              "value": "={{ $json.phone.trim().replace(/[\\s+\\-'\\n]/g, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "72b635e0-4db5-4575-a47e-9d2a396a9d5d",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2500,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16be3742-d6da-43ae-8528-fd4a8f72872c",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "55",
+              "operator": {
+                "type": "string",
+                "operation": "notStartsWith"
+              }
+            },
+            {
+              "id": "158cfab9-32b2-482a-a3bc-b4bc497c2f88",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "52",
+              "operator": {
+                "type": "string",
+                "operation": "notStartsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ece5e3d0-c7cf-40ac-afd4-b7771cb8c9ac",
+      "name": "ROW",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1680,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "96c9b08f-5545-4fc3-a3ef-04a19dda996d",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "52",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "234fba57-32a9-4a57-ba59-685d85cf8924",
+      "name": "Mex",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1680,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 14,15 * *"
+            }
+          ]
+        }
+      },
+      "id": "74de1e47-e0f3-4725-a16b-4338846fa378",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2940,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_Quincena_15_BR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d434a78d-6367-42c1-a121-dbfda1ce66bc",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1280,
+        300
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_Quincena_15_MX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "864b23da-0fab-46e3-9e63-5f3d7324c378",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1260,
+        80
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "numbers_and_agents",
+          "mode": "list",
+          "cachedResultName": "numbers_and_agents"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "use",
+              "value": "Cobranzas_Quincena_15_MX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1f6e9c1a-4977-49e7-a89e-b832c0f4d8b3",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1320,
+        -140
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "={{ $('Filter').item.json.phone }}",
+            "name": "={{ $('Odoo').item.json.partner_id[1] }}",
+            "oddo_id": "={{ $('Odoo').item.json.partner_id[0] }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "maximum_attempts": 2,
+            "time_between_calls": 3,
+            "attempts_counter": 0,
+            "email": "={{ $('Odoo').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "c5ae5202-d4b6-49b5-810a-8a039b8924d7",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -860,
+        -400
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "={{ $('Filter').item.json.phone }}",
+            "name": "={{ $('Odoo').item.json.partner_id[1] }}",
+            "oddo_id": "={{ $('Odoo').item.json.partner_id[0] }}",
+            "date_uploda": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "maximum_attempts": 2,
+            "time_between_calls": 3,
+            "attempts_counter": 0,
+            "email": "={{ $('Odoo').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "47f05581-ccc0-48e4-8315-7543689bc003",
+      "name": "Postgres11",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -840,
+        0
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "phone_number": "={{ $('Filter').item.json.phone }}",
+            "name": "={{ $('Odoo').item.json.partner_id[1] }}",
+            "oddo_id": "={{ $('Odoo').item.json.partner_id[0] }}",
+            "date_uploda": "={{ $now }}",
+            "date_last_trx": "={{ $now }}",
+            "reason_for_call": "={{ $json.use }}",
+            "campaign_name": "={{ $json.use }}{{ $now.toFormat(\"dd/MM/yyyy\") }}",
+            "from_number": "={{ $json.phone_number }}",
+            "agent_id": "={{ $json.id_agent }}",
+            "maximum_attempts": 2,
+            "time_between_calls": 3,
+            "attempts_counter": 1,
+            "email": "={{ $('Odoo').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b4c1cccb-d8bd-4620-8d53-eb5723b23814",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -820,
+        320
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16be3742-d6da-43ae-8528-fd4a8f72872c",
+              "leftValue": "={{ $json.phone }}",
+              "rightValue": "55",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "f53d2c33-a04e-4afd-b67f-666dcd92b241",
+      "name": "Bra",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1680,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-27T20:07:37.000Z",
+  "versionId": "58a7cc4d-bab3-4a33-98d2-282e7d3c345d"
+}
