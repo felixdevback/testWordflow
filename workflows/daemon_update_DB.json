@@ -1,0 +1,78 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-17T19:23:50.668Z",
+  "id": "dR5FcQMn3I1jSk5S",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "daemon_update_DB",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://test.developuisep.online/update-calls",
+        "options": {}
+      },
+      "id": "bd38b634-19bc-4fb2-8b49-7fba2bc7fc56",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "*/5 * * * *"
+            }
+          ]
+        }
+      },
+      "id": "04956f49-f92e-49cd-978a-f44573a655ab",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-28T19:05:28.000Z",
+  "versionId": "163166cc-c323-40ce-9549-804ffd2e89c9"
+}
