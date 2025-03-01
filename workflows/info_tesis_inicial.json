@@ -1,0 +1,276 @@
+{
+  "active": false,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-12T19:06:02.233Z",
+  "id": "4gXi5X6sZU0gX39u",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "info_tesis_inicial",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.student",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "name",
+            "email",
+            "country_code"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "email",
+              "value": "={{ $json.email }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        180,
+        240
+      ],
+      "id": "e0c118fb-f178-4e0b-843d-3f99f240cfd1",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "id_alumno",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "país",
+              "fieldValue": "={{ $json.country_code }}"
+            },
+            {
+              "fieldName": "tutor",
+              "fieldValue": "={{ $json.message.content }}"
+            },
+            {
+              "fieldName": "Curso",
+              "fieldValue": "={{ $json.op_student_course_course_id[1] }}"
+            },
+            {
+              "fieldName": "Nombre",
+              "fieldValue": "={{ $json.name }}"
+            },
+            {
+              "fieldName": "email",
+              "fieldValue": "={{ $json.email }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        620,
+        180
+      ],
+      "id": "d69d2f44-8a53-4ecf-b5e1-c59a1f208384",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "s5P2QFmMipXho8qh",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        440,
+        180
+      ],
+      "id": "7589e885-d4f1-4381-b90e-58806988a090",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Te voy a dar 5 nombres, vas a seleccionar uno al azar.\n\nAndrea Contreras\nRafael Lozano\nGabriela Salcedo\nJorge Amaya\nNatalia Sierra\n\nContestame solo con el nombre, no me contestes nada más."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        100,
+        400
+      ],
+      "id": "23235f93-3e2f-4443-9f83-d2bc39229f58",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        440
+      ],
+      "id": "244e06f6-31b9-4a68-bbd2-adf7a71f44ad",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "tesis.model",
+        "operation": "getAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        420
+      ],
+      "id": "50fbbba6-d16a-4b41-983d-bb0ee8b48dbe",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "88ba057f-43ab-4599-baaa-39ab618b47de",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        220
+      ],
+      "id": "18edfa5b-05b7-4358-b502-9cc6b28d6850",
+      "name": "Webhook",
+      "webhookId": "88ba057f-43ab-4599-baaa-39ab618b47de"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-24T20:44:26.000Z",
+  "versionId": "3905f160-b4d3-4a55-8337-fd09e9b168a6"
+}
