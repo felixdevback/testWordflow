@@ -1,0 +1,314 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        []
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-04T19:49:50.655Z",
+  "id": "wgyn6pnHIxSV1EFL",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "info odoo_cobranza",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5854e854-67ee-4ca0-965f-28d1b9c16f6b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        340,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9724f99-341a-41f0-bcce-77e141b3f3f2",
+              "name": "=response",
+              "value": "=Debes:{{ $json.overdue_invoice_count_s }} factura con un monto de: *{{ $json.amount_residual }}*| Continua al siguiente paso, siguiendo con la conversación natural y las instrucciones que tienes. ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1080,
+        460
+      ],
+      "id": "28a9e831-302d-48a3-862c-c5b573cdd9fd",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c35d617f-94b5-420c-ab90-86ed57867dc8",
+              "name": "id",
+              "value": 5361,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        380
+      ],
+      "id": "812bb975-b131-4d76-a3af-62f677daecbb",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.student",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "={{ $json.query.nombre }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        960,
+        820
+      ],
+      "id": "df538017-7287-4138-bfe5-58ae3ff9d671",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "sale.order",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "email",
+              "value": "={{ $json.query.correo }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        720,
+        820
+      ],
+      "id": "41d8c3db-d826-4c07-a8c8-4c9d7bc5759b",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "sale.order",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "overdue_invoice_count_s"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "partner_id",
+              "value": "Regiane Cristina Lagemann"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        520,
+        460
+      ],
+      "id": "0f439291-00df-433b-b7b1-46818dca8211",
+      "name": "Odoo2",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "account.move",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "payment_state",
+            "state",
+            "invoice_date_due",
+            "amount_residual"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "payment_state",
+              "value": "not_paid"
+            },
+            {
+              "fieldName": "partner_id",
+              "value": "=Regiane Cristina Lagemann"
+            },
+            {
+              "fieldName": "state",
+              "value": "posted"
+            },
+            {
+              "fieldName": "amount_residual",
+              "operator": "greaterThen",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        740,
+        580
+      ],
+      "id": "c2aa32d8-a05b-47ff-8122-91a6502315cf",
+      "name": "Odoo3",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        900,
+        460
+      ],
+      "id": "5f082f30-384f-44fa-9b33-520139bcd1e0",
+      "name": "Merge"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-06T00:02:40.000Z",
+  "versionId": "c8cdf1ee-61b5-461d-af01-104fb3f1b045"
+}
