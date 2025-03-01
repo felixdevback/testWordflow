@@ -1,0 +1,274 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-26T19:30:34.429Z",
+  "id": "IDUriei5LMf00EsY",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 22",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d33444a1-31d2-433f-8150-8f3c87632cc2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        -80
+      ],
+      "id": "8d2f8dc6-712a-4a56-bec1-7755997979b9",
+      "name": "Webhook",
+      "webhookId": "d33444a1-31d2-433f-8150-8f3c87632cc2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Eres un especialista de Marketing digital tu objetivo es analizar la información de mi empresa, para esto llama a la función base_conocimiento() y generame una estrategia para mis redes sociales.\n\nEl objetivo es captar más leads, aumentar la visibilidad y mejorar la presencia en redes sociales\n\nhoy es: {{ $now }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        220,
+        0
+      ],
+      "id": "95723afc-696d-4974-b6b7-d178da9605fb",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes.",
+        "topK": 6
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        320,
+        220
+      ],
+      "id": "04e2c3b7-f1b9-40d2-97d7-f0ded9839b8a",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        40,
+        300
+      ],
+      "id": "9a75d9e9-8806-474f-a0d1-c19420b050eb",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        40,
+        440
+      ],
+      "id": "9891dec8-07cb-461d-bdaf-b6ab2e1d14fd",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        360
+      ],
+      "id": "b99563a1-3fe3-49c8-abeb-e0912238fc85",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "phaj7r36oanvtyv",
+        "table": "mm4n6jqxfjvlgpr",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Estrategia",
+              "fieldValue": "={{ $json.message }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        580,
+        0
+      ],
+      "id": "e486c360-3f73-402b-b07c-a6f9320d7534",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        180
+      ],
+      "id": "8cdf9878-0e19-451e-82ee-32db5e9c2b72",
+      "name": "When clicking ‘Test workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-26T20:16:10.000Z",
+  "versionId": "7db86999-1ba1-44a6-9fd5-236431c8c6e4"
+}
