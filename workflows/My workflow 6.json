@@ -1,0 +1,85 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-27T21:33:16.381Z",
+  "id": "CnA1wE6021phwSj6",
+  "meta": null,
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8575275f-d006-4430-bc7e-b1a7a4ac85a8",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "hr.attendance",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "check_in",
+            "check_out",
+            "display_name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "check_in",
+              "operator": "greaterOrEqual",
+              "value": "2025-01-23T07:34:39"
+            },
+            {
+              "fieldName": "check_in",
+              "operator": "lesserOrEqual",
+              "value": "2025-01-23T20:34:39"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "6b12e92b-d5ff-4052-a57d-5435a9d6cfbf",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-28T16:27:57.000Z",
+  "versionId": "59e43004-9166-472d-b81b-473b4520e9db"
+}
