@@ -1,0 +1,103 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-29T18:07:48.157Z",
+  "id": "JAjOSeIfwxFdZcKM",
+  "meta": null,
+  "name": "Apollo",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "25a2bf5d-a42b-4d68-9ac9-2a993a3bcf7d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "p54h4s0l1pa6obj",
+        "table": "mfy2tbebra285e8",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "16e925a1-4fce-4e08-a125-ecfb93bd3135",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "s5P2QFmMipXho8qh",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "talentohumano@universidadisep.com",
+        "fromName": "Talento Humano",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Únete a nuestro equipo como Especialista PPC y Trafficker Digital",
+        "contentType": "text/html",
+        "contentValue": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Oportunidad Laboral - Especialista PPC y Trafficker Digital</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            line-height: 1.6;\n            color: #333;\n            background-color: #f4f4f4;\n            padding: 20px;\n        }\n        .container {\n            max-width: 600px;\n            background: #fff;\n            padding: 20px;\n            margin: auto;\n            border-radius: 8px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n        h2 {\n            color: #0056b3;\n        }\n        ul {\n            margin: 10px 0;\n            padding-left: 20px;\n        }\n        .footer {\n            margin-top: 20px;\n            font-size: 14px;\n            color: #666;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h2>Únete a Universidad ISEP</h2>\n        <p>En <strong>Universidad ISEP</strong>, institución educativa internacional, destacamos por nuestro compromiso con la formación de profesionales de excelencia en toda Latinoamérica.</p>\n        <p>Estamos en búsqueda de un/a <strong>Especialista PPC y Trafficker Digital</strong> que comparta nuestra pasión por la innovación y la educación, y que desee contribuir al impacto que generamos en miles de estudiantes cada año.</p>\n        \n        <h3>En este puesto, tendrá la oportunidad de:</h3>\n        <ul>\n            <li>Diseñar e implementar campañas publicitarias de alto impacto en plataformas líderes como Google Ads, Meta Ads, TikTok Ads y LinkedIn Ads.</li>\n            <li>Colaborar en estrategias que transforman vidas al captar estudiantes para programas educativos que promueven el desarrollo profesional.</li>\n            <li>Trabajar con tecnología avanzada, integrando sistemas CRM y optimizando procesos de captación de leads en tiempo real.</li>\n            <li>Formar parte de un equipo dinámico, proactivo y con una visión internacional.</li>\n        </ul>\n        \n        <h3>Qué ofrecemos:</h3>\n        <ul>\n            <li>Un rol clave en una universidad innovadora.</li>\n            <li>Ambiente de trabajo dinámico.</li>\n            <li>Oportunidades de desarrollo.</li>\n            <li>Salario competitivo y prestaciones de ley.</li>\n        </ul>\n        \n        <p>Estamos convencidos de que su talento y experiencia pueden marcar la diferencia en nuestra misión de transformar la educación superior. Si esta oportunidad le inspira, nos encantaría recibir su CV actualizado y programar una entrevista para conocer más sobre su perfil y expectativas.</p>\n        \n        <p>Quedo a su disposición para cualquier duda o consulta.</p>\n        \n        <p><strong>¡Esperamos su postulación!</strong></p>\n        \n        <p class=\"footer\">Atentamente,<br>\n        <strong>Talento Humano</strong></p>\n    </div>\n</body>\n</html>\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "4ebe8e2f-25cd-422c-9650-59d5b6131f2d",
+      "name": "SendGrid",
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-07T22:56:43.000Z",
+  "versionId": "5ba21283-6064-493a-a817-15c44d4c92ee"
+}
