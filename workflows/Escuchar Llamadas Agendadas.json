@@ -1,0 +1,36 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-02-20T14:42:11.191Z",
+  "id": "zSwfHjaE5Vtt5GFd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Escuchar Llamadas Agendadas",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "e22e77e2-453c-46bc-b25c-76788824fb1c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8ac94262-53c5-4ca0-b2a4-aba8b3a06ba0",
+      "name": "Webhook",
+      "webhookId": "e22e77e2-453c-46bc-b25c-76788824fb1c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-20T16:43:27.000Z",
+  "versionId": "8b78a772-e9b5-4b95-be7e-01c6623e4be7"
+}
