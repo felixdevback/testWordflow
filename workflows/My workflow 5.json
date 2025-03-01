@@ -1,0 +1,64 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-24T02:04:58.640Z",
+  "id": "syfCvnLnL6pctSDL",
+  "meta": null,
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f35d6969-bb2c-454a-bdb8-327b804431d8",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.stage",
+        "operation": "get",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "6ff8deec-1297-4a60-90e4-5c5778393d7b",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-24T02:04:58.640Z",
+  "versionId": "05604803-ae8d-4aee-b445-b6ddfcaa8034"
+}
