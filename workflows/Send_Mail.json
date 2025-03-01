@@ -1,0 +1,74 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-31T10:06:17.921Z",
+  "id": "BU7mFIth96yiJrzT",
+  "meta": null,
+  "name": "Send_Mail",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a45fd8e8-5c0c-4c6d-9cda-5e5ab81fc507",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -260,
+        -20
+      ],
+      "id": "8bb2f773-7e1e-453e-b9e1-47a9fee61ca3",
+      "name": "Webhook",
+      "webhookId": "a45fd8e8-5c0c-4c6d-9cda-5e5ab81fc507"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "notificaciones@universidadisep.com",
+        "fromName": "Universidad ISEP",
+        "toEmail": "={{ $json.body.args.email_user }}",
+        "subject": "maestria en --------",
+        "contentValue": "={{ $json.body.args.message_body }}",
+        "additionalFields": {
+          "ccEmail": ""
+        }
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        60,
+        -160
+      ],
+      "id": "c7a28351-956d-4274-ab9f-3e5c3ceabe96",
+      "name": "SendGrid",
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-31T12:48:08.000Z",
+  "versionId": "acd28a00-45ed-4b83-a67e-9e52fb4c37af"
+}
