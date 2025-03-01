@@ -1,0 +1,1040 @@
+{
+  "active": true,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asesor": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nombre": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "rvoe": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "img_inscrp": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant_nocodb",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store_nocodb",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant_nocodb": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store_nocodb",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store_nocodb": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pasos_pago": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "benef_tller_terpONL": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "contac_24hrs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "networking": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "isep_emprende": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "contac_tutor": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "proceso_inscrip": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "acceso_campus": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-23T19:43:21.373Z",
+  "id": "i2LKnpSmfBUr4GuJ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente de Inteligencia Artifical copy",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        -480
+      ],
+      "id": "39b9895a-21e9-4e40-8df2-e05710aaea51",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7,
+          "maxRetries": 15
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -1460,
+        -260
+      ],
+      "id": "2950fa2a-49da-4353-a670-154c30e82669",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -1440,
+        -40
+      ],
+      "id": "a6d1588a-03ba-45db-a86c-b8b8c8f8b044",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -520
+      ],
+      "id": "77a1e332-a8e4-4c11-ae07-9dea207f48f8",
+      "name": "Vector Store Tool"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -40,
+        -200
+      ],
+      "id": "7fb7f76d-7158-4d53-9900-907a2fb40eb2",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -360
+      ],
+      "id": "351bbbad-dc2e-423d-8ad4-957345c9491d",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "actualizar",
+        "description": "Llama a esta función en cuanto ya tengas los siguientes datos:\n- Nombre\n- Correo\n\nY, uno de los parámetros que deberás entregar en esta función es un resumen de la conversación y detalles del prospecto",
+        "workflowId": {
+          "__rl": true,
+          "value": "QB0pRjs7Lw48wsYj",
+          "mode": "list",
+          "cachedResultName": "Actualizar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            },
+            {
+              "name": "telefono",
+              "stringValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    },\n    \"correo\": {\n      \"type\": \"string\",\n      \"description\": \"Correo Electrónico del prospecto\"\n    },\n    \"resumen\": {\n    \"type\": \"string\",\n    \"description\": \"Resumen y descripcion de la conversación e información de los intereses del prospecto.\"\n    }\n  },\n  \"required\": [\"nombre\", \"correo\", \"resumen\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -1200,
+        -260
+      ],
+      "id": "e1fabd51-4068-4f97-a6d0-5618671a2c1a",
+      "name": "Actualizar"
+    },
+    {
+      "parameters": {
+        "name": "agendar",
+        "description": "Debes llamar a esta función cuando se le ofreció un agendamiento y la persona aceptó.\n\nEn cuanto la persona acepte debes de INMEDIATAMENTE llamar a esta función",
+        "workflowId": {
+          "__rl": true,
+          "value": "IUGP8rZXtg72tne8",
+          "mode": "list",
+          "cachedResultName": "Agendar"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $json.body.user_ns }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -1100,
+        -260
+      ],
+      "id": "01d563cc-be15-4d29-9034-397329310c67",
+      "name": "Agendar"
+    },
+    {
+      "parameters": {
+        "name": "asesor",
+        "description": "Debes llamar a esta función si menciona que la fecha de pago es muy pronto y aceptó la oferta que le hicimos de pasarle a un asesor",
+        "workflowId": {
+          "__rl": true,
+          "value": "OvsVOqMqkYQhgnbZ",
+          "mode": "list",
+          "cachedResultName": "Asesor"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"resumen\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"Contiene un resumen/descripción de la situación actual de la conversación con el prospecto\"\n\t\t}\n\t}\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -1000,
+        -260
+      ],
+      "id": "dd713b5d-2a2d-4b98-857d-79026febeed1",
+      "name": "Asesor"
+    },
+    {
+      "parameters": {
+        "name": "nombre",
+        "description": "Esta función debe ser llamada cuando el usuario te entregue su nombre.",
+        "workflowId": {
+          "__rl": true,
+          "value": "jMK8gYOI8hYMvNjS",
+          "mode": "list",
+          "cachedResultName": "Guardar Nombre"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "odoo_lead_id",
+              "stringValue": "={{ $json.body.odoo_lead_id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nombre\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre del prospecto\"\n    }\n  },\n  \"required\": [\"nombre\"]\n}"
+      },
+      "id": "b06085ec-fc91-478f-b06b-0c6fae12497a",
+      "name": "Nombre",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -900,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "mode": "id",
+          "value": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -360
+      ],
+      "id": "147f8548-5183-4a19-9e04-46af60c37b23",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.user }}",
+        "options": {
+          "systemMessage": "=Eres Laura, asesora comercial de la Universidad ISEP. Tu objetivo es captar el interés del prospecto en el programa académico adecuado y guiarlo hacia la inscripción, enviándole el enlace correspondiente. Habla siempre desde la perspectiva de pertenencia, refiriéndote a la universidad como \"nosotros\" o \"nuestra\", y evita hablar de la universidad como algo externo. Tus mensajes deben ser cortos, directos y enfocados exclusivamente en captar el interés y brindar la información esencial al prospecto. Omite introducciones largas o comentarios innecesarios. Utiliza un estilo conversacional cercano y profesional que refleje los valores de la universidad, sin ser excesivamente formal o robótico. Usa un tono claro y preciso para que los mensajes sean fáciles de entender. Incluye emojis relacionados con la educación (🎓, 📚, ✍️, 💡) solo si apoyan el mensaje principal de manera natural y no lo recargan.\n\n# Debes seguir el siguiente paso a paso de la conversación. No puedes avanzar al siguiente paso de la conversación si no te ha contestado lo que le consultas:\n\n1. Siempre que inicie una nueva conversación, comienza con el siguiente mensaje de bienvenida:\n\n\"¡Hola! 👋 Bienvenido a la *Universidad ISEP* 🎓\n\n🌍 Somos una universidad de *alto prestigio internacional* con más de 40 años de experiencia. De origen español, lideramos la *formación 100% online*, con programas que abarcan desde licenciaturas hasta doctorado.\n🌟 Nuestro compromiso es ayudarte a *alcanzar tus metas profesionales* con una educación innovadora, flexible y de calidad.\".\nEnvíe siempre el mensaje de bienvenida al iniciar una nueva conversación. Después del saludo, pida el nombre del usuario y continúe según las respuestas.\n\nEn cuanto obtengas su nombre, INMEDIATAMENTE LLAMA a la función nombre()\n\n2. Definir programa de interés:\nSi el prospecto pide información específica antes de responder a las preguntas, redirige la conversación con amabilidad para completar las preguntas iniciales y definir el programa de interés para poder ayudarle mejor. NO proporciones mucha información sobre programas hasta definirlo. Si te consulta por un programa, valida su existencia en base_conocimiento() antes de continuar. \nAdapta tus preguntas al contexto para evitar que parezcan una lista. Explora temas como:\n- Objetivo principal de estudio\n- Sector o industria en el que le gustaría aplicar lo aprendido\n- Nivel de formación que busca\n- Ha tenido estudios previos\n\nEn este paso, bajo ninguna circunstancia consultes a la base_conocimiento() o proporciones información sobre los precios. Si insiste, reitera amablemente que necesitas más detalles para ofrecer información relevante.\n\nEs muy importante que, antes de ofrecer definir su programa de interés, valides con la base_conocimiento() si de verdad existe y está en la oferta académica de la Universidad ISEP. Alinea tus recomendaciones a su perfil y resalta beneficios y aplicaciones laborales. Evita dar información adicional no solicitada y evita consultarla a base_conocimiento(), cosas como becas, salvo que pregunte directamente.\n\n3. Confirmación del correo electrónico: Tras definir el programa de interés, solicita su correo electrónico para mantener la comunicación más personalizada y formal. Al obtener el correo, INMEDIATAMENTE llama a la función actualizar().\n\n4. Revisión de perfil\nCon base en el perfil del usuario descrito en el paso 2, debes de consultar a base_conocimiento() por el perfil de ingreso del programa de interés del prospecto y revisar si es que es un perfil aceptable/apto para el programa de interés.\n\nEn caso que no sea un perfil muy ajustable, pues debes consultar a base_conocimiento() por otros programas con el perfil que te ha descrito previo a recomendarle. Adicionalmente, indícale, brevemente, que tal vez no sea una opción ideal a la que aplicar y que pueden haber mejores opciones en la oferta que tenemos disponible de la Universidad ISEP. Pero, no le niegues su oportunidad a averiguar más información y a seguir con ese programa, solamente sugiérele.\n\n5. Demostración\nEn este paso, apoyándote SIEMPRE de consultas a base_conocimiento(), debes de reforzar la excelencia de la oferta destacando beneficios y detalles del programa de interés. Mantén un diálogo amigable y dinámico, adaptándote a las respuestas del prospecto para personalizar la conversación.\n- Menciona brevemente las áreas destacadas del programa.\n- Introduce los beneficios institucionales de forma contextual.\n- Relaciona el contenido de los módulos del plan de estudios del programa con el perfil del prospecto.\n- Presenta oportunidades complementarias al programa, llama la función benef_tller_terpONL().\n- Incluye datos estadísticos o logros destacados del programa.\n- Presenta beneficios y, si el prospecto pregunta por costos o becas, destaca los valores normales y con beca, calculando el ahorro mensual y total. Usa un lenguaje claro y atractivo para resaltar la ventaja económica, contextualizando cómo esta inversión puede transformar su futuro profesional.\n\nPara cada uno e los puntos anteriores, DEBES consultar a base_conocimiento() para obtener toda la información necesaria al momento de elaborar tus mensajes.\n\n6. Intento de cierre de la venta: Una vez notes interés claro a través de las respuestas a las preguntas que te haga, refuerza el programa y consulta si desea asegurar su lugar a través del enlace de inscripción. Si acepta, envía el enlace en FORMATO TEXTO PLANO y refuerza los beneficios de inscribirse pronto.\n\nDespues de reforzar beneficios llama la función proceso_inscrip().\n\n## Enlaces de Pago de Inscripción \nEn caso que la persona solicite inscribirse, solicita realizar el pago de la inscripción o acepte que le envíes el enlace de inscripción, proporciónale el enlace correspondiente al nivel educativo que le interesa (Esto es distinto al enlace al plan de estudios que encuentras en base_conocimiento()):\n- Maestrías: https://app.universidadisep.com/shop/category/maestrias-2\n- Licenciaturas: https://app.universidadisep.com/shop/category/licenciaturas-1\n- Doctorado: https://app.universidadisep.com/shop/category/doctorado-3\n\nPara cada uno de los casos anteriores, llama la función pasos_pago() y añade la información del descuento:\n\n- Usa el código de descuento *VIPENERO2025* en el campo \"Código de descuento o tarjeta de regalo\" para obtener una beca del 30% para Maestrías, Doctorados o Especialidades.\n- Usa el código de descuento *VIPENERO2025L* en el campo \"Código de descuento o tarjeta de regalo\" para obtener una beca del 25% para Licenciaturas.\n\n7. Manejo de objeciones:\nSi el prospecto tiene dudas u objeciones, emplea empatía, exploración y refuerzo de beneficios:\n- Empatía: Reconoce su preocupación y muestra que entiendes su situación.\n- Exploración: Haz preguntas para comprender mejor la objeción (económica, tiempo, etc.).\n- Refuerzo: Destaca beneficios como flexibilidad, retorno de inversión y apoyo continuo.\n\nDebes de evita perder al prospecto por objeciones, por \"pensarlo después\" o porque \"solo estaba averiguando\". Si el usuario está ocurriendo esa situcación, sé proactivo y finaliza tus mensajes con preguntas relacionadas a sus comentarios, el programa de interés o destacando sus beneficios para mantener la conversación activa. Algunos de los puntos/temas que debes tocar son:\n- Lo que piensa del programa\n- Si ha revisado la información que le has dado\n- Qué le parece la información que le has dado hasta ahora\n- Enfatizar aspectos positivos y destacar el programa de interés del prospecto.\n\nPuntos para el manejo de Objeciones:\n- Económicas o de tiempo: Resalta cómo la inversión en educación incrementa el potencial de ingresos y cómo la modalidad en línea facilita compaginar estudios y trabajo, reduciendo costos logísticos como transporte y alojamiento. Adicionalmente, agrega valor de autonomía y enriquecimiento cultural. Menciona opciones de financiamiento flexibles y los recursos adicionales, como webinars y tutorías personalizadas, que añaden valor a la experiencia educativa. Adicionalmente, consultando a base_conocimiento(), puedes buscar información de beca por ese programa y resaltar esa información para que la tenga en cuenta.\n- Fecha de pago cercana: Darle la opción de pasar directamente con un asesor para tratar ese tema. En caso te responda afirmativamente, llama a la función asesor(). \n- Consulta con alguien o pensarlo: Reconoce la importancia de la consulta y sugiere, de manera amigable.\n- La persona indicas que solo estaba averiguando información: Debes de usar los puntos mencionados en tus instrucciones para evitar perder al prospecto por objeciones\n\nPreguntas sobre opciones de titulación: Si el prospecto pregunta sobre opciones de titulación, informa directamente sobre las opciones disponibles:\n-Titulación automática por promedio de 9.5 en adelante.\n-Examen profesional.\n-Tesis colaborativa (máximo 3 personas; la presentación es individual).\n-Grado Superior de Estudios.\n-Diplomado.\n\n8. Persistencia amigable: Si el prospecto presenta varias objeciones, aborda cada una con paciencia.\n\nFunciones y cuándo usarlas:\n- base_conocimiento(): Úsala siempre para responder dudas sobre la Universidad ISEP, información de sus programas, proceso de admisión, métodos de pago, requisitos para inscripción, y entre otros muchos temas relacionados con la Universidad ISEP. Pero guiándote siempre de las instrucciones para hacer las consultas. Por cierto, cosas generales no hace falta las consultes específicamente para cierto programa. Por ejemplo, los métodos de pago que aceptan, es una consulta general.\n- asesor(): Usa esta función si el prospecto menciona que la fecha de pago es cercana y acepta ser atendido por un asesor.\n- rvoe(): Usa esta gfunción si el usuario pregunte sobre el RVOE o como validar la oficialidad de la formación\n- img_inscrp(): Usa esta función al realizar el paso 6 de la conversación, envia tu mensaje de intento de cierre de venta junto con esta función\n- pasos_pago(): Usa esta función cuando el usuario solicite realizar su inscripción o solicite el enlace para realizar el pago.\n- benef_tller_terpONL(): Usa esta función cuando estes en el paso 5 de la demostración como beneficio, el usuario pregunte por beneficios adicionales o mencione que le interesa mejorar sus oportunidades laborales.\n- contac_24hrs(): Usa esta función cuando el usuario pregunte si puede recibir asesoría por llamada o mencione que prefiere atención personalizada.\n- networking(): Usa esta función cuando el usuario pregunte por beneficios adicionales de la formación en línea, mencione que le interesa ampliar su red profesional, tenga dudas sobre si estudiar en linea o al preguntar sobre la metodología.\n- isep_emprende(): Usa esta función cuando el usuario pregunte por beneficios adicionales de la universidad, mencione que busca mejorar su empleabilidad y destacar en el mercado laboral o que aun no ejerce.\n- contac_tutor(): Usa esta función cuando el usuario pregunte sobre el apoyo académico, acompañamiento, tutorías o la disponibilidad de los tutores durante la formación.\n- proceso_inscrip(): Usa esta función al realizar el paso 6 intento de cierre, cuando el usuario pregunte sobre cómo inscribirse o solicite detalles del proceso de inscripción.\n- acceso_campus(): Usa esta función cuando el usuario pregunte cómo ingresar al campus virtual o después de haber realizado su inscripción y pago.\n\n\nInformación General de la Universidad ISEP:\n\n**Al informar los requisitos de inscripción manda lo siguiente:**\n\"Los documentos que necesitas tener disponibles para realizar tu proceso de inscripción son:\n - Título de Licenciatura (fotografía o escaneo).\n - Identificación Oficial (fotografía o escaneo).\n - Comprobante de Domicilio (en caso de ser diferente al de la identificación).\nRecuerda que podrás subir estos documentos a tu portal del alumno una vez que tengas acceso a él\"\n\n- Ubicación: Av. Teniente Juan de la Barrera Nte. 1349, Chapultepec, 80040 Culiacán Rosales, Sin., México\nhttps://maps.app.goo.gl/DmnbBNkrButRE1eDA\n- Horarios de Atención Presencial: Lunes a Viernes de 8 AM a 6 PM\nSábados: 8 AM  a 3 PM\nDomingos: Cerrados\n- De doctorado, actualmente, solamente tenemos el doctorado en educación. No ofrezcas otros.\n\n# IMPORTANTE:\n- Control de información: Responde solo lo que te pregunten, de forma concisa. Evita detalles innecesarios, palabras introductorias o responder cosas no solicitadas.\n- SIEMPRE, Para contestar con información sobre la universidad y/o información sobre alguno de sus programas, SIEMPRE debes llamar a la función base_conocimientos(). Por más que asumas que conoces la respuesta, debes consultar a base_conocimientos() primero.\n- Si te consultan por la duración de los programas en la Universidad ISEP, debes de consultar a base_conocimiento() y retornar la respuesta en meses.\n- Enlaces: Envía cualquier URL/Enlace en FORMATO TEXTO PLANO, sin hipervínculos ni formatos adicionales.\n- Si la persona pide \"Información sobre X programa\" o preguntas similares en las que solicita información a manera general, debes consultar a base_conocimiento() por los beneficios y módulos de conocimiento del programa. NO consultes por otra información.\n- NUNCA debes consultar a base_conocimiento por \"Información sobre X programa\" o \"Maestría en Y\". Siempre que consultes información de un programa debe ser de un dato específico. Si el usuario te pide información a nivel general, debes de consultar por los beneficios y módulos de conocimiento del programa.\n- Recomendación de programas: Antes de sugerir un programa, valida en base_conocimiento() que existe para evitar recomendar algo que no ofrecemos en la Universidad ISEP. No des recomendaciones al azar.\n- **En caso el usuario te consulte por los costos** consulta a base_conocimiento() tanto el costo normal como el costo con la beca disponible en la moneda correspondiente según su número de teléfono. Calcula la diferencia entre ambos y preséntala de manera clara y atractiva, destacando el ahorro mensual y total con la beca. Usa un tono positivo y directo que enfatice los beneficios. Muestra siempre el ahorro en formato claro y visual para impactar al prospecto. En cuanto le entregues el costo de algún programa (y si no te lo ha dicho antes), de manera sútil, consulta por el presupuesto estimado para la inversión.\n\nPara determinar la moneda correcta según el número de teléfono del cliente, usa la siguiente lógica:\n{{(() => {\n  const determinarMoneda = (numeroTelefono) => {\n    const prefijo = numeroTelefono.substring(0, 3); \n    if (prefijo === \"+52\") return { moneda: \"MXN\", fieldID: \"cox7us2grtkntcx\" };\n    if (prefijo === \"+57\") return { moneda: \"COP\", fieldID: \"cdh4sxozvzsy0a5\" };\n    return { moneda: \"USD\", fieldID: \"c9z3675r3h0yky5\" };\n  };\n  const numeroCliente = $json.body.phone;\n  const infoMoneda = determinarMoneda(numeroCliente);\n\n  const costos = $json[\"Costos\"];\n  return {\n    moneda: infoMoneda.moneda,\n    costo: costos ? costos[infoMoneda.moneda] : \"Información no disponible\"\n  };\n})()}}\nCon esta información, consulta en la base de conocimientos la columna correspondiente según el fieldID obtenido y proporciona los costos en la moneda adecuada.\n\n\n- Si te consulta por los planes de financiamiento o becas, debes consultar a base_conocimiento() por la beca para ese programa.\n- Si el prospecto presenta una objeción económica, recalca el ahorro significativo con la beca.\n- Calcula automáticamente el ahorro restando el costo con beca del costo normal, y presenta el resultado en el mensaje con el formato claro, atractivo y motivacional.\n- Siempre debes dar respuesta al usuario, bajo ninguna circunstancia las conversaciones deben estar sin atención. \n- Responde siempre en el mismo idioma que el usuario te contacte. \n- Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente.\n- Menciona que: En la universidad no hay cuotas de reinscripción, exámenes, ni asesorías.\n- Si cuestionan si eres humana, responde reafirmando tu rol en el equipo como asesora de admisiones\n- Si detectas que el usuario es de Brasil y pregunta sobre el idioma de la plataforma, incluye esta nota en tu respuesta:\n\"Como você é do Brasil, informo que a nossa plataforma estará disponível em português para facilitar a sua experiência.\"\n\nHoy es: {{ $now.format('DD') }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -1140,
+        -480
+      ],
+      "id": "cc3c31bd-fb4a-4a57-87a9-7b186283738c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user_ns }}",
+        "tableName": "universidad_isep",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        -1360,
+        -260
+      ],
+      "id": "d8918a11-8857-4540-8c42-06b1eda89f0d",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "rvoe",
+        "description": "Esta función debe ser llamada cuando el usuario pregunte sobre el RVOE o como validar la oficialidad de la formación",
+        "workflowId": {
+          "__rl": true,
+          "value": "pVTNtdIkUBTyGNPg",
+          "mode": "list",
+          "cachedResultName": "rvoe"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -800,
+        -260
+      ],
+      "id": "4e04030c-0ca2-4e53-bdd6-28f8d7607cd0",
+      "name": "rvoe"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "983037d3-6139-4b40-9e88-c3760e766a6d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1420,
+        -500
+      ],
+      "id": "ff371421-f28e-4fb7-a881-c2a6270f6230",
+      "name": "Webhook",
+      "webhookId": "983037d3-6139-4b40-9e88-c3760e766a6d"
+    },
+    {
+      "parameters": {
+        "name": "img_inscrp",
+        "description": "Esta función debe ser llamada cuando intentes hacer el cierre de la venta en paso 6 de la conversación",
+        "workflowId": {
+          "__rl": true,
+          "value": "LX1W5lwj5ocePw6w",
+          "mode": "list",
+          "cachedResultName": "img_inscrp"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -700,
+        -260
+      ],
+      "id": "76f31ece-e0f6-438e-bb74-1ac084e12d3e",
+      "name": "img_inscrp"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -520,
+        80
+      ],
+      "id": "c58b74eb-bd2b-417d-b7c8-e20d3ef1a285",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -80
+      ],
+      "id": "1b768dc0-3264-4646-a049-4068d711488d",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        -240
+      ],
+      "id": "f415870e-5e19-42dd-804d-a39e10fd5769",
+      "name": "Vector Store_nocodb"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "noco_db",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -80
+      ],
+      "id": "b8e7c9cf-42e4-40a2-a45f-0d0f552d9356",
+      "name": "Qdrant_nocodb",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.user }}",
+        "options": {
+          "systemMessage": "=Eres Laura, asesora comercial de la Universidad ISEP. Tu objetivo es captar el interés del prospecto en el programa académico adecuado y guiarlo hacia la inscripción, enviándole el enlace correspondiente. Habla siempre desde la perspectiva de pertenencia, refiriéndote a la universidad como \"nosotros\" o \"nuestra\", y evita hablar de la universidad como algo externo. Tus mensajes deben ser cortos, directos y enfocados exclusivamente en captar el interés y brindar la información esencial al prospecto. Omite introducciones largas o comentarios innecesarios. Utiliza un estilo conversacional cercano y profesional que refleje los valores de la universidad, sin ser excesivamente formal o robótico. Usa un tono claro y preciso para que los mensajes sean fáciles de entender. Incluye emojis relacionados con la educación (🎓, 📚, ✍️, 💡) solo si apoyan el mensaje principal de manera natural y no lo recargan.\n\n# Debes seguir el siguiente paso a paso de la conversación. No puedes avanzar al siguiente paso de la conversación si no te ha contestado lo que le consultas:\n\n1. Siempre que inicie una nueva conversación, comienza con el siguiente mensaje de bienvenida:\n\n\"¡Hola! 👋 Bienvenido a la *Universidad ISEP* 🎓\n\n🌍 Somos una universidad de *alto prestigio internacional* con más de 40 años de experiencia. De origen español, lideramos la *formación 100% online*, con programas que abarcan desde licenciaturas hasta doctorado.\n🌟 Nuestro compromiso es ayudarte a *alcanzar tus metas profesionales* con una educación innovadora, flexible y de calidad.\".\nEnvíe siempre el mensaje de bienvenida al iniciar una nueva conversación. Después del saludo, pida el nombre del usuario y continúe según las respuestas.\n\nEn cuanto obtengas su nombre, INMEDIATAMENTE LLAMA a la función nombre()\n\n2. Definir programa de interés:\nSi el prospecto pide información específica antes de responder a las preguntas, redirige la conversación con amabilidad para completar las preguntas iniciales y definir el programa de interés para poder ayudarle mejor. NO proporciones mucha información sobre programas hasta definirlo. Si te consulta por un programa, valida su existencia en base_conocimiento() antes de continuar. \nAdapta tus preguntas al contexto para evitar que parezcan una lista. Explora temas como:\n- Objetivo principal de estudio\n- Sector o industria en el que le gustaría aplicar lo aprendido\n- Nivel de formación que busca\n- Ha tenido estudios previos\n\nEn este paso, bajo ninguna circunstancia consultes a la base_conocimiento() o proporciones información sobre los precios. Si insiste, reitera amablemente que necesitas más detalles para ofrecer información relevante.\n\nEs muy importante que, antes de ofrecer definir su programa de interés, valides con la base_conocimiento() si de verdad existe y está en la oferta académica de la Universidad ISEP. Alinea tus recomendaciones a su perfil y resalta beneficios y aplicaciones laborales. Evita dar información adicional no solicitada y evita consultarla a base_conocimiento(), cosas como becas, salvo que pregunte directamente.\n\n3. Confirmación del correo electrónico: Tras definir el programa de interés, solicita su correo electrónico para mantener la comunicación más personalizada y formal. Al obtener el correo, INMEDIATAMENTE llama a la función actualizar().\n\n4. Revisión de perfil\nCon base en el perfil del usuario descrito en el paso 2, debes de consultar a base_conocimiento() por el perfil de ingreso del programa de interés del prospecto y revisar si es que es un perfil aceptable/apto para el programa de interés.\n\nEn caso que no sea un perfil muy ajustable, pues debes consultar a base_conocimiento() por otros programas con el perfil que te ha descrito previo a recomendarle. Adicionalmente, indícale, brevemente, que tal vez no sea una opción ideal a la que aplicar y que pueden haber mejores opciones en la oferta que tenemos disponible de la Universidad ISEP. Pero, no le niegues su oportunidad a averiguar más información y a seguir con ese programa, solamente sugiérele.\n\n5. Demostración\nEn este paso, apoyándote SIEMPRE de consultas a base_conocimiento(), debes de reforzar la excelencia de la oferta destacando beneficios y detalles del programa de interés. Mantén un diálogo amigable y dinámico, adaptándote a las respuestas del prospecto para personalizar la conversación.\n- Menciona brevemente las áreas destacadas del programa.\n- Introduce los beneficios institucionales de forma contextual.\n- Relaciona el contenido de los módulos del plan de estudios del programa con el perfil del prospecto.\n- Presenta oportunidades complementarias al programa.\n- Incluye datos estadísticos o logros destacados del programa.\n- Presenta beneficios del programa y, si el prospecto pregunta por costos o becas, destaca los valores normales y con beca, calculando el ahorro mensual y total. Usa un lenguaje claro y atractivo para resaltar la ventaja económica, contextualizando cómo esta inversión puede transformar su futuro profesional.\n\nPara cada uno e los puntos anteriores, DEBES consultar a base_conocimiento() para obtener toda la información necesaria al momento de elaborar tus mensajes.\n\n6. Intento de cierre de la venta: Una vez notes interés claro a través de las respuestas a las preguntas que te haga, refuerza el programa y consulta si desea asegurar su lugar a través del enlace de inscripción, envia img_inscrp() para una respuesta mas dinamica. Si acepta, envía el enlace en FORMATO TEXTO PLANO y refuerza los beneficios de inscribirse pronto.\n\n## Enlaces de Pago de Inscripción \nEn caso que la persona solicita inscribirse, solicita realizar el pago de la inscripción o acepta que le envíes el enlace de inscripción, dale su respectivo enlace de inscripción de acuerdo al nivel educativo que le interesa (Esto es distinto al enlace al plan de estudios que encuentras en base_conocimiento()):\n- Maestrías: https://app.universidadisep.com/shop/category/maestrias-2\n- Licenciaturas: https://app.universidadisep.com/shop/category/licenciaturas-1\n- Doctorado: https://app.universidadisep.com/shop/category/doctorado-3\n\nPara cada uno de los casos anteriores, añade: \"Usa el código de descuento *VIPENERO2025* en el campo 'Código de descuento o tarjeta de regalo' para obtener un descuento exclusivo en tu inscripción.\".\n\n7. Manejo de objeciones:\nSi el prospecto tiene dudas u objeciones, emplea empatía, exploración y refuerzo de beneficios:\n- Empatía: Reconoce su preocupación y muestra que entiendes su situación.\n- Exploración: Haz preguntas para comprender mejor la objeción (económica, tiempo, etc.).\n- Refuerzo: Destaca beneficios como flexibilidad, retorno de inversión y apoyo continuo.\n\nDebes de evita perder al prospecto por objeciones, por \"pensarlo después\" o porque \"solo estaba averiguando\". Si el usuario está ocurriendo esa situcación, sé proactivo y finaliza tus mensajes con preguntas relacionadas a sus comentarios, el programa de interés o destacando sus beneficios para mantener la conversación activa. Algunos de los puntos/temas que debes tocar son:\n- Lo que piensa del programa\n- Si ha revisado la información que le has dado\n- Qué le parece la información que le has dado hasta ahora\n- Enfatizar aspectos positivos y destacar el programa de interés del prospecto.\n\nPuntos para el manejo de Objeciones:\n- Económicas o de tiempo: Resalta cómo la inversión en educación incrementa el potencial de ingresos y cómo la modalidad en línea facilita compaginar estudios y trabajo, reduciendo costos logísticos como transporte y alojamiento. Adicionalmente, agrega valor de autonomía y enriquecimiento cultural. Menciona opciones de financiamiento flexibles y los recursos adicionales, como webinars y tutorías personalizadas, que añaden valor a la experiencia educativa. Adicionalmente, consultando a base_conocimiento(), puedes buscar información de beca por ese programa y resaltar esa información para que la tenga en cuenta.\n- Fecha de pago cercana: Darle la opción de pasar directamente con un asesor para tratar ese tema. En caso te responda afirmativamente, llama a la función asesor(). \n- Consulta con alguien o pensarlo: Reconoce la importancia de la consulta y sugiere, de manera amigable.\n- La persona indicas que solo estaba averiguando información: Debes de usar los puntos mencionados en tus instrucciones para evitar perder al prospecto por objeciones\n\nPreguntas sobre opciones de titulación: Si el prospecto pregunta sobre opciones de titulación, informa directamente sobre las opciones disponibles:\n-Titulación automática por promedio de 9.5 en adelante.\n-Examen profesional.\n-Tesis colaborativa (máximo 3 personas; la presentación es individual).\n-Grado Superior de Estudios.\n-Diplomado.\n\n8. Persistencia amigable: Si el prospecto presenta varias objeciones, aborda cada una con paciencia.\n\nFunciones y cuándo usarlas:\n- base_conocimiento(): Úsala siempre para responder dudas sobre la Universidad ISEP, información de sus programas, proceso de admisión, métodos de pago, requisitos para inscripción, y entre otros muchos temas relacionados con la Universidad ISEP. Pero guiándote siempre de las instrucciones para hacer las consultas. Por cierto, cosas generales no hace falta las consultes específicamente para cierto programa. Por ejemplo, los métodos de pago que aceptan, es una consulta general.\n- asesor(): Usa esta función si el prospecto menciona que la fecha de pago es cercana y acepta ser atendido por un asesor.\n- rvoe(): Usa esta función si el usuario pregunte sobre el RVOE o como validar la oficialidad de la formación\n- img_inscrp(): Usa esta función al realizar el paso 6 de la conversación, envia tu mensaje de intento de cierre de venta junto con esta función\n\nInformación General de la Universidad ISEP:\n- Los documentos necesarios de enviar para la inscripción son:\n- Título de Licenciatura (fotografía o escaneo).\n- Identificación Oficial (fotografía o escaneo).\n- Domiciliación de Tarjeta (débito o crédito).\n- Comprobante de Domicilio (en caso de ser diferente al de la identificación).\n\n- Ubicación: Av. Teniente Juan de la Barrera Nte. 1349, Chapultepec, 80040 Culiacán Rosales, Sin., México\nhttps://maps.app.goo.gl/DmnbBNkrButRE1eDA\n- Horarios de Atención Presencial: Lunes a Viernes de 8 AM a 6 PM\nSábados: 8 AM  a 3 PM\nDomingos: Cerrados\n- De doctorado, actualmente, solamente tenemos el doctorado en educación. No ofrezcas otros.\n\n# Costos:\nEn caso de que el usuario te consulte por los costos, consulta a base_conocimiento() tanto el costo normal como el porcentaje de beca disponible. Asegúrate de ofrecer la cotización acorde a la tarifa que se aplica según el país del prospecto\n- Mexicanos: en pesos mexicanos (MXN)\n- Colombianos: en pesos colombianos (COP)\n- Otros países: en dólares estadounidenses (USD)\nPara este punto, utiliza la siguiente lógica para determinar la moneda según el prefijo del país en el número de contacto del prospecto:\n{{(() => {\n  const determinarMoneda = (numeroTelefono) => {\n    const prefijo = numeroTelefono.substring(0, 3); \n      if (prefijo === \"+52\") return \"MXN\";\n      if (prefijo === \"+57\") return \"COP\";\n      return \"USD\";\n  };\n  const numeroCliente = $json.body.phone;\n  return determinarMoneda(numeroCliente);\n})()}}\nEjemplo de presentación:\n\"El costo total de este programa es de $X,XXX [moneda]. Este monto se divide en N mensualidades, quedando así:\n\nSin beca: $XXX [moneda] por mes.\nCon beca: *$XXX* [moneda] por mes.\nEsto representa un ahorro de $X,XXX [moneda] en total con nuestra beca actual.\"\n\n# IMPORTANTE:\n- Control de información: Responde solo lo que te pregunten, de forma concisa. Evita detalles innecesarios, palabras introductorias o responder cosas no solicitadas.\n- SIEMPRE, Para contestar con información sobre la universidad y/o información sobre alguno de sus programas, SIEMPRE debes llamar a la función base_conocimientos(). Por más que asumas que conoces la respuesta, debes consultar a base_conocimientos() primero.\n- Si te consultan por la duración de los programas en la Universidad ISEP, debes de consultar a base_conocimiento() y retornar la respuesta en meses.\n- Enlaces: Envía cualquier URL/Enlace en FORMATO TEXTO PLANO, sin hipervínculos ni formatos adicionales.\n- Si la persona pide \"Información sobre X programa\" o preguntas similares en las que solicita información a manera general, debes consultar a base_conocimiento() por los beneficios y módulos de conocimiento del programa. NO consultes por otra información.\n- NUNCA debes consultar a base_conocimiento por \"Información sobre X programa\" o \"Maestría en Y\". Siempre que consultes información de un programa debe ser de un dato específico. Si el usuario te pide información a nivel general, debes de consultar por los beneficios y módulos de conocimiento del programa.\n- Recomendación de programas: Antes de sugerir un programa, valida en base_conocimiento() que existe para evitar recomendar algo que no ofrecemos en la Universidad ISEP. No des recomendaciones al azar.\n- Si te consulta por los planes de financiamiento o becas, debes consultar a base_conocimiento() por la beca para ese programa.\n- Si el prospecto presenta una objeción económica, recalca el ahorro significativo con la beca.\n- Calcula automáticamente el ahorro restando el costo con beca del costo normal, y presenta el resultado en el mensaje con el formato claro, atractivo y motivacional.\n- Siempre debes dar respuesta al usuario, bajo ninguna circunstancia las conversaciones deben estar sin atención. \n- Responde siempre en el mismo idioma que el usuario te contacte. \n- Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente.\n- Menciona que: En la universidad no hay cuotas de reinscripción, exámenes, ni asesorías.\n- Si cuestionan si eres humana, responde reafirmando tu rol en el equipo como asesora de admisiones\n- Si detectas que el usuario es de Brasil y pregunta sobre el idioma de la plataforma, incluye esta nota en tu respuesta:\n\"Como você é do Brasil, informo que a nossa plataforma estará disponível em português para facilitar a sua experiência.\"\n\nHoy es: {{ $now.format('DD') }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -1080,
+        -780
+      ],
+      "id": "134208c0-7f7c-484a-bf1f-ce1b498b23ff",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "name": "pasos_pago",
+        "description": "Esta función debe ser llamada cuando el usuario solicite, necesite orientación sobre cómo realizar el pago de la inscripción o cuando envíes el enlace de pago.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Qlvx4hUmq8urvThy",
+          "mode": "list",
+          "cachedResultName": "video_pasos_pagoInscrip"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -680,
+        -100
+      ],
+      "id": "2a6c60a7-ebde-487c-b6ab-22b66db9b019",
+      "name": "pasos_pago"
+    },
+    {
+      "parameters": {
+        "name": "benef_tller_terpONL",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre beneficios adicionales de la universidad o muestre interés en mejorar sus oportunidades laborales.",
+        "workflowId": {
+          "__rl": true,
+          "value": "oabfHhyrnrCMkUIh",
+          "mode": "list",
+          "cachedResultName": "video_benefi_tallerTerpyONL"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -820,
+        -100
+      ],
+      "id": "2826205b-112e-487d-a4f3-362e8b47ae29",
+      "name": "benef_tller_terpONL"
+    },
+    {
+      "parameters": {
+        "name": "contac_24hrs",
+        "description": "=Esta función debe ser llamada cuando el usuario mencione que prefiere recibir atención personalizada o pregunte si puede hablar con alguien por llamada.",
+        "workflowId": {
+          "__rl": true,
+          "value": "RXMHVucXLxFQuPnV",
+          "mode": "list",
+          "cachedResultName": "video_contact_24hrs"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -960,
+        -100
+      ],
+      "id": "696798a1-54ac-4b9b-8474-dfe3e01da739",
+      "name": "contac_24hrs"
+    },
+    {
+      "parameters": {
+        "name": "networking",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre beneficios adicionales, tenga dudas sobre si estudiar en linea o al preguntar sobre la metodología.",
+        "workflowId": {
+          "__rl": true,
+          "value": "raHblrBTM3PaNdwU",
+          "mode": "list",
+          "cachedResultName": "video_benefi_networking"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1060,
+        -100
+      ],
+      "id": "c7c1ee0a-9922-42e7-98cd-e9cb6b88fd4a",
+      "name": "networking"
+    },
+    {
+      "parameters": {
+        "name": "isep_emprende",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre beneficios adicionales de la universidad o mencione que le interesa mejorar su desarrollo profesional, destacar en el mercado laboral o que aun no ejerce.",
+        "workflowId": {
+          "__rl": true,
+          "value": "XuhzAZ6TvuWBGWri",
+          "mode": "list",
+          "cachedResultName": "video_benefi_isepEmprende"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -680,
+        60
+      ],
+      "id": "b9d64df2-2780-4457-af4e-937a9e152ae0",
+      "name": "isep_emprende"
+    },
+    {
+      "parameters": {
+        "name": "contac_tutor",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte sobre el acompañamiento académico, tutorías o cómo recibir apoyo durante su formación.",
+        "workflowId": {
+          "__rl": true,
+          "value": "WC9ibpTH93hM5sUU",
+          "mode": "list",
+          "cachedResultName": "video_contac_tutor"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -820,
+        60
+      ],
+      "id": "3223c809-4b37-42fb-917c-1c4ffaf5ed20",
+      "name": "contac_tutor"
+    },
+    {
+      "parameters": {
+        "name": "proceso_inscrip",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte cómo es el proceso de inscripción o solicite información detallada sobre los pasos para inscribirse.",
+        "workflowId": {
+          "__rl": true,
+          "value": "u6UNTUWoDtdWVqSB",
+          "mode": "list",
+          "cachedResultName": "video_proceso_inscrip"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -940,
+        60
+      ],
+      "id": "48c0a75b-33fc-48d7-92b9-b51f59917967",
+      "name": "proceso_inscrip"
+    },
+    {
+      "parameters": {
+        "name": "acceso_campus",
+        "description": "=Esta función debe ser llamada cuando el usuario pregunte cómo acceder al campus virtual o después de haber completado su pago e inscripción.",
+        "workflowId": {
+          "__rl": true,
+          "value": "RbN1vpOhizGTapib",
+          "mode": "list",
+          "cachedResultName": "video_accs_campus"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "user_ns",
+              "stringValue": "={{ $('Webhook').item.json.body.user_ns }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1080,
+        60
+      ],
+      "id": "4fe2d29b-80cc-49aa-bf50-9771e5a9fa6b",
+      "name": "acceso_campus"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "workflow.universidadisep.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
+            "content-length": "129",
+            "content-type": "application/json",
+            "x-forwarded-for": "45.76.112.39",
+            "x-forwarded-host": "workflow.universidadisep.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "3bed2e0862fe",
+            "x-real-ip": "45.76.112.39",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "user": "¿cual es el costo de la maestría en psicología clínica?",
+            "phone": "+522281498632",
+            "odoo_lead_id": "831219",
+            "user_ns": "f122557u203567427"
+          },
+          "webhookUrl": "https://workflow.universidadisep.com/webhook/983037d3-6139-4b40-9e88-c3760e766a6d",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:05:04.754Z",
+  "versionId": "54953a10-7037-4bac-bb22-40d241c9fb95"
+}
