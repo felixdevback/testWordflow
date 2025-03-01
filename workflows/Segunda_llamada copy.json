@@ -1,0 +1,712 @@
+{
+  "active": false,
+  "connections": {
+    "Informacion_Odoo": {
+      "main": [
+        [
+          {
+            "node": "Descarta_ya_llamados_2da",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cita_Calendar_Odoo": {
+      "main": [
+        [
+          {
+            "node": "Informacion_Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descarta_ya_llamados_2da": {
+      "main": [
+        [
+          {
+            "node": "Informacion_Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos_transcripts": {
+      "main": [
+        [
+          {
+            "node": "Limpia_Transcripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI_crea_resumen_para_IA": {
+      "main": [
+        [
+          {
+            "node": "Dispara_Llamada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Informacion_Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Datos_transcripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpia_Transcripts": {
+      "main": [
+        [
+          {
+            "node": "OpenAI_crea_resumen_para_IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Cita_Calendar_Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dispara_Llamada": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-30T01:20:51.269Z",
+  "id": "DTgGmVJNjqzU9aML",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Segunda_llamada copy",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.call.summary",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "call_number",
+              "operator": "greaterThen",
+              "value": "0"
+            },
+            {
+              "fieldName": "call_summary",
+              "value": "true"
+            },
+            {
+              "fieldName": "crm_lead_id",
+              "value": "={{ $json.opportunity_id[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "6b29ac4d-7686-449a-9797-fab7d6329b50",
+      "name": "Informacion_Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -540
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "calendar.event",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "create_date",
+            "description",
+            "name",
+            "partner_id",
+            "id",
+            "opportunity_id",
+            "start_date"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "description",
+              "operator": "like",
+              "value": "segunda_llamada"
+            },
+            {
+              "fieldName": "start_date",
+              "value": "={{ (() => {\n  const today = new Date();\n  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;\n})() }}\n"
+            }
+          ]
+        }
+      },
+      "id": "6fcaca8c-f555-4e30-a272-cc42cee79ffe",
+      "name": "Cita_Calendar_Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -320
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener los datos del nodo anterior\nconst data = $input.all();\n\n// Crear un mapa para contar las ocurrencias de crm_lead_id\nconst leadCount = {};\n\n// Contar cuántas veces aparece cada crm_lead_id\ndata.forEach(item => {\n  const crmLeadId = item.json.crm_lead_id[0]; // Usar el primer elemento del array\n  if (leadCount[crmLeadId]) {\n    leadCount[crmLeadId]++;\n  } else {\n    leadCount[crmLeadId] = 1;\n  }\n});\n\n// Filtrar registros únicos donde crm_lead_id no esté duplicado\nconst filteredData = data.filter(item => {\n  const crmLeadId = item.json.crm_lead_id[0]; // Usar el primer elemento del array\n  return leadCount[crmLeadId] === 1; // Incluir solo si no está duplicado\n});\n\n// Retornar los datos filtrados\nreturn filteredData;\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -440,
+        -240
+      ],
+      "id": "bb72f96f-d87a-4835-9d51-45e02e3a7064",
+      "name": "Descarta_ya_llamados_2da"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "call_details",
+          "mode": "list",
+          "cachedResultName": "call_details"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "id_oddo",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "column": "resultado",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6a66bcd9-7f38-4ff8-b839-c94b5de11c1f",
+      "name": "Datos_transcripts",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        100,
+        -620
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un asistente que hace un resumen de las transcripciones de conversaciones, tu resumen se enfocará en lo expresado por el user, no usas caracteres especiales en tu resumen, tampoco saltos de línea.",
+              "role": "system"
+            },
+            {
+              "content": "={{ $('Limpia_Transcripts').item.json.cleanedTranscript }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "af8e215b-9636-4b92-b963-0770c54c93a2",
+      "name": "OpenAI_crea_resumen_para_IA",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        560,
+        -180
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://iallamadas.universidadisep.com/outbound-call",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"to_number\": \"+{{ $('Datos_transcripts').item.json.to_number }}\",\n  \"p_number\": \"{{ $('Datos_transcripts').item.json.from_number }}\",\n  \"id_agent\": \"agent_c2a4dd1504ee67b825b5d4b008\",\n  \"custom_variables\": {\n    \"name\": \"{{ $('Datos_transcripts').item.json.name }}\",\n    \"campaign_name\": \"{{ $('Datos_transcripts').item.json.campaign_name }}\",\n    \"id_oddo\": \"{{ $('Datos_transcripts').item.json.id_oddo }}\",\n    \"llamada\": \"{{ 2 }}\",\n    \"date_last_conversation\": \"{{$('Informacion_Odoo').item.json.create_date}}\",\n    \"formation\": \"{{ $('Informacion_Odoo').item.json.crm_lead_id[1] }}\",\n    \"last_conversation\": \"{{ $json.message.content}}\"\n  }\n}\n",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "862a6c2e-a0c7-45b2-818c-fb9eb416c046",
+      "name": "Dispara_Llamada",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        820,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "user_id",
+            "email_normalized"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $('Informacion_Odoo').item.json.crm_lead_id[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "ce17dc04-694e-4777-b0a5-e01888332aec",
+      "name": "Informacion_Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -420
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// 1. Obtén los datos del JSON entrante\nconst data = $json;\n\n// 2. Limpiar el campo 'transcript' (eliminar saltos de línea y emojis)\nconst cleanedTranscript = data.transcript.replace(/\\\\n/g, \" \")\n                .replace(/\\n/g, \" \")\n              .replace(/[\\u{1F600}-\\u{1F64F}]/gu, \"\")  // Emoticones (caras)\n                         .replace(/[\\u{1F300}-\\u{1F5FF}]/gu, \"\")  // Símbolos y pictogramas\n                         .replace(/[\\u{1F680}-\\u{1F6FF}]/gu, \"\")  // Transporte y mapas\n                         .replace(/[\\u{1F700}-\\u{1F77F}]/gu, \"\"); // Otros símbolos\n// Obtén los datos desde el nodo anterior (Postgres)\n\n\n// 3. Extraer los campos para la segunda base de datos\nconst idOdoo = data.id_oddo;\nconst email = data.email || null; // Si no hay email, asigna null\nconst campaign_name = data.campaign_name || null; // Si no hay email, asigna null\n\n// Itera sobre los datos y extrae los tres campos\n\n  return {\n    idOdoo,\n    cleanedTranscript,\n    email,\n    campaign_name\n  };\n\n"
+      },
+      "id": "0e08ea33-1cca-4d46-b8b2-f88ae6fcdb65",
+      "name": "Limpia_Transcripts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        420,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 1-6"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1080,
+        -580
+      ],
+      "id": "2f11c5a7-d592-448c-9b37-04936922beba",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calloutbound",
+          "mode": "list",
+          "cachedResultName": "calloutbound"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sucessfull": false,
+            "recall": false,
+            "send_to_call": true,
+            "call_eject": true,
+            "active": true,
+            "time_between_calls": 2,
+            "attempts_counter": 0,
+            "phone_number": "={{ $('Datos_transcripts').item.json.to_number }}",
+            "name": "={{ $('Datos_transcripts').item.json.name }}",
+            "oddo_id": "={{ $('Datos_transcripts').item.json.id_oddo }}",
+            "campaign_name": "={{ $('Datos_transcripts').item.json.campaign_name }}",
+            "from_number": "={{ $('Datos_transcripts').item.json.from_number }}",
+            "agent_id": "agent_c2a4dd1504ee67b825b5d4b008",
+            "maximum_attempts": 6,
+            "formation": "={{ $('Informacion_Odoo').item.json.crm_lead_id[1] }}",
+            "email": "={{ $('Informacion_Odoo1').item.json.email_normalized }}",
+            "date_uploda": "={{ (() => {\n  const today = new Date();\n  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;\n})() }}\n\n",
+            "reason_for_call": "={{ $('Datos_transcripts').item.json.campaign_name.substring(0, $('Datos_transcripts').item.json.campaign_name.length - 10) }}\n",
+            "resumen_gerencial": "={{ $('OpenAI_crea_resumen_para_IA').item.json.message.content }}",
+            "date_last_conversation": "={{ $('Datos_transcripts').item.json.start_timestamp }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "oddo_id",
+              "displayName": "oddo_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucessfull",
+              "displayName": "sucessfull",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "recall",
+              "displayName": "recall",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_uploda",
+              "displayName": "date_uploda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_last_trx",
+              "displayName": "date_last_trx",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "last_state",
+              "displayName": "last_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reason_for_call",
+              "displayName": "reason_for_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "send_to_call",
+              "displayName": "send_to_call",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "call_eject",
+              "displayName": "call_eject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_number",
+              "displayName": "from_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "maximum_attempts",
+              "displayName": "maximum_attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "time_between_calls",
+              "displayName": "time_between_calls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts_counter",
+              "displayName": "attempts_counter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "active",
+              "displayName": "active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "formation",
+              "displayName": "formation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "err_500",
+              "displayName": "err_500",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "duplicate",
+              "displayName": "duplicate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "resumen_gerencial",
+              "displayName": "resumen_gerencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date_last_conversation",
+              "displayName": "date_last_conversation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1040,
+        -360
+      ],
+      "id": "9ac560f9-f575-47c5-bc9c-871ed40c4728",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "hnUS8UxUWHrcQri5",
+          "name": "Postgresql_iallamadas"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-01-23T23:41:08.981Z",
+      "updatedAt": "2025-01-23T23:41:08.981Z",
+      "id": "2VgmmSnEzCyglmLn",
+      "name": "Segunda_llamada"
+    },
+    {
+      "createdAt": "2024-12-04T00:40:48.979Z",
+      "updatedAt": "2024-12-04T00:40:48.979Z",
+      "id": "Y1BsKfyyH4T8xRCR",
+      "name": "iallamadas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-30T01:20:51.269Z",
+  "versionId": "c05bf229-07ae-44f7-ba5d-6aa5b9104663"
+}
