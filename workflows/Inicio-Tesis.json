@@ -1,0 +1,321 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T23:24:47.175Z",
+  "id": "Mvwy1wYpK09jooDl",
+  "meta": null,
+  "name": "Inicio-Tesis",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8b5adea9-08e9-4ff0-8383-76b79eaf223e",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        100
+      ],
+      "id": "8b769392-42f6-46ad-8e5b-dd5a4c39cef8",
+      "name": "Webhook",
+      "webhookId": "8b5adea9-08e9-4ff0-8383-76b79eaf223e"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "ogV7htCgtTC9SzBs",
+          "mode": "list",
+          "cachedResultName": "Revisión_Esquema"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        -300
+      ],
+      "id": "2570caec-62bc-4186-a05f-dd95961ea448",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.Action }}",
+                    "rightValue": "Esquema",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "741de418-4db7-467b-8e0b-87bcfbd193d7",
+                    "leftValue": "={{ $json.body.Action }}",
+                    "rightValue": "Seccion1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2edacd89-f947-4366-a699-016a20af1bfc",
+                    "leftValue": "={{ $json.body.Action }}",
+                    "rightValue": "Seccion2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "626cac1b-6935-483a-a11c-76c0fda25f63",
+                    "leftValue": "={{ $json.body.Action }}",
+                    "rightValue": "Seccion3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6d954717-3684-4385-80ef-8364cfaf9f91",
+                    "leftValue": "={{ $json.body.Action }}",
+                    "rightValue": "Registro",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        80,
+        20
+      ],
+      "id": "9bf1f7f9-6c18-477f-acb6-51b84868acc9",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "NL7NyOwg4mKSOQX8",
+          "mode": "list",
+          "cachedResultName": "Revisión_seccion1"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        -120
+      ],
+      "id": "dc77be83-5a43-4bc2-a766-7152060042c0",
+      "name": "Execute Workflow1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "5TcBgSNPXBdsHqJo",
+          "mode": "list",
+          "cachedResultName": "Revisión_seccion2"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        60
+      ],
+      "id": "23250cc5-d2dd-45f1-a1a4-0a3e1f6539d1",
+      "name": "Execute Workflow2"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "R8g1G3bwNDNHGMbB",
+          "mode": "list",
+          "cachedResultName": "Revisión_seccion3"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        260
+      ],
+      "id": "9f6d5376-a9b4-4cad-af76-1e33b1f19f99",
+      "name": "Execute Workflow3"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "4gXi5X6sZU0gX39u",
+          "mode": "list",
+          "cachedResultName": "info_tesis_inicial"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        500
+      ],
+      "id": "915bcf3b-3a33-45f3-92e7-2ec724dba911",
+      "name": "Execute Workflow4"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-25T18:56:45.000Z",
+  "versionId": "f46e9c0f-5259-47d0-af80-fe1516efb990"
+}
