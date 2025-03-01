@@ -1,0 +1,1489 @@
+{
+  "active": false,
+  "connections": {
+    "Create post title and structure": {
+      "main": [
+        [
+          {
+            "node": "Create Drive folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write chapter text": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Check inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split out chapters": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get post sitemap": {
+      "main": [
+        [
+          {
+            "node": "Get XML file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get XML file": {
+      "main": [
+        [
+          {
+            "node": "Split out links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split out links": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get title chapter and content": {
+      "main": [
+        [
+          {
+            "node": "Merge chapters title and text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate chapter image": {
+      "main": [
+        [
+          {
+            "node": "Upload chapter images to Drive",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Resize Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resize Image": {
+      "main": [
+        [
+          {
+            "node": "Upload chapter images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload chapter images": {
+      "main": [
+        [
+          {
+            "node": "Update image meta data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge chapters title and text": {
+      "main": [
+        [
+          {
+            "node": "Combine into article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown to HTML": {
+      "main": [
+        [
+          {
+            "node": "FInal article in HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post on Wordpress": {
+      "main": [
+        [
+          {
+            "node": "Add featured image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resize featured image": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload featured image": {
+      "main": [
+        [
+          {
+            "node": "Update featured image meta data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set featured image for post": {
+      "main": [
+        [
+          {
+            "node": "Set excerpt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update image meta data": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Merge chapters title and text",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update featured image meta data": {
+      "main": [
+        [
+          {
+            "node": "Set featured image for post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Get title chapter and content",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Write chapter text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Generate chapter image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get the latest topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate internal links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check inputs": {
+      "main": [
+        [
+          {
+            "node": "Create post title and structure",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get post sitemap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add featured image": {
+      "main": [
+        [
+          {
+            "node": "Upload featured image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save texts to Doc": {
+      "main": [
+        [
+          {
+            "node": "Post on Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Doc": {
+      "main": [
+        [
+          {
+            "node": "Save texts to Doc",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload featured image to Drive": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Upload chapter images to Drive": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get output": {
+      "main": [
+        [
+          {
+            "node": "Split out chapters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Drive folder": {
+      "main": [
+        [
+          {
+            "node": "Get output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Add featured image",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get the latest topic": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FInal article in HTML": {
+      "main": [
+        [
+          {
+            "node": "Create Doc",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final article in Markdown": {
+      "main": [
+        [
+          {
+            "node": "Markdown to HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine into article": {
+      "main": [
+        [
+          {
+            "node": "Final article in Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate internal links": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create post title and structure",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Create post title and structure",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Write chapter text",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Write chapter text",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-25T16:31:48.704Z",
+  "id": "bGYCSk9BQPGntkoy",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Dev post for wordpress",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c46b6647-0807-4b31-a102-ca11d6eb8499",
+      "name": "Structured Output Parser2",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -200,
+        480
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true
+      },
+      "id": "9a5afc81-c234-48fd-8d8b-84f573f13732",
+      "name": "Create post title and structure",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        -380,
+        240
+      ],
+      "typeVersion": 1.5,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true
+      },
+      "id": "353a6415-0ee5-4888-b196-124247894423",
+      "name": "Write chapter text",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        1880,
+        340
+      ],
+      "typeVersion": 1.5
+    },
+    {
+      "parameters": {},
+      "id": "a6650ef5-4d6a-448a-97df-6a30d9c698b7",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1120,
+        240
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "eb908afd-61d1-420e-b14e-527301f7cc11",
+      "name": "Settings",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1120,
+        240
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "70138d8d-fe12-493f-868a-62c0619f411d",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1180,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "0b70f1b1-9930-47d2-9f80-d3f93ce5d45f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -560,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "df9ec240-0e35-45cf-95ce-b6c520f0275d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "9fad09ba-fb7a-420a-aa66-19a4403712be",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        100,
+        -120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "8d1ee002-178d-4e3f-b93b-0ef9b898bfb5",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1220,
+        760
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "0110db49-9152-4057-b524-7d1f33c08ded",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        2020,
+        560
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e02ce42f-2ba9-4150-a108-591614ec2711",
+      "name": "Split out chapters",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        720,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1a079134-ab51-47f6-b3e4-fc7049f58c75",
+      "name": "Get post sitemap",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        180,
+        -60
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7aa1b70c-2570-4d94-9aa0-6ad6cc91cca5",
+      "name": "Get XML file",
+      "type": "n8n-nodes-base.xml",
+      "position": [
+        400,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1b9d1261-31f9-42cb-9186-1d3e982d6f17",
+      "name": "Split out links",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        620,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "bd4e30bd-a168-414b-a8f6-f5c8a6beed7d",
+      "name": "Get title chapter and content",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2420,
+        220
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "0be726ac-5b5f-4687-88e6-dfcc19b9a831",
+      "name": "Generate chapter image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        1760,
+        920
+      ],
+      "typeVersion": 1.7,
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "259235c0-bdd1-4582-a716-8f85706e0e07",
+      "name": "Resize Image",
+      "type": "n8n-nodes-base.editImage",
+      "position": [
+        2020,
+        820
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6e52e968-e4a9-40a2-ab02-f2b1a1fdab28",
+      "name": "Upload chapter images",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2320,
+        880
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {},
+      "id": "3f2d1e68-d9cb-44fb-95cd-2f096b3f878d",
+      "name": "Merge chapters title and text",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        2900,
+        300
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d3243144-db67-48e6-846c-27d7c77ba848",
+      "name": "Markdown to HTML",
+      "type": "n8n-nodes-base.markdown",
+      "position": [
+        3640,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "id": "fe0311f4-29ff-4fee-98ef-693f0b0d38ec",
+      "name": "Post on Wordpress",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        4900,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7ebff93e-13d4-435e-bd57-1beb9c44d709",
+      "name": "Resize featured image",
+      "type": "n8n-nodes-base.editImage",
+      "position": [
+        1720,
+        1280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8bc7eca8-0c00-4100-865e-5a11999ed733",
+      "name": "Upload featured image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5540,
+        320
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b308af72-df5e-4648-9d11-1b874fe10dab",
+      "name": "Set featured image for post",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5960,
+        320
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5b4a150a-f091-4e55-aff7-295097671b76",
+      "name": "Update image meta data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2520,
+        880
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "14ce8425-b2b6-4edb-84fb-4b05ad40ab4c",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1320,
+        800
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f5fb9ab1-1bc9-497b-be90-c865e1f8c887",
+      "name": "Update featured image meta data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5760,
+        320
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b7c4dc45-bd0f-41c8-a985-b09a2d36e35d",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1340,
+        240
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d6bdab9e-b7d4-4e0e-a58b-c1a1f95569b4",
+      "name": "Set excerpt",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        6300,
+        300
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {},
+      "id": "dfb67d0b-f1af-4b61-938f-d9265081441e",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        1660,
+        340
+      ],
+      "webhookId": "ecc9702f-fabf-4b8e-957e-11a05033f36e",
+      "typeVersion": 1.1,
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "8028856b-4da8-4d17-8840-7007bb88237d",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        1540,
+        920
+      ],
+      "webhookId": "6d464934-8067-45c6-8e9f-4c90f806784c",
+      "typeVersion": 1.1,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "id": "3a21d0c7-bf59-4b34-8c53-4704eb8c3802",
+      "name": "Google Sheets Trigger",
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "position": [
+        -1760,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "58a41138-6e62-4161-a1e1-5a70cb03e467",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "position": [
+        860,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b03518f7-4ded-4fba-baa3-e9cbfa08329b",
+      "name": "Check inputs",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -840,
+        240
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {},
+      "id": "1445c100-4e17-40a3-b520-7019a7e838ea",
+      "name": "Add featured image",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        5320,
+        320
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {},
+      "id": "e20c355e-525b-4551-b286-e33df2dde10c",
+      "name": "Save texts to Doc",
+      "type": "n8n-nodes-base.googleDocs",
+      "position": [
+        4460,
+        300
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {},
+      "id": "757b4594-7673-4269-811d-7844202c387b",
+      "name": "Create Doc",
+      "type": "n8n-nodes-base.googleDocs",
+      "position": [
+        4220,
+        300
+      ],
+      "typeVersion": 2,
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "7",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "id": "654ca650-5cc3-4a02-93a4-7d33b47c1628",
+      "name": "Upload featured image to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        1720,
+        1520
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "2kkCNkuPUA4yLi2h",
+          "name": "uisep_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "id": "7661e8e9-af43-4b32-8332-af803ac26526",
+      "name": "Upload chapter images to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        2020,
+        1060
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "2kkCNkuPUA4yLi2h",
+          "name": "uisep_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f66daa6c-d218-48cc-8d93-edbd7f2f4b15",
+      "name": "Get output",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        340,
+        240
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "id": "ce2a4644-2589-4b91-8502-d6c0cacb8b6e",
+      "name": "Create Drive folder",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        120,
+        240
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "2kkCNkuPUA4yLi2h",
+          "name": "uisep_prod"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "e0596a7c-747e-483f-97cd-612f2921b70a",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        2140,
+        1400
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {},
+      "id": "4ddc9511-2514-4329-8da4-b2d88a358a34",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        2740,
+        920
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "95357434-b151-4901-9bb9-c0d8978c5923",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        80,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "2de7bf25-f197-489f-8d4d-df01038a8e9d",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -1760,
+        460
+      ],
+      "typeVersion": 1.2,
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "955e7213-5315-48c3-9adc-fd5df6a3760c",
+      "name": "Get the latest topic",
+      "type": "n8n-nodes-base.limit",
+      "position": [
+        -1420,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9d99da5a-fbd7-49e0-9b08-43612103819c",
+      "name": "FInal article in HTML",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        3880,
+        300
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8b16e32e-6ae5-4d4b-b2b1-2b482d269d08",
+      "name": "Final article in Markdown",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        3420,
+        300
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {},
+      "id": "751ab779-c276-4b4b-a956-464085ffeb13",
+      "name": "Combine into article",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        3140,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "aa094428-4251-4ee9-bcab-0c4a1e41d256",
+      "name": "Aggregate internal links",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        1120,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -380,
+        440
+      ],
+      "id": "f25548a8-b9d5-4508-9075-0efdccb66cd9",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1860,
+        560
+      ],
+      "id": "f9679751-9693-42a5-94a3-73417e3b5ef9",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        4640,
+        300
+      ],
+      "id": "9076b5a6-a7c5-4284-aed7-eb59c0168145",
+      "name": "Wordpress"
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "b13a4265-1f43-465a-9185-c7d1173550f2",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6240,
+        180
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "7dafd4be-9c60-4541-89f1-fb940876b723",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5220,
+        200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "ce422f1c-f882-4333-af44-ae8ce41677dd",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4780,
+        200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "5aaddcd5-49f4-4404-81b9-f7bc7fe742a3",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4160,
+        200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "5aca653f-e909-4f13-b788-2ceb6104de79",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2720,
+        200
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {
+    "Google Sheets Trigger": [
+      {
+        "json": {
+          "ID": "ID",
+          "CTA": "CTA",
+          "Style": "Style",
+          "CTA_URL": "CTA_URL",
+          "Website": "Website",
+          "Chapters": "Chapters",
+          "Word_Count": "Word_Count",
+          "Category_ID": "Category_ID",
+          "Seed_keyword": "Seed_keyword",
+          "Target_audience": "Target_audience",
+          "Company_offering": "Company_offering",
+          "conclusion_length": "conclusion_length",
+          "Introduction_length": "Introduction_length"
+        }
+      },
+      {
+        "json": {
+          "ID": 1,
+          "CTA": "Ready to elevate your business with cutting-edge automation? Contact Minh Duc TV today and let our expert team guide you to streamlined success with n8n and AI-driven solutions!",
+          "Style": "Funny",
+          "CTA_URL": "https://ducnguyen.cc/contact/",
+          "Website": "ducnguyen.cc",
+          "Chapters": 2,
+          "Word_Count": 1000,
+          "Category_ID": 403,
+          "Seed_keyword": "AI automation",
+          "Target_audience": "CEO",
+          "Company_offering": "Minh Duc TV is a forward-thinking consulting firm specializing in n8n workflow automation and AI-driven solutions. Our team of experts is dedicated to empowering businesses by streamlining processes, reducing operational inefficiencies, and accelerating digital transformation. By leveraging the flexibility of the open-source n8n platform alongside advanced AI technologies, we deliver tailored strategies that drive innovation and unlock new growth opportunities. Whether you're looking to automate routine tasks or integrate complex systems, Minh Duc TV provides the expert guidance you need to stay ahead in today's rapidly evolving digital landscape.",
+          "conclusion_length": 100,
+          "Introduction_length": 100
+        }
+      },
+      {
+        "json": {
+          "ID": 2,
+          "CTA": "Ready to elevate your business with cutting-edge automation? Contact Minh Duc TV today and let our expert team guide you to streamlined success with n8n and AI-driven solutions!",
+          "Style": "informative",
+          "CTA_URL": "https://ducnguyen.cc/contact/",
+          "Website": "ducnguyen.cc",
+          "Chapters": 2,
+          "Word_Count": 1000,
+          "Category_ID": 403,
+          "Seed_keyword": "Ai agent",
+          "Target_audience": "startup founders",
+          "Company_offering": "Minh Duc TV is a forward-thinking consulting firm specializing in n8n workflow automation and AI-driven solutions. Our team of experts is dedicated to empowering businesses by streamlining processes, reducing operational inefficiencies, and accelerating digital transformation. By leveraging the flexibility of the open-source n8n platform alongside advanced AI technologies, we deliver tailored strategies that drive innovation and unlock new growth opportunities. Whether you're looking to automate routine tasks or integrate complex systems, Minh Duc TV provides the expert guidance you need to stay ahead in today's rapidly evolving digital landscape.",
+          "conclusion_length": 100,
+          "Introduction_length": 100
+        }
+      },
+      {
+        "json": {
+          "ID": 3,
+          "CTA": "Ready to elevate your business with cutting-edge automation? Contact Minh Duc TV today and let our expert team guide you to streamlined success with n8n and AI-driven solutions!",
+          "Style": "informative",
+          "CTA_URL": "https://ducnguyen.cc/contact/",
+          "Website": "ducnguyen.cc",
+          "Chapters": 2,
+          "Word_Count": 1000,
+          "Category_ID": 403,
+          "Seed_keyword": "Impact of DeepSeek on global AI development",
+          "Target_audience": "CEO",
+          "Company_offering": "Minh Duc TV is a forward-thinking consulting firm specializing in n8n workflow automation and AI-driven solutions. Our team of experts is dedicated to empowering businesses by streamlining processes, reducing operational inefficiencies, and accelerating digital transformation. By leveraging the flexibility of the open-source n8n platform alongside advanced AI technologies, we deliver tailored strategies that drive innovation and unlock new growth opportunities. Whether you're looking to automate routine tasks or integrate complex systems, Minh Duc TV provides the expert guidance you need to stay ahead in today's rapidly evolving digital landscape.",
+          "conclusion_length": 100,
+          "Introduction_length": 100
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-25T22:04:01.000Z",
+  "versionId": "96df81aa-2f3d-4369-9764-53071fea80a7"
+}
