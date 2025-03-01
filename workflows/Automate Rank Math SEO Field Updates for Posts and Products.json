@@ -1,0 +1,117 @@
+{
+  "active": false,
+  "connections": {
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - Update Rank Math Meta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-28T21:27:09.031Z",
+  "id": "XpmuKyJBeSPse1Ps",
+  "meta": {
+    "templateId": "2836"
+  },
+  "name": "Automate Rank Math SEO Field Updates for Posts and Products",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "080b234c-a753-409d-9d2d-3322678a01f2",
+              "name": "woocommerce url",
+              "type": "string",
+              "value": "https://mydom.com/"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "83c6d7e3-ae2e-4576-8bc6-1e1a7b553fca",
+      "name": "Settings",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        640,
+        240
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {},
+      "id": "7018ae65-bb9d-4bac-8746-01193cb0e523",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').item.json[\"woocommerce url\"] }}wp-json/rank-math-api/v1/update-meta",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "post_id",
+              "value": "246"
+            },
+            {
+              "name": "rank_math_title",
+              "value": "Demo SEO Title"
+            },
+            {
+              "name": "rank_math_description",
+              "value": "Demo SEO Description"
+            },
+            {
+              "name": "rank_math_canonical_url",
+              "value": "https://example.com/demo-product"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "223ed34b-3e26-406c-a5a5-34f8408e3fe6",
+      "name": "HTTP Request - Update Rank Math Meta",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        880,
+        240
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-28T21:27:09.031Z",
+  "versionId": "879ac352-ba32-464f-901b-2cbea11ecc93"
+}
