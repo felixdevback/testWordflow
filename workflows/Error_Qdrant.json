@@ -1,0 +1,106 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-17T18:00:57.152Z",
+  "id": "h4AuQj6NTydzDmFQ",
+  "meta": null,
+  "name": "Error_Qdrant",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"user_ns\": \"f122557u191631111\",\n  \"sub_flow_ns\": \"f122557s1432927\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        300,
+        -20
+      ],
+      "id": "c3106eaf-b0bc-4182-88ec-9996095e4e8a",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        1160
+      ],
+      "id": "c95dcd02-c5e8-493f-b14a-c81d94097f98",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "path": "72c56720-cb45-42e9-ae79-d43a052a1832",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        380,
+        1140
+      ],
+      "id": "a54a5afc-ff37-4b9e-9abd-a46683365115",
+      "name": "Webhook",
+      "webhookId": "72c56720-cb45-42e9-ae79-d43a052a1832"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        -20
+      ],
+      "id": "c070986c-5761-4317-83fa-ecbd3948e873",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:02:27.816Z",
+  "versionId": "2a2e1f8b-6def-4c10-aa37-36810c2eae3b"
+}
