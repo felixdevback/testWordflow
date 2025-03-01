@@ -1,0 +1,76 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-12T22:47:59.407Z",
+  "id": "cDRFHxTmAOOFEfiM",
+  "meta": null,
+  "name": "My workflow 12",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c3eba95b-e2c7-45ea-a47e-5be0c2243a44",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfy259p1ioeld3g",
+        "table": "ml36h20rbhl37za",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Nombre",
+              "fieldValue": "nocoDB"
+            },
+            {
+              "fieldName": "email",
+              "fieldValue": "psicologalilianalondono@gmail.com"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "48a591c2-4256-4d88-81e2-5afa384b6f50",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "s5P2QFmMipXho8qh",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-12T22:47:59.407Z",
+  "versionId": "55441860-ecf8-4f6a-94d6-63723b71ccf5"
+}
