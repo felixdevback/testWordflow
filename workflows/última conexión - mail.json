@@ -1,0 +1,126 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-26T23:54:42.105Z",
+  "id": "16KxVYjeszBG3k1o",
+  "meta": null,
+  "name": "última conexión - mail",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a9a1fcda-3331-4f4d-8f67-4c35a43ae151",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "op.student",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "name",
+            "id",
+            "email",
+            "phone",
+            "login_date"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "login_date",
+              "operator": "lesserOrEqual",
+              "value": "={{ $now.minus({ days: 7 }).toISODate() }}"
+            },
+            {
+              "fieldName": "login_date",
+              "operator": "greaterOrEqual",
+              "value": "={{ $now.minus({ days: 90 }).toISODate() }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "bd953744-6d4e-4f84-afa0-68fac091105c",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "toEmail": "={{ $json.email }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "05793056-a4ff-4fbb-84c1-132ca699adf1",
+      "name": "SendGrid",
+      "credentials": {
+        "sendGridApi": {
+          "id": "EpeBBHx749YmsEKN",
+          "name": "SendGrid account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-26T23:57:10.000Z",
+  "versionId": "ff2a81d2-c76f-41c9-b764-13089a2ee021"
+}
