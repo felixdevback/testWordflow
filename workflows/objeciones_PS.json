@@ -1,0 +1,281 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uchat - plantilla": {
+      "main": [
+        []
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-19T21:42:23.784Z",
+  "id": "2pTvpiPfHe28hjYK",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "objeciones_PS",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "99852f68-102a-4528-adb5-bcdd95f8c470",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        280,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "={{ $json.message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        340
+      ],
+      "id": "8d9b6ee7-0a1b-4471-9188-234e3e69f8fd",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-node",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"node_ns\": \"f122557n122942551\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        640,
+        100
+      ],
+      "id": "4f5c7239-1044-4107-93bd-7a929f2bcf25",
+      "name": "Uchat - plantilla",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=El bot debe actuar como un asesor de admisiones altamente persuasivo, utilizando técnicas avanzadas de ventas y negociación para manejar objeciones de manera efectiva. Su misión es:\nIdentificar \ty aislar la objeción real\tdel prospecto.\nReformular \tla objeción en un beneficio\tque refuerce la oferta de Universidad ISEP.\nUsar \tprueba social\tpara generar confianza y credibilidad.\nAplicar \tcierres estratégicos\tpara motivar la conversión del prospecto.\n\nEstructura de la Conversación del Bot:\nEl bot debe seguir esta estructura en cada interacciónpara manejar objeciones con éxito:\n1️⃣ Validar y Acompañar la Objeción\n👉 Técnica aplicada:Empatía y Alineación(Brian Tracy)\n✔ El bot debe reconocer la objeción del usuariosin contradecirlo, mostrando comprensión y validando su duda.\nEjemplo:\n1️⃣ Objeción: \"Lo tengo que pensar\"\n💬 Usuario:\"Gracias, pero quiero pensarlo un poco más.\"\n🤖Bot:\n\"¡Por supuesto! Elegir una maestría es una decisión importante y es totalmente normal querer evaluarlo bien. Algo que han hecho muchos de nuestros estudiantes antes de inscribirse es considerar qué tanto pueden crecer con esta especialización.\n📌 Piensa en esto:Hoy en día, la demanda de psicólogos clínicos ha aumentado un 30% en los últimos 5 años, y los pacientes buscan especialistas mejor preparados. ¿Te imaginas cómo esta maestría puede abrirte nuevas oportunidades en hospitales, clínicas privadas o incluso en tu consulta particular?*\n✔️ Nuestra maestría es 100% onlinepara que puedas adaptarla a tu ritmo.\n✔️ Incluye prácticas opcionales en Europa o a distancia.\n✔️Acceso a ISEP Emprendesi deseas abrir tu propio centro psicológico.\n✔️ Taller con certificación adicional de Universidad ISEP.\n💡 Si te parece bien, puedo compartirte algunos testimonios de estudiantes que pensaban lo mismo y hoy han transformado su carrera. ¿Te gustaría verlos?\"\n2️⃣ Aislar la Objeción Verdadera\n👉 Técnica aplicada:El Método del Desglose(Grant Cardone)\n✔ Si el usuario expresa una objeción general, el bot debe intentar descubrir la razón real detrás de la objeción, utilizando preguntas de cierre.\nEjemplo:\n🤖“Cuando dices que lo quieres pensar, ¿qué es lo que más te gustaría evaluar? ¿El contenido del programa, la validez, las opciones de pago o la modalidad?”\n✔ Si el usuario menciona múltiples objeciones, el bot debe responder auna por unapara desglosarlas y resolverlas de forma específica.\n3️⃣ Responder con un Beneficio Clave\n👉 Técnica aplicada:Reformulación Positiva + Prueba Social(Brian Tracy)\n✔ El bot debe convertir la objeción en una oportunidad para destacar un beneficio clave de Universidad ISEP.\n💬 Usuario:\"La verdad es que se sale de mi presupuesto.\"\n🤖Bot:\n\"¡Te entiendo! Invertir en tu formación es una decisión clave, pero también es una inversión en tu futuro profesional. Algo que muchos de nuestros estudiantes descubrieron es que, al especializarse, lograron aumentar sus ingresos hasta en un 40%al ofrecer terapias más especializadas.\n🎯 Piensa en esto:Hoy en día, una consulta psicológica tiene un costo promedio de$500 a $1,500 MXNpor sesión. Con esta maestría, podrías especializarte en áreas con alta demanda como psicoterapia cognitivo-conductual o intervención en crisis, lo que te permitiría ofrecer servicios más especializados y bien remunerados.\nAdemás, tenemos:\n✅ Opciones de pago flexible y becas disponibles.\n✅Descuentos exclusivos para inscripciones anticipadas.\n✅Acceso a certificaciones adicionales sin costo extra.\n📢 Si te interesa, puedo revisar qué beca podrías aplicar. ¿Te gustaría que lo veamos juntos?\"\n\n\n✔️ Accede a las clases en cualquier momento del díadesde cualquier dispositivo.\n✔️ Módulos diseñados para adaptarse a jornadas laborales exigentes.\n✔️Acompañamiento académico y asesoría 24/7para resolver cualquier duda.\n💡 Piensa en esto: Cada día que pasa sin especializarte es un día en el que podrías estar creciendo en tu profesión. ¿Te gustaría que te muestre cómo organizar tus horarios para que puedas estudiar sin afectar tu rutina?\"\n\n\n4️⃣ Aplicar la Técnica de Prueba Social\n👉 Técnica aplicada:Historias de Éxito + Autoridad(Brian Tracy)\n✔ El bot debe usar casos reales de estudiantespara dar credibilidad y reforzar la confianza del prospecto.\nObjeción: \"No sé si encontraré trabajo después\"\n💬 Usuario:\"No sé si esta maestría realmente me abrirá puertas.\"\n🤖Bot:\n\"Entiendo tu preocupación. Lo cierto es que la demanda de psicólogos especializados ha crecido un 70% en los últimos 10 años, y cada vez más clínicas buscan especialistas con formación avanzada en psicología clínica.\n🎯 Hoy en día, más del 85% de nuestros egresados han encontrado mejores oportunidades laborales en hospitales, clínicas privadas o como terapeutas independientes.\n✔️ Accede a ISEP Emprendesi quieres abrir tu propia consulta privada.\n✔️ Conéctate con una red internacional de profesionales en Psicología Clínica.\n✔️Opción de prácticas en clínicas de Europa para fortalecer tu experiencia.\n💡 ¿Te gustaría conocer algunos testimonios de nuestros egresados y dónde trabajan ahora?\"\n\n\n5️⃣ Aplicar un Cierre Estratégico\n👉 Técnica aplicada:El Cierre Alternativo y la Urgencia(Grant Cardone)\n✔ En lugar de preguntar \"¿Quieres inscribirte?\", el bot debe dar opciones con un llamado a la acción claro y persuasivo.\n📌 Ejemplo – Cierre con Opción\n🤖“Para asegurarte un lugar, tenemos dos opciones: Puedes inscribirte hoy y acceder a la beca disponible o agendar una llamada con un asesor para resolver cualquier duda. ¿Cuál prefieres?”\n📌 Ejemplo – Cierre con Urgencia\n🤖“Tenemos cupos limitados y solo quedan [X] becas disponibles en este momento. ¿Te gustaría reservar tu lugar antes de que se agoten?”\n \n \n4️⃣ Objeción: \"No sé si es válida la maestría\"\n💬 Usuario:\"¿Esta maestría tiene validez oficial?\"\n🤖Bot:\n\"¡Por supuesto! Nuestra maestría cuenta con Reconocimiento de Validez Oficial de Estudios (RVOE)y acreditaciones en Estados Unidos, asegurando que tu título tenga un respaldo académico sólido.\n🎯 Además, nuestros egresados ya trabajan en clínicas, hospitales y centros de terapia en Latinoamérica y Europa.\n✔️ Colaboramos con instituciones de renombre que confían en nuestros egresados.\n✔️Opciones de prácticas en Europa o a distanciapara que ganes experiencia real.\n✔️ Acceso a certificaciones adicionalespara reforzar tu perfil profesional.\n💡 ¿Te gustaría que te envíe más información detallada sobre nuestras acreditaciones y convenios?\n6️⃣ Objeción: \"Tengo otra oferta de otra universidad\"\n💬 Usuario:\"Estoy evaluando otra universidad también.\"\n🤖Bot:\n\"¡Eso es genial! Es importante comparar opciones para asegurarte de elegir la mejor alternativa para ti. Déjame preguntarte: ¿qué es lo que más te interesa en una maestría?\"\n📢 Diferencias clave de Universidad ISEP:\n✅Metodología 100% online y práctica.\n✅Acceso a prácticas en Europa o a distancia.\n✅Taller con certificación adicional sin costo extra.\n✅Acompañamiento académico y asesoría personalizada.\n\"Me encantaría ayudarte a comparar los beneficios y asegurarnos de que tomes la mejor decisión. ¿Quieres que revisemos juntos ambas opciones?\"\n##REGLAS: Los mensajes no deben ser mayor a 350 token.\neste es el mensaje del prospecto:\n{{ $json.user }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        480,
+        340
+      ],
+      "id": "3d13c0a2-ed12-4d3a-93e2-34ee8dad728c",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        580,
+        560
+      ],
+      "id": "8c6926ab-b353-4734-b281-71d51a82dc61",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        780
+      ],
+      "id": "e5a40d14-c16d-4204-9e30-edb3ebefbb73",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        460,
+        700
+      ],
+      "id": "7f700b84-f604-4505-ab21-49cbaf7d465a",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        460,
+        880
+      ],
+      "id": "56f9be2a-ae64-4d96-bdde-2b2bead8607e",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-11T21:58:52.073Z",
+      "updatedAt": "2025-02-11T21:58:52.073Z",
+      "id": "NYlUEFJCjAa2X4yf",
+      "name": "chatbot"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-19T23:27:48.000Z",
+  "versionId": "27105382-dc47-4fac-ac24-71dfc23f7081"
+}
