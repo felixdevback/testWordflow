@@ -1,0 +1,137 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-22T01:43:53.165Z",
+  "id": "19",
+  "meta": null,
+  "name": "lead tiktok",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2ce3964d-1867-42e0-8bad-480a2d6aa576",
+        "options": {}
+      },
+      "id": "cc180ab2-4536-4b5b-9298-773403b15c75",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -60
+      ],
+      "webhookId": "2b0215c5-b254-44d8-ad54-cfbbb8de0d06"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.body.contact_name }}"
+            },
+            {
+              "fieldName": "type",
+              "fieldValue": "=lead"
+            },
+            {
+              "fieldName": "email_from",
+              "fieldValue": "={{ $json.body.email_from }}"
+            },
+            {
+              "fieldName": "contact_name",
+              "fieldValue": "={{ $json.body.contact_name }}"
+            },
+            {
+              "fieldName": "x_studio_programa_de_inters",
+              "fieldValue": "={{ $json.body.x_studio_programa_de_inters }}"
+            },
+            {
+              "fieldName": "phone",
+              "fieldValue": "={{ $json.body.phone }}"
+            },
+            {
+              "fieldName": "website",
+              "fieldValue": "={{ $json.body.website }}"
+            },
+            {
+              "fieldName": "medium_id",
+              "fieldValue": "={{ $json[\"medium_id\"] }}"
+            },
+            {
+              "fieldName": "campaign_id",
+              "fieldValue": "={{ $json[\"campaign_id\"] }}"
+            },
+            {
+              "fieldName": "source_id",
+              "fieldValue": "={{ $json[\"source_id\"] }}"
+            },
+            {
+              "fieldName": "team_id",
+              "fieldValue": "={{ $json.team_id }}"
+            }
+          ]
+        }
+      },
+      "id": "d5dcf86e-ce10-4a5f-8e3c-efd343bbac38",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -60
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.campaign_id = 17;\n  item.json.source_id = 193;\n  item.json.medium_id = 15;\n  item.json.team_id = 14;\n}\n\nreturn $input.all();"
+      },
+      "id": "29a34def-c1e0-458b-a838-7481280316a5",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -60
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-20T23:19:24.000Z",
+  "versionId": "3a43d3c2-f1bc-4a23-ae24-f987db447125"
+}
