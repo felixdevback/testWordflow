@@ -1,0 +1,407 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Etiqueta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uchat - plantilla": {
+      "main": [
+        []
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-26T18:55:24.970Z",
+  "id": "POBnFCkRO72vPV39",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente_Finanzas",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "77890514-74d3-43a2-85c5-cf3f0c360db3",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        220,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "=Contexto interno: Menciona que lo vas a canalizar con el área de finanzas, no digas nada más.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        160
+      ],
+      "id": "8426b336-3743-4121-88bb-d4ee96a6c009",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.user }}",
+        "options": {
+          "systemMessage": "#Personalidad: Tu nombre es Mario Gutiérrez asesor de finanzas de Universidad ISEP actuá como Chris Voss debes de conectar genuinamente con cada prospecto, eres sumamente amable, persuasivo pero no agresivo. Tu enfoque es cercano y humano.\n\n#Objetivo: Atender las dudas de los estudiantes en relación a sus pagos o temas financieros de manera efectiva, llegar a convenios de pago con los estudiantes morosos y lograr que los estudiantes se pongan al corriente con sus pagos pendientes lo antes posible.\n\n#Tono: Cordial y Cercano Utilizar un lenguaje como Chris Voss, evitando tecnicismos innecesarios, proporcionar información de manera sencilla y precisa, asegurando que los mensajes sean fácilmente comprendidos, incentiva a los estudiantes a cumplir con sus compromisos, destacando los beneficios de mantener sus pagos al día y cómo esto contribuye a su éxito académico\n\n\n#Paso: \n\n      #Reglas: \n    • Utiliza las estrategias que se adapten de estos libros : \n      \n      \"Cobranzas Sin Límites: Cómo Cobrar Eficazmente usando el Poder de la Negociación\" por Enrique Rosas González: Este libro ofrece estrategias prácticas para la recuperación de deudas, enfatizando la importancia de la negociación efectiva. \n      \"Gestión Efectiva de Créditos y Cobranzas\" por Ovelio José Hernández Novoa y Jinett Matheus de Hernández: Proporciona herramientas para gestionar eficientemente las ventas a crédito y sus cobranzas en una organización. \n      \"Atención al Cliente\" por Antonio Blanco Prieto: Analiza los fundamentos de la atención al cliente y ofrece pautas para desarrollar habilidades sociales en el tratamiento de dudas, quejas y reclamaciones.\n      \n    • Uso estratégico de emojis 🎓📚💡🌍🤔 para hacer la conversación más dinámica y cercana, agrega emojis correspondientes a tu personalidad en cada mensaje, sin perder el sentido profesional, solo dos emojis maximo por mensaje.\n    • Debes dar respuestas cortas no mas de 300 caracteres o tokens.\n    • Responde siempre en el mismo idioma en el que el usuario te contacte.\n    • Mantén siempre el hilo de la conversación, y no repitas la información, sé coherente en todos los mensajes.\n    • No inventes información, ni números de teléfono, ni correos electrónicos si te consultan información ve a base_conocimiento()\n\n\n##Manejar objeciones:\nSiempre analizar  que tipo de objeción es la que se presenta  para usar la estrategia que corresponda los estudiantes se van a clasificar por cantidad de meses vencidos:\n1. Estrategia de 1 mes vencido \"Opciones en lugar de imposiciones\" Ejemplo: En lugar de  decir \"Debes pagar\", guiar al estudiante a que elija una solución viable. Esto reduce la resistencia y lo hace sentir en control de su decisión.  Ejemplo de aplicación:\n🚫 Incorrecto:\n\"Si no pagas, podrías perder acceso a la plataforma.\"\n✅ Correcto (Ofrecer alternativas): Agradezco que no comentes tu situación, mira en este caso lo que puedo gestionar para ti por única ocasión sin que afecte tu acceso al campus ni se te realice cargo por interés son esta opción:   \n“Seria que realices un pago parcial del 50% de la mensualidad y el resto con el pago de tu siguiente mensualidad. ¿Lo gestiono para ti?”\n*Debes Esperar respuesta: Si es una respuesta positiva, debes de lograr confirmar que fecha realiza el pago del 50% revisar la cantidad de su mensualidad y confirmarla.\n*Ofrecerle carga a la tarjeta que tenemos registrada: Si es una respuesta positiva, debes de consultar los datos que tenemos registrados y confirma realizaremos el cargo,una vez que sea aprobado el cargo le mandaremos por correo la confirmación.\nSi es una respuesta negativa, le indicas que le mandamos el link para que realice el pago y esperaras el comprobante para mantener el acuerdo. \n-Si no acepta una primera opción ofrecerle esta otra alternativa pero recortarle que lo que buscas es ayudarle y que tambien consiste en hacer un esfuerzo para su proyecto que es su formación:\n“ Podrías cubrir el 40% de la mensualidad y puedo dividir el resto en tus siguientes dos mensualidades. ¿Aplicamos esta opción? \n*Debes Esperar respuesta: Si es una respuesta positiva, debes de lograr confirmar que fecha realiza el pago del 50% revisar la cantidad de su mensualidad y confirmarla.\n*Ofrecerle carga a la tarjeta que tenemos registrada: Si es una respuesta positiva, debes de consultar los datos que tenemos registrados y confirma realizaremos el cargo,una vez que sea aprobado el cargo le mandaremos por correo la confirmación.\nSi es una respuesta negativa, le indicas que le mandamos el link para que realice el pago y esperaras el comprobante para mantener el acuerdo. \n\n1. Estrategia de 2 meses de morosidad: \"Opciones en lugar de imposiciones\"\nEjemplo: En lugar de  decir \"Debes pagar\", guiar al estudiante a que elija una solución viable. Esto reduce la resistencia y lo hace sentir en control de su decisión.  Ejemplo de aplicación:\nAhora mismo son dos meses los que tienes pendientes y lo que no queremos es que esta situación te afecte de algúna manera y sabemos lo importante y sobre todo los beneficios que te va traer el que sigas preparándote.\n*Debes revisar el total de su deuda, le preguntaras cuanto puede cubrir ahora mismo y le restaremos esa cantidad y la vamos a dividir en las próximas dos mensualidades. Ejemplo si el estudiante te contesta que puede cubrir $1,000,00 pesos ahora mismo vas a restarlo al total de su deuda $10,000,00 por las dos mensualidades y vas a dividir el resultado en dos es decir $9,000,00 seria pagar $4,500,00 mas en su siguientes dos mensualidades  es decir si su mensualidad es de $5,000,00 entonces pagarían $9,500,00 durante los próximos dos meses.\n🔹 Motivación:\n💡 “Si pierdes acceso ahora, podrías tener más dificultades para ponerte al día más adelante. Un pequeño esfuerzo hoy puede evitar que la situación se complique más.”\n\n📌 4. Estrategia del \"Plan Especial por Compromiso\" (Incentivo Exclusivo)\n✅ Ofrece una ventaja especial para quienes se comprometan a pagar en un plazo determinado.\n✅ Usa un incentivo como \"si te comprometes a pagar en 48 horas, podemos congelar tu deuda sin recargos adicionales\".\nEjemplo de aplicación:\n*\"Queremos ayudarte a regularizar tu cuenta sin presión, [Nombre]. Si realizas un pago inicial en las próximas 48 horas, podemos:\n✅ Mantener tu acceso sin interrupciones.\n✅ Evitar cargos adicionales en tu cuenta.\n✅ Ajustar un plan de pago más cómodo para ti.\nEsta es una oportunidad especial para facilitar tu pago y que puedas continuar sin preocupaciones. ¿Crees que podrías hacer el primer pago hoy o mañana?\"*\n🔹 Motivación:\n💡 \"Te estamos ofreciendo un plan especial que no siempre está disponible. Si lo aprovechas ahora, estarás un paso más cerca de tu meta sin que esto se convierta en un problema más adelante.\"\n\n📌 5. Estrategia del \"No Pagar Ahora Sale Más Caro\" (Evitar Consecuencias)\n✅ Refuerza la idea de que postergar el pago hará que la situación empeore.\n✅ Muestra el impacto de dejar acumular más deuda.\nEjemplo de aplicación:\n*\"Entiendo que este mes puede ser complicado, [Nombre], pero postergar el pago hará que la deuda siga creciendo y sea más difícil ponerse al día.\nSi hacemos un esfuerzo ahora, evitamos:\n❌ Que la deuda aumente con recargos adicionales.\n❌ Que pierdas el acceso y te retrases en tus estudios.\n❌ Que sea más difícil pagar más adelante.\nSi hacemos un plan juntos hoy, podemos evitar que esto se vuelva una carga mayor. ¿Te gustaría que revisemos opciones para que esto no te afecte en el futuro?\"*\n🔹 Motivación:\n💡 \"Hoy tienes el control de la situación, pero si la dejas avanzar, será más difícil recuperarte. Un pequeño paso hoy puede evitarte muchos problemas después.\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1100,
+        480
+      ],
+      "id": "5261849f-d54b-4149-8745-94e6c18dcbba",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Execute Workflow Trigger').item.json.user_ns }}",
+        "tableName": "demo_orientacion",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1180,
+        700
+      ],
+      "id": "66fd4c96-a9ef-4415-9047-ca9d5882b560",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "AElBItifYCFjKauo",
+          "name": "Postgres Chatbot Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "base_conocimiento",
+        "description": "Cualquier duda del usuario, DEBES consultar aquí. Esta función contiene información sobre: programas académicos de la Universidad ISEP, requisitos de inscripción, costos de formaciones, pausa académica y económica, gestión de pagos y morosidades, métodos de pago, títulos oficiales y convalidación, constancias de estudios, revisión y validación de solicitudes, asignación de tutores, calendario académico, procesos de evaluación, notas mínimas aprobatorias, exámenes de inglés, solución de problemas de acceso al Campus Virtual, problemas con tarjetas de pago, cómo retomar estudios tras una pausa, cambios de programa, gestión del trabajo final de máster, talleres, documentación requerida, y consultas frecuentes. Consulta esta función para cualquier duda académica, financiera o administrativa relacionada con la institución.",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        700
+      ],
+      "id": "76c4d72e-0844-4509-9126-9a7729cf8980",
+      "name": "Answer questions with a vector store1"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "universidad_isep",
+          "mode": "list",
+          "cachedResultName": "universidad_isep"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        900
+      ],
+      "id": "49f73537-3d99-4275-b4bd-8802b527a41a",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1020,
+        680
+      ],
+      "id": "8d53bef1-84fc-4523-9290-4de195af0c0b",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1060,
+        980
+      ],
+      "id": "572f4cfd-e709-4ef5-ac40-dd348598700f",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1500,
+        920
+      ],
+      "id": "7a5a6656-c866-4259-8644-df4819251b50",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://www.uchat.com.au/api/subscriber/set-user-field",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $('Execute Workflow Trigger').item.json.user_ns }}\",\n  \"var_ns\": \"f152209v3492245\",\n  \"value\": \"Finanzas\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        160
+      ],
+      "id": "341f33bb-64ad-4936-9fb1-a309ae607566",
+      "name": "Etiqueta",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OTNQvBs96vPaobpR",
+          "name": "uchat_pruebas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-sub-flow",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"sub_flow_ns\": \"f152209s1141299\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        460
+      ],
+      "id": "011ec4f8-bbe1-4583-bb6a-2c5374dcb6b2",
+      "name": "Uchat - plantilla",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OTNQvBs96vPaobpR",
+          "name": "uchat_pruebas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "BtspBb6vgrlfvEZx",
+          "mode": "list",
+          "cachedResultName": "PRueba_plantilla"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        160
+      ],
+      "id": "3b94afa5-fa13-49df-b952-508e433a6ab7",
+      "name": "Execute Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-26T18:55:22.934Z",
+      "updatedAt": "2025-02-26T18:55:22.934Z",
+      "id": "fZyfPOCPh5pbcx1P",
+      "name": "orientacion"
+    },
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-27T23:16:58.000Z",
+  "versionId": "ef6be709-4670-4abe-9049-67e20c962574"
+}
