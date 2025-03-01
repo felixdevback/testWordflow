@@ -1,0 +1,186 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo 16": {
+      "main": [
+        [
+          {
+            "node": "Mautic1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-28T14:48:00.057Z",
+  "id": "9",
+  "meta": null,
+  "name": "odoo vs mautic",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1df07ff9-d4f6-4a9a-a083-9d0dcc5a9ec6",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "operation": "getAll",
+        "limit": 5,
+        "options": {}
+      },
+      "id": "b9fb20ba-c719-4e5b-b709-052276ac805d",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "JHDBuAn2BFqo4lba",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "getAll",
+        "limit": 5,
+        "options": {}
+      },
+      "id": "a670bafe-76f0-43b7-9569-44bee4421e32",
+      "name": "Mautic",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        660,
+        300
+      ],
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "13",
+          "name": "Mautic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 24,
+              "triggerAtHour": 4
+            }
+          ]
+        }
+      },
+      "id": "ba6e86b5-02b8-43a5-b5a0-2c3e8aba8018",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "create_date",
+            "country_id",
+            "email"
+          ]
+        }
+      },
+      "id": "e4c94ac5-b003-4b4b-aa8d-19d9c7ea7c42",
+      "name": "Odoo 16",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        460,
+        140
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email }}",
+        "additionalFields": {},
+        "options": {}
+      },
+      "id": "d226d879-eb18-48fd-9abd-7c6ded8d4330",
+      "name": "Mautic1",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        680,
+        140
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "29",
+          "name": "Mautic UISEP"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-18T00:28:07.000Z",
+  "versionId": "6fc5271a-ef1b-4e9e-a5a7-71a8879a5349"
+}
