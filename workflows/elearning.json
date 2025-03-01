@@ -1,0 +1,1817 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI3": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter3": {
+      "main": [
+        [
+          {
+            "node": "OpenAI3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI4": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Aggregate4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter4": {
+      "main": [
+        [
+          {
+            "node": "OpenAI4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI5": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Aggregate5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter5": {
+      "main": [
+        [
+          {
+            "node": "OpenAI5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Odoo6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo6": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Odoo7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI6": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Aggregate6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter6": {
+      "main": [
+        [
+          {
+            "node": "OpenAI6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI6",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-25T01:44:09.146Z",
+  "id": "C8msknCNqmOccnZx",
+  "meta": null,
+  "name": "elearning",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        1140
+      ],
+      "id": "6395924d-c06f-405e-a1fd-de7c7fb0e30b",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        180
+      ],
+      "id": "d230862f-77bf-4bfe-a72a-4985d82e9a5f",
+      "name": "Odoo",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.channel",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "name",
+            "display_name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -240
+      ],
+      "id": "c41df78e-9de5-4fb3-86a6-b6b745098c0f",
+      "name": "Odoo1",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 1'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        180
+      ],
+      "id": "18ef66e9-bef5-4087-b7c5-94fd3aefb73d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "path": "d20a0aa3-d048-4726-a7d8-66dd90fd63d2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -940,
+        940
+      ],
+      "id": "59873672-da78-4cfb-83ec-78a6867b18aa",
+      "name": "Webhook",
+      "webhookId": "d20a0aa3-d048-4726-a7d8-66dd90fd63d2"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pige8orppgx5tdf",
+        "table": "mstihr5cvrw3wlm",
+        "returnAll": true,
+        "options": {
+          "where": "(odoo?,eq,no)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -680,
+        1040
+      ],
+      "id": "17281571-7613-493b-88ab-f004cb67851e",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 1'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo, siempre debe de ser el mismo:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\n- Siempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco.\n- SIEMPRE DEBE DE LLEVAR ESTILO"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        0,
+        280
+      ],
+      "id": "890e7796-8d61-4705-bb20-b37eb4031833",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        340,
+        180
+      ],
+      "id": "8fd92ff6-457f-4cd5-a5ac-085e6b1d7301",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d9a802cf-da39-4e69-a897-03eb144566b0",
+              "leftValue": "={{ $json['Unidad 1'] }}",
+              "rightValue": "=False",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -180,
+        160
+      ],
+      "id": "5fc96dc0-a6bb-4def-9547-95335e31f002",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        560,
+        180
+      ],
+      "id": "705c4edf-6a31-4191-b6ef-4d42e0b7a471",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        500
+      ],
+      "id": "4d0c5634-2a74-4252-bef9-45bef2a4ebfb",
+      "name": "Odoo2",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 2'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        800,
+        500
+      ],
+      "id": "2152a002-c7aa-40d7-a1ad-5c986d7e9be4",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 2'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo Y SIEMPRE DEBE DE LLEVAR ESTE ESTILO:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\nSiempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        20,
+        580
+      ],
+      "id": "62ca152b-c5fd-4415-93c3-26651b096f5e",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        360,
+        500
+      ],
+      "id": "b8d7757c-dee3-401f-84c2-12e1fc9fe6c3",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "777c6f2e-904d-4d1d-a4a7-5754b5d060d7",
+              "leftValue": "={{ $json['Unidad 2'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -160,
+        480
+      ],
+      "id": "3ed4e80b-58e0-495b-8785-f569da27fcb0",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        580,
+        500
+      ],
+      "id": "f2db1f34-70dd-416c-ac46-7c4750f6279b",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        840
+      ],
+      "id": "9555c29f-f1c9-47cf-bfff-317a85cd5a9e",
+      "name": "Odoo3",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 3'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        800,
+        840
+      ],
+      "id": "03ff3c99-2f05-4c1b-b6d4-3f8112f0a497",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 3'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo, siempre debe de ser el mismo:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\nSiempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        20,
+        920
+      ],
+      "id": "984d9089-f632-4e52-aeb1-507197f50c48",
+      "name": "OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        360,
+        840
+      ],
+      "id": "e346adec-8d55-457e-9257-9fd7f73e5873",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54e003b0-4eed-4096-b704-2d0658203e69",
+              "leftValue": "={{ $json['Unidad 3'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -160,
+        820
+      ],
+      "id": "366f2199-8623-487e-9fee-227cea46a5d3",
+      "name": "Filter2"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        580,
+        840
+      ],
+      "id": "bc7152f5-a345-4710-b7dc-c213d078016c",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1220
+      ],
+      "id": "766b4e20-1a44-4403-ae68-39f2c1458fcb",
+      "name": "Odoo4",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 4'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        1220
+      ],
+      "id": "84bfcc51-567a-495f-b77b-c20e974ea282",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 4'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo, siempre debe de ser el mismo:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\nSiempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        20,
+        1300
+      ],
+      "id": "6f2aa187-722b-4409-8eeb-d0ab355ab55c",
+      "name": "OpenAI3",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        340,
+        1220
+      ],
+      "id": "6e392778-c7a7-4ea7-8359-41b003bf70f1",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54e003b0-4eed-4096-b704-2d0658203e69",
+              "leftValue": "={{ $json['Unidad 4'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -180,
+        1200
+      ],
+      "id": "4786b43e-fa9c-4b7a-a8ed-1fe6e802aea7",
+      "name": "Filter3"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1220
+      ],
+      "id": "20f9a566-7154-440d-b215-450784249877",
+      "name": "Aggregate3"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1600
+      ],
+      "id": "c76278ef-1201-41fd-9a8f-5e94082b42c0",
+      "name": "Odoo5",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 5'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        1600
+      ],
+      "id": "45c9d4b4-d693-4b56-b055-e2d8021b5222",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 5'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo, siempre debe de ser el mismo:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\nSiempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        20,
+        1680
+      ],
+      "id": "dd0bacb5-9321-4127-b6bb-9c63df80cfb1",
+      "name": "OpenAI4",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        340,
+        1600
+      ],
+      "id": "26cb2ee8-f73e-4137-a61d-5bd02d8838fc",
+      "name": "Merge4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54e003b0-4eed-4096-b704-2d0658203e69",
+              "leftValue": "={{ $json['Unidad 5'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -180,
+        1580
+      ],
+      "id": "8d98f98d-a61b-4e5d-aa80-89b0c0a9c056",
+      "name": "Filter4"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1600
+      ],
+      "id": "4380d605-180b-4f51-8261-147b9a037021",
+      "name": "Aggregate4"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1960
+      ],
+      "id": "ea2c3121-512b-4aff-add8-40f69e6d7dfa",
+      "name": "Odoo6",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 6'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        1960
+      ],
+      "id": "35bf8c5c-b09e-4c84-9d00-077a97880153",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 6'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo, siempre debe de ser el mismo:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\nSiempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        20,
+        2020
+      ],
+      "id": "044ea7eb-4d79-4145-ade8-cf47320c78db",
+      "name": "OpenAI5",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        340,
+        1960
+      ],
+      "id": "de814f7f-d978-4dcd-9455-c1385d25627d",
+      "name": "Merge5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54e003b0-4eed-4096-b704-2d0658203e69",
+              "leftValue": "={{ $json['Unidad 6'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -180,
+        1940
+      ],
+      "id": "09c1a656-1647-4b9c-8f48-130d69cb9829",
+      "name": "Filter5"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1960
+      ],
+      "id": "5951d9e6-6af8-4814-ab2c-998733a9a752",
+      "name": "Aggregate5"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pige8orppgx5tdf",
+        "table": "mstihr5cvrw3wlm",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "id",
+              "fieldValue": "={{ $json.Id }}"
+            },
+            {
+              "fieldName": "odoo?",
+              "fieldValue": "si"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3480,
+        -60
+      ],
+      "id": "284cf2e7-2878-474a-a27a-34faa61d8b13",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "b4YE40MyHMnrq6qk",
+          "name": "NocoDB_chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "slide.slide",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json.Curso }}"
+            },
+            {
+              "fieldName": "html_content",
+              "fieldValue": "={{ $json.html }}"
+            },
+            {
+              "fieldName": "slide_category",
+              "fieldValue": "article"
+            },
+            {
+              "fieldName": "channel_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        980,
+        2240
+      ],
+      "id": "f3df2791-e38b-4c90-862b-bab9564aa643",
+      "name": "Odoo7",
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd42bef8-1669-49ab-be62-0322306e9abf",
+              "name": "id",
+              "value": "={{ $json.data[0]['ID odoo'] }}",
+              "type": "number"
+            },
+            {
+              "id": "c6e34bfe-976a-4957-a775-639778b5906d",
+              "name": "html",
+              "value": "={{ $json.data[1].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8a448ce1-6a43-442b-891a-156d5e91bda7",
+              "name": "Curso",
+              "value": "={{ $json.data[0]['nombre tema 7'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        2240
+      ],
+      "id": "12c3d1f5-68ef-4f01-9497-30048e351634",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o1-mini",
+          "mode": "list",
+          "cachedResultName": "O1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=convierte este texto a HTML con estilo en CSS con los estilos aislados para evitar conflictos con mi otro HTML. \n\n{{ $json['Unidad 7'] }}\n\n#No le agregues las etiquetas de html y dame TODO el contenido sin resumir absolutamente NADA. No escribas \"```html\"\n\n#Este es un ejemplo del estilo, siempre debe de ser el mismo:\n<style>\n        .custom-psicopatologia {\n            font-family: Arial, sans-serif;\n            margin: 40px;\n            line-height: 1.6;\n            background-color: #f9f9f9;\n            color: #333;\n        }\n        .custom-psicopatologia h1,\n        .custom-psicopatologia h2,\n        .custom-psicopatologia h3 {\n            color: #2c3e50;\n        }\n        .custom-psicopatologia h1 {\n            text-align: center;\n            margin-bottom: 50px;\n        }\n        .custom-psicopatologia h2 {\n            margin-top: 40px;\n            border-bottom: 2px solid #e74c3c;\n            padding-bottom: 10px;\n        }\n        .custom-psicopatologia h3 {\n            margin-top: 30px;\n            color: #e74c3c;\n        }\n        .custom-psicopatologia p {\n            text-align: justify;\n        }\n        .custom-psicopatologia ul {\n            margin-left: 20px;\n            list-style-type: disc;\n        }\n        .custom-psicopatologia li {\n            margin-bottom: 10px;\n            line-height: 1.5;\n        }\n        .custom-psicopatologia blockquote {\n            margin: 20px 0;\n            padding: 20px;\n            background-color: #ecf0f1;\n            border-left: 10px solid #e74c3c;\n        }\n        .custom-psicopatologia code {\n            background-color: #ecf0f1;\n            padding: 2px 4px;\n            font-family: \"Courier New\", Courier, monospace;\n        }\n        .custom-psicopatologia .example {\n            background-color: #eaf2f8;\n            padding: 20px;\n            border-left: 5px solid #2980b9;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .challenges {\n            background-color: #fdebd0;\n            padding: 20px;\n            border-left: 5px solid #d35400;\n            margin: 20px 0;\n        }\n        .custom-psicopatologia .benefits {\n            background-color: #e8f8f5;\n            padding: 20px;\n            border-left: 5px solid #16a085;\n            margin: 20px 0;\n        }\n    </style>\n\n<div class=\"custom-psicopatologia\">\n\n#Importante:\nSiempre debe de ser este mismo color y esta misma letra, el fondo debe de ser blanco."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        0,
+        2620
+      ],
+      "id": "587708a6-b4dc-40d2-9d46-b44bae10018a",
+      "name": "OpenAI6",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        320,
+        2240
+      ],
+      "id": "6a27c69a-f93e-4325-8eff-f2b8099e46a4",
+      "name": "Merge6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54e003b0-4eed-4096-b704-2d0658203e69",
+              "leftValue": "={{ $json['Unidad 7'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -200,
+        2220
+      ],
+      "id": "5a9de527-a354-4b5c-a6ac-2554c1c760a0",
+      "name": "Filter6"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        540,
+        2240
+      ],
+      "id": "8d5d8685-52b7-4663-ae20-7fb64864f325",
+      "name": "Aggregate6"
+    },
+    {
+      "parameters": {
+        "name": "Quizz",
+        "description": "Llama esta herramien"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        100,
+        2840
+      ],
+      "id": "0a0101c8-044b-4a1b-8433-672632a30eeb",
+      "name": "Call n8n Workflow Tool"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-28T23:02:17.688Z",
+  "versionId": "ec997dcc-a8a0-480d-a7a4-4775e8651ea7"
+}
