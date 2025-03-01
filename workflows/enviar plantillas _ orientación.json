@@ -1,0 +1,110 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Uchat - Invitación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uchat - Invitación": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-25T20:34:57.453Z",
+  "id": "6O6clbRWo8ngWTzi",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "enviar plantillas _ orientación",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "23f11d45-b397-4c2d-9a52-2b99277a5159",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.uchat.com.au/api/subscriber/send-node",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"user_ns\": \"{{ $json.user_ns }}\",\n  \"node_ns\": \"f139403n91117747\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        460
+      ],
+      "id": "8ff329e6-0669-4032-837c-e4967580d757",
+      "name": "Uchat - Invitación",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "EsnfVfapXUsx9gvm",
+          "name": "Uchat - Omnicanal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dbb91b65-0496-42aa-b1fd-16a0476fea4f",
+              "name": "response",
+              "value": "Contexto interno: El canal por el que te estás comunicando es WhatsApp y tu no agendas la reunión.\n\nBrevemente, agradécele por su tiempo y coméntale que en el mensaje anterior, por este mismo canal, le has dejado un botón para que pueda agendar una sesión a la hora que más le sea conveniente. Coméntale también que estás abierto a responder cualquier duda que tenga.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        460
+      ],
+      "id": "93c6656d-8646-4fcc-b3af-4755d8cae2ce",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T23:49:15.000Z",
+  "versionId": "40dc4a59-b1b5-4e13-8068-bef99473e818"
+}
