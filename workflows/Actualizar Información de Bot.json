@@ -1,0 +1,1014 @@
+{
+  "active": false,
+  "connections": {
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Información de Cursos": {
+      "main": [
+        [
+          {
+            "node": "Guardar Offset",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Programas Académicos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Obtener Información de Cursos - Offset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar Offset": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nuevo Offset": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Borrar Collection": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Crear Collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Programas Académicos": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Información de Cursos - Offset": {
+      "main": [
+        [
+          {
+            "node": "Nuevo Offset",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Programas Académicos #1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Programas Académicos #1": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Obtener Módulos #1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar Offset1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nuevo Offset1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Módulos": {
+      "main": [
+        [
+          {
+            "node": "Guardar Offset1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Módulos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Módulos #1": {
+      "main": [
+        [
+          {
+            "node": "Nuevo Offset1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Módulos #1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Módulos #1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Módulos": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Collection": {
+      "main": [
+        [
+          {
+            "node": "Obtener Información de Cursos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtener Módulos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Borrar Collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Borrar Collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-14T00:23:14.007Z",
+  "id": "KnchQHbGA5aSsjO1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Actualizar Información de Bot",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -900,
+        660
+      ],
+      "id": "8837ddf4-34c3-4ce1-848e-383109e6d788",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        900,
+        420
+      ],
+      "id": "68beff0f-5635-4769-8e5a-7ec99082a2df",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "GdTgSVO5MkQXCIRg",
+          "name": "Universidad ISEP - Proyecto Chatbot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "=Nombre de Formación: {{ $json.fields.fldL9TDFODGQDIBZN }}\nFecha de Inicio Académico: {{ $json.fields.fldWVlqplBmFLQcMp }}\nModalidad: {{ $json.fields.fldXEZdBhk6jJaQYH }}\nEnlace al plan de estudios y más información: {{ $json.fields.fldF8sEcn73LTwVGU }}\nFecha de Cierre de Admisión: {{ $json.fields.fldzgRYApd49uUS21 }}\nPrácticas: {{ $json.fields.fld8S6bkfaKukeFTf }}\nDuración del Programa: {{ $json.fields.fld6y7aXdTmIc8lYO }}\nBeneficios y Ventajas del Programa: {{$json.fields.fldJV9psfWtOS8PBS}}\nCosto del Programa: {{ $json.fields.fldcnA1V8WCWjw8rO}}\nPrograma Académico: {{ $json.fields.fldyZHWm5fbEak8cx }}\nEstadísticas y Logros del Programa: {{ $json.fields.fldDAF1esZPBn45Dx }}\nTítulos y Certificaciones: {{ $json.fields.fldpmj9IlqI2T4Wrt }}\nBecas disponible para este programa: {{ $json.fields.flducl4Dge2HoodUl }}\nPerfil de Ingreso: {{ $json.fields.fldAqIfMqKth3Ba0P }}\nPlan de Estudios y Módulos: {{ $json.fields.fldh22yLh3XRs6SfS }}\n\n",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "Nivel Educativo",
+                "value": "={{ $json.fields.fld5E10ciVjtRBRMT }}"
+              },
+              {
+                "name": "Nombre de Programa",
+                "value": "={{ $json.fields.fldL9TDFODGQDIBZN }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        440
+      ],
+      "id": "dd0bb5af-a3eb-4a4e-9485-537ca4cce127",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/appQOwdR73WCC0hl9/tblNos139jFuuXUQr/listRecords",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "airtableTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"returnFieldsByFieldId\": true,\n  \"pageSize\": 100,\n  \"filterByFormula\": \"AND({fldfJhawqaWGetDIa} = 'Activo')\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -80,
+        340
+      ],
+      "id": "43eec73e-1383-4234-a8b1-e565351fd991",
+      "name": "Obtener Información de Cursos",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qLo38VDHeVkFraeP",
+          "name": "Airtable - Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 200
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        640
+      ],
+      "id": "94bbffb7-b339-45cc-8905-b6999254f42e",
+      "name": "Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b2218138-7ebe-4abe-a3ea-34d55288a567",
+              "leftValue": "={{ $json.offset }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        300,
+        340
+      ],
+      "id": "6ced7884-4151-44ac-8ad4-c9022ef9c7f6",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3c5719cd-ab78-43f3-8109-f627fb9c5fa2",
+              "name": "offset",
+              "value": "={{ $json.offset }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        100,
+        340
+      ],
+      "id": "d6849eda-a9cc-49be-a14b-95819868d6cb",
+      "name": "Guardar Offset"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3c5719cd-ab78-43f3-8109-f627fb9c5fa2",
+              "name": "offset",
+              "value": "={{ $json.offset }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        700,
+        460
+      ],
+      "id": "cdb97d38-1810-4d63-a914-b385e227a100",
+      "name": "Nuevo Offset"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://4d91cd74-12c0-4ebc-a7fe-dd98ea7d71a2.us-east4-0.gcp.cloud.qdrant.io/collections/universidad_isep",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -700,
+        340
+      ],
+      "id": "e34d6fcc-a645-4bc3-9851-6df3f25ac42b",
+      "name": "Borrar Collection",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        340
+      ],
+      "id": "ac6fb5b9-3458-488f-88c2-bf06332b25a8",
+      "name": "Wait",
+      "webhookId": "a60c2724-01b6-4792-a0e4-041b37623222"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://4d91cd74-12c0-4ebc-a7fe-dd98ea7d71a2.us-east4-0.gcp.cloud.qdrant.io/collections/universidad_isep",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"vectors\": {\n    \"size\": 1536,\n    \"distance\": \"Cosine\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -280,
+        340
+      ],
+      "id": "1fd1f88b-9d4c-4926-8553-f7e3c4fbae39",
+      "name": "Crear Collection",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "=records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        500,
+        180
+      ],
+      "id": "f6ca4999-89d0-4547-8d8e-e2d20b309927",
+      "name": "Programas Académicos"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/appQOwdR73WCC0hl9/tblNos139jFuuXUQr/listRecords",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "airtableTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"returnFieldsByFieldId\": true,\n\"offset\": \"{{ $json.offset }}\",\n\"filterByFormula\": \"AND({fldfJhawqaWGetDIa} = 'Activo')\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        460
+      ],
+      "id": "d20e357d-1c5a-42a7-9f71-c62a0064fbf3",
+      "name": "Obtener Información de Cursos - Offset",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qLo38VDHeVkFraeP",
+          "name": "Airtable - Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "=records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        640,
+        320
+      ],
+      "id": "c3d542dc-08f4-43e5-8973-cb01ec8ace5d",
+      "name": "Programas Académicos #1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b2218138-7ebe-4abe-a3ea-34d55288a567",
+              "leftValue": "={{ $json.offset }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        1000
+      ],
+      "id": "4e816ed8-5a74-43a9-9eec-c1b4e9d5c583",
+      "name": "If1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3c5719cd-ab78-43f3-8109-f627fb9c5fa2",
+              "name": "offset",
+              "value": "={{ $json.offset }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        120,
+        1000
+      ],
+      "id": "ab101471-e5c2-494d-80f5-2a48d8ffbb30",
+      "name": "Guardar Offset1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3c5719cd-ab78-43f3-8109-f627fb9c5fa2",
+              "name": "offset",
+              "value": "={{ $json.offset }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        1120
+      ],
+      "id": "2fa686da-ec78-4b7e-9351-8f896bbc6469",
+      "name": "Nuevo Offset1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/appQOwdR73WCC0hl9/tblEWEcf13GA2yDXQ/listRecords",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "airtableTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"returnFieldsByFieldId\": true,\n  \"pageSize\": 100,\n  \"filterByFormula\": \"AND({fldMP5VEkzgjc4EUy} = 'Activo')\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -60,
+        1000
+      ],
+      "id": "813d0cdc-6e83-48ee-9780-306890f56574",
+      "name": "Obtener Módulos",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qLo38VDHeVkFraeP",
+          "name": "Airtable - Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/apphMqAdeNyWTS68i/tblS8c7yrkRoNbXDE/listRecords",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "airtableTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"returnFieldsByFieldId\": true,\n\"offset\": \"{{ $json.offset }}\",\n\"filterByFormula\": \"AND({fldMP5VEkzgjc4EUy} = 'Activo')\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        1120
+      ],
+      "id": "6068ab4c-2bc4-4319-8154-8acb7e6daccc",
+      "name": "Obtener Módulos #1",
+      "alwaysOutputData": false,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qLo38VDHeVkFraeP",
+          "name": "Airtable - Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "=records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        520,
+        840
+      ],
+      "id": "1eb3e495-6a63-47dd-8490-12a65248b91a",
+      "name": "Módulos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "=records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        680,
+        960
+      ],
+      "id": "a11d9d2d-1483-4b6c-98a2-15164ffb6f4f",
+      "name": "Módulos #1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "916a5bab-0e3a-41b2-85d0-282fcfeadde9",
+              "name": "url",
+              "value": "={{ $json.fields.fldg8EqqIzVSy5kgk }}",
+              "type": "string"
+            },
+            {
+              "id": "e2ac4349-3496-40db-8f43-363e617ef0bc",
+              "name": "Tema",
+              "value": "={{ $json.fields.fldnqp2vMU3nY6pVV }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6251a902-779d-4d9b-956e-00576b087ea8",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "916a5bab-0e3a-41b2-85d0-282fcfeadde9",
+              "name": "url",
+              "value": "={{ $json.fields.fldg8EqqIzVSy5kgk }}",
+              "type": "string"
+            },
+            {
+              "id": "e2ac4349-3496-40db-8f43-363e617ef0bc",
+              "name": "Tema",
+              "value": "={{ $json.fields.fldnqp2vMU3nY6pVV }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f62b9ffd-c6bb-4d87-9769-621663c78dbe",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        960
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0078abd4-87a8-4515-b542-2e9f788e96ba",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "ogF38TkxQsoG7uI1",
+          "mode": "list",
+          "cachedResultName": "Descargar Módulos y Subir"
+        },
+        "mode": "each",
+        "options": {}
+      },
+      "id": "23f84261-7776-4248-ab7c-5ccf6dfdaa9d",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4c531106-f29c-4fb0-a05b-f971a42e3677",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "ogF38TkxQsoG7uI1",
+          "mode": "list",
+          "cachedResultName": "Descargar Módulos y Subir"
+        },
+        "mode": "each",
+        "options": {}
+      },
+      "id": "26192f0d-6057-4bd5-9068-038758c45389",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "=universidad_isep",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        900,
+        180
+      ],
+      "id": "725db866-54a2-4a68-b0d9-86144e713e1b",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "9XRFVIreOIYRz13a",
+          "name": "Universidad ISEP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "a7a93100-83e1-44a0-9b14-04c870f9e8ca",
+        "options": {}
+      },
+      "id": "dbce5e30-5b3b-4ce3-ba83-2861eb666c43",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -940,
+        340
+      ],
+      "webhookId": "a7a93100-83e1-44a0-9b14-04c870f9e8ca"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 3,
+              "triggerAtHour": 3
+            }
+          ]
+        }
+      },
+      "id": "d495728c-a035-42cd-9d21-00140291a6de",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -940,
+        140
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        57
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-13T23:39:23.582Z",
+      "updatedAt": "2024-12-13T23:39:23.582Z",
+      "id": "iYIqNjvo2VXg5kHz",
+      "name": "Universidad ISEP"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-01-24T19:37:02.000Z",
+  "versionId": "8ac13464-915b-455b-a762-64671a8d3a08"
+}
