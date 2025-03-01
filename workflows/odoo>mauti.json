@@ -1,0 +1,584 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Datos de odoo=mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Datos de odoo=mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos de odoo=mautic": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Backup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Modificaciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-05T22:39:43.966Z",
+  "id": "12",
+  "meta": null,
+  "name": "odoo>mauti",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "92b6531a-8fc5-4fbc-ab54-be11515eae99",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email }}",
+        "firstName": "={{ $json.name }}",
+        "company": "={{ $json.campaign_id }}",
+        "additionalFields": {
+          "customFieldsUi": {
+            "customFieldValues": [
+              {
+                "fieldId": "etapa",
+                "fieldValue": "=Propuesta"
+              },
+              {
+                "fieldId": "country",
+                "fieldValue": "={{ $json.country_id }}"
+              },
+              {
+                "fieldId": "city",
+                "fieldValue": "={{ $json.city }}"
+              },
+              {
+                "fieldId": "curso__formacion_de_inter",
+                "fieldValue": "={{ $json.programa_academico }}"
+              },
+              {
+                "fieldId": "zipcode",
+                "fieldValue": "={{ $json.zip }}"
+              },
+              {
+                "fieldId": "phone",
+                "fieldValue": "={{ $json.phone }}"
+              },
+              {
+                "fieldId": "equipo_de_ventas",
+                "fieldValue": "={{ $json.team_sale }}"
+              }
+            ]
+          },
+          "stage": "={{ $json.stage_id }}",
+          "tags": [
+            "Prospecto"
+          ]
+        },
+        "options": {}
+      },
+      "id": "5cd2b25e-dc86-4b6c-b601-3e485a4ed5c5",
+      "name": "Mautic",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        420,
+        -320
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "id": "50cbde38-8efa-4646-8437-e2121abc6c47",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "options": {
+          "search": "fernandoarias@itabachillerato.edu.co"
+        }
+      },
+      "id": "8c6cf33c-e13d-4da5-bfa6-9f50515313a0",
+      "name": "Poblacion mautic",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        -420
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email_from }}",
+        "firstName": "={{ $json.name }}",
+        "company": "={{ $json.campaign_id[1] }}",
+        "additionalFields": {
+          "customFieldsUi": {
+            "customFieldValues": [
+              {
+                "fieldId": "etapa",
+                "fieldValue": "=Propuesta"
+              },
+              {
+                "fieldId": "country",
+                "fieldValue": "={{ $json.country_id[1] }}"
+              },
+              {
+                "fieldId": "city",
+                "fieldValue": "={{ $json.city }}"
+              },
+              {
+                "fieldId": "curso__formacion_de_inter",
+                "fieldValue": "={{ $json.x_studio_programa_academico[1] }}"
+              },
+              {
+                "fieldId": "zipcode",
+                "fieldValue": "={{ $json.zip }}"
+              },
+              {
+                "fieldId": "phone",
+                "fieldValue": "={{ $json.phone }}"
+              },
+              {
+                "fieldId": "equipo_de_ventas",
+                "fieldValue": "={{ $json.team_id[1] }}"
+              }
+            ]
+          },
+          "stage": "={{ $json.stage_id[0] }}",
+          "tags": [
+            "Prospecto"
+          ]
+        },
+        "options": {}
+      },
+      "id": "04ae924a-8f52-46ce-a498-d98bb256f3ec",
+      "name": "Mautic2",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -440
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "email_from",
+              "field2": "fields.core.email.normalizedValue"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input1",
+        "options": {}
+      },
+      "id": "b73b2c74-e1b2-4282-85d3-2013f25b790c",
+      "name": "Comparador",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        360,
+        -620
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "update",
+        "customResourceId": "={{ $json.id_odoo }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "x_studio_copy_to_mauti",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "id": "17e4dad5-48eb-443e-8b3b-9f68af822bc7",
+      "name": "Marcadorodoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        520,
+        -520
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "19",
+          "name": "Odoo APP 16"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "search": "={{ $json.email_from }}"
+        }
+      },
+      "id": "936d6279-0c7f-4190-aed3-61d575ed189d",
+      "name": "busqueda por correo",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        -500
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "crm.lead",
+        "operation": "getAll",
+        "limit": 10,
+        "options": {
+          "fieldsList": [
+            "email_from",
+            "name",
+            "partner_name",
+            "stage_id",
+            "zip",
+            "team_id",
+            "won_status",
+            "campaign_id",
+            "city",
+            "company_id",
+            "country_id",
+            "phone"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "type",
+              "value": "opportunity"
+            }
+          ]
+        }
+      },
+      "id": "837590b4-2c49-49a8-b67c-0f661cab3d46",
+      "name": "Datos de odoo=mautic",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        -160
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "20",
+          "name": "Odoo olitech"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email }}",
+        "firstName": "={{ $json.name }}",
+        "company": "={{ $json.campaign_id }}",
+        "additionalFields": {
+          "customFieldsUi": {
+            "customFieldValues": [
+              {
+                "fieldId": "etapa",
+                "fieldValue": "=Propuesta"
+              },
+              {
+                "fieldId": "country",
+                "fieldValue": "={{ $json.country_id }}"
+              },
+              {
+                "fieldId": "city",
+                "fieldValue": "={{ $json.city }}"
+              },
+              {
+                "fieldId": "curso__formacion_de_inter",
+                "fieldValue": "={{ $json.programa_academico }}"
+              },
+              {
+                "fieldId": "zipcode",
+                "fieldValue": "={{ $json.zip }}"
+              },
+              {
+                "fieldId": "phone",
+                "fieldValue": "={{ $json.phone }}"
+              },
+              {
+                "fieldId": "equipo_de_ventas",
+                "fieldValue": "={{ $json.team_sale }}"
+              }
+            ]
+          },
+          "stage": "={{ $json.stage_id }}",
+          "tags": [
+            "Prospecto"
+          ]
+        },
+        "options": {}
+      },
+      "id": "7a3f31ee-b02d-4fa0-8a14-ba7c91ace738",
+      "name": "Mautic1",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        700,
+        -120
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email }}",
+        "firstName": "={{ $json.name }}",
+        "company": "={{ $json.campaign_id }}",
+        "additionalFields": {
+          "customFieldsUi": {
+            "customFieldValues": [
+              {
+                "fieldId": "etapa",
+                "fieldValue": "=Propuesta"
+              },
+              {
+                "fieldId": "country",
+                "fieldValue": "={{ $json.country_id }}"
+              },
+              {
+                "fieldId": "city",
+                "fieldValue": "={{ $json.city }}"
+              },
+              {
+                "fieldId": "curso__formacion_de_inter",
+                "fieldValue": "={{ $json.programa_academico }}"
+              },
+              {
+                "fieldId": "zipcode",
+                "fieldValue": "={{ $json.zip }}"
+              },
+              {
+                "fieldId": "phone",
+                "fieldValue": "={{ $json.phone }}"
+              },
+              {
+                "fieldId": "equipo_de_ventas",
+                "fieldValue": "={{ $json.team_sale }}"
+              }
+            ]
+          },
+          "stage": "={{ $json.stage_id }}",
+          "tags": [
+            "Prospecto"
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac8a0d92-4b0b-4837-aa12-8f08f0fe0f47",
+      "name": "Mautic3",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        700,
+        100
+      ],
+      "credentials": {
+        "mauticApi": {
+          "id": "21",
+          "name": "Mautic account 2"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nvar data=[]\n\nvar val1=[1,1,1]\ndata.push(val1)\nvar val2=[2,2,2]\ndata.push(val2)\nvar val3=[3,3,3]\ndata.push(val3)\n\n//for (const item of $input.all()) {\n//   values={\n//    'email':item.json.fields.all.email,\n//    'name':item.json.fields.all.firstname,\n//    'id_mauti':item.json.id,\n//   }\n//  data.push(values)\n//}\n//data.push({'email':\"alex123@gmail.com\",\"name\":\"alejandro\"})\nreturn data\n//return $input.all();"
+      },
+      "id": "bfcb9137-bca0-4530-b4b9-cf280b46a029",
+      "name": "NormalizacionMauti1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -700,
+        -480
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nvar data=[]\nfor (const item of $input.all()) {\n  if(item.json.id%2!=0){\n    values={\n    'email':item.json.email_from,\n    'name':item.json.name,\n   // 'id_mauti':item.json.id,\n   }\n    data.push(item.json)\n  }\n   \n\n}\n\nreturn data\n"
+      },
+      "id": "e2caf81d-c002-4fe2-ab3b-ed66414a9632",
+      "name": "NormalizacionMauti2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nvar data=[]\nfor (const item of $input.all()) {\n  if(item.json.id%2==0){\n    values={\n    'email':item.json.email_from,\n    'name':item.json.name,\n   // 'id_mauti':item.json.id,\n   }\n    data.push(item.json)\n  }\n   \n\n}\n\nreturn data\n"
+      },
+      "id": "f5e55e54-bbf7-4cdd-87bb-c51218ef359f",
+      "name": "NormalizacionMauti6",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 500,
+        "options": {}
+      },
+      "id": "87149473-0e08-4e4f-b7d6-2a7a7e6c6b14",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        120,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {
+          "fileName": "backupdata"
+        }
+      },
+      "id": "75bceb2b-9479-439d-a8fe-d2095e91f615",
+      "name": "Backup",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {
+          "fileName": "resultado"
+        }
+      },
+      "id": "6e46d11f-f5a6-4d81-a11e-2c81b8de2b7c",
+      "name": "Modificaciones",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        440,
+        -60
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-13T21:54:00.000Z",
+  "versionId": "49ee4b9b-b48f-4ded-8fc7-604f2595cc6c"
+}
